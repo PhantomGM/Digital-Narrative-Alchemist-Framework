@@ -8,9 +8,10 @@ class SafetyGovernor:
     Enforces campaign boundaries (Lines & Veils) and stylistic tone.
     Filters player input and generated outputs to maintain cohesion and safety.
     """
-    def __init__(self, campaign_tone="Dark Fantasy", lines_and_veils=None, llm_model="qwen3.5:397b-cloud"):
+    def __init__(self, campaign_tone="Dark Fantasy", lines_and_veils=None, llm_model="qwen3.5:397b-cloud", profile_manager=None):
         self.campaign_tone = campaign_tone
         self.lines_and_veils = lines_and_veils or "No specific triggers listed. Maintain general PG-13 safety."
+        self.profile_manager = profile_manager
         
         api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
         base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
@@ -43,17 +44,22 @@ If it is a tone break or safety violation, reply with: INVALID | [A short senten
         )
         self.chain = self.prompt | self.llm | self.parser
 
-    async def filter_content(self, passage: str) -> dict:
+    async def filter_content(self, passage: str, active_player_ids: list = None) -> dict:
         """Parses the text through the safety and tone filter."""
         print(f"[SafetyGovernor] Evaluating content against '{self.campaign_tone}' tone...")
         
         if not passage.strip():
              return {"status": "valid", "correction_note": ""}
              
+        # Dynamic boundary extraction
+        current_boundaries = self.lines_and_veils
+        if self.profile_manager and active_player_ids:
+            current_boundaries = self.profile_manager.aggregate_safety_boundaries(active_player_ids)
+             
         try:
             response = await self.chain.ainvoke({
                 "tone": self.campaign_tone,
-                "boundaries": self.lines_and_veils,
+                "boundaries": current_boundaries,
                 "passage": passage
             })
             response = response.strip()

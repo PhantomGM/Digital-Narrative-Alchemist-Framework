@@ -40,8 +40,13 @@ async def main():
     # Initialize Session Director (The Hub)
     director = SessionDirector(orchestrator, weaver, state_keeper, registry)
     
-    # Register a PC for the Arc Tracker
+    # Register a PC for the Arc Tracker & Profile Manager
     director.arc_tracker.register_pc("PC_01_Fighter", ["Become a famous hero", "Find lost brother"], ["Reckless in combat"])
+    director.profile_manager.register_player(
+        "PC_01_Fighter", 
+        lines_and_veils=["Arachnophobia: Absolutely no spiders or spider-like monsters."], 
+        preferences="Likes tactical combat."
+    )
 
     location_tag = "Goblin Cave"
 
@@ -55,7 +60,11 @@ async def main():
     # Force the pacing to tense so we can guarantee we see a hazard trigger on the first or second loop
     director.pacing_level = "calm" 
 
-    prose_output = await director.advance_scene("PC_01_Fighter", "I carefully inspect the slippery floor before moving.", location_tag)
+    prose_output = await director.advance_scene(
+        "PC_01_Fighter", 
+        "I carefully inspect the slippery floor, watching out for the giant venomous spiders that live here.", 
+        location_tag
+    )
     print(f"\nNarrativeWeaver Output:\n> \"{prose_output}\"")
     
     print("\nHot-Swapping to Coin Flip Cartridge...")

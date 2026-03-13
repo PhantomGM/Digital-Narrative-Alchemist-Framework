@@ -9,6 +9,23 @@ class WorldStateKeeper:
                 "lighting": "Dim"
             }
         }
+        # A dictionary to store the structural historical data generated pre-session.
+        self.world_metadata = {
+            "world_name": "Unknown Realm",
+            "active_factions": [],
+            "ruined_factions": [],
+            "significant_locations": [],
+            "historical_eras": [],
+            "active_crises": [],
+            "laws_of_magic": "Unknown",
+            "timeline_year": 0
+        }
+
+    def ingest_history_data(self, history_data: dict):
+        """Ingest the extracted structural data points from the Microscope History Consensus."""
+        self.world_metadata.update(history_data)
+        print(f"[WorldStateKeeper] Successfully ingested historical data for world: '{self.world_metadata.get('world_name')}'")
+        print(f"[WorldStateKeeper] Establishing timeline year: {self.world_metadata.get('timeline_year')}")
 
     def get_reality(self, context_key: str) -> dict:
         """Fetch the current authoritative state for a location or entity."""

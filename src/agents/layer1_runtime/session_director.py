@@ -3,6 +3,7 @@ from typing import Dict, Any
 from agents.layer1_runtime.simulators import EnvironmentSimulator, EncounterDirector
 from agents.layer3_support.consistency_auditor import ConsistencyAuditor
 from agents.layer3_support.safety_governor import SafetyGovernor
+from agents.layer3_support.player_profiles import PlayerProfileManager
 
 class CharacterArcTracker:
     """Monitors PC personal arcs, awarding meta-currency and tracking goal progression."""
@@ -32,8 +33,9 @@ class SessionDirector:
         self.encounter_dir = EncounterDirector()
         
         # Layer III Support
+        self.profile_manager = PlayerProfileManager()
         self.auditor = ConsistencyAuditor()
-        self.safety_gov = SafetyGovernor(campaign_tone="Dark Fantasy")
+        self.safety_gov = SafetyGovernor(campaign_tone="Dark Fantasy", profile_manager=self.profile_manager)
         
         self.current_scene = None
         self.pacing_level = "calm" # calm, tense, combat, climactic
@@ -87,7 +89,7 @@ class SessionDirector:
              
         # 5: Layer III Support Validation
         print("\n[SessionDirector] Running output through Layer III middleware...")
-        safety_check = await self.safety_gov.filter_content(prose)
+        safety_check = await self.safety_gov.filter_content(prose, active_player_ids=[player_id])
         if safety_check["status"] == "invalid":
             # In a full system we would force the weaver to regenerate. For MVP, we append a GM note.
             prose += f"\n\n[OOC System Message - Tone/Safety Warning]: {safety_check['correction_note']}"
