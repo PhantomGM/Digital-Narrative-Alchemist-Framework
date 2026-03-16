@@ -1,6 +1,11 @@
+from core.event_ledger import EventLedger, StateEvent
+
+
 class WorldStateKeeper:
     """Tracks the authoritative 'present reality' (who is alive, what is broken)."""
-    def __init__(self):
+    def __init__(self, event_ledger: EventLedger = None):
+        self.event_ledger = event_ledger or EventLedger()
+
         # A mock dictionary database representing the active scene's reality
         self.state = {
             "Goblin Cave": {
@@ -27,16 +32,53 @@ class WorldStateKeeper:
         print(f"[WorldStateKeeper] Successfully ingested historical data for world: '{self.world_metadata.get('world_name')}'")
         print(f"[WorldStateKeeper] Establishing timeline year: {self.world_metadata.get('timeline_year')}")
 
+        # Emit a ledger event for the history ingestion
+        self.event_ledger.emit(StateEvent(
+            event_type="HISTORY_INGESTED",
+            target="world",
+            delta={"world_name": history_data.get("world_name", "Unknown"),
+                   "timeline_year": history_data.get("timeline_year", 0)},
+            source_agent="WorldStateKeeper",
+            location="global"
+        ))
+
     def get_reality(self, context_key: str) -> dict:
         """Fetch the current authoritative state for a location or entity."""
         return self.state.get(context_key, {"entities": [], "hazards": [], "lighting": "Unknown"})
 
-    def update_reality(self, context_key: str, updates: dict):
-        """Merges new facts into the authoritative state."""
+    def get_context_window(self, context_key: str, n: int = 10) -> dict:
+        """
+        Returns the current reality for a location PLUS the last N state deltas
+        as structured context. This ensures downstream agents (Orchestrator,
+        Weaver, NPC Engines) all see the same micro-state.
+        """
+        reality = self.get_reality(context_key)
+        recent_deltas = self.event_ledger.render_context(n)
+        return {
+            "current_state": reality,
+            "recent_changes": recent_deltas,
+            "world_metadata": {
+                "world_name": self.world_metadata.get("world_name", "Unknown"),
+                "timeline_year": self.world_metadata.get("timeline_year", 0),
+                "active_crises": self.world_metadata.get("active_crises", [])
+            }
+        }
+
+    def update_reality(self, context_key: str, updates: dict, source_agent: str = "WorldStateKeeper"):
+        """Merges new facts into the authoritative state and emits a StateEvent delta."""
         if context_key not in self.state:
             self.state[context_key] = {}
         self.state[context_key].update(updates)
         print(f"[WorldStateKeeper] Reality updated for '{context_key}': {updates}")
+
+        # Emit the delta to the Event Ledger
+        self.event_ledger.emit(StateEvent(
+            event_type="UPDATE_REALITY",
+            target=context_key,
+            delta=updates,
+            source_agent=source_agent,
+            location=context_key
+        ))
 
 class ContinuityArchivist:
     """Stores and retrieves past scenes to maintain long-term campaign canon."""

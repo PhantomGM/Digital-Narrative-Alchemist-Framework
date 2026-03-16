@@ -23,6 +23,9 @@ class InheritanceEngine:
         """
         Takes a list of IDs being used as the "basis" for a new generation.
         Fetches their profiles and any immediate linked relatives to build context.
+
+        Enhanced with graph-augmented retrieval: includes deterministic relational
+        facts alongside phenotype excerpts.
         """
         if not self.registry:
             return "No Registry Linked - No Constraints."
@@ -31,18 +34,18 @@ class InheritanceEngine:
             return "No Origin Entities provided."
 
         constraint_blocks = []
-        
+
         for origin_id in origin_ids:
             entity = self.registry.get_element(origin_id)
             if not entity:
                 continue
-                
+
             block = f"--- CONTEXT ENTITY (ID: {origin_id}) ---\n"
             block += self._extract_core_traits(entity) + "\n"
-            
-            # Fetch relationships
-            links = self.registry.get_links(origin_id)
-            
+
+            # Fetch relationships (using legacy-compatible ID-only method)
+            links = self.registry.get_link_ids(origin_id)
+
             # DOWNWARD (Inheriting from Parents)
             if links.get("parent"):
                 block += f"\n  -> Inheriting from PARENT Entities:\n"
@@ -58,7 +61,7 @@ class InheritanceEngine:
                     peer = self.registry.get_element(peer_id)
                     if peer:
                         block += f"     - {self._extract_core_traits(peer)}\n"
-                        
+
             # UPWARD (Incorporating lore from Children)
             if links.get("child"):
                 block += f"\n  -> Must incorporate lore from CHILD Entities:\n"
@@ -66,7 +69,14 @@ class InheritanceEngine:
                     child = self.registry.get_element(child_id)
                     if child:
                         block += f"     - {self._extract_core_traits(child)}\n"
-                        
+
+            # Graph-Augmented Facts (deterministic relational truths)
+            graph_facts = self.registry.query_graph(origin_id, depth=2)
+            if graph_facts:
+                block += f"\n  -> Deterministic Relational Facts (Graph):\n"
+                for fact in graph_facts:
+                    block += f"     • {fact}\n"
+
             constraint_blocks.append(block)
 
         if not constraint_blocks:
@@ -77,5 +87,6 @@ class InheritanceEngine:
         final_constraints += "You MUST adapt the output to respect, align with, or logically react to these traits:\n\n"
         final_constraints += "\n\n".join(constraint_blocks)
         final_constraints += "\n==============================="
-        
+
         return final_constraints
+

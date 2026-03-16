@@ -74,3 +74,42 @@ If it is a tone break or safety violation, reply with: INVALID | [A short senten
         except Exception as e:
             print(f"[SafetyGovernor] Error during evaluation: {e}. Defaulting to valid to prevent hang.")
             return {"status": "valid", "correction_note": ""}
+
+    async def filter_input(self, player_input: str, active_player_ids: list = None) -> dict:
+        """
+        Pre-screens raw player input for safety boundary violations BEFORE
+        it enters the pipeline. This runs in parallel with the Orchestrator's
+        intent classification, enabling early short-circuit if the input
+        itself is problematic.
+
+        This is a faster check than filter_content() since player inputs are
+        typically much shorter than generated prose.
+        """
+        print(f"[SafetyGovernor] Pre-screening player input for safety violations...")
+
+        if not player_input.strip():
+            return {"status": "valid", "correction_note": ""}
+
+        # Dynamic boundary extraction
+        current_boundaries = self.lines_and_veils
+        if self.profile_manager and active_player_ids:
+            current_boundaries = self.profile_manager.aggregate_safety_boundaries(active_player_ids)
+
+        try:
+            response = await self.chain.ainvoke({
+                "tone": self.campaign_tone,
+                "boundaries": current_boundaries,
+                "passage": player_input
+            })
+            response = response.strip()
+
+            if response.startswith("VALID"):
+                return {"status": "valid", "correction_note": ""}
+            else:
+                note = response.split("|", 1)[1].strip() if "|" in response else response
+                print(f"[SafetyGovernor] INPUT SAFETY VIOLATION: {note}")
+                return {"status": "invalid", "correction_note": note}
+
+        except Exception as e:
+            print(f"[SafetyGovernor] Input pre-screen error: {e}. Defaulting to valid.")
+            return {"status": "valid", "correction_note": ""}
