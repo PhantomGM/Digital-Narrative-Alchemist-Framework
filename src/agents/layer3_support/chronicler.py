@@ -1,31 +1,37 @@
 """
-Chronicler — Background context compression agent for the DNA Framework.
+Chronicler — Background context compression + lore extraction agent.
 
 Periodically compresses the active Event Ledger into dense factual summaries,
+extracts discrete LoreChunks for semantic retrieval (Bucket H: Dual-Memory),
 commits verbose history to long-term memory (ContinuityArchivist), and
 replaces the working context with the compressed version.
 
-This prevents context window degradation over long sessions (4+ hours)
-and manages token costs by ensuring the Narrative Weaver always operates
-with high token efficiency.
-
-Solves: Enhancement E5 (Context Compressor)
+Phase 1: Enhancement E5 (Context Compressor)
+Phase 2: Bucket H (Dual-Memory — Episodic + Lore RAG)
 """
 
 import os
+import json
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from core.contracts import LoreChunk
 
 
 class Chronicler:
     """
-    Background agent that runs every N turns to compress the Event Ledger.
+    Background agent that runs every N turns to compress the Event Ledger
+    and extract discrete, immutable lore facts.
 
+    Phase 1 — Compression:
     1. Pulls all events since the last compression
     2. Summarizes them into dense factual bullet points via LLM
-    3. Commits the full verbose history to the ContinuityArchivist (Layer 2)
-    4. Provides the compressed summary for the Session Director's working context
+    3. Commits the full verbose history to the ContinuityArchivist
+
+    Phase 2 — Lore Extraction (Bucket H):
+    4. Extracts individual LoreChunk records from events
+    5. Stores them in a searchable in-memory lore store
+    6. These facts never degrade — they're immutable and queryable
     """
 
     def __init__(self, compression_interval: int = 10, llm_model: str = "qwen3.5:397b-cloud"):
@@ -33,6 +39,8 @@ class Chronicler:
         self.turn_counter = 0
         self._last_compression_timestamp = 0.0
         self._compressed_summaries: list[str] = []
+        self._lore_store: list[LoreChunk] = []  # Bucket H: immutable facts
+        self._turn_number = 0  # Global turn counter for lore tagging
 
         api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
         base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
@@ -136,6 +144,11 @@ Compressed summary (bullet points only):
         self._last_compression_timestamp = event_ledger.last_timestamp
         self.turn_counter = 0
 
+        # 7. Bucket H: Extract discrete lore chunks from the raw events
+        lore_chunks = self._extract_lore_chunks(recent_events)
+        self._lore_store.extend(lore_chunks)
+        print(f"[Chronicler] Extracted {len(lore_chunks)} lore chunks. Total store: {self.lore_count}.")
+
         print(f"[Chronicler] Compression complete. Summary length: {len(compressed)} chars.")
         return compressed
 
@@ -152,3 +165,73 @@ Compressed summary (bullet points only):
             blocks.append(f"--- Chronicle Block {i} ---\n{summary}")
 
         return "\n\n".join(blocks)
+
+    def _extract_lore_chunks(self, events) -> list[LoreChunk]:
+        """
+        Bucket H: Extract discrete, immutable LoreChunks from events.
+
+        Instead of relying solely on lossy LLM summarization, this method
+        converts raw events into individual factual records that:
+        - Never degrade through re-summarization
+        - Are searchable by entity_id or location
+        - Maintain fine-grained detail (e.g., 'rusty dagger' stays 'rusty dagger')
+        """
+        chunks = []
+        self._turn_number += 1
+
+        for event in events:
+            # Determine importance based on event type
+            importance_map = {
+                "ADD_ENTITY": 3,
+                "REMOVE_ENTITY": 4,
+                "UPDATE_ENTITY": 2,
+                "PACING_SHIFT": 2,
+                "SCENE_TRANSITION": 3,
+                "TURN_COMPLETED": 1,
+                "INPUT_BLOCKED": 1,
+            }
+            importance = importance_map.get(event.event_type, 2)
+
+            # Build the factual statement from the event delta
+            delta_parts = [f"{k}: {v}" for k, v in event.delta.items()]
+            fact = f"{event.event_type} on {event.target} — {', '.join(delta_parts)}"
+
+            chunk = LoreChunk(
+                fact=fact,
+                entity_id=event.target,
+                location=event.location,
+                importance=importance,
+                source_turn=self._turn_number,
+            )
+            chunks.append(chunk)
+
+        return chunks
+
+    def query_lore(self, entity_id: str = "", location: str = "",
+                   min_importance: int = 1) -> list[LoreChunk]:
+        """
+        Query the lore store for facts matching the given criteria.
+
+        Args:
+            entity_id: Filter by entity (empty = all entities)
+            location: Filter by location (empty = all locations)
+            min_importance: Minimum importance rating (1-5)
+
+        Returns:
+            List of matching LoreChunks, ordered by source_turn
+        """
+        results = self._lore_store
+
+        if entity_id:
+            results = [c for c in results if c.entity_id == entity_id]
+        if location:
+            results = [c for c in results if c.location == location]
+        if min_importance > 1:
+            results = [c for c in results if c.importance >= min_importance]
+
+        return sorted(results, key=lambda c: c.source_turn)
+
+    @property
+    def lore_count(self) -> int:
+        """Number of lore chunks stored."""
+        return len(self._lore_store)
