@@ -71,7 +71,15 @@ Middleware guardrails ensuring safe, logical, and tonally consistent operation.
 
 Swappable logic cartridges tailored to specific, hard-coded TTRPG rulesets.
 
-* **Game System Arbiter**: The interface that processes intent. By swapping the Arbiter (e.g., from D&D 5e to a generic Coin Flip system), the entire mathematical framework of the game changes without breaking the narrative logic of Layers I-III.
+* **Game System Arbiter**: The interface that processes intent. By swapping the Arbiter, the entire mathematical framework of the game changes without breaking the narrative logic of Layers I-III.
+
+#### Active Cartridges
+
+| System Name | Directory | Capabilities |
+| :--- | :--- | :--- |
+| Pathfinder 2nd Edition SRD | `PF2EDNA` | `combat_resolution`, `skill_checks`, `saving_throws`, `spellcasting`, `rest_mechanics`, `encounter_budgeting` |
+| One Page 5e (Stub) | `one_page_5e` | Basic action resolution stub |
+| Coin Flip (Stub) | `coin_flip` | Pure 50/50 probability testing |
 
 ---
 

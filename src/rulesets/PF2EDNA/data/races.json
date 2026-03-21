@@ -1,0 +1,24 @@
+[
+  {
+    "id": "human",
+    "name": "Human",
+    "hp": 8,
+    "size": "Medium",
+    "speed": 25,
+    "ability_boosts": ["free", "free"],
+    "ability_flaws": [],
+    "languages": ["Common"],
+    "traits": ["Humanoid", "Human"]
+  },
+  {
+    "id": "elf",
+    "name": "Elf",
+    "hp": 6,
+    "size": "Medium",
+    "speed": 30,
+    "ability_boosts": ["dexterity", "intelligence", "free"],
+    "ability_flaws": ["constitution"],
+    "languages": ["Common", "Elven"],
+    "traits": ["Humanoid", "Elf"]
+  }
+]

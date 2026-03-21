@@ -1,0 +1,1038 @@
+[
+  {
+    "id": "a-home-in-every-port-apg",
+    "name": "A Home In Every Port",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/downtime",
+      "trait/general"
+    ],
+    "description": "# A Home In Every Port  *Feat 11*  \n[downtime](rules/traits/downtime.md \"Downtime Action & Ability Trait\")  [general](rules/traits/general.md \"General Feat Trait\")  \n\n- **Prerequisites**: Charisma 16\n\nYou have a reputation in towns and villages you've visited, and residents are always willing to open their doors to you. When in a town or village, during downtime, you can spend 8 hours to locate a resident willing to provide lodging for you and up to six allies for up to 24 hours at no charge. Th..."
+  },
+  {
+    "id": "aasimars-mercy-apg",
+    "name": "Aasimar's Mercy",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/aasimar"
+    ],
+    "description": "# Aasimar's Mercy  *Feat 13*  \n[aasimar](rules/traits/aasimar-apg.md \"Aasimar Ancestry & Heritage Trait\")  \n\n\nYour celestial powers allow you to remove lesser afflictions with ease. Each day, you can cast two 4th-level divine innate spells. You can choose from the following spells each time you cast: [remove curse](compendium/spells/remove-curse.md), [remove disease](compendium/spells/remove-disease.md), and [neutralize poison](compendium/spells/neutralize-poison.md).\n\n*Source: Advanced Player's..."
+  },
+  {
+    "id": "aberration-kinship-loag",
+    "name": "Aberration Kinship",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/loag",
+      "trait/fleshwarp"
+    ],
+    "description": "# Aberration Kinship  *Feat 1*  \n[fleshwarp](rules/traits/fleshwarp-loag.md \"Fleshwarp Ancestry & Heritage Trait\")  \n\n\nYour mind resonates with the inscrutable thought processes that inhuman aberrations use to communicate. You can cast [mindlink](compendium/spells/mindlink.md) as an innate occult spell once per day, but you can target only aberrations.\n\n*Source: Lost Omens: Ancestry Guide p. 93*  \n%% #compendium/src/pf2e/loag #trait/fleshwarp %%"
+  },
+  {
+    "id": "able-ritualist-av2",
+    "name": "Able Ritualist",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/av2",
+      "trait/archetype"
+    ],
+    "description": "# Able Ritualist  *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Eldritch Researcher Dedication](compendium/feats/eldritch-researcher-dedication-av2.md)\n\nYour readings on rituals make you a skilled participant. You gain a +2 circumstance bonus to primary and secondary checks you attempt as part of casting a ritual.\n\n*Source: Abomination Vaults #2: Hands of the Devil p. 76*  \n%% #compendium/src/pf2e/av2 #trait/archetype %%"
+  },
+  {
+    "id": "aboleth-transmutation-aaws",
+    "name": "Aboleth Transmutation",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/aaws",
+      "trait/azarketi"
+    ],
+    "description": "# Aboleth Transmutation  *Feat 9*  \n[azarketi](rules/traits/azarketi-loag.md \"Azarketi Ancestry & Heritage Trait\")  \n\n\nYou have tapped into the ancient magic used by alghollthu masters (also known as aboleths) to mold the flesh of your ancestors. You can use this magic to transfigure other beings. You gain 3rd-level [feet to fins](compendium/spells/feet-to-fins.md) and 2nd-level [water breathing](compendium/spells/water-breathing.md) as arcane innate spells. You can cast each of these arcane inn..."
+  },
+  {
+    "id": "absorb-spell-locg",
+    "name": "Absorb Spell",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/locg",
+      "trait/archetype"
+    ],
+    "description": "# Absorb Spell  [R](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Reaction\") *Feat 14*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Spellmaster Dedication](compendium/feats/spellmaster-dedication-locg.md), spell repertoire or ability to prepare spells\n- **Frequency**: once per 10 minutes\n- **Trigger** You critically succeed at a saving throw against a foe's spell, and that spell is of a level you can normally cast.\n- **Activity** Reaction\n..."
+  },
+  {
+    "id": "absorb-toxin-lome",
+    "name": "Absorb Toxin",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/lome",
+      "trait/grippli"
+    ],
+    "description": "# Absorb Toxin  [R](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Reaction\") *Feat 9*  \n[grippli](rules/traits/grippli-b2.md \"Grippli Ancestry & Heritage Trait\")  \n\n- **Prerequisites**: You are not immune to diseases or poisons\n- **Trigger** You attempt a saving throw against a [disease](rules/traits/disease.md \"Disease Effect Trait\") or [poison](rules/traits/poison.md \"Poison Effect Trait\") effect that affects an area.\n- **Activity** Reaction\n\nYour skin readily absorbs poison and c..."
+  },
+  {
+    "id": "abundant-step",
+    "name": "Abundant Step",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/monk"
+    ],
+    "description": "# Abundant Step  *Feat 6*  \n[monk](rules/traits/monk.md \"Monk Class Trait\")  \n\n- **Prerequisites**: incredible movement, ki spells\n\nYou can teleport yourself a short distance. You gain the [abundant step](compendium/spells/abundant-step.md) ki spell. Increase the number of Focus Points in your focus pool by 1.\n\n*Source: Core Rulebook p. 160*  \n%% #compendium/src/pf2e/crb #trait/monk %%"
+  },
+  {
+    "id": "accelerating-touch-apg",
+    "name": "Accelerating Touch",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/champion"
+    ],
+    "description": "# Accelerating Touch  *Feat 4*  \n[champion](rules/traits/champion.md \"Champion Class Trait\")  \n\n- **Prerequisites**: devotion spell ([lay on hands](compendium/spells/lay-on-hands.md))\n\nYour healing energies are infused with bounding energy. A creature that recovers Hit Points from your lay on hands gains a +10-foot status bonus to its Speed until the end of its next turn.\n\n*Source: Advanced Player's Guide p. 119*  \n%% #compendium/src/pf2e/apg #trait/champion %%"
+  },
+  {
+    "id": "acclimatization-apg",
+    "name": "Acclimatization",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Acclimatization  *Feat 4*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Horizon Walker Dedication](compendium/feats/horizon-walker-dedication-apg.md)\n\nYour time spent in the hostile parts of the world has inured you to extreme climates. In your favored terrain, you gain resistance equal to half your level to all environmental damage and are affected by temperature effects as though they were one step less severe (incredible heat or cold becomes extrem..."
+  },
+  {
+    "id": "accompany-apg",
+    "name": "Accompany",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/bard",
+      "trait/concentrate",
+      "trait/manipulate"
+    ],
+    "description": "# Accompany  [R](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Reaction\") *Feat 8*  \n[bard](rules/traits/bard.md \"Bard Class Trait\")  [concentrate](rules/traits/concentrate.md \"Concentrate Action & Ability Trait\")  [manipulate](rules/traits/manipulate.md \"Manipulate General Trait\")  \n\n- **Trigger** An ally within 30 feet [Casts a Spell](rules/actions/cast-a-spell.md).\n- **Activity** Reaction\n\nYou use your performances to supplement an ally's spellcasting, providing magical energy fo..."
+  },
+  {
+    "id": "accurate-flurry-apg",
+    "name": "Accurate Flurry",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/ranger"
+    ],
+    "description": "# Accurate Flurry  *Feat 20*  \n[ranger](rules/traits/ranger.md \"Ranger Class Trait\")  \n\n- **Prerequisites**: [Impossible Flurry](compendium/feats/impossible-flurry.md)\n- **Requirements**: You are wielding two melee weapons, each in a different hand.\n\nYou refine the precision of your unbelievable storm of blows. When you perform an [Impossible Flurry](compendium/feats/impossible-flurry.md), your first attack with each weapon instead takes the multiple attack penalty as though you had already made..."
+  },
+  {
+    "id": "accurate-swing-ngd",
+    "name": "Accurate Swing",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/ngd",
+      "trait/archetype",
+      "trait/vigilante"
+    ],
+    "description": "# Accurate Swing  *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [vigilante](rules/traits/vigilante-apg.md \"Vigilante Feat Trait\")  \n\n- **Prerequisites**: [Harsh Judgment](compendium/feats/harsh-judgment-ngd.md), [Vigilante Dedication](compendium/feats/vigilante-dedication-apg.md), member of the Gray Gardeners\n\nYou strike cleanly with wide, sweeping attacks to inflict maximum damage, taking advantage of your judged foe's fear to land a felling blow. If you [Strike](rul..."
+  },
+  {
+    "id": "accursed-claws-apg",
+    "name": "Accursed Claws",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/changeling"
+    ],
+    "description": "# Accursed Claws  *Feat 9*  \n[changeling](rules/traits/changeling-b1.md \"Changeling Ancestry & Heritage Trait\")  \n\n- **Prerequisites**: claw unarmed attack\n\nYour claws carry your mother's hag magic. When you critically hit with a claw [Strike](rules/actions/strike.md), the target takes an additional `1d4` [persistent mental damage](rules/conditions.md#Persistent%20Damage).\n\n*Source: Advanced Player's Guide p. 31*  \n%% #compendium/src/pf2e/apg #trait/changeling %%"
+  },
+  {
+    "id": "accursed-clay-fist-ec3",
+    "name": "Accursed Clay Fist",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/ec3",
+      "trait/archetype",
+      "trait/curse"
+    ],
+    "description": "# Accursed Clay Fist  *Feat 10*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [curse](rules/traits/curse.md \"Curse Effect Trait\")  \n\n- **Prerequisites**: [Golem Grafter Dedication](compendium/feats/golem-grafter-dedication-ec3.md), expert in unarmed attacks\n\nYou have replaced one of your forearms with one made of clay and infused with cursed arcane magic. When you make an unarmed [Strike](rules/actions/strike.md) with your clay fist and hit, your target takes a \u20132 status penal..."
+  },
+  {
+    "id": "accursed-magic-da",
+    "name": "Accursed Magic",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/da",
+      "trait/archetype"
+    ],
+    "description": "# Accursed Magic  *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Curse Maelstrom Dedication](compendium/feats/curse-maelstrom-dedication-da.md)\n\nWhen the curse within you spills out, you can lay curses on others and claim them for yourself with ease. You can cast [claim curse](compendium/spells/claim-curse-som.md) (Secrets of Magic 95). At 10th level, you can also cast [seal fate](compendium/spells/seal-fate-apg.md) (Advanced Player's Guide 224)..."
+  },
+  {
+    "id": "accursed-touch-botd",
+    "name": "Accursed Touch",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/botd",
+      "trait/archetype"
+    ],
+    "description": "# Accursed Touch  *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Mummy Dedication](compendium/feats/mummy-dedication-botd.md)\n\nYou've learned to harness the supernatural curse that animates you, imbuing your most powerful attacks with a terrible curse. When you critically hit with a fist [Strike](rules/actions/strike.md), negative energy binds to it; this is a [curse](rules/traits/curse.md \"Curse Effect Trait\") and a [disease](rules/traits/disea..."
+  },
+  {
+    "id": "achaekeks-grip-lol",
+    "name": "Achaekek's Grip",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/lol",
+      "trait/archetype",
+      "trait/rare"
+    ],
+    "description": "# Achaekek's Grip  *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [rare](rules/traits/rare.md \"Rare Rarity Trait\")  \n\n- **Prerequisites**: [Basic Red Mantis Magic](compendium/feats/basic-red-mantis-magic-lowg.md)\n\nYou sense if a creature you have slain in the last year has been restored to life, as long as you and that creature are on the same plane. You also gain the [Achaekek's clutch](compendium/spells/achaekeks-clutch-lol.md) focus spell. If you don't already have ..."
+  },
+  {
+    "id": "acquired-tolerance-apg",
+    "name": "Acquired Tolerance",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype",
+      "trait/fortune"
+    ],
+    "description": "# Acquired Tolerance  [R](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Reaction\") *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [fortune](rules/traits/fortune.md \"Fortune Effect Trait\")  \n\n- **Prerequisites**: [Poisoner Dedication](compendium/feats/poisoner-dedication-apg.md)\n- **Trigger** You fail a save against a poison.\n- **Activity** Reaction\n\nA small amount of poison, taken at nonlethal doses, can help the body build up a resistance against a more d..."
+  },
+  {
+    "id": "acrobat-dedication-apg",
+    "name": "Acrobat Dedication",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype",
+      "trait/dedication"
+    ],
+    "description": "# Acrobat Dedication  *Feat 2*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [dedication](rules/traits/dedication.md \"Dedication Feat Trait\")  \n\n- **Prerequisites**: trained in [Acrobatics](compendium/skills.md#Acrobatics)\n\nYou become an expert in [Acrobatics](compendium/skills.md#Acrobatics). At 7th level, you become a master in [Acrobatics](compendium/skills.md#Acrobatics), and at 15th level, you become legendary in [Acrobatics](compendium/skills.md#Acrobatics). Whenever you..."
+  },
+  {
+    "id": "acrobatic-performer-apg",
+    "name": "Acrobatic Performer",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/general",
+      "trait/skill"
+    ],
+    "description": "# Acrobatic Performer  *Feat 1*  \n[general](rules/traits/general.md \"General Feat Trait\")  [skill](rules/traits/skill.md \"Skill Feat Trait\")  \n\n- **Prerequisites**: trained in [Acrobatics](compendium/skills.md#Acrobatics)\n\nYou're an incredible acrobat, evoking wonder and enrapturing audiences with your prowess. It's almost a performance! You can roll an [Acrobatics](compendium/skills.md#Acrobatics) check instead of a [Performance](compendium/skills.md#Performance) check when using the [Perform](..."
+  },
+  {
+    "id": "acute-scent",
+    "name": "Acute Scent",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/barbarian"
+    ],
+    "description": "# Acute Scent  *Feat 2*  \n[barbarian](rules/traits/barbarian.md \"Barbarian Class Trait\")  \n\n- **Prerequisites**: [Acute Vision](compendium/feats/acute-vision.md) or [darkvision](rules/abilities/darkvision.md)\n\nWhen you [Rage](rules/actions/rage.md), your sense of smell improves. You gain imprecise [scent](rules/abilities/scent.md) with a range of 30 feet.\n\n## Acute Scent leads to...\n\n[Instinctive Strike](compendium/feats/instinctive-strike-apg.md), [Nocturnal Sense](compendium/feats/nocturnal-se..."
+  },
+  {
+    "id": "acute-vision",
+    "name": "Acute Vision",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/barbarian"
+    ],
+    "description": "# Acute Vision  *Feat 1*  \n[barbarian](rules/traits/barbarian.md \"Barbarian Class Trait\")  \n\n\nWhen you are raging, your visual senses improve, granting you [darkvision](rules/abilities/darkvision.md).\n\n## Acute Vision leads to...\n\n[Acute Scent](compendium/feats/acute-scent.md), [Instinctive Strike](compendium/feats/instinctive-strike-apg.md), [Nocturnal Sense](compendium/feats/nocturnal-sense-apg.md), [Supernatural Senses](compendium/feats/supernatural-senses-apg.md)\n\n## Summary\n\n*Source: Core R..."
+  },
+  {
+    "id": "adapted-cantrip",
+    "name": "Adapted Cantrip",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/human"
+    ],
+    "description": "# Adapted Cantrip  *Feat 1*  \n[human](rules/traits/human.md \"Human Ancestry & Heritage Trait\")  \n\n- **Prerequisites**: spellcasting class feature\n\nThrough study of multiple magical traditions, you've altered a spell to suit your spellcasting style. Choose one cantrip from a magical tradition other than your own. If you have a spell repertoire or a spellbook, replace one of the cantrips you know or have in your spellbook with the chosen spell. If you prepare spells without a spellbook (if you're ..."
+  },
+  {
+    "id": "adaptive-adept",
+    "name": "Adaptive Adept",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/human"
+    ],
+    "description": "# Adaptive Adept  *Feat 5*  \n[human](rules/traits/human.md \"Human Ancestry & Heritage Trait\")  \n\n- **Prerequisites**: [Adapted Cantrip](compendium/feats/adapted-cantrip.md), can cast 3rd-level spells\n\nYou've continued adapting your magic to blend your class's tradition with your adapted tradition. Choose a cantrip or 1st-level spell from the same magical tradition as your cantrip from [Adapted Cantrip](compendium/feats/adapted-cantrip.md). You gain that spell, adding it to your spell repertoire,..."
+  },
+  {
+    "id": "adaptive-mask-familiar-locg",
+    "name": "Adaptive Mask Familiar",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/locg",
+      "trait/archetype"
+    ],
+    "description": "# Adaptive Mask Familiar  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Mask Familiar](compendium/feats/mask-familiar-locg.md)\n\nYour mask familiar adapts quickly to material form, allowing it to gain more familiar and master abilities. You select four master and familiar abilities each day instead of two.\n\n*Source: Lost Omens: Character Guide p. 101*  \n%% #compendium/src/pf2e/locg #trait/archetype %%"
+  },
+  {
+    "id": "adaptive-vision-g-g",
+    "name": "Adaptive Vision",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/g&g",
+      "trait/dwarf",
+      "trait/uncommon"
+    ],
+    "description": "# Adaptive Vision  *Feat 1*  \n[dwarf](rules/traits/dwarf.md \"Dwarf Ancestry & Heritage Trait\")  [uncommon](rules/traits/uncommon.md \"Uncommon Rarity Trait\")  \n\n- **Access**: You are from Dongun Hold or Alkenstar.\n\nAfter years of using black powder weaponry in dimly lit spaces, you've become accustomed to dazzling flashes of light and sudden shifts in illumination. You gain a +1 circumstance bonus to saving throws against [visual](rules/traits/visual.md \"Visual Effect Trait\") effects.\n\nIf you rol..."
+  },
+  {
+    "id": "add-element-roe",
+    "name": "Add Element",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/roe",
+      "trait/archetype"
+    ],
+    "description": "# Add Element  *Feat 10*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Advanced Element Control](compendium/feats/advanced-element-control-roe.md)\n\nChoose a second kinetic element to add to the one you already have. You gain an impulse feat for that element. For the purpose of meeting its prerequisites, your kineticist level is equal to half your level. If you gain more kineticist feats, you can select hybrid impulses that have both your elements, as no..."
+  },
+  {
+    "id": "additional-companion-apg",
+    "name": "Additional Companion",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Additional Companion  *Feat 4*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Beastmaster Dedication](compendium/feats/beastmaster-dedication-apg.md)\n\nAnother animal joins you in your travels. It is a young animal companion that has the [minion](rules/traits/minion.md \"Minion Creature Trait\") trait. See Beastmaster Animal Companions for rules on how having multiple animal companions works.\n\n**Special.** You can select this feat more than once, gaining ..."
+  },
+  {
+    "id": "additional-lore",
+    "name": "Additional Lore",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/general",
+      "trait/skill"
+    ],
+    "description": "# Additional Lore  *Feat 1*  \n[general](rules/traits/general.md \"General Feat Trait\")  [skill](rules/traits/skill.md \"Skill Feat Trait\")  \n\n- **Prerequisites**: trained in [Lore](compendium/skills.md#Lore)\n\nYour knowledge has expanded to encompass a new field. Choose an additional [Lore](compendium/skills.md#Lore) skill subcategory. You become trained in it. At 3rd, 7th, and 15th levels, you gain an additional skill increase you can apply only to the chosen [Lore](compendium/skills.md#Lore) subc..."
+  },
+  {
+    "id": "additional-recollection-apg",
+    "name": "Additional Recollection",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/ranger"
+    ],
+    "description": "# Additional Recollection  [F](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Free Action\") *Feat 6*  \n[ranger](rules/traits/ranger.md \"Ranger Class Trait\")  \n\n- **Trigger** You succeed or critically succeed at a check to [Recall Knowledge](rules/actions/recall-knowledge.md) on your hunted prey.\n- **Activity** Free Action\n\nYou scan the battlefield quickly, remembering critical details about multiple opponents you face. You immediately attempt a check to [Recall Knowledge](rules/actio..."
+  },
+  {
+    "id": "additional-shadow-magic-apg",
+    "name": "Additional Shadow Magic",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Additional Shadow Magic  *Feat 12*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Shadow Magic](compendium/feats/shadow-magic-apg.md)\n\nChoose an additional shadowdancer focus spell you haven't already selected from [Shadow Magic](compendium/feats/shadow-magic-apg.md). Increase the number of Focus Points in your pool by 1.\n\n*Source: Advanced Player's Guide p. 192*  \n%% #compendium/src/pf2e/apg #trait/archetype %%"
+  },
+  {
+    "id": "adhyabhau-loag",
+    "name": "Adhyabhau",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/loag",
+      "trait/dhampir",
+      "trait/lineage"
+    ],
+    "description": "# Adhyabhau  *Feat 1*  \n[dhampir](rules/traits/dhampir-b1.md \"Dhampir Ancestry & Heritage Trait\")  [lineage](rules/traits/lineage-apg.md \"Lineage  Trait\")  \n\n\nYou descend from the rare psychic vampires known as vetalaranas. Your forebear gained sustenance from the mental and emotional energy of living creatures, which manifests in you as powerful resistance to such effects. You gain a +1 circumstance bonus to Will saves against effects with the [emotion](rules/traits/emotion.md \"Emotion Effect T..."
+  },
+  {
+    "id": "adopted-ancestry",
+    "name": "Adopted Ancestry",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/general"
+    ],
+    "description": "# Adopted Ancestry  *Feat 1*  \n[general](rules/traits/general.md \"General Feat Trait\")  \n\n\nYou're fully immersed in another ancestry's culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance. Choose a common ancestry. You can select ancestry feats from the ancestry you chose, in addition to your character's own ancestry, as long as the ancestry feats don't require any physiological feature that you lack, as determined by the ..."
+  },
+  {
+    "id": "adrenaline-rush-apg",
+    "name": "Adrenaline Rush",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/barbarian",
+      "trait/rage"
+    ],
+    "description": "# Adrenaline Rush  *Feat 1*  \n[barbarian](rules/traits/barbarian.md \"Barbarian Class Trait\")  [rage](rules/traits/rage.md \"Rage Combat Trait\")  \n\n\nIn the heat of battle, you are capable of amazing feats of strength. While you are [raging](rules/actions/rage.md), increase your [encumbered](rules/conditions.md#Encumbered) and maximum Bulk limits by 2; you also gain a +1 status bonus to [Athletics](compendium/skills.md#Athletics) checks to lift heavy objects, [Escape](rules/actions/escape.md), and ..."
+  },
+  {
+    "id": "adroit-manipulation-locg",
+    "name": "Adroit Manipulation",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/locg",
+      "trait/halfling",
+      "trait/uncommon"
+    ],
+    "description": "# Adroit Manipulation  *Feat 1*  \n[halfling](rules/traits/halfling.md \"Halfling Ancestry & Heritage Trait\")  [uncommon](rules/traits/uncommon.md \"Uncommon Rarity Trait\")  \n\n- **Access**: Mihrini ethnicity\n\nYou've fiddled with knots, locks, and blacksmith's puzzles since you were a child to give your hands something to do. You gain the trained proficiency rank in [Thievery](compendium/skills.md#Thievery) (or another skill of your choice, if you're already trained in [Thievery](compendium/skills.m..."
+  },
+  {
+    "id": "advanced-arcana",
+    "name": "Advanced Arcana",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Arcana  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Arcana](compendium/feats/basic-arcana.md)\n\nYou gain one wizard feat. For the purpose of meeting its prerequisites, your wizard level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another wizard feat.\n\n*Source: Core Rulebook p. 231*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-blood-potency",
+    "name": "Advanced Blood Potency",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Blood Potency  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Blood Potency](compendium/feats/basic-blood-potency.md)\n\nYou gain one sorcerer feat. For the purpose of prerequisites, your sorcerer level is half your character level.\n\n**Special.** You can select this feat more than once. Each time you do, you gain another sorcerer feat.\n\n*Source: Core Rulebook p. 230*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-bloodline",
+    "name": "Advanced Bloodline",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/sorcerer"
+    ],
+    "description": "# Advanced Bloodline  *Feat 6*  \n[sorcerer](rules/traits/sorcerer.md \"Sorcerer Class Trait\")  \n\n- **Prerequisites**: bloodline spell\n\nYou have studied your bloodline to learn the secrets of its magic. You gain the advanced bloodline spell associated with your bloodline. Increase the number of Focus Points in your focus pool by 1.\n\n*Source: Core Rulebook p. 200*  \n%% #compendium/src/pf2e/crb #trait/sorcerer %%"
+  },
+  {
+    "id": "advanced-bow-training-apg",
+    "name": "Advanced Bow Training",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Bow Training  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Archer Dedication](compendium/feats/archer-dedication-apg.md)\n\nThrough constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with all advanced bows as if they were martial weapons in the bow weapon group.\n\n*Source: Advanced Player's Guide p. 157*  \n%% #compendium/src/pf2e/apg #trait/archetype %%"
+  },
+  {
+    "id": "advanced-breakthrough-g-g",
+    "name": "Advanced Breakthrough",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/g&g",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Breakthrough  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Breakthrough](compendium/feats/basic-breakthrough-g-g.md)\n\nYou gain one inventor feat. For the purpose of meeting its prerequisites, your inventor level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another inventor feat.\n\n*Source: Guns & Gears p. 49*  \n%% #compendium/src/pf2e/g&g #trait/..."
+  },
+  {
+    "id": "advanced-concoction",
+    "name": "Advanced Concoction",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Concoction  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Concoction](compendium/feats/basic-concoction.md)\n\nYou gain one alchemist feat. For the purpose of meeting its prerequisites, your alchemist level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another alchemist feat.\n\n*Source: Core Rulebook p. 220*  \n%% #compendium/src/pf2e/crb #trait/arche..."
+  },
+  {
+    "id": "advanced-construct-companion-g-g",
+    "name": "Advanced Construct Companion",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/g&g",
+      "trait/inventor"
+    ],
+    "description": "# Advanced Construct Companion  *Feat 4*  \n[inventor](rules/traits/inventor-g-g.md \"Inventor Class Trait\")  \n\n- **Prerequisites**: construct companion\n\nYou've upgraded your construct companion's power and decision-making ability. It becomes an advanced construct companion (page 33). During an encounter, even if you don't use the Command a Minion action, your construct companion can still use 1 action on your turn that round to [Stride](rules/actions/stride.md) or [Strike](rules/actions/strike.md..."
+  },
+  {
+    "id": "advanced-deduction-apg",
+    "name": "Advanced Deduction",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Deduction  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Deduction](compendium/feats/basic-deduction-apg.md)\n\nYou gain one investigator feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another investigator feat.\n\n*Source: Advanced Player's Guide p. 151*  \n%% #compendium/src/p..."
+  },
+  {
+    "id": "advanced-deitys-domain",
+    "name": "Advanced Deity's Domain",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/champion"
+    ],
+    "description": "# Advanced Deity's Domain  *Feat 8*  \n[champion](rules/traits/champion.md \"Champion Class Trait\")  \n\n- **Prerequisites**: [Deity's Domain](compendium/feats/deitys-domain.md)\n\nThrough your conviction, you have glimpsed the deeper secrets of your deity's domain. You gain an advanced domain spell from the domain you chose with [Deity's Domain](compendium/feats/deitys-domain.md). You can cast that spell as a devotion spell. Increase the number of Focus Points in your focus pool by 1.\n\n*Source: Core ..."
+  },
+  {
+    "id": "advanced-devotion",
+    "name": "Advanced Devotion",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Devotion  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Devotion](compendium/feats/basic-devotion.md)\n\nYou gain one champion feat. For the purpose of meeting its prerequisites, your champion level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another champion feat.\n\n*Source: Core Rulebook p. 223*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-dogma",
+    "name": "Advanced Dogma",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Dogma  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Dogma](compendium/feats/basic-dogma.md)\n\nYou gain one cleric feat. For the purpose of meeting its prerequisites, your cleric level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another cleric feat.\n\n*Source: Core Rulebook p. 224*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-domain",
+    "name": "Advanced Domain",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/cleric"
+    ],
+    "description": "# Advanced Domain  *Feat 8*  \n[cleric](rules/traits/cleric.md \"Cleric Class Trait\")  \n\n- **Prerequisites**: [Domain Initiate](compendium/feats/domain-initiate.md)\n\nYour studies or prayers have unlocked deeper secrets of your deity's domain. You gain an advanced domain spell from one.\n\n## Advanced Domain leads to...\n\n[Deity's Protection](compendium/feats/deitys-protection.md)\n\n## Summary\n\n*Source: Core Rulebook p. 123*  \n%% #compendium/src/pf2e/crb #trait/cleric %%"
+  },
+  {
+    "id": "advanced-element-control-roe",
+    "name": "Advanced Element Control",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/roe",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Element Control  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: Through the Gate\n\nYou gain one kineticist feat. For the purpose of meeting its prerequisites, your kineticist level is equal to half your level.\n\nYour options include impulse feats for your kinetic element, as normal for a kineticist.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another kineticist feat.\n\n## Advanced Element Contr..."
+  },
+  {
+    "id": "advanced-elemental-spell-som",
+    "name": "Advanced Elemental Spell",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/som",
+      "trait/druid"
+    ],
+    "description": "# Advanced Elemental Spell  *Feat 6*  \n[druid](rules/traits/druid.md \"Druid Class Trait\")  \n\n- **Prerequisites**: flame order, stone order, storm order, or wave order\n\nYour connection to one of the great elemental aspects of nature deepens, allowing you further control over its powers. You gain the advanced order spell associated with your order: if you're a member of the flame order, you gain [combustion](compendium/spells/combustion-som.md); if you're a member of the stone order, you gain [sto..."
+  },
+  {
+    "id": "advanced-first-aid-apg",
+    "name": "Advanced First Aid",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/general",
+      "trait/healing",
+      "trait/manipulate",
+      "trait/skill"
+    ],
+    "description": "# Advanced First Aid  *Feat 7*  \n[general](rules/traits/general.md \"General Feat Trait\")  [healing](rules/traits/healing.md \"Healing Effect Trait\")  [manipulate](rules/traits/manipulate.md \"Manipulate General Trait\")  [skill](rules/traits/skill.md \"Skill Feat Trait\")  \n\n- **Prerequisites**: master in [Medicine](compendium/skills.md#Medicine)\n\nYou use your medical training to ameliorate sickness or assuage fears. When you use [Medicine](compendium/skills.md#Medicine) to [Administer First Aid](rul..."
+  },
+  {
+    "id": "advanced-flair-apg",
+    "name": "Advanced Flair",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Flair  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Flair](compendium/feats/basic-flair-apg.md)\n\nYou gain one swashbuckler feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another swashbuckler feat.\n\n*Source: Advanced Player's Guide p. 153*  \n%% #compendium/src/pf2e/apg #tra..."
+  },
+  {
+    "id": "advanced-fury",
+    "name": "Advanced Fury",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Fury  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Fury](compendium/feats/basic-fury.md)\n\nYou gain one barbarian feat. For the purpose of meeting its prerequisites, your barbarian level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another barbarian feat.\n\n*Source: Core Rulebook p. 221*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-general-training-apg",
+    "name": "Advanced General Training",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/human"
+    ],
+    "description": "# Advanced General Training  *Feat 13*  \n[human](rules/traits/human.md \"Human Ancestry & Heritage Trait\")  \n\n\nOver the course of adventuring, your adaptability has let you pick up numerous useful abilities. You gain a general feat of 7th level or lower. You must meet the feat's prerequisites.\n\n**Special.** You can select this feat multiple times, choosing a different feat each time.\n\n*Source: Advanced Player's Guide p. 47*  \n%% #compendium/src/pf2e/apg #trait/human %%"
+  },
+  {
+    "id": "advanced-hallowed-spell-botd",
+    "name": "Advanced Hallowed Spell",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/botd",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Hallowed Spell  *Feat 8*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Hallowed Necromancer Dedication](compendium/feats/hallowed-necromancer-dedication-botd.md), necromancer initial school spell or death initial domain spell\n\nYou dig deeper into the magical tools found in wizard schools and divine domains. You gain an advanced focus spell, either the necromancer advanced school spell [life siphon](compendium/spells/life-siphon.md) or the adv..."
+  },
+  {
+    "id": "advanced-hunters-trick",
+    "name": "Advanced Hunter's Trick",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Hunter's Trick  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Hunter's Trick](compendium/feats/basic-hunters-trick.md)\n\nYou gain one ranger feat. For the purpose of meeting its prerequisites, your ranger level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another ranger feat.\n\n*Source: Core Rulebook p. 228*  \n%% #compendium/src/pf2e/crb #trait/arc..."
+  },
+  {
+    "id": "advanced-kata",
+    "name": "Advanced Kata",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Kata  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Kata](compendium/feats/basic-kata.md)\n\nYou gain one monk feat. For the purpose of meeting its prerequisites, your monk level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another monk feat.\n\n*Source: Core Rulebook p. 227*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-maneuver",
+    "name": "Advanced Maneuver",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Maneuver  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Maneuver](compendium/feats/basic-maneuver.md)\n\nYou gain a fighter feat. For the purpose of meeting its prerequisites, your fighter level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another fighter feat.\n\n*Source: Core Rulebook p. 226*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-martial-magic-som",
+    "name": "Advanced Martial Magic",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/som",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Martial Magic  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Martial Magic](compendium/feats/basic-martial-magic-som.md)\n\nYou gain one magus feat. For the purpose of meeting its prerequisites, your magus level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another magus feat.\n\n*Source: Secrets of Magic p. 75*  \n%% #compendium/src/pf2e/som #trait/ar..."
+  },
+  {
+    "id": "advanced-muses-whispers",
+    "name": "Advanced Muse's Whispers",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Muse's Whispers  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Muse's Whispers](compendium/feats/basic-muses-whispers.md)\n\nYou gain one bard feat. For the purpose of meeting its prerequisites, your bard level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another bard feat.\n\n*Source: Core Rulebook p. 222*  \n%% #compendium/src/pf2e/crb #trait/archet..."
+  },
+  {
+    "id": "advanced-mysteries-apg",
+    "name": "Advanced Mysteries",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Mysteries  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Mysteries](compendium/feats/basic-mysteries-apg.md)\n\nYou gain one oracle feat. For meeting its prerequisites, your oracle level is equal to half your level.\n\n**Special.** You can select this feat more than once. Each time, you gain another oracle feat.\n\n*Source: Advanced Player's Guide p. 152*  \n%% #compendium/src/pf2e/apg #trait/archetype %%"
+  },
+  {
+    "id": "advanced-order-training-locg",
+    "name": "Advanced Order Training",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/locg",
+      "trait/archetype",
+      "trait/uncommon"
+    ],
+    "description": "# Advanced Order Training  *Feat 12*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [uncommon](rules/traits/uncommon.md \"Uncommon Rarity Trait\")  \n\n- **Prerequisites**: [Hellknight Armiger Dedication](compendium/feats/hellknight-armiger-dedication-lowg.md); [Hellknight Dedication](compendium/feats/hellknight-dedication-locg.md) or [Hellknight Signifer Dedication](compendium/feats/hellknight-signifer-dedication-locg.md)\n\nYou gain the greater order benefit for the Hellknight orde..."
+  },
+  {
+    "id": "advanced-reanimated-companion-ooa3",
+    "name": "Advanced Reanimated Companion",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/ooa3",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Reanimated Companion  *Feat 4*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Clockwork Reanimator Dedication](compendium/feats/clockwork-reanimator-dedication-ooa3.md)\n\nYour corpselike construct companion becomes much more powerful and can act with limited autonomy to follow your greater directives. It becomes an advanced construct companion. During an encounter, even if you don't use the Command an Animal action, your construct companion can..."
+  },
+  {
+    "id": "advanced-red-mantis-magic-lowg",
+    "name": "Advanced Red Mantis Magic",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/lowg",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Red Mantis Magic  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Red Mantis Magic](compendium/feats/basic-red-mantis-magic-lowg.md)\n\nYour Red Mantis magical training has improved. Add two 2nd-level spells to your Red Mantis assassin spellbook. You gain a 2nd-level spell slot that you can use to prepare a spell from your Red Mantis assassin spellbook.\n\nAt 8th level, add two 3rd-level spells to your Red Mantis assassin spellbook. ..."
+  },
+  {
+    "id": "advanced-revelation-apg",
+    "name": "Advanced Revelation",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/oracle"
+    ],
+    "description": "# Advanced Revelation  *Feat 6*  \n[oracle](rules/traits/oracle-apg.md \"Oracle Class Trait\")  \n\n- **Prerequisites**: initial revelation spell\n\nYou learn an advanced revelation spell associated with your mystery. Increase the number of Focus Points in your focus pool by 1.\n\n## Advanced Revelation leads to...\n\n[Diverse Mystery](compendium/feats/diverse-mystery-apg.md)\n\n## Summary\n\n*Source: Advanced Player's Guide p. 79*  \n%% #compendium/src/pf2e/apg #trait/oracle %%"
+  },
+  {
+    "id": "advanced-runic-mind-smithing-da",
+    "name": "Advanced Runic Mind-Smithing",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/da",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Runic Mind-Smithing  *Feat 16*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Runic Mind Smithing](compendium/feats/runic-mind-smithing-da.md)\n\nYour mind can hold onto more complicated patterns than ever before. You can etch the greater forms of any runes on the list from the Runic Mind Smithing feat and add them to the list of options you can choose during your daily preparations, as well as the anarchic, axiomatic, holy, or unholy runes.\n\nIn..."
+  },
+  {
+    "id": "advanced-school-spell",
+    "name": "Advanced School Spell",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/wizard"
+    ],
+    "description": "# Advanced School Spell  *Feat 8*  \n[wizard](rules/traits/wizard.md \"Wizard Class Trait\")  \n\n- **Prerequisites**: arcane school\n\nYou gain access to a powerful new school spell depending on your arcane school. If you're an abjurer, you gain [energy absorption](compendium/spells/energy-absorption.md); if you're a conjurer, you gain [dimensional steps](compendium/spells/dimensional-steps.md); if you're a diviner, you gain [vigilant eye](compendium/spells/vigilant-eye.md); if you're an enchanter, yo..."
+  },
+  {
+    "id": "advanced-seeker-of-truths-av2",
+    "name": "Advanced Seeker Of Truths",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/av2",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Seeker Of Truths  *Feat 12*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Eldritch Researcher Dedication](compendium/feats/eldritch-researcher-dedication-av2.md), [Seeker of Truths](compendium/feats/seeker-of-truths-av2.md)\n\nYou have unlocked deeper secrets to uncovering and hoarding lore. You gain an advanced domain spell from one domain you selected with Seeker of Truths. Increase the number of Focus Points in your focus pool by 1.\n\n**Speci..."
+  },
+  {
+    "id": "advanced-shooter-g-g",
+    "name": "Advanced Shooter",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/g&g",
+      "trait/gunslinger"
+    ],
+    "description": "# Advanced Shooter  *Feat 6*  \n[gunslinger](rules/traits/gunslinger-g-g.md \"Gunslinger Class Trait\")  \n\n\nYou've dedicated your training to the most complex and weird weapons of your favorite group. Choose firearms or crossbows. You gain proficiency with all advanced firearms as if they were martial firearms or with all advanced crossbows as if they were martial crossbows.\n\n*Source: Guns & Gears p. 113*  \n%% #compendium/src/pf2e/g&g #trait/gunslinger %%"
+  },
+  {
+    "id": "advanced-shooting-g-g",
+    "name": "Advanced Shooting",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/g&g",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Shooting  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Shooting](compendium/feats/basic-shooting-g-g.md)\n\nYou gain one gunslinger feat. For the purpose of meeting its prerequisites, your gunslinger level is equal to half your level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another gunslinger feat.\n\n*Source: Guns & Gears p. 127*  \n%% #compendium/src/pf2e/g&g #trait/archetype %%"
+  },
+  {
+    "id": "advanced-synergy-som",
+    "name": "Advanced Synergy",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/som",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Synergy  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Synergy](compendium/feats/basic-synergy-som.md)\n\nYou gain one summoner feat. For the purpose of meeting its prerequisites, your summoner level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another summoner feat.\n\n## Advanced Synergy leads to...\n\n[Signature Synergy](compendium/feats/signature-s..."
+  },
+  {
+    "id": "advanced-targeting-system-loag",
+    "name": "Advanced Targeting System",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/loag",
+      "trait/android"
+    ],
+    "description": "# Advanced Targeting System  *Feat 5*  \n[android](rules/traits/android-loag.md \"Android Ancestry & Heritage Trait\")  \n\n\nYour ocular processors are augmented with advanced targeting systems, which allow you to more easily pinpoint your enemy and read their movements. You can cast [true strike](compendium/spells/true-strike.md) once per day as a 1st-level arcane innate spell.\n\n*Source: Lost Omens: Ancestry Guide p. 73*  \n%% #compendium/src/pf2e/loag #trait/android %%"
+  },
+  {
+    "id": "advanced-thaumaturgy-da",
+    "name": "Advanced Thaumaturgy",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/da",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Thaumaturgy  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Thaumaturgy](compendium/feats/basic-thaumaturgy-da.md)\n\nYou gain one thaumaturge feat. For the purpose of meeting its prerequisites, your thaumaturge level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another thaumaturge feat.\n\n*Source: Dark Archive p. 49*  \n%% #compendium/src/pf2e/da #tr..."
+  },
+  {
+    "id": "advanced-thoughtform-da",
+    "name": "Advanced Thoughtform",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/da",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Thoughtform  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Thoughtform](compendium/feats/basic-thoughtform-da.md)\n\nYou gain one psychic feat. For the purpose of meeting its prerequisites, your psychic level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another psychic feat.\n\n*Source: Dark Archive p. 48*  \n%% #compendium/src/pf2e/da #trait/archetyp..."
+  },
+  {
+    "id": "advanced-trickery",
+    "name": "Advanced Trickery",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Trickery  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Trickery](compendium/feats/basic-trickery.md)\n\nYou gain one rogue feat. For the purpose of meeting its prerequisites, your rogue level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another rogue feat.\n\n*Source: Core Rulebook p. 229*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-weapon-training",
+    "name": "Advanced Weapon Training",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/fighter"
+    ],
+    "description": "# Advanced Weapon Training  *Feat 6*  \n[fighter](rules/traits/fighter.md \"Fighter Class Trait\")  \n\n\nYou've studied the art of wielding an advanced weapon.\n\nChoose a weapon group. You gain proficiency with all advanced weapons in that group as if they were martial weapons of their weapon group.\n\n*Source: Core Rulebook p. 147*  \n%% #compendium/src/pf2e/crb #trait/fighter %%"
+  },
+  {
+    "id": "advanced-weaponry-som",
+    "name": "Advanced Weaponry",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/som",
+      "trait/evolution",
+      "trait/summoner"
+    ],
+    "description": "# Advanced Weaponry  *Feat 1*  \n[evolution](rules/traits/evolution-som.md \"Evolution Feat Trait\")  [summoner](rules/traits/summoner-som.md \"Summoner Class Trait\")  \n\n\nYour eidolon's attack evolves. Choose one of your eidolon's starting melee unarmed attacks. It gains one of the following traits, chosen when you gain the feat: [disarm](rules/traits/disarm.md \"Disarm Weapon Trait\"), [grapple](rules/traits/grapple.md \"Grapple Weapon Trait\"), [nonlethal](rules/traits/nonlethal.md \"Nonlethal Weapon T..."
+  },
+  {
+    "id": "advanced-wilding",
+    "name": "Advanced Wilding",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Wilding  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Wilding](compendium/feats/basic-wilding.md)\n\nYou gain one druid feat. For the purpose of meeting its prerequisites, your druid level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another druid feat.\n\n*Source: Core Rulebook p. 225*  \n%% #compendium/src/pf2e/crb #trait/archetype %%"
+  },
+  {
+    "id": "advanced-witchcraft-apg",
+    "name": "Advanced Witchcraft",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/archetype"
+    ],
+    "description": "# Advanced Witchcraft  *Feat 6*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Basic Witchcraft](compendium/feats/basic-witchcraft-apg.md)\n\nYou gain one witch feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level.\n\n**Special.** You can select this feat more than once. Each time you select it, you gain another witch feat.\n\n*Source: Advanced Player's Guide p. 154*  \n%% #compendium/src/pf2e/apg #trait/arc..."
+  },
+  {
+    "id": "advantageous-assault",
+    "name": "Advantageous Assault",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/fighter",
+      "trait/press"
+    ],
+    "description": "# Advantageous Assault  [>](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Single Action\") *Feat 6*  \n[fighter](rules/traits/fighter.md \"Fighter Class Trait\")  [press](rules/traits/press.md \"Press Combat Trait\")  \n\n- **Activity** Single Action\n\nWhen an enemy's movement is compromised, you deliver a more deadly blow. Make a [Strike](rules/actions/strike.md) against a creature that is [grabbed](rules/conditions.md#Grabbed), [prone](rules/conditions.md#Prone), or [restrained](rules/cond..."
+  },
+  {
+    "id": "aegis-of-arnisant-locg",
+    "name": "Aegis Of Arnisant",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/locg",
+      "trait/archetype"
+    ],
+    "description": "# Aegis Of Arnisant  [>>](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Two-Action\") *Feat 12*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Knight Vigilant Dedication](compendium/feats/knight-vigilant-dedication-locg.md), [Shield Block](compendium/feats/shield-block.md), master in [Religion](compendium/skills.md#Religion)\n- **Requirements**: You are wielding a shield.\n- **Activity** Two-Action\n\nInspired by the tale of Arnisant, you transfo..."
+  },
+  {
+    "id": "aeon-resonance-som",
+    "name": "Aeon Resonance",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/som",
+      "trait/archetype"
+    ],
+    "description": "# Aeon Resonance  *Feat 4*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Embed Aeon Stone](compendium/feats/embed-aeon-stone-som.md)\n\nYou gain the resonant power of one embedded aeon stone as if it were placed in a wayfinder. While you can embed multiple aeon stones in your flesh, you can gain the resonance power from only one embedded stone at a time, selected each day when you make your daily preparations.\n\n**Special.** At 8th level, you can take this..."
+  },
+  {
+    "id": "aerial-boomerang-roe",
+    "name": "Aerial Boomerang",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/roe",
+      "trait/air",
+      "trait/impulse",
+      "trait/kineticist",
+      "trait/primal"
+    ],
+    "description": "# Aerial Boomerang  [>>](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Two-Action\") *Feat 1*  \n[air](rules/traits/air.md \"Air Energy & Element Trait\")  [impulse](rules/traits/impulse-roe.md \"Impulse Action & Ability Trait\")  [kineticist](rules/traits/kineticist-roe.md \"Kineticist Class Trait\")  [primal](rules/traits/primal.md \"Primal Tradition Trait\")  \n\n- **Activity** Two-Action\n\nA blade of shearing wind races away from you in a 60-foot line. Each creature in the area takes `2d4` s..."
+  },
+  {
+    "id": "aerial-piledriver-lotgb",
+    "name": "Aerial Piledriver",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/lotgb",
+      "trait/archetype",
+      "trait/attack"
+    ],
+    "description": "# Aerial Piledriver  [>>](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Two-Action\") *Feat 10*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  [attack](rules/traits/attack.md \"Attack Combat Trait\")  \n\n- **Prerequisites**: [Wrestler Dedication](compendium/feats/wrestler-dedication-lotgb.md)\n- **Requirements**: You have a creature [grabbed](rules/conditions.md#Grabbed) or [restrained](rules/conditions.md#Restrained).\n- **Activity** Two-Action\n\nHeaving both yourself an..."
+  },
+  {
+    "id": "aerobatics-mastery-apg",
+    "name": "Aerobatics Mastery",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/general",
+      "trait/skill"
+    ],
+    "description": "# Aerobatics Mastery  *Feat 7*  \n[general](rules/traits/general.md \"General Feat Trait\")  [skill](rules/traits/skill.md \"Skill Feat Trait\")  \n\n- **Prerequisites**: master in [Acrobatics](compendium/skills.md#Acrobatics)\n\nYou move with grace in flight and can perform amazing aerial stunts. You gain a +2 circumstance bonus to [Acrobatics](compendium/skills.md#Acrobatics) checks to [Maneuver in Flight](rules/actions/maneuver-in-flight.md) and can combine two maneuvers into a single action, such as ..."
+  },
+  {
+    "id": "affliction-mercy",
+    "name": "Affliction Mercy",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/champion"
+    ],
+    "description": "# Affliction Mercy  *Feat 12*  \n[champion](rules/traits/champion.md \"Champion Class Trait\")  \n\n- **Prerequisites**: [Mercy](compendium/feats/mercy.md)\n\nThe divine grace that flows through you grants reprieve from an affliction. When you use [Mercy](compendium/feats/mercy.md), you can instead attempt to counteract a [curse](rules/traits/curse.md \"Curse Effect Trait\"), [disease](rules/traits/disease.md \"Disease Effect Trait\"), or [poison](rules/traits/poison.md \"Poison Effect Trait\").\n\n*Source: Co..."
+  },
+  {
+    "id": "after-you-apg",
+    "name": "After You",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/swashbuckler"
+    ],
+    "description": "# After You  [F](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Free Action\") *Feat 2*  \n[swashbuckler](rules/traits/swashbuckler-apg.md \"Swashbuckler Class Trait\")  \n\n- **Trigger** You're about to roll initiative.\n- **Activity** Free Action\n\nYou allow your foes to make the first move in a show of incredible confidence. You don't roll initiative; instead you voluntarily go last. You gain Panache|Swashbuckler|APG|1. If more than one character uses this ability or another ability to go..."
+  },
+  {
+    "id": "agathion-magic-loag",
+    "name": "Agathion Magic",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/loag",
+      "trait/aasimar"
+    ],
+    "description": "# Agathion Magic  *Feat 9*  \n[aasimar](rules/traits/aasimar-apg.md \"Aasimar Ancestry & Heritage Trait\")  \n\n- **Prerequisites**: [Idyllkin](compendium/feats/idyllkin-loag.md)\n\nThe harmonious magic of Nirvana flows through you. You can cast [animal form](compendium/spells/animal-form.md) and [calm emotions](compendium/spells/calm-emotions.md) each once per day as 2nd-level divine innate spells.\n\n*Source: Lost Omens: Ancestry Guide p. 11*  \n%% #compendium/src/pf2e/loag #trait/aasimar %%"
+  },
+  {
+    "id": "ageless-patience",
+    "name": "Ageless Patience",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/elf"
+    ],
+    "description": "# Ageless Patience  *Feat 5*  \n[elf](rules/traits/elf.md \"Elf Ancestry & Heritage Trait\")  \n\n\nYou work at a pace born from longevity that enhances your thoroughness. You can voluntarily spend twice as much time as normal on a [Perception](compendium/skills.md#Perception) check or skill check to gain a +2 circumstance bonus to that check. You also don't treat a natural 1 as worse than usual on these checks; you get a critical failure only if your result is 10 lower than the DC. For example, you c..."
+  },
+  {
+    "id": "ageless-spirit-loag",
+    "name": "Ageless Spirit",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/loag",
+      "trait/leshy"
+    ],
+    "description": "# Ageless Spirit  *Feat 1*  \n[leshy](rules/traits/leshy-b1.md \"Leshy Ancestry & Heritage Trait\")  \n\n\nYou remember more about your previous incarnations than most leshys. During your daily preparations, you can meditate upon fragmentary memories of your past lives to gain the trained proficiency rank in one skill of your choice. This proficiency lasts until you prepare again. Since this proficiency is temporary, you can't use it as a prerequisite for a skill increase or a permanent character opti..."
+  },
+  {
+    "id": "aggravating-scratch-apg",
+    "name": "Aggravating Scratch",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/catfolk",
+      "trait/disease"
+    ],
+    "description": "# Aggravating Scratch  *Feat 9*  \n[catfolk](rules/traits/catfolk-b1.md \"Catfolk Ancestry & Heritage Trait\")  [disease](rules/traits/disease.md \"Disease Effect Trait\")  \n\n- **Prerequisites**: claw unarmed attack\n\nYour claws carry an irritant that is harmless to you but can be damaging to others. Your claw [Strikes](rules/actions/strike.md) deal an additional `1d4` [persistent poison damage](rules/conditions.md#Persistent%20Damage) on a critical hit.\n\n*Source: Advanced Player's Guide p. 10*  \n%% #..."
+  },
+  {
+    "id": "aggressive-block",
+    "name": "Aggressive Block",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/fighter"
+    ],
+    "description": "# Aggressive Block  [F](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Free Action\") *Feat 2*  \n[fighter](rules/traits/fighter.md \"Fighter Class Trait\")  \n\n- **Trigger** You use the [Shield Block](compendium/feats/shield-block.md) reaction, and the opponent that triggered [Shield Block](compendium/feats/shield-block.md) is adjacent to you and is your size or smaller.\n- **Activity** Free Action\n\nYou push back as you block the attack, knocking your foe away or off balance. You use your..."
+  },
+  {
+    "id": "agile-grace",
+    "name": "Agile Grace",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/crb",
+      "trait/fighter"
+    ],
+    "description": "# Agile Grace  *Feat 10*  \n[fighter](rules/traits/fighter.md \"Fighter Class Trait\")  \n\n\nYour graceful moves with agile weapons are beyond compare. Your multiple attack penalty with [agile](rules/traits/agile.md \"Agile Weapon Trait\") weapons and [agile](rules/traits/agile.md \"Agile Weapon Trait\") unarmed attacks becomes \u20133 for your second attack and \u20136 for subsequent attacks (rather than \u20134 and \u20138).\n\n*Source: Core Rulebook p. 150*  \n%% #compendium/src/pf2e/crb #trait/fighter %%"
+  },
+  {
+    "id": "agile-hand-lotgb",
+    "name": "Agile Hand",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/lotgb",
+      "trait/archetype"
+    ],
+    "description": "# Agile Hand  *Feat 4*  \n[archetype](rules/traits/archetype.md \"Archetype Feat Trait\")  \n\n- **Prerequisites**: [Spell Trickster Dedication](compendium/feats/spell-trickster-dedication-lotgb.md), ability to cast [mage hand](compendium/spells/mage-hand.md)\n\nWhen you cast [mage hand](compendium/spells/mage-hand.md), you can modify its target to be a set of thieves' tools. When you [Cast the Spell](rules/actions/cast-a-spell.md) in this way, the tools move up to 20 feet towards a device or lock. Aft..."
+  },
+  {
+    "id": "agile-maneuvers-apg",
+    "name": "Agile Maneuvers",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/apg",
+      "trait/swashbuckler"
+    ],
+    "description": "# Agile Maneuvers  *Feat 6*  \n[swashbuckler](rules/traits/swashbuckler-apg.md \"Swashbuckler Class Trait\")  \n\n- **Prerequisites**: expert in [Athletics](compendium/skills.md#Athletics)\n\nYour easily maneuver against your foes. Your [Grapple](rules/actions/grapple.md), [Shove](rules/actions/shove.md), and [Trip](rules/actions/trip.md) actions have a lower multiple attack penalty: \u20134 instead of \u20135 if they're the second attack on your turn, or \u20138 instead of \u201310 if they're the third or subsequent atta..."
+  },
+  {
+    "id": "agile-shield-grip-lokl",
+    "name": "Agile Shield Grip",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/lokl",
+      "trait/champion",
+      "trait/fighter",
+      "trait/uncommon"
+    ],
+    "description": "# Agile Shield Grip  [>](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Single Action\") *Feat 1*  \n[champion](rules/traits/champion.md \"Champion Class Trait\")  [fighter](rules/traits/fighter.md \"Fighter Class Trait\")  [uncommon](rules/traits/uncommon.md \"Uncommon Rarity Trait\")  \n\n- **Access**: Knights of Lastwall have access to this feat.\n- **Requirements**: You are wielding a shield with a [shield boss](compendium/equipment/items/shield-boss.md) or [shield spikes](compendium/equipm..."
+  },
+  {
+    "id": "agonizing-rebuke-locg",
+    "name": "Agonizing Rebuke",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/locg",
+      "trait/hobgoblin"
+    ],
+    "description": "# Agonizing Rebuke  *Feat 5*  \n[hobgoblin](rules/traits/hobgoblin-locg.md \"Hobgoblin Ancestry & Heritage Trait\")  \n\n\nWhen you terrorize your enemies, you also cause them painful mental distress.\n\nWhen you successfully [Demoralize](rules/actions/demoralize.md) a foe, that foe takes `1d4` mental damage at the start of each of its turns as long as it remains [frightened](rules/conditions.md#Frightened) and continues to engage in combat with you. If you have master proficiency in [Intimidation](comp..."
+  },
+  {
+    "id": "air-cushion-roe",
+    "name": "Air Cushion",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/roe",
+      "trait/air",
+      "trait/impulse",
+      "trait/kineticist",
+      "trait/primal"
+    ],
+    "description": "# Air Cushion  [R](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Reaction\") *Feat 1*  \n[air](rules/traits/air.md \"Air Energy & Element Trait\")  [impulse](rules/traits/impulse-roe.md \"Impulse Action & Ability Trait\")  [kineticist](rules/traits/kineticist-roe.md \"Kineticist Class Trait\")  [primal](rules/traits/primal.md \"Primal Tradition Trait\")  \n\n- **Trigger** A creature within 60 feet is falling.\n- **Activity** Reaction\n\nAir currents flow upward to slow the target's fall to 60 feet..."
+  },
+  {
+    "id": "air-shroud-roe",
+    "name": "Air Shroud",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/roe",
+      "trait/air",
+      "trait/impulse",
+      "trait/kineticist",
+      "trait/primal",
+      "trait/stance"
+    ],
+    "description": "# Air Shroud  [>](rules/core-rulebook/chapter-9-playing-the-game.md#Actions \"Single Action\") *Feat 4*  \n[air](rules/traits/air.md \"Air Energy & Element Trait\")  [impulse](rules/traits/impulse-roe.md \"Impulse Action & Ability Trait\")  [kineticist](rules/traits/kineticist-roe.md \"Kineticist Class Trait\")  [primal](rules/traits/primal.md \"Primal Tradition Trait\")  [stance](rules/traits/stance.md \"Stance Combat Trait\")  \n\n- **Activity** Single Action\n\nTurbulent air suffuses your kinetic aura. This d..."
+  },
+  {
+    "id": "airborne-form-som",
+    "name": "Airborne Form",
+    "level": 1,
+    "traits": [
+      "compendium/src/pf2e/som",
+      "trait/evolution",
+      "trait/summoner"
+    ],
+    "description": "# Airborne Form  *Feat 14*  \n[evolution](rules/traits/evolution-som.md \"Evolution Feat Trait\")  [summoner](rules/traits/summoner-som.md \"Summoner Class Trait\")  \n\n- **Prerequisites**: [Glider Form](compendium/feats/glider-form-som.md)\n\nYour eidolon can fly. It gains a fly Speed equal to its Speed.\n\n*Source: Secrets of Magic p. 72*  \n%% #compendium/src/pf2e/som #trait/evolution #trait/summoner %%"
+  }
+]

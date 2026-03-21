@@ -1,0 +1,49 @@
+[
+  {
+    "id": "fighter",
+    "name": "Fighter",
+    "hp_per_level": 10,
+    "key_ability": ["strength", "dexterity"],
+    "perception_rank": "expert",
+    "saving_throws": {
+      "fortitude": "expert",
+      "reflex": "expert",
+      "will": "trained"
+    },
+    "proficiencies": {
+      "attacks": {
+        "simple": "expert",
+        "martial": "expert",
+        "advanced": "trained",
+        "unarmed": "expert"
+      },
+      "defenses": {
+        "unarmored": "trained",
+        "light": "trained",
+        "medium": "trained",
+        "heavy": "trained"
+      }
+    }
+  },
+  {
+    "id": "wizard",
+    "name": "Wizard",
+    "hp_per_level": 6,
+    "key_ability": ["intelligence"],
+    "perception_rank": "trained",
+    "saving_throws": {
+      "fortitude": "trained",
+      "reflex": "trained",
+      "will": "expert"
+    },
+    "proficiencies": {
+      "attacks": {
+        "simple": "trained",
+        "unarmed": "trained"
+      },
+      "defenses": {
+        "unarmored": "trained"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "acolyte",
+    "name": "Acolyte",
+    "ability_boosts": ["intelligence", "wisdom", "free"],
+    "skill_training": ["Religion"],
+    "lore_skill": "Deity Lore",
+    "feat": "Student of the Canon"
+  },
+  {
+    "id": "farmhand",
+    "name": "Farmhand",
+    "ability_boosts": ["constitution", "wisdom", "free"],
+    "skill_training": ["Athletics"],
+    "lore_skill": "Farming Lore",
+    "feat": "Assurance"
+  }
+]

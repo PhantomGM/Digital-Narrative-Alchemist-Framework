@@ -1,0 +1,49 @@
+{
+  "system_name": "Pathfinder 2nd Edition SRD",
+  "system_id": "pf2e_srd",
+  "version": "1.0.0",
+  "author": "Builder Agent v1 (Remediated by Antigravity)",
+  "description": "System Reference Document rules for Pathfinder 2nd Edition.",
+  "cartridge_type": "Layer_IV_Ruleset",
+  "primary_die": "d20",
+  "capabilities": {
+    "combat_resolution": true,
+    "skill_checks": true,
+    "saving_throws": true,
+    "spellcasting": true,
+    "rest_mechanics": true,
+    "encounter_budgeting": true
+  },
+  "data_files": {
+    "conditions": "data/conditions.json",
+    "skills": "data/skills.json",
+    "feats": "data/feats.json",
+    "backgrounds": "data/backgrounds.json",
+    "races": "data/races.json",
+    "classes": "data/classes.json",
+    "subclasses": "data/subclasses.json",
+    "spells": "data/spells.db",
+    "items": "data/items.db",
+    "monsters": "data/monsters.db"
+  },
+  "knowledge_files": {
+    "lore": "knowledge/lore.md",
+    "tone": "knowledge/tone_guide.md",
+    "roleplay": "knowledge/roleplay_rules.md",
+    "alignment": "knowledge/alignment.md"
+  },
+  "resolver_modules": {
+    "dice": "resolvers.dice",
+    "abilities": "resolvers.abilities",
+    "combat": "resolvers.combat",
+    "saves": "resolvers.saves",
+    "skill_checks": "resolvers.skill_check",
+    "hp": "resolvers.hp_tracker",
+    "conditions": "resolvers.conditions",
+    "initiative": "resolvers.initiative",
+    "spell_slots": "resolvers.spell_slots",
+    "progression": "resolvers.progression",
+    "encounter_budget": "resolvers.encounter_budget",
+    "rest": "resolvers.rest"
+  }
+}
