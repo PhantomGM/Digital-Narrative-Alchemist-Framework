@@ -26,10 +26,38 @@ These agents form the active, real-time "brain" of the AI GM. They manage the fl
 
 Handles the procedural generation of raw world elements (Genotypes) and invokes an LLM to translate them into rich narrative content (Phenotypes).
 
-* **Procedural Forge**: Generates the raw, mathematical "DNA" (strings of attributes and tags) for entities like NPCs, Factions, and Locations.
-* **DNA Decoder**: Instructs the LLM to translate the stark DNA strings into evocative, playable profiles.
-* **DNA Registry**: A persistent, graph-augmented database that maps DNA strings to their decoded phenotypes and tracks relationships between them. Supports **named relationship labels** (e.g., `"hates"`, `"father_of"`), **graph traversal** via BFS, and **contextual briefs** combining deterministic graph facts with semantic phenotype excerpts.
-* **Inheritance Engine**: Resolves Multi-Directional constraints (Up, Down, Sideways). Ensures that when elements are generated, they logically inherit traits from their parents (e.g., a Faction member), heavily weigh relationships to peers, and push lore up to their origins. Now enhanced with **graph-augmented context** from the Registry.
+* **Procedural Forge** (`forge.py`): Master dispatcher for DNA generation. Routes `synthesize_element(type)` calls to the correct generator.
+* **DNA Decoder** (`decoder.py`): Auto-loads all decoder prompts from `decoders/` and translates raw DNA strings into evocative, playable profiles via LLM chains. Handles Langchain template escaping for DNA brace syntax.
+* **DNA Registry** (`registry.py`): Graph-augmented database mapping DNA strings to decoded phenotypes. Supports **named relationship labels**, **BFS graph traversal**, and **contextual briefs** combining deterministic graph facts with semantic phenotype excerpts.
+* **Inheritance Engine** (`inheritance.py`): Resolves Multi-Directional constraints (Up, Down, Sideways) with graph-augmented context from the Registry.
+
+#### Supported Entity Types
+
+| Scale | Entity Type | Generator | Decoder Prompt | Output Template |
+| :--- | :--- | :--- | :--- | :--- |
+| Macro | World | `world.py` (v3.2, PANTHEON + SHADOW + ORIGIN) | `world.md` | `templates/world.md` |
+| Meso | Region | `region.py` | `region.md` | `templates/region.md` |
+| Meso | Settlement | `location.py` (produces `SETTLEMENT{}` DNA) | `settlement.md` | `templates/settlement.md` |
+| Meso | Location | `location.py` | `location.md` | `templates/settlement.md` |
+| Org | Faction | `faction.py` | `faction.md` | `templates/faction.md` |
+| Micro | NPC | `npc.py` (LNC/GNE dual-axis personality) | `npc.md` | `templates/npc.md` |
+| Action | Quest | `quest.py` (GOAL/OBS/REWARD/NARR/MOTIV/ENGAGE/CHAIN/EVO) | `quest.md` | `templates/quest.md` |
+| Artifact | Magic Item | `item.py` (PHY/MAG/HIS/LOR/ATTUNE/CHAIN/EVO) | `item.md` | `templates/item.md` |
+| Environ | Travel | `travel.py` (Danger/Discovery/SpecialFactor) | `travel.md` | `templates/travel.md` |
+| Struct | Trap | `trap.py` | — | — |
+| Struct | Establishment | `establishment.py` | — | — |
+| Struct | Regional POI | `regional_poi.py` | — | — |
+| Struct | World Wonder | `wonder.py` | — | — |
+| Org | Agency | `agency.py` | — | — |
+| Macro | Realm | `realm.py` | — | — |
+
+#### System Specification Documents
+
+Canonical rules governing all DNA generation and decoding live in `docs/dna_specs/`:
+
+* **DNA System Rules** — The 5 Narrative Synthesis Mandates, value interpretation ranges (1-33/34-66/67-99), CHAIN/EVO pattern definitions, and the Resolution Engine for contradiction handling.
+* **Metadata Priority Logic** — Thin Parent architecture, field locking, and data hierarchy rules.
+* **Conductor Routing** — User intent classification and routing to the correct generator/decoder pipeline.
 
 ### Layer III: Support / Reliability Layer
 
@@ -57,6 +85,11 @@ The system is currently configured as a functional **Minimum Viable Backbone** w
 | :--- | :--- | :--- |
 | Event Ledger | `src/core/event_ledger.py` | Ordered state delta log (event sourcing) |
 | Orchestrator | `src/core/orchestrator.py` | Master input router |
+| Contracts | `src/core/contracts.py` | 7 Pydantic schemas for typed inter-agent communication |
+| Procedural Forge | `src/agents/layer2_dna/forge.py` | DNA generation dispatcher (14 entity types) |
+| DNA Decoder | `src/agents/layer2_dna/decoder.py` | LLM-driven DNA → narrative translation (9 decoder prompts) |
+| DNA Registry | `src/agents/layer2_dna/registry.py` | Graph-augmented entity database |
+| State Critic | `src/agents/layer3_support/state_critic.py` | Narrative-mechanical consistency circuit breaker |
 
 ### Prerequisites
 
@@ -88,10 +121,11 @@ python main.py
 The DNA framework is actively under development. Current focus areas include:
 
 1. **Fleshing out Layer IV (TTRPG Cartridges)**: Building comprehensive Adapters and Resolvers to handle complex mathematics (e.g., tracking HP, Condition Effects, and XP) rather than utilizing stubbed logic.
-2. **Expanding the PCG Substrate**: Implementing the remaining Layer II generators (Lore, History, Magic, Economy) based on the abstract master files.
+2. **Expanding Generator Coverage**: Fleshing out stub generators (realm, agency, region) into full DNA-producing generators with matching decoder prompts.
 3. **Session Pulse & Campaign Architecture**: Building out the remaining Layer III utilities to assist human co-GMs in scaffolding sessions before they begin.
 4. **Speculative Streaming**: Implementing Narrative Weaver output streaming to the client while the Auditor reviews concurrently, further reducing perceived latency.
 5. **External Graph Database**: Evaluating migration from in-memory graph to NetworkX or Neo4j for persistent cross-session relationship queries.
+6. **Template-Driven Output**: Wiring the output templates (`templates/`) into the decoder pipeline so decoded DNA conforms to the Obsidian-compatible template structure.
 
 ---
 *The Digital Narrative Alchemist is designed to push the boundaries of AI TTRPG emulation beyond simple chatbots, creating a dynamic, internally consistent, and mechanically rigorous virtual game master.*

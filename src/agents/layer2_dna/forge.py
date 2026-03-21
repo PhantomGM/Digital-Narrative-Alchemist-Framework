@@ -19,6 +19,7 @@ class ProceduralForge:
             "quest": generate_quest_dna,
             "item": generate_item_dna,
             "location": generate_location_dna,
+            "settlement": generate_location_dna,  # Alias: location generator produces SETTLEMENT{} DNA
             "travel": generate_travel_dna,
             "region": generate_region_dna,
             "realm": generate_realm_dna,
