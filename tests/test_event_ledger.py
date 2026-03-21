@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from core.event_ledger import EventLedger, StateEvent
+from layer2_narrative.event_ledger import EventLedger, StateEvent
 
 
 def test_emit_and_get_recent():

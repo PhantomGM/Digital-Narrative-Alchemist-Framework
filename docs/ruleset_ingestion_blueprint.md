@@ -89,10 +89,10 @@ Deterministic logic that must never be delegated to LLM inference.
 
 ## §3 — Cartridge Directory Structure
 
-Each ruleset cartridge is a self-contained directory under `src/rulesets/`. The directory layout is **mandatory** — the Builder Agent must produce this exact structure.
+Each ruleset cartridge is a self-contained directory under `src/layer4_rules/`. The directory layout is **mandatory** — the Builder Agent must produce this exact structure.
 
 ```
-src/rulesets/<system_name>/
+src/layer4_rules/<system_name>/
 ├── arbiter.py              # Master dispatcher — implements GameSystemArbiter interface
 ├── manifest.json           # Cartridge metadata and capability declarations
 │

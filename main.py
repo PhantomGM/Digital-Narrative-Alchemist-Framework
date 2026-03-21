@@ -6,16 +6,16 @@ from dotenv import load_dotenv
 # Ensure the src directory is in the Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from core.orchestrator import Orchestrator
-from agents.layer1_runtime.narrative_weaver import NarrativeWeaver
-from agents.layer1_runtime.world_state import WorldStateKeeper
-from agents.layer2_dna.forge import ProceduralForge
-from agents.layer2_dna.decoder import DNADecoder
-from agents.layer2_dna.registry import DNARegistry
-from agents.layer2_dna.inheritance import InheritanceEngine
-from rulesets.one_page_5e.arbiter import GameSystemArbiter as OnePage5eArbiter
-from rulesets.coin_flip.arbiter import GameSystemArbiter as CoinFlipArbiter
-from agents.layer1_runtime.session_director import SessionDirector
+from layer1_core.orchestrator import Orchestrator
+from layer2_narrative.narrative_weaver import NarrativeWeaver
+from layer1_core.world_state import WorldStateKeeper
+from layer5_dna_substrate.forge import ProceduralForge
+from layer5_dna_substrate.decoder import DNADecoder
+from layer5_dna_substrate.registry import DNARegistry
+from layer5_dna_substrate.inheritance import InheritanceEngine
+from layer4_rules.one_page_5e.arbiter import GameSystemArbiter as OnePage5eArbiter
+from layer4_rules.coin_flip.arbiter import GameSystemArbiter as CoinFlipArbiter
+from layer3_operations.session_director import SessionDirector
 
 # The freestanding test_input function has been removed.
 # The SessionDirector now handles this logic internally via advance_scene.

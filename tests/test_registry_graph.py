@@ -7,7 +7,7 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from agents.layer2_dna.registry import DNARegistry
+from layer5_dna_substrate.registry import DNARegistry
 
 
 def test_register_and_link_with_labels():

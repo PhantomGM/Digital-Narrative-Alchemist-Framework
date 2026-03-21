@@ -14,7 +14,7 @@ class TestDecoderLoading:
     """Verify all decoder .md files exist and are loadable."""
 
     DECODERS_DIR = os.path.join(
-        os.path.dirname(__file__), '..', 'src', 'agents', 'layer2_dna', 'decoders'
+        os.path.dirname(__file__), '..', 'src', 'layer5_dna_substrate', 'decoders'
     )
 
     EXPECTED_DECODERS = [
@@ -50,7 +50,7 @@ class TestTemplateLoading:
     """Verify all output template files exist and have YAML frontmatter."""
 
     TEMPLATES_DIR = os.path.join(
-        os.path.dirname(__file__), '..', 'src', 'agents', 'layer2_dna', 'templates'
+        os.path.dirname(__file__), '..', 'src', 'layer5_dna_substrate', 'templates'
     )
 
     EXPECTED_TEMPLATES = [
@@ -76,58 +76,58 @@ class TestGeneratorSmokeTests:
     """Run every generator function and verify it produces a non-empty DNA string."""
 
     def test_npc_generator(self):
-        from agents.layer2_dna.generators.npc import generate_npc_dna
+        from layer5_dna_substrate.generators.npc import generate_npc_dna
         dna = generate_npc_dna()
         assert isinstance(dna, str) and len(dna) > 20
 
     def test_faction_generator(self):
-        from agents.layer2_dna.generators.faction import generate_faction_dna
+        from layer5_dna_substrate.generators.faction import generate_faction_dna
         dna = generate_faction_dna()
         assert isinstance(dna, str) and len(dna) > 10
 
     def test_quest_generator(self):
-        from agents.layer2_dna.generators.quest import generate_quest_dna
+        from layer5_dna_substrate.generators.quest import generate_quest_dna
         dna = generate_quest_dna()
         assert isinstance(dna, str) and 'QUEST' in dna
 
     def test_item_generator(self):
-        from agents.layer2_dna.generators.item import generate_item_dna
+        from layer5_dna_substrate.generators.item import generate_item_dna
         dna = generate_item_dna()
         assert isinstance(dna, str) and 'ITEM' in dna
 
     def test_location_generator(self):
-        from agents.layer2_dna.generators.location import generate_location_dna
+        from layer5_dna_substrate.generators.location import generate_location_dna
         dna = generate_location_dna()
         assert isinstance(dna, str) and 'SETTLEMENT' in dna
 
     def test_travel_generator(self):
-        from agents.layer2_dna.generators.travel import generate_travel_dna
+        from layer5_dna_substrate.generators.travel import generate_travel_dna
         dna = generate_travel_dna()
         assert isinstance(dna, str) and 'TRAVEL' in dna
 
     def test_world_generator(self):
-        from agents.layer2_dna.generators.world import WorldDNAGenerator
+        from layer5_dna_substrate.generators.world import WorldDNAGenerator
         gen = WorldDNAGenerator()
         dna = gen.generate_dna()
         assert isinstance(dna, str) and len(dna) > 100
 
     def test_trap_generator(self):
-        from agents.layer2_dna.generators.trap import generate_trap_dna
+        from layer5_dna_substrate.generators.trap import generate_trap_dna
         dna = generate_trap_dna()
         assert isinstance(dna, str) and len(dna) > 10
 
     def test_establishment_generator(self):
-        from agents.layer2_dna.generators.establishment import generate_establishment_dna
+        from layer5_dna_substrate.generators.establishment import generate_establishment_dna
         dna = generate_establishment_dna()
         assert isinstance(dna, str) and len(dna) > 10
 
     def test_regional_poi_generator(self):
-        from agents.layer2_dna.generators.regional_poi import generate_regional_poi_dna
+        from layer5_dna_substrate.generators.regional_poi import generate_regional_poi_dna
         dna = generate_regional_poi_dna()
         assert isinstance(dna, str) and len(dna) > 10
 
     def test_wonder_generator(self):
-        from agents.layer2_dna.generators.wonder import generate_world_wonder_dna
+        from layer5_dna_substrate.generators.wonder import generate_world_wonder_dna
         dna = generate_world_wonder_dna()
         assert isinstance(dna, str) and len(dna) > 10
 

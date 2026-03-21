@@ -1,7 +1,7 @@
 # QA Audit Report: PF2EDNA Cartridge
 
 **Date:** March 20, 2026
-**Target:** `src/rulesets/PF2EDNA`
+**Target:** `src/layer4_rules/PF2EDNA`
 **Blueprint Specification:** `ruleset_ingestion_blueprint.md` ($1.0)
 
 ---

@@ -1,7 +1,7 @@
 # PF2EDNA Functional Validation & Sync Report
 
 **Date:** March 20, 2026
-**Target:** `src/rulesets/PF2EDNA`
+**Target:** `src/layer4_rules/PF2EDNA`
 **Status:** ✅ FULLY VALIDATED & SYNCHRONIZED
 
 ---

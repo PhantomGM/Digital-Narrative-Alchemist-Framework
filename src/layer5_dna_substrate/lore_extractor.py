@@ -11,15 +11,8 @@ class LoreExtractor:
     the WorldStateKeeper can ingest.
     """
     def __init__(self):
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-        
-        self.llm = ChatOpenAI(
-            model="qwen3.5:397b-cloud",
-            temperature=0.0, # Zero temp for exact data extraction
-            api_key=api_key,
-            base_url=base_url
-        )
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("lore_extractor", temperature=0.0)
         
         # Define the expected JSON schema implicitly in the prompt, or use Pydantic
         # For this MVP, we will rely on a strict prompt and JSON parsing.

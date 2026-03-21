@@ -1,4 +1,4 @@
-from core.event_ledger import EventLedger, StateEvent
+from layer2_narrative.event_ledger import EventLedger, StateEvent
 
 
 class WorldStateKeeper:

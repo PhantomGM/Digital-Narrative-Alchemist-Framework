@@ -12,15 +12,15 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 import pytest
 from unittest.mock import patch
-from core.event_ledger import StateEvent
-from core.contracts import LoreChunk
+from layer2_narrative.event_ledger import StateEvent
+from layer1_core.contracts import LoreChunk
 
 
 @pytest.fixture
 def chronicler():
     """Create a Chronicler with mocked LLM."""
-    with patch('agents.layer3_support.chronicler.ChatOpenAI'):
-        from agents.layer3_support.chronicler import Chronicler
+    with patch('layer3_operations.chronicler.ChatOpenAI'):
+        from layer3_operations.chronicler import Chronicler
         c = Chronicler(compression_interval=5)
         return c
 

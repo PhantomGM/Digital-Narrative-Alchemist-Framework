@@ -11,15 +11,9 @@ class HistoryConsensusEngine:
     """
     def __init__(self, safety_governor=None):
         self.safety_governor = safety_governor
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
         
-        self.llm = ChatOpenAI(
-            model="qwen3.5:397b-cloud",  # Defaulting to the local model
-            temperature=0.7,             # Slightly higher temp for creative brainstorming
-            api_key=api_key,
-            base_url=base_url
-        )
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("history_consensus", temperature=0.7)
         self.parser = StrOutputParser()
         
         # Define the personas

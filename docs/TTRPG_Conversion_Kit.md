@@ -163,7 +163,7 @@ def test_resolve_attack():
         3. **TABULAR PASS**: Extract classes, races, items, and spells. Format these as strictly typed JSON arrays and write them to `data/*.json`. If a dataset exceeds 100 items, write a python tool to migrate it to SQLite `data/*.db` ensuring a `_meta` table exists.
         4. **EXECUTABLE PASS**: Translate dice math, saving throw thresholds, and combat damage equations into pure Python functions inside `resolvers/`.
         5. **MANIFEST WIRING**: After saving your files, you MUST use `replace_file_content` to update `manifest.json`. Map your new data files into the `"data_files"` dict, and toggle `"capabilities"` booleans to `true`.
-        6. **TDD ENFORCEMENT**: Before declaring completion, you must write `pytest` unit tests in `tests/` for every resolver you created. Run `pytest src/rulesets/{name}/tests/`. You are NOT authorized to notify the user of completion if tests fail.
+        6. **TDD ENFORCEMENT**: Before declaring completion, you must write `pytest` unit tests in `tests/` for every resolver you created. Run `pytest src/layer4_rules/{name}/tests/`. You are NOT authorized to notify the user of completion if tests fail.
     </execution_protocol>
 </mission_brief>
 '''
@@ -192,4 +192,4 @@ From the root of your workspace:
 python init_cartridge.py --name "CyberpunkDNA"
 ```
 
-Once generated, point an AI coding assistant at the `src/rulesets/CyberpunkDNA/TODO.md` file. The file is formatted as an explicit machine-readable mission brief utilizing `<mission_brief>` and `<execution_protocol>` tags, guaranteeing the secondary LLM correctly navigates the Data Structure Matrix without human micromanagement.
+Once generated, point an AI coding assistant at the `src/layer4_rules/CyberpunkDNA/TODO.md` file. The file is formatted as an explicit machine-readable mission brief utilizing `<mission_brief>` and `<execution_protocol>` tags, guaranteeing the secondary LLM correctly navigates the Data Structure Matrix without human micromanagement.

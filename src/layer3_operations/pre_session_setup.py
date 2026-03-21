@@ -22,11 +22,11 @@ from dotenv import load_dotenv
 # Ensure the project src directory is in the Python path when run as a script
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
 
-from agents.layer2_dna.generators.world import WorldDNAGenerator
-from agents.layer2_dna.history_consensus import HistoryConsensusEngine
-from agents.layer2_dna.lore_extractor import LoreExtractor
-from agents.layer1_runtime.world_state import WorldStateKeeper
-from agents.layer3_support.safety_governor import SafetyGovernor
+from layer5_dna_substrate.generators.world import WorldDNAGenerator
+from layer5_dna_substrate.history_consensus import HistoryConsensusEngine
+from layer5_dna_substrate.lore_extractor import LoreExtractor
+from layer1_core.world_state import WorldStateKeeper
+from layer3_operations.safety_governor import SafetyGovernor
 
 async def run_pre_session_setup():
     load_dotenv()

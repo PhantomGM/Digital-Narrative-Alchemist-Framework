@@ -10,7 +10,7 @@ The decision to strictly decouple narrative generation (Layer 1\) from mechanica
 
 ### **1\. Robust Decoupling via System Agnosticism (Layer 4\)**
 
-The implementation of the Strategy pattern for game mechanics (src/rulesets/coin\_flip, one\_page\_5e) is exceptionally well-architected. LLMs historically struggle with precise mathematical constraints and stateful numeric tracking (HP, spell slots). By routing mechanical resolution to deterministic Python arbiters and returning state mutations back to the Orchestrator, you prevent the LLM from "hallucinating" dice rolls or breaking action economy.
+The implementation of the Strategy pattern for game mechanics (src/layer4_rules/coin_flip, one_page_5e) is exceptionally well-architected. LLMs historically struggle with precise mathematical constraints and stateful numeric tracking (HP, spell slots). By routing mechanical resolution to deterministic Python arbiters and returning state mutations back to the Orchestrator, you prevent the LLM from "hallucinating" dice rolls or breaking action economy.
 
 ### **2\. Semantic Safety Architecture (Layer 3\)**
 
@@ -56,7 +56,7 @@ To elevate this framework from a functional prototype to a production-grade orch
 
 ### **Enhancement 1: Asynchronous & Speculative Execution**
 
-Refactor src/core/orchestrator.py to utilize an asynchronous event bus (e.g., Python asyncio combined with a pub/sub model like Redis).
+Refactor src/layer1_core/orchestrator.py to utilize an asynchronous event bus (e.g., Python asyncio combined with a pub/sub model like Redis).
 
 * **Parallelization:** The moment player input arrives, route it to the Safety Governor AND the Session Director simultaneously. If the Safety Governor flags a violation, it issues a system-wide Interrupt event, cancelling the Director's task.  
 * **Speculative Streaming:** Allow the Narrative Weaver to stream tokens to a hidden buffer while the Consistency Auditor reviews the first few sentences in parallel. If no red flags are found, stream the buffer to the client. Do not wait for the entire block of prose to be generated before auditing.

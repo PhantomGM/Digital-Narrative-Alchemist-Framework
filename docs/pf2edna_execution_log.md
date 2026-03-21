@@ -1,7 +1,7 @@
 # PF2EDNA Remediation Execution Log
 
 **Date:** March 20, 2026
-**Target:** `src/rulesets/PF2EDNA`
+**Target:** `src/layer4_rules/PF2EDNA`
 **Status:** Completed successfully
 
 ---
@@ -9,8 +9,8 @@
 ## 1. Extraneous File Removal
 Identified as builder artifacts not required for the active Layer IV runtime environment.
 
-- **Deleted:** `src/rulesets/PF2EDNA/extract_dbs.py`
-- **Deleted:** `src/rulesets/PF2EDNA/extract_simple.py`
+- **Deleted:** `src/layer4_rules/PF2EDNA/extract_dbs.py`
+- **Deleted:** `src/layer4_rules/PF2EDNA/extract_simple.py`
 
 ## 2. Schema Normalization (`manifest.json`)
 Patched schema violations to comply with Minimum Viable Cartridge (MVC) requirements.
@@ -27,9 +27,9 @@ Architectural adjustment based on superior routing discovered in the cartridge.
 Applied structural requirements under Rule T-07 to SQLite databases.
 
 - **Executed `PRAGMA` & `INSERT` operations on 3 targets:**
-  - `src/rulesets/PF2EDNA/data/spells.db`
-  - `src/rulesets/PF2EDNA/data/items.db`
-  - `src/rulesets/PF2EDNA/data/monsters.db`
+  - `src/layer4_rules/PF2EDNA/data/spells.db`
+  - `src/layer4_rules/PF2EDNA/data/items.db`
+  - `src/layer4_rules/PF2EDNA/data/monsters.db`
 - **Result:** Created `_meta` tables in all targets. Seeded tables with `(schema_version, 1.0.0)` and `(source_system, pf2e_srd)`.
 
 ---

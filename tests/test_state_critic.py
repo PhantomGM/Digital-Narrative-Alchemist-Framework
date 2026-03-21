@@ -13,13 +13,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 import pytest
 import asyncio
 from unittest.mock import AsyncMock, patch, MagicMock
-from agents.layer3_support.state_critic import StateCritic
+from layer3_operations.state_critic import StateCritic
 
 
 @pytest.fixture
 def critic():
-    """Create a StateCritic with a mocked LLM."""
-    with patch('agents.layer3_support.state_critic.ChatOpenAI'):
+    with patch('layer3_operations.state_critic.ChatOpenAI'):
         c = StateCritic()
         c.chain = MagicMock()
         return c

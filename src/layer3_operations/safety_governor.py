@@ -8,20 +8,13 @@ class SafetyGovernor:
     Enforces campaign boundaries (Lines & Veils) and stylistic tone.
     Filters player input and generated outputs to maintain cohesion and safety.
     """
-    def __init__(self, campaign_tone="Dark Fantasy", lines_and_veils=None, llm_model="qwen3.5:397b-cloud", profile_manager=None):
+    def __init__(self, campaign_tone="Dark Fantasy", lines_and_veils=None, profile_manager=None):
         self.campaign_tone = campaign_tone
         self.lines_and_veils = lines_and_veils or "No specific triggers listed. Maintain general PG-13 safety."
         self.profile_manager = profile_manager
         
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-        
-        self.llm = ChatOpenAI(
-            model=llm_model, 
-            temperature=0.0, 
-            api_key=api_key,
-            base_url=base_url
-        )
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("safety_governor", temperature=0.0)
         self.parser = StrOutputParser()
         
         template = """

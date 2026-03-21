@@ -1,4 +1,4 @@
-from agents.layer2_dna.generators import (
+from layer5_dna_substrate.generators import (
     generate_npc_dna, generate_faction_dna, generate_quest_dna, generate_item_dna,
     generate_location_dna, generate_travel_dna, generate_region_dna,
     generate_realm_dna, generate_agency_dna, generate_trap_dna,

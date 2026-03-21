@@ -12,17 +12,15 @@ class ConsistencyAuditor:
     on failure, the Auditor can surgically edit only the offending sentence(s).
     This guarantees forward momentum and eliminates infinite rollback loops.
     """
-    def __init__(self, llm_model="qwen3.5:397b-cloud"):
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+    def __init__(self):
+        from layer1_core.model_router import model_router
 
-        self.llm = ChatOpenAI(
-            model=llm_model,
-            temperature=0.0, # Zero temp for analytical truthfulness
-            api_key=api_key,
-            base_url=base_url
-        )
+        # Audit LLM — fast contradiction detection
+        self.llm = model_router.get_llm("consistency_auditor", temperature=0.0)
         self.parser = StrOutputParser()
+
+        # Patch LLM — separate chain optimized for prose editing
+        self.patch_llm = model_router.get_llm("auditor_patch", temperature=0.0)
 
         # Audit prompt — now requests the offending text when invalid
         audit_template = """
@@ -71,7 +69,7 @@ Output the COMPLETE corrected passage (with the fixed sentence in place). Do not
             template=patch_template,
             input_variables=["state", "passage", "offending_text", "error_note"]
         )
-        self.patch_chain = self.patch_prompt | self.llm | self.parser
+        self.patch_chain = self.patch_prompt | self.patch_llm | self.parser
 
     async def audit(self, passage: str, current_state: dict) -> dict:
         """

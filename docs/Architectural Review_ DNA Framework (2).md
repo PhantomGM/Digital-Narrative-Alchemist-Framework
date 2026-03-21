@@ -12,21 +12,21 @@ The following review breaks down the structural strengths, operational bottlenec
 
 ### **1\. State Management & Consistency**
 
-* **PRO: Event Sourcing over Shared Mutable State (src/core/event\_ledger.py)**  
+* **PRO: Event Sourcing over Shared Mutable State (src/layer2_narrative/event_ledger.py)**  
   * *Analysis:* Utilizing an append-only sequence of StateEvent deltas is exceptional. Passing full state objects between agents usually results in race conditions or conflicting worldview hallucinations. By forcing agents to emit discrete events (e.g., EntityMoved, DamageTaken) and rehydrating state from the ledger, you guarantee eventual consistency across the system.  
-* **CON: Lossy Compression Amnesia (src/agents/layer3\_support/chronicler.py)**  
+* **CON: Lossy Compression Amnesia (src/layer3_operations/chronicler.py)**  
   * *Analysis:* You noted the Chronicler periodically compresses the log. If this compression is solely LLM-driven summarization, it is inherently lossy. Over a long session, critical micro-details (e.g., "the goblin dropped a *rusty* dagger, not just a dagger") will degrade. If the Narrative Weaver relies on compressed history, the world will slowly lose its texture.
 
 ### **2\. Execution Topology & Routing**
 
-* **PRO: Decoupled Deterministic Arbiters (src/rulesets/)**  
+* **PRO: Decoupled Deterministic Arbiters (src/layer4_rules/)**  
   * *Analysis:* LLMs are notoriously poor at deterministic arithmetic and strict logic trees. Shunting mechanical resolution to Python-native arbiter.py instances (like one\_page\_5e) before allowing the Narrative Weaver to generate prose is an optimal separation of concerns. It grounds the LLM’s hallucinations in hard mechanical reality.  
-* **CON: Synchronous Latency Cascades (src/core/orchestrator.py)**  
+* **CON: Synchronous Latency Cascades (src/layer1_core/orchestrator.py)**  
   * *Analysis:* If a player action requires Session Director \-\> Arbiter \-\> NPC Engine \-\> Guardrails \-\> Narrative Weaver, doing this synchronously will result in unplayable Time-To-First-Token (TTFT). Local inference (e.g., via test\_ollama.py) will amplify this. If the user waits 15–30 seconds for a response, immersion is broken, regardless of narrative quality.
 
 ### **3\. Agent Communication & Interoperability**
 
-* **PRO: Layer 3 Support / Semantic Safety (src/agents/layer3\_support/safety\_governor.py)**  
+* **PRO: Layer 3 Support / Semantic Safety (src/layer3_operations/safety_governor.py)**  
   * *Analysis:* Implementing "Lines & Veils" via semantic mapping rather than regex/keyword filtering is a robust way to handle the unpredictable nature of generative text. It operates dynamically, understanding the context of the violence or phobia.  
 * **CON: Inter-Agent Telephone Game & Parsing Failures**  
   * *Analysis:* If agents communicate primarily via natural language, you introduce cumulative translation errors. If the Session Director outputs a loosely structured string to the NPC Engine, the NPC Engine must spend tokens (and time) parsing it. This increases the likelihood of an agent going off-rails before the data even reaches the Narrative Weaver.

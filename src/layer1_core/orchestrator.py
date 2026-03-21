@@ -20,20 +20,12 @@ class Orchestrator:
     The master routing hub for the DNA system.
     Sequences agent calls, resolves conflicts, and acts as the traffic cop.
     """
-    def __init__(self, llm_model="qwen3.5:397b-cloud"):
+    def __init__(self):
         self.active_agents = {}
         self.ruleset_cartridge = None
         
-        # Instantiate LLM pointing to Ollama (or compatible cloud)
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-        
-        self.llm = ChatOpenAI(
-            model=llm_model, 
-            temperature=0.1,
-            api_key=api_key,
-            base_url=base_url
-        )
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("orchestrator", temperature=0.1)
         
         self.parser = JsonOutputParser(pydantic_object=RouteDecision)
         

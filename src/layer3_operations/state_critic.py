@@ -33,17 +33,9 @@ class StateCritic:
         Critic: MISMATCH — prose describes failure but math says success.
     """
 
-    def __init__(self, llm_model: str = "qwen3.5:397b-cloud"):
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-
-        self.llm = ChatOpenAI(
-            model=llm_model,
-            temperature=0.0,
-            api_key=api_key,
-            base_url=base_url,
-            max_tokens=100,  # Keep it fast — boolean answer only
-        )
+    def __init__(self):
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("state_critic", temperature=0.0, max_tokens=100)
         self.parser = StrOutputParser()
 
         self.critic_prompt = PromptTemplate(

@@ -11,7 +11,7 @@ these Pydantic models. This eliminates:
   - Wasted tokens on intermediate re-interpretation
 
 Usage:
-  from core.contracts import IntentResult, ArbiterOutcome, GuardrailVerdict
+  from layer1_core.contracts import IntentResult, ArbiterOutcome, GuardrailVerdict
 """
 
 from __future__ import annotations

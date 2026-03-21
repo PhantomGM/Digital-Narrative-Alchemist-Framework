@@ -1,13 +1,13 @@
 import asyncio
 from typing import Dict, Any, Optional
-from agents.layer1_runtime.simulators import EnvironmentSimulator, EncounterDirector
-from agents.layer3_support.consistency_auditor import ConsistencyAuditor
-from agents.layer3_support.safety_governor import SafetyGovernor
-from agents.layer3_support.player_profiles import PlayerProfileManager
-from agents.layer3_support.chronicler import Chronicler
-from agents.layer3_support.state_critic import StateCritic
-from core.event_ledger import EventLedger, StateEvent
-from core.contracts import (
+from layer1_core.simulators import EnvironmentSimulator, EncounterDirector
+from layer3_operations.consistency_auditor import ConsistencyAuditor
+from layer3_operations.safety_governor import SafetyGovernor
+from layer3_operations.player_profiles import PlayerProfileManager
+from layer3_operations.chronicler import Chronicler
+from layer3_operations.state_critic import StateCritic
+from layer2_narrative.event_ledger import EventLedger, StateEvent
+from layer1_core.contracts import (
     IntentResult,
     ArbiterOutcome,
     GuardrailVerdict,

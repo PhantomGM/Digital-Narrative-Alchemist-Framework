@@ -15,7 +15,7 @@ import json
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from core.contracts import LoreChunk
+from layer1_core.contracts import LoreChunk
 
 
 class Chronicler:
@@ -34,7 +34,7 @@ class Chronicler:
     6. These facts never degrade — they're immutable and queryable
     """
 
-    def __init__(self, compression_interval: int = 10, llm_model: str = "qwen3.5:397b-cloud"):
+    def __init__(self, compression_interval: int = 10):
         self.compression_interval = compression_interval
         self.turn_counter = 0
         self._last_compression_timestamp = 0.0
@@ -42,15 +42,8 @@ class Chronicler:
         self._lore_store: list[LoreChunk] = []  # Bucket H: immutable facts
         self._turn_number = 0  # Global turn counter for lore tagging
 
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-
-        self.llm = ChatOpenAI(
-            model=llm_model,
-            temperature=0.0,  # Zero temp for factual precision
-            api_key=api_key,
-            base_url=base_url
-        )
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("chronicler", temperature=0.0)
         self.parser = StrOutputParser()
 
         self.compress_prompt = PromptTemplate(

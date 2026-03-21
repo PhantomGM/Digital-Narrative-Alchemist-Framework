@@ -169,7 +169,7 @@ location_tag = "Goblin Cave"
 **Handled by:** The user-facing interface (future web/Discord front-end), which calls
 `SessionDirector.advance_scene()`.
 
-**Source:** [session_director.py](../src/agents/layer1_runtime/session_director.py)
+**Source:** [session_director.py](../src/layer3_operations/session_director.py)
 
 ---
 
@@ -204,8 +204,8 @@ including recent changes that haven't been fully integrated yet.
 Orchestrator all operate from the exact same ordered state deltas — eliminating the
 "fragmented state" problem where agents had inconsistent views.
 
-**Source:** [world_state.py](../src/agents/layer1_runtime/world_state.py),
-[event_ledger.py](../src/core/event_ledger.py)
+**Source:** [world_state.py](../src/layer1_core/world_state.py),
+[event_ledger.py](../src/layer2_narrative/event_ledger.py)
 
 ---
 
@@ -230,8 +230,8 @@ orchestrator_task = orchestrator.process_player_input(player_input, str(context_
 safety_check, result = await asyncio.gather(safety_task, orchestrator_task)
 ```
 
-**Source:** [session_director.py](../src/agents/layer1_runtime/session_director.py),
-[safety_governor.py](../src/agents/layer3_support/safety_governor.py)
+**Source:** [session_director.py](../src/layer3_operations/session_director.py),
+[safety_governor.py](../src/layer3_operations/safety_governor.py)
 
 ---
 
@@ -269,7 +269,7 @@ Current Scene Context: {"entities": ["Player", "Goblin", "Bartender"], ...}
 }
 ```
 
-**Source:** [orchestrator.py](../src/core/orchestrator.py)
+**Source:** [orchestrator.py](../src/layer1_core/orchestrator.py)
 
 ---
 
@@ -304,8 +304,8 @@ Forge generates the element asynchronously.
 **If the workflow was `scene_flow`:** No mechanical resolution occurs. A synthetic outcome
 is created: `{"success": True, "narrative_effect": "Player enacts: <input>"}`.
 
-**Source:** [one_page_5e/arbiter.py](../src/rulesets/one_page_5e/arbiter.py),
-[coin_flip/arbiter.py](../src/rulesets/coin_flip/arbiter.py)
+**Source:** [one_page_5e/arbiter.py](../src/layer4_rules/one_page_5e/arbiter.py),
+[coin_flip/arbiter.py](../src/layer4_rules/coin_flip/arbiter.py)
 
 ---
 
@@ -320,8 +320,7 @@ of a flaw (e.g., "Reckless in combat"). This can award meta-currency like Inspir
 
 **Data at this point:** An arc note string (currently a stub in MVP).
 
-**Source:** [session_director.py](../src/agents/layer1_runtime/session_director.py) (the
-`CharacterArcTracker` class is defined here)
+**Source:** [session_director.py](../src/layer3_operations/session_director.py) (the orchestration piece, the CharacterArcTracker class is defined here)
 
 ---
 
@@ -344,8 +343,7 @@ If triggered, a narrative injection is appended to the mechanical outcome:
 This note is passed to the Narrative Weaver so it can weave the encounter into the prose
 seamlessly.
 
-**Source:** [simulators.py](../src/agents/layer1_runtime/simulators.py) (the
-`EncounterDirector` and `EnvironmentSimulator` classes)
+**Source:** [simulators.py](../src/layer1_core/simulators.py) (the core logic, the EncounterDirector and EnvironmentSimulator classes)
 
 ---
 
@@ -385,7 +383,7 @@ but as the echo of steel fades, a new sound rises: the low, guttural growl of
 something far worse, echoing from the tunnels behind you..."
 ```
 
-**Source:** [narrative_weaver.py](../src/agents/layer1_runtime/narrative_weaver.py)
+**Source:** [narrative_weaver.py](../src/layer2_narrative/narrative_weaver.py)
 
 ---
 
@@ -416,8 +414,8 @@ Evaluates the generated prose against:
 Narrative Weaver mentioned spiders, the Safety Governor would catch it and append a
 correction note to the prose — or in a production system, force the Weaver to regenerate.
 
-**Source:** [safety_governor.py](../src/agents/layer3_support/safety_governor.py),
-[player_profiles.py](../src/agents/layer3_support/player_profiles.py)
+**Source:** [safety_governor.py](../src/layer3_operations/safety_governor.py),
+[player_profiles.py](../src/layer3_operations/player_profiles.py)
 
 #### 7b — Consistency Auditor (Patch Agent)
 
@@ -430,7 +428,7 @@ Compares the generated prose against the current World State to detect:
 The Auditor now returns the **exact offending sentence** alongside its error explanation,
 enabling surgical patching.
 
-**Source:** [consistency_auditor.py](../src/agents/layer3_support/consistency_auditor.py)
+**Source:** [consistency_auditor.py](../src/layer3_operations/consistency_auditor.py)
 
 ---
 
@@ -454,8 +452,8 @@ while audit_check["status"] == "invalid" and patch_attempts < 2:
 **Key improvement:** This guarantees **forward momentum** — the narrative never gets stuck
 in an infinite generation loop.
 
-**Source:** [consistency_auditor.py](../src/agents/layer3_support/consistency_auditor.py),
-[session_director.py](../src/agents/layer1_runtime/session_director.py)
+**Source:** [consistency_auditor.py](../src/layer3_operations/consistency_auditor.py),
+[session_director.py](../src/layer3_operations/session_director.py)
 
 ---
 
@@ -473,8 +471,8 @@ passed (default: 10), the Chronicler fires a **non-blocking background task** to
 The player's response is returned immediately — the compression runs in the background via
 `asyncio.create_task()` so it never delays the gameplay.
 
-**Source:** [chronicler.py](../src/agents/layer3_support/chronicler.py),
-[session_director.py](../src/agents/layer1_runtime/session_director.py)
+**Source:** [chronicler.py](../src/layer3_operations/chronicler.py),
+[session_director.py](../src/layer3_operations/session_director.py)
 
 ---
 

@@ -7,16 +7,9 @@ class DNADecoder:
     """
     Translates raw DNA strings into rich, evocative TTRPG content using the Master Decoder prompts.
     """
-    def __init__(self, llm_model="qwen3.5:397b-cloud"):
-        api_key = os.getenv("OLLAMA_API_KEY", "dummy_key")
-        base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
-        
-        self.llm = ChatOpenAI(
-            model=llm_model, 
-            temperature=0.7,
-            api_key=api_key,
-            base_url=base_url
-        )
+    def __init__(self):
+        from layer1_core.model_router import model_router
+        self.llm = model_router.get_llm("dna_decoder", temperature=0.7)
         self.parser = StrOutputParser()
         self.prompts = {}
         
