@@ -1,10 +1,26 @@
+"""
+Pre-Session Setup Pipeline (Session 0)
+
+This module implements the AI Game Master's world bootstrapping sequence.
+It runs once before the first session to generate the World DNA, consensus
+history, and seed the World State Keeper with foundational lore. After
+Session 0, the world state is updated incrementally through gameplay —
+this pipeline is not re-run.
+
+Pipeline:
+    1. Generate World DNA via WorldDNAGenerator
+    2. Decode World DNA into a narrative profile (via DNADecoder)
+    3. Run the History Consensus Engine ("Microscope"-style epoch generation)
+    4. Extract structural data (factions, NPCs, locations) from raw history
+    5. Seed the World State Keeper with extracted facts
+"""
 import asyncio
 import sys
 import os
 from dotenv import load_dotenv
 
-# Ensure the src directory is in the Python path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+# Ensure the project src directory is in the Python path when run as a script
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
 
 from agents.layer2_dna.generators.world import WorldDNAGenerator
 from agents.layer2_dna.history_consensus import HistoryConsensusEngine
