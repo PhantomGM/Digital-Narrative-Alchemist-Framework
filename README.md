@@ -6,113 +6,18 @@ Unlike simple chat-bot RPGs, the DNA framework separates narrative generation, p
 
 ---
 
-## 🏗️ System Architecture
-
-The DNA Framework is built on a philosophy of **System Agnosticism**. The foundational AI handles world simulation and narrative flow, while rules adjudication and mathematics are handled via modular, hot-swappable sub-agent cartridges.
-
-The architecture is divided into four distinct operational layers encompassing over two dozen normalized agents.
-
-### Layer I: Core Runtime Intelligence (`src/layer1_core/`)
-
-These agents form the active, base-level computational "brain" of the AI GM. They manage state tracking, formal contracts, and simulators.
-
-* **Orchestrator**: The master routing hub. It intercepts player input, decides if a mechanical rule needs to be invoked, or if it can be handled purely narratively.
-* **World State Keeper**: Tracks the authoritative present reality and stores/retrieves past scenes to maintain strict canon.
-* **Contracts**: Pydantic schemas that define the typed structure for inter-agent communications.
-* **Simulators (Faction, Environment, Encounter)**: Autonomous agents that inject dynamic hazards, weather, and macro-social events into the scene based on pacing needs.
-
-### Layer II: Narrative Engine (`src/layer2_narrative/`)
-
-Specialized for vivid prose and ordered event sourcing.
-
-* **Event Ledger**: All state changes emit deltas to an ordered log, ensuring every agent sees the same micro-state.
-* **Narrative Weaver**: Translates raw state changes and mechanical outcomes into vivid, engaging prose for the players.
-
-### Layer III: Operations / Reliability Layer (`src/layer3_operations/`)
-
-Middleware guardrails ensuring safe, logical, and tonally consistent operation over long sessions.
-
-* **Session Director**: Controls structural pacing, scene framing, and encounter injection. Coordinates all sub-agents through a **parallel async pipeline**.
-* **Pre-Session Setup**: Manages the initialization sequence spanning world generation to history consensus before gameplay starts.
-* **Consistency Auditor (Patch Agent)**: Intercepts LLM outputs to compare them against the World State. Surgically patches hallucinated impossibilities in-place.
-* **Safety Governor**: Analyzes player input and LLM output to ensure it adheres to pre-defined campaign tones and safety boundaries.
-* **Chronicler**: Background agent that **compresses the Event Ledger** every N turns into dense factual summaries.
-* **State Critic**: Narrative-mechanical consistency circuit breaker.
-* **Player Profiles**: Tracks and monitors player cognitive boundaries and engagement models.
-
-### Layer IV: Modular Game-System Layer (`src/layer4_rules/`)
-
-Swappable logic cartridges tailored to specific, hard-coded TTRPG rulesets. By swapping the Arbiter in these directories, the mathematical framework of the game changes without breaking the rest of the AI.
-
-#### Active Cartridges
-
-| System Name | Directory | Capabilities |
-| :--- | :--- | :--- |
-| Pathfinder 2nd Edition SRD | `PF2EDNA` | `combat_resolution`, `skill_checks`, `saving_throws`, `spellcasting`, `rest_mechanics`, `encounter_budgeting` |
-| One Page 5e (Stub) | `one_page_5e` | Basic action resolution stub |
-| Coin Flip (Stub) | `coin_flip` | Pure 50/50 probability testing |
-
-### Layer V: DNA / PCG Substrate (`src/layer5_dna_substrate/`)
-
-Handles the procedural generation of raw world elements (Genotypes) and invokes an LLM to translate them into rich narrative content (Phenotypes).
-
-* **Procedural Forge** (`forge.py`): Master dispatcher for DNA generation. Routes calls to the correct generator in `generators/`.
-* **DNA Decoder** (`decoder.py`): Translates raw DNA strings into evocative, playable profiles via LLM chains.
-* **DNA Registry** (`registry.py`): Graph-augmented database mapping DNA strings to decoded phenotypes. Supports BFS graph traversal.
-* **Inheritance Engine** (`inheritance.py`): Resolves constraints using graph context.
-* **History Consensus / Lore Extractor**: Auto-weaves deep campaign lore out of the semantic data mesh prior to player involvement.
-
----
-
-## 🧠 LLM Orchestration & Resilience
-
-The DNA Framework utilizes a centralized `ModelRouter` to decouple our 9 cognitive agents from vendor lock-in. Instead of hardcoded LLM initializations, the system assigns models based on a **3-Tier Decision Boundary**:
-
-1. **Executable Actions (No LLM):** Pure state mutations and math (e.g., Layer IV rules calculations, PF2E damage application) never invoke an LLM.
-2. **Semantic-Light (Low Latency / Local):** High-speed classification, auditing, and moderation tasks are routed to ultra-fast or local models (e.g., Gemini 2.5 Flash, Llama 4 Scout on Groq).
-3. **Semantic-Heavy (Frontier Generative):** Deep prose, complex reasoning, and world-building rely on SOTA models (e.g., Claude 4.6 Opus, DeepSeek R1).
-
-### The Multi-Provider Fallback Pipeline
-To ensure seamless GM operation without player interruption, every LLM-gated agent is wired into an automatic fallback chain using LangChain's `.with_fallbacks()`. If a primary API request fails (503 Service Unavailable, Timeout, Rate Limit), the `ModelRouter` redirects the prompt to a secondary provider instantly.
-
-**Refactored Agents utilizing the Fallback Pipeline:**
-* `orchestrator` (Core routing logic)
-* `narrative_weaver` (Player-facing prose delivery)
-* `safety_governor` (Rapid Line & Veil enforcement)
-* `state_critic` (Fast circuit breaking mapping logic to prose)
-* `chronicler` (Background history compression)
-* `consistency_auditor` (Contradiction detection and `auditor_patch` editing)
-* `dna_decoder` (Translating world gen arrays to complex lore profiles)
-* `history_consensus` (Microscope-style epoch generation)
-* `lore_extractor` (JSON truth extraction)
-
----
-
 ## 🚀 Getting Started
 
 The system is currently configured as a functional **Minimum Viable Backbone** with **architectural hardening** applied from a formal review.
-
-### Core Modules
-
-| Module | File | Description |
-| :--- | :--- | :--- |
-| Event Ledger | `src/layer2_narrative/event_ledger.py` | Ordered state delta log (event sourcing) |
-| Orchestrator | `src/layer1_core/orchestrator.py` | Master input router |
-| Contracts | `src/layer1_core/contracts.py` | 7 Pydantic schemas for typed inter-agent communication |
-| Procedural Forge | `src/layer5_dna_substrate/forge.py` | DNA generation dispatcher (14 entity types) |
-| DNA Decoder | `src/layer5_dna_substrate/decoder.py` | LLM-driven DNA → narrative translation |
-| DNA Registry | `src/layer5_dna_substrate/registry.py` | Graph-augmented entity database |
-| State Critic | `src/layer3_operations/state_critic.py` | Narrative-mechanical consistency circuit breaker |
 
 ### Environment Setup
 
 * Python 3.10+
 * Copy `.env.example` to `.env` and configure your API keys.
 
-The framework evaluates the cognitive load required for each agent and routes requests dynamically. You do **not** need all keys to run the system; the router will silently skip providers you haven't configured and fall back to the next available one.
+The framework evaluates the cognitive load required for each agent and routes requests dynamically via the central `ModelRouter`. You do **not** need all keys to run the system; the multi-provider `.with_fallbacks()` pipeline will silently skip providers you haven't configured and fall back to the next available one.
 
 Supported providers include:
-
 * **OpenAI** (`OPENAI_API_KEY`)
 * **Anthropic** (`ANTHROPIC_API_KEY`)
 * **Google Gemini** (`GOOGLE_API_KEY`)
@@ -134,6 +39,128 @@ python main.py
 ```bash
 .\venv\Scripts\python.exe -m pytest tests/ -v
 ```
+
+---
+
+## 🔄 A Single Player Turn (Minimal Lifecycle)
+
+Multi-agent systems can seem overwhelming. So how does a simple action flow through the DNA Framework?
+
+### Example A: A Narrative Flow
+1. **Player Input:** *“I look around the tavern.”* 
+2. **Intent Routing (`Orchestrator`):** The orchestration layer intercepts the text, recognizing it as a non-mechanical narrative action (no rule lookups needed). It updates the `World State Keeper` with the player's new location.
+3. **Response Generation (`Narrative Weaver`):** The Weaver receives the updated state ("Player observing the tavern") and invokes a Tier-3 generative LLM to craft immersive prose. The output is logged in the `Event Ledger` and sent to the player.
+
+### Example B: A Mechanical Flow (The Framework's True Power)
+1. **Player Input:** *“I attack the goblin with my broadsword.”*
+2. **Intent Routing (`Orchestrator`):** Recognizing a mechanical attack intent, the Orchestrator steps back and tokenizes the input, routing it directly into **Tier 1**. 
+3. **Deterministic Math (`Layer IV Rules`):** Pure Python math calculates the roll, the goblin's armor class, and the damage reduction *without ever touching an LLM*, ensuring zero math hallucination. It returns a strict JSON payload: `{ "target": "goblin 3", "HP_delta": -12, "status_applied": "bleeding" }`.
+4. **Response Translation (`Narrative Weaver`):** The Weaver receives the cold mathematical payload and translates it into Tier-3 generative prose. The AI hasn't done the math; it is simply playing the role of the narrator reading the math.
+
+---
+
+## 🧩 Building a Layer IV Rules Cartridge
+
+The true power of the DNA framework is **System Agnosticism**. 
+You can switch the mechanical engine of the game simply by dropping a new Python cartridge into the Layer IV `src/layer4_rules/` folder. This guarantees the LLM *never* hallucinates mathematical dice rolls.
+
+To build an MVP TTRPG cartridge from scratch, you only need three things:
+- [ ] **Core Arbiter Adapter:** Your cartridge's entry point that inherits requests from the Orchestrator.
+- [ ] **A Dice Roller / Resolver Logics:** Pure Python math functions determining successes.
+- [ ] **A State Delta Schema:** A Pydantic schema enforcing exactly what gets passed back to the Narrative engine.
+
+### Explicit API Contracts
+When the `Orchestrator` maps a player intent to a mechanical action (e.g., picking a lock), it pushes a strict JSON dictionary to your adapter:
+
+**Input from Orchestrator:**
+```json
+// Note: These key-value pairs are dynamically generated by the Orchestrator based on your specific TTRPG's configuration.
+{
+  "action": "pick_lock",
+  "skill_modifier": 4,
+  "target_dc": 15
+}
+```
+
+Your pure-Python resolver logic calculates the outcome utilizing whatever rule system you wrote. It **must** return an explicitly typed Pydantic object for the `Narrative Weaver` to process safely.
+
+**Required Pydantic Return Schema (`layer1_core/contracts.py`):**
+```python
+from pydantic import BaseModel
+from typing import Optional
+
+class StateDelta(BaseModel):
+    success: bool
+    numerical_result: int
+    delta_description: str
+    fatal_error: Optional[bool] = False
+```
+
+**Output from your Custom Cartridge:**
+```json
+{
+  "success": true,
+  "numerical_result": 22,
+  "delta_description": "Thieves tools defeated the rusty tumblers.",
+  "fatal_error": false
+}
+```
+If your custom cartridge outputs to this contract, you can wire *any* tabletop system into the DNA Framework.
+
+---
+
+## 🧠 Deep Architecture & Latency (The 5 Layers)
+
+The DNA Framework utilizes exactly 5 operational layers mapped aggressively to a **3-Tier Decision Boundary**. By matching structural layers to Compute Tiers, developers immediately know the latency scale and API cost of the agents they are editing.
+
+<details>
+<summary><b>Click to expand the 5-Layer Deep Dive</b></summary>
+
+### 1. `[Tier 1: Deterministic]` Layer IV: Modular Game-System Layer (`src/layer4_rules/`)
+**Latency:** Sub-millisecond (Pure Python/SQLite)
+No unpredictable LLMs are invoked in this directory. It houses swappable logic cartridges tailored to specific TTRPG rulesets. 
+
+#### Active Cartridges
+| System Name | Directory | Capabilities |
+| :--- | :--- | :--- |
+| Pathfinder 2nd Edition SRD | `PF2EDNA` | `combat_resolution`, `skill_checks`, `saving_throws`, `spellcasting`, `rest_mechanics`, `encounter_budgeting` |
+| One Page 5e (Stub) | `one_page_5e` | Basic action resolution stub |
+| Coin Flip (Stub) | `coin_flip` | Pure 50/50 probability testing |
+
+### 2. `[Tier 2: Semantic Light]` Layer III: Operations / Reliability (`src/layer3_operations/`)
+**Latency:** < 1 Second (Local Llama/Gemini Flash)
+Middleware guardrails ensuring safe, logical, and tonally consistent operation over long sessions.
+* **Session Director**: Controls structural pacing and encounter injection via **parallel async pipelines**.
+* **Consistency Auditor**: Intercepts LLM outputs to compare them against the World State.
+* **Safety Governor**: Rapidly analyzes player inputs ensuring strict adherence to boundaries.
+* **Chronicler**: Background agent that compresses memory.
+* **State Critic**: Narrative-mechanical consistency circuit breaker.
+
+### 3. `[Tier 3: Semantic Heavy]` Layer II: Narrative Engine (`src/layer2_narrative/`)
+**Latency:** 2-6 Seconds (Claude Opus/GPT-4o)
+Specialized for vivid prose and ordered event sourcing.
+* **Narrative Weaver**: Translates raw state changes and mechanical outcomes from Tier 1 into vivid, engaging prose.
+* **Event Ledger**: Ordered immutable database tracking micro-state history.
+
+### 4. `[Tier 3: Semantic Heavy]` Layer V: DNA / PCG Substrate (`src/layer5_dna_substrate/`)
+**Latency:** 5-10 Seconds (Background/Pre-Computation)
+The isolated procedural engine. Generates raw world elements (Genotypes) and invokes frontier models to translate them into rich narrative content (Phenotypes).
+* **Procedural Forge**: Master dispatcher for DNA mathematical generation (14 entity types).
+* **Inheritance Engine**: Resolves constraints using graph context.
+* **DNA Decoder**: Translates pure mathematical DNA strings into playable profiles.
+* **History Consensus**: Microscope-style auto-weaving of deep campaign lore out of the semantic data mesh prior to player involvement.
+
+### 5. `[Tier 2: Semantic Light]` Layer I: Core Runtime Intelligence (`src/layer1_core/`)
+**Latency:** < 0.5 Seconds (Fast Routing Model or Keyword Logic)
+The foundational brain routing traffic between all layers.
+* **Orchestrator**: The master input router identifying intents.
+* **ModelRouter**: The centralized multi-provider fallback factory serving instances from the 3-Tier Compute Matrix.
+* **World State Keeper**: The authoritative tracking of the present reality.
+* **Contracts**: Pydantic schemas (as detailed above).
+
+</details>
+
+---
 
 ## 🗺️ Roadmap
 
