@@ -2,6 +2,7 @@ import asyncio
 import sys
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 # Ensure the src directory is in the Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
@@ -39,6 +40,7 @@ async def main():
 
     # Initialize Session Director (The Hub)
     director = SessionDirector(orchestrator, weaver, state_keeper, registry)
+    await director.state_keeper.event_ledger.initialize_db()
     
     # Register a PC for the Arc Tracker & Profile Manager
     director.arc_tracker.register_pc("PC_01_Fighter", ["Become a famous hero", "Find lost brother"], ["Reckless in combat"])

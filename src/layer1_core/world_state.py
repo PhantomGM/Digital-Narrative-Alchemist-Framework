@@ -1,5 +1,5 @@
+import asyncio
 from layer2_narrative.event_ledger import EventLedger, StateEvent
-
 
 class WorldStateKeeper:
     """Tracks the authoritative 'present reality' (who is alive, what is broken)."""
@@ -26,14 +26,14 @@ class WorldStateKeeper:
             "timeline_year": 0
         }
 
-    def ingest_history_data(self, history_data: dict):
+    async def ingest_history_data(self, history_data: dict):
         """Ingest the extracted structural data points from the Microscope History Consensus."""
         self.world_metadata.update(history_data)
         print(f"[WorldStateKeeper] Successfully ingested historical data for world: '{self.world_metadata.get('world_name')}'")
         print(f"[WorldStateKeeper] Establishing timeline year: {self.world_metadata.get('timeline_year')}")
 
-        # Emit a ledger event for the history ingestion
-        self.event_ledger.emit(StateEvent(
+        # Emit a ledger event for the history ingestion via await
+        await self.event_ledger.emit(StateEvent(
             event_type="HISTORY_INGESTED",
             target="world",
             delta={"world_name": history_data.get("world_name", "Unknown"),
@@ -46,14 +46,14 @@ class WorldStateKeeper:
         """Fetch the current authoritative state for a location or entity."""
         return self.state.get(context_key, {"entities": [], "hazards": [], "lighting": "Unknown"})
 
-    def get_context_window(self, context_key: str, n: int = 10) -> dict:
+    async def get_context_window(self, context_key: str, n: int = 10) -> dict:
         """
         Returns the current reality for a location PLUS the last N state deltas
         as structured context. This ensures downstream agents (Orchestrator,
         Weaver, NPC Engines) all see the same micro-state.
         """
         reality = self.get_reality(context_key)
-        recent_deltas = self.event_ledger.render_context(n)
+        recent_deltas = await self.event_ledger.render_context(n)
         return {
             "current_state": reality,
             "recent_changes": recent_deltas,
@@ -64,15 +64,15 @@ class WorldStateKeeper:
             }
         }
 
-    def update_reality(self, context_key: str, updates: dict, source_agent: str = "WorldStateKeeper"):
+    async def update_reality(self, context_key: str, updates: dict, source_agent: str = "WorldStateKeeper"):
         """Merges new facts into the authoritative state and emits a StateEvent delta."""
         if context_key not in self.state:
             self.state[context_key] = {}
         self.state[context_key].update(updates)
         print(f"[WorldStateKeeper] Reality updated for '{context_key}': {updates}")
 
-        # Emit the delta to the Event Ledger
-        self.event_ledger.emit(StateEvent(
+        # Emit the delta to the Event Ledger via await
+        await self.event_ledger.emit(StateEvent(
             event_type="UPDATE_REALITY",
             target=context_key,
             delta=updates,

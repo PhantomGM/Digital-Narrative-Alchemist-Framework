@@ -129,7 +129,7 @@ class SessionDirector:
         print(f"\n--- [SessionDirector] Processing Input from {player_id} ---")
 
         # Fetch enriched context (current state + recent deltas from Event Ledger)
-        context_window = self.state_keeper.get_context_window(location_tag, n=10)
+        context_window = await self.state_keeper.get_context_window(location_tag, n=10)
         current_reality = context_window["current_state"]
 
         # ── TRACK A, PHASE 1: Parallel Input Processing (Bucket A) ─────
@@ -152,7 +152,7 @@ class SessionDirector:
         if safety_input_verdict.status == "invalid":
             print(f"[SessionDirector] Input blocked by Safety Governor.")
 
-            self.state_keeper.event_ledger.emit(StateEvent(
+            await self.state_keeper.event_ledger.emit(StateEvent(
                 event_type="INPUT_BLOCKED",
                 target=player_id,
                 delta={"reason": safety_input_verdict.correction_note},
@@ -182,7 +182,7 @@ class SessionDirector:
             injection_note = f" (GM Note: Injecting Encounter - {encounter.description})"
             print(f"[SessionDirector] Escalating pacing to '{self.pacing_level}' due to encounter.")
 
-            self.state_keeper.event_ledger.emit(StateEvent(
+            await self.state_keeper.event_ledger.emit(StateEvent(
                 event_type="PACING_SHIFT",
                 target=location_tag,
                 delta={"pacing": self.pacing_level, "encounter": encounter.description},
@@ -253,7 +253,7 @@ class SessionDirector:
             prose += f"\n\n[OOC System Message - Logic Contradiction]: {audit_verdict.correction_note}"
 
         # ── TRACK A COMPLETE — Record turn + fire background tasks ─────
-        self.state_keeper.event_ledger.emit(StateEvent(
+        await self.state_keeper.event_ledger.emit(StateEvent(
             event_type="TURN_COMPLETED",
             target=player_id,
             delta={"action": player_input[:100], "outcome": result.get("status", "unknown")},

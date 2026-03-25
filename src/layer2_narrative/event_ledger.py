@@ -5,15 +5,17 @@ Implements the Event Sourcing pattern: agents emit granular State Deltas
 instead of passing full state objects. All agents pull context from the
 same ordered ledger, eliminating state fragmentation.
 
-Solves: Bottleneck B3 (Distributed State Fragmentation)
-Enhancement: E4 (Contextual Delta State / Event Sourcing)
+Upgraded to use aiosqlite for true asynchronous, non-blocking disk I/O,
+enabling multiple agents to emit and read parallel events without lock contention.
 """
 
 import time
 import uuid
+import json
+import asyncio
+import aiosqlite
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
-
 
 @dataclass
 class StateEvent:
@@ -33,63 +35,152 @@ class StateEvent:
         delta_summary = ", ".join(f"{k}: {v}" for k, v in self.delta.items())
         return f"[{self.source_agent}] {self.event_type} → {self.target}: {delta_summary}"
 
-
 class EventLedger:
     """
-    An ordered, append-only log of StateEvents.
+    An ordered, append-only log of StateEvents backed by aiosqlite.
 
-    All agents emit deltas here. Any agent can query the ledger to get
-    an authoritative, chronologically ordered view of recent state changes.
-    This ensures the NPC Engine, Narrative Weaver, and Session Director
-    all operate from the exact same indisputable truth.
+    All agents sequentially await emit calls. Any agent can await queries
+    to the ledger to get an authoritative, chronologically ordered view of
+    recent state changes across the parallel multi-agent environment without blocking.
     """
 
-    def __init__(self, max_events: int = 500):
-        self._events: List[StateEvent] = []
+    def __init__(self, db_path: str = "dna_ledger.db", max_events: int = 500):
+        self.db_path = db_path
         self._max_events = max_events
 
-    def emit(self, event: StateEvent) -> None:
-        """Append a new state delta to the ledger."""
-        self._events.append(event)
-        print(f"[EventLedger] Recorded: {event.to_context_string()}")
+    async def initialize_db(self) -> None:
+        """Initialize the SQLite Async Database to store events."""
+        async with aiosqlite.connect(self.db_path) as db:
+            await db.execute("""
+                CREATE TABLE IF NOT EXISTS events (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    event_id TEXT UNIQUE NOT NULL,
+                    event_type TEXT NOT NULL,
+                    target TEXT NOT NULL,
+                    delta TEXT NOT NULL,
+                    source_agent TEXT NOT NULL,
+                    location TEXT,
+                    timestamp REAL NOT NULL
+                )
+            """)
+            await db.commit()
+            print(f"[EventLedger] Asynchronous SQLite database initialized at {self.db_path}.")
 
-        # Prevent unbounded growth — old events are pruned
-        # (the Chronicler should archive them before this happens)
-        if len(self._events) > self._max_events:
-            self._events = self._events[-self._max_events:]
+    async def emit(self, event: StateEvent) -> None:
+        """Append a new state delta directly to the database via async task."""
+        async with aiosqlite.connect(self.db_path) as db:
+            await db.execute(
+                "INSERT INTO events (event_id, event_type, target, delta, source_agent, location, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (event.event_id, event.event_type, event.target, json.dumps(event.delta), event.source_agent, event.location, event.timestamp)
+            )
+            await db.commit()
+            print(f"[EventLedger] Recorded: {event.to_context_string()}")
+            
+            # Prune old events beyond max_events to bound the db cost
+            await db.execute(f"DELETE FROM events WHERE id NOT IN (SELECT id FROM events ORDER BY timestamp DESC LIMIT {self._max_events})")
+            await db.commit()
 
-    def get_recent(self, n: int = 10) -> List[StateEvent]:
-        """Return the last N events in chronological order."""
-        return self._events[-n:]
+    async def get_recent(self, n: int = 10) -> List[StateEvent]:
+        """Return the last N events in chronological order directly from the database."""
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute(f"SELECT * FROM events ORDER BY timestamp DESC LIMIT {n}") as cursor:
+                rows = await cursor.fetchall()
+                events = []
+                for row in reversed(rows): # Reverse back to chronological order
+                    events.append(StateEvent(
+                        event_id=row[1],
+                        event_type=row[2],
+                        target=row[3],
+                        delta=json.loads(row[4]),
+                        source_agent=row[5],
+                        location=row[6],
+                        timestamp=row[7]
+                    ))
+                return events
 
-    def get_by_target(self, target_id: str) -> List[StateEvent]:
+    async def get_by_target(self, target_id: str) -> List[StateEvent]:
         """Return all events affecting a specific entity or location."""
-        return [e for e in self._events if e.target == target_id]
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute("SELECT * FROM events WHERE target = ? ORDER BY timestamp ASC", (target_id,)) as cursor:
+                rows = await cursor.fetchall()
+                return [StateEvent(
+                        event_id=row[1],
+                        event_type=row[2],
+                        target=row[3],
+                        delta=json.loads(row[4]),
+                        source_agent=row[5],
+                        location=row[6],
+                        timestamp=row[7]
+                    ) for row in rows]
 
-    def get_by_location(self, location: str) -> List[StateEvent]:
+    async def get_by_location(self, location: str) -> List[StateEvent]:
         """Return all events within a specific scene/location."""
-        return [e for e in self._events if e.location == location]
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute("SELECT * FROM events WHERE location = ? ORDER BY timestamp ASC", (location,)) as cursor:
+                rows = await cursor.fetchall()
+                return [StateEvent(
+                        event_id=row[1],
+                        event_type=row[2],
+                        target=row[3],
+                        delta=json.loads(row[4]),
+                        source_agent=row[5],
+                        location=row[6],
+                        timestamp=row[7]
+                    ) for row in rows]
 
-    def get_by_type(self, event_type: str) -> List[StateEvent]:
+    async def get_by_type(self, event_type: str) -> List[StateEvent]:
         """Return all events of a specific type."""
-        return [e for e in self._events if e.event_type == event_type]
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute("SELECT * FROM events WHERE event_type = ? ORDER BY timestamp ASC", (event_type,)) as cursor:
+                rows = await cursor.fetchall()
+                return [StateEvent(
+                        event_id=row[1],
+                        event_type=row[2],
+                        target=row[3],
+                        delta=json.loads(row[4]),
+                        source_agent=row[5],
+                        location=row[6],
+                        timestamp=row[7]
+                    ) for row in rows]
 
-    def get_since(self, timestamp: float) -> List[StateEvent]:
+    async def get_since(self, timestamp: float) -> List[StateEvent]:
         """Return all events after a given timestamp (for Chronicler archival)."""
-        return [e for e in self._events if e.timestamp > timestamp]
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute("SELECT * FROM events WHERE timestamp > ? ORDER BY timestamp ASC", (timestamp,)) as cursor:
+                rows = await cursor.fetchall()
+                return [StateEvent(
+                        event_id=row[1],
+                        event_type=row[2],
+                        target=row[3],
+                        delta=json.loads(row[4]),
+                        source_agent=row[5],
+                        location=row[6],
+                        timestamp=row[7]
+                    ) for row in rows]
 
-    def snapshot(self, location: str = None) -> Dict[str, Any]:
+    async def snapshot(self, location: str = None) -> Dict[str, Any]:
         """
-        Produce a flattened current-state dict by replaying all events.
-
-        If a location is specified, only events for that location are replayed.
-        Events are applied in chronological order, so later events override earlier ones.
+        Produce a flattened current-state dict by replaying all DB events.
 
         Returns a dict keyed by target entity/location, with merged delta values.
         """
-        events = self.get_by_location(location) if location else self._events
-        state: Dict[str, Dict[str, Any]] = {}
+        if location:
+            events = await self.get_by_location(location)
+        else:
+            async with aiosqlite.connect(self.db_path) as db:
+                async with db.execute("SELECT * FROM events ORDER BY timestamp ASC") as cursor:
+                    rows = await cursor.fetchall()
+                    events = [StateEvent(
+                        event_id=row[1],
+                        event_type=row[2],
+                        target=row[3],
+                        delta=json.loads(row[4]),
+                        source_agent=row[5],
+                        location=row[6],
+                        timestamp=row[7]
+                    ) for row in rows]
 
+        state: Dict[str, Dict[str, Any]] = {}
         for event in events:
             if event.target not in state:
                 state[event.target] = {}
@@ -101,12 +192,12 @@ class EventLedger:
 
         return state
 
-    def render_context(self, n: int = 10) -> str:
+    async def render_context(self, n: int = 10) -> str:
         """
-        Render the last N events as a formatted context block suitable
+        Render the last N events from the DB as a formatted context block suitable
         for injection into an LLM prompt.
         """
-        recent = self.get_recent(n)
+        recent = await self.get_recent(n)
         if not recent:
             return "No recent state changes recorded."
 
@@ -116,12 +207,9 @@ class EventLedger:
         lines.append("===========================")
         return "\n".join(lines)
 
-    @property
-    def event_count(self) -> int:
-        """Total number of events in the ledger."""
-        return len(self._events)
-
-    @property
-    def last_timestamp(self) -> float:
-        """Timestamp of the most recent event, or 0.0 if empty."""
-        return self._events[-1].timestamp if self._events else 0.0
+    async def get_last_timestamp(self) -> float:
+        """Timestamp of the most recent event in the DB, or 0.0 if empty."""
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute("SELECT timestamp FROM events ORDER BY timestamp DESC LIMIT 1") as cursor:
+                row = await cursor.fetchone()
+                return row[0] if row else 0.0

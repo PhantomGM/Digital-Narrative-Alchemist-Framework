@@ -95,7 +95,7 @@ Compressed summary (bullet points only):
         print(f"\n[Chronicler] Compressing {self.turn_counter} turns of state changes...")
 
         # 1. Pull events since last compression
-        recent_events = event_ledger.get_since(self._last_compression_timestamp)
+        recent_events = await event_ledger.get_since(self._last_compression_timestamp)
 
         if not recent_events:
             print("[Chronicler] No new events to compress.")
@@ -134,7 +134,7 @@ Compressed summary (bullet points only):
 
         # 6. Store the compressed summary and reset
         self._compressed_summaries.append(compressed)
-        self._last_compression_timestamp = event_ledger.last_timestamp
+        self._last_compression_timestamp = await event_ledger.get_last_timestamp()
         self.turn_counter = 0
 
         # 7. Bucket H: Extract discrete lore chunks from the raw events
