@@ -49,3 +49,11 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# Obsidian config (this repo is code; the world bible lives in its own vault)
+.obsidian/
+
+# Stray artifacts
+Untitled.md
+# Created by a script that wrote to a literal path string instead of a real path.
+CUsersnickdDesktopHermes/
