@@ -110,6 +110,8 @@ Two hooks that turn this object into pressure on characters: a copy surfacing, a
 
 *Identify 2–4 entities this document implies that do not yet have a profile — the doctrine or claim it carries (a separate entity from the document itself), its author, its custodian, the place it is kept, a rival or corrected copy.*
 
+*Use these type labels: `npc`, `faction`, `culture`, `location`, `item`, `creature`, `lore` (a belief or claim), `text` (a physical document — a scripture, manual, ledger or letter), `chronicle` (an event that happened), `linguistic` (a language or script). A document is a `text`, never an `item`: an item is a possession, a text is a thing that was written.*
+
 * **[Type] Name:** [Brief relationship or reason for existence]
 * **[Type] Name:** [Brief relationship or reason for existence]
 

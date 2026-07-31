@@ -2075,14 +2075,14 @@
       "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
       "type": "text",
       "name": "The Litany of the Unbroken Thread",
-      "dna": "STUB",
-      "phenotype": "[STUB] The Litany of the Unbroken Thread: The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.",
-      "gist": "The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.",
-      "summary": null,
+      "dna": "TEXT{v1.0[2/8/3]} #stone-tablet #scripture\nPURPORT{BELIEVED:holy-writ;ACTUAL:machine-operating-instructions;GAP:no-one-can-read-it}\nORIGIN{AUTHOR:a-condemned-prisoner;ATTRIB:unknown;AGE:3}\nCUSTODY{HOLDER:a-priesthood;PLACE:a-ruin;ACCESS:one-person-at-a-time}\nSTATE{COND:sealed-and-unexamined;SCRIPT:pictograms;DECAY:ink-fading}\nUSE{FUNC:copied-as-devotion;RITE:burning-a-copy-yearly}\nPERIL{HAZARD:it-is-physically-fragile;SANCTION:re-education}\nTENSION{a-holder-wants-to-sell-it}",
+      "phenotype": "### **The Litany of the Unbroken Thread**\n\n**Form:** stone-tablet \u2014 **scripture**\n**Held by:** The Orthodoxy of the Solar-Aether, at The Sanctum of Whispers (a ruin within The Iron Dominion) \u2014 **read by:** initiates only (one-person-at-a-time)\n**Survives as:** Hundreds of devotional copies, widely dispersed across The Iron Dominion and beyond; the canonical collection is substantial but fragmented, roughly a third of its original content missing, though few realize the extent of the loss.\n\n| **Essence**                                                                       | **Archetype**              |\n| :-------------------------------------------------------------------------------- | :------------------------- |\n| \"Heavy stone slabs covered in indecipherable painted pictograms, revered as divine truth but hiding a starkly mundane purpose.\" | Misinterpreted Sacred Text |\n\n---\n\n### **The Object**\nThe Litany consists of numerous heavy, dark basalt tablets, typically riven with hairline cracks and worn smooth at their edges. Each tablet is roughly the size of a human torso, weighing a considerable amount, and emanates the faint, metallic scent of ancient, stressed stone. They are etched with intricate, non-alphabetic pictograms, which are then filled with a now-fading, ochre-colored ink. The ink, once vibrant, has leached into the porous stone over generations, leaving behind ghostly outlines that are barely visible without intense scrutiny. The tablets are physically fragile, prone to chipping and flaking along their etched lines, a testament to the passage of centuries. Due to the unique nature of the pictograms and the lost context of their creation, the tablets are effectively unreadable by anyone in the present age. What people believe them to say is entirely derived from oral tradition and doctrine, not from direct interpretation.\n\n### **What It Is Taken For**\nBy the Orthodoxy of the Solar-Aether, The Litany of the Unbroken Thread is revered as the primary sacred text, believed to be divine scripture directly bequeathed by the First Architects during the Golden Age. It is held to contain the foundational truths of their faith: that the Golden Age was a divine creation, the Collapse a holy purification, and that rising magic (the 'Divine Breath') is meant to reanimate sacred machinery under the Orthodoxy\u2019s guidance. This belief is sustained entirely by the tradition of the Thread-Keepers, as no living scholar can genuinely decipher the tablets.\n\n### **What It Actually Is**\nThe Litany of the Unbroken Thread is, in reality, a collection of technical operating instructions for complex Golden Age machinery, likely detailing maintenance schedules, diagnostic procedures, or power conduit schematics. The pictograms represent functional diagrams and sequential commands rather than spiritual parables. The gap between what it is taken for and what it is has survived because the original script is unreadable by current scholars. The Orthodoxy's veneration is based solely on inherited doctrine and ritual. The true nature of the text was only recently \"revealed\" by Lore-keeper Corin, who, through unknown means, accessed a decoded translation or a parallel source that explained the pictograms' functional meaning, exposing the sacred text as a mundane manual.\n\n### **Provenance & Attribution**\nThe true author of The Litany of the Unbroken Thread is unknown. While the Orthodoxy attributes it to the First Architects of the Golden Age, historical evidence suggests it is far younger, dating back only a few generations (roughly 100-200 years old). Whispers among fringe scholars suggest its true origin lies with a condemned prisoner\u2014perhaps a technician or archivist from the early post-Collapse era\u2014who sought to preserve vital Golden Age knowledge in a simplified, pictorial form, possibly to circumvent language barriers or to encode dangerous truths. This prisoner's identity remains a mystery, their desperate act now sanctified and utterly misunderstood.\n\n### **Copies & Custody**\nThe primary, most revered collection of Litany tablets is held by the Orthodoxy of the Solar-Aether within a secluded, ruinous chamber deep beneath the Bastion of the Unwavering Word in The Iron Dominion, known as The Sanctum of Whispers. Access to these originals is severely restricted, typically granted to only one high-ranking Thread-Keeper at a time for ritualistic contemplation. Beyond these canonical tablets, hundreds of devotional copies exist. These copies are not translations, but painstaking, often crude, hand-traced reproductions of the pictograms onto vellum, hardened cloth, or thin slate. They are distributed widely among the Orthodoxy's faithful, revered as symbols of the divine word, though their content remains equally inscrutable. Guarding the primary collection falls to the Thread-Keepers, who maintain constant patrols and magical wards around the Sanctum.\n\n### **Use**\nThe Litany's primary function within the Orthodoxy is devotional and symbolic. Though unreadable, its pictograms are painstakingly copied by initiates as an act of piety, filling countless scrolls and books with the unintelligible glyphs. Once a year, during the Festival of the Cleansing Flame, a newly completed devotional copy is ritually burned in the main plaza of Nexus, its ashes scattered to symbolize purification and renewal. The air fills with the acrid smoke of singed vellum and burning ink as the faithful chant, believing they are renewing their covenant with the Architects. This ritual ensures a constant cycle of creation and destruction for the devotional copies, maintaining their prevalence while preventing any single copy from becoming too ancient or scrutinized.\n\n### **Peril**\nThe primary Litany tablets are physically fragile; their ancient ink continues to fade, and the stone itself is brittle, susceptible to shattering if mishandled. Beyond physical damage, the greatest hazard lies in the revelation of its true nature. Should the Orthodoxy's faithful learn that their sacred scripture is merely a technical manual, the foundations of their authority and doctrine would crumble. Anyone caught actively decoding or disseminating the true meaning of the pictograms faces \"re-education\" \u2014 a euphemism for systematic ideological reprogramming within the Thread-Keepers' grim facilities, designed to restore doctrinal purity and erase dissenting thought.\n\n### **In Play**\n1.  **The Crumbling Copy:** Elder Nykos, a high-ranking Thread-Keeper responsible for the Sanctum, is secretly facing severe financial hardship due to the Iron Dominion's failing power source. He plans to secretly sell a particularly well-preserved, early devotional copy of The Litany, one rumored to contain unique marginalia, to a shadowy collector in The Sundergate, risking discovery and shattering the Orthodoxy's carefully curated image of piety.\n2.  **Corin's Challenge:** Lore-keeper Corin's revelation that The Litany contains machine operating instructions has already sent ripples through Skarn. As Corin continues to evade Thread-Keeper Vaelis, the fugitive scholar seeks a way to publicly and undeniably prove the Litany's true nature, perhaps by activating a Golden Age device using the \"sacred\" instructions, forcing the Orthodoxy to either acknowledge the truth or violently suppress it.\n\n---\n\n### **\ud83d\udd17 Unmade Connections (DNA Stubs)**\n\n*   **NPC The Condemned Prisoner:** The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.\n*   **Location The Sanctum of Whispers:** A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.\n*   **NPC Elder Nykos:** A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.\n*   **Linguistic The Prisoner's Glyphs:** The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.\n\n---\n```yaml\nname: The Litany of the Unbroken Thread\ngist: The Orthodoxy's primary sacred text, believed to be divine scripture but revealed to contain machine operating instructions, existing as fragile stone tablets.\nsummary: >\n  The Litany of the Unbroken Thread is a collection of physically fragile, heavy basalt tablets inscribed with fading ochre pictograms. Though revered by The Orthodoxy of the Solar-Aether as ancient divine scripture from the First Architects, it is actually a much younger technical manual for Golden Age machinery, written by an unknown condemned prisoner. The tablets are unreadable by most, allowing the Orthodoxy's traditional beliefs to persist. Hundreds of devotional copies exist, painstakingly reproduced and ritually burned yearly. The primary collection is guarded by Thread-Keepers in The Sanctum of Whispers. Its true nature, exposed by Lore-keeper Corin, threatens to destabilize the Orthodoxy's authority, especially as a desperate Elder Nykos plans to sell a rare copy.\nstubs:\n  - type: npc\n    name: The Condemned Prisoner\n    gist: The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.\n  - type: location\n    name: The Sanctum of Whispers\n    gist: A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.\n  - type: npc\n    name: Elder Nykos\n    gist: A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.\n  - type: linguistic\n    name: The Prisoner's Glyphs\n    gist: The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.\n```",
+      "gist": "The Orthodoxy's primary sacred text, believed to be divine scripture but revealed to contain machine operating instructions, existing as fragile stone tablets.",
+      "summary": "The Litany of the Unbroken Thread is a collection of physically fragile, heavy basalt tablets inscribed with fading ochre pictograms. Though revered by The Orthodoxy of the Solar-Aether as ancient divine scripture from the First Architects, it is actually a much younger technical manual for Golden Age machinery, written by an unknown condemned prisoner. The tablets are unreadable by most, allowing the Orthodoxy's traditional beliefs to persist. Hundreds of devotional copies exist, painstakingly reproduced and ritually burned yearly. The primary collection is guarded by Thread-Keepers in The Sanctum of Whispers. Its true nature, exposed by Lore-keeper Corin, threatens to destabilize the Orthodoxy's authority, especially as a desperate Elder Nykos plans to sell a rare copy.",
       "tags": [
-        "stub",
         "from_089b9de9-0f98-41ba-9167-521aae1e4a7b",
-        "the_litany_of_the_unbroken_thread"
+        "the_litany_of_the_unbroken_thread",
+        "expanded"
       ],
       "stub_metadata": {
         "name": "The Litany of the Unbroken Thread",
@@ -2094,14 +2094,14 @@
       "id": "50dd270c-77f9-4888-b458-0accf56ca991",
       "type": "lore",
       "name": "The Divine Breath",
-      "dna": "STUB",
-      "phenotype": "[STUB] The Divine Breath: The Orthodoxy's theological term for the rising tide of magic, believed to be a purifying force reanimating sacred machinery.",
-      "gist": "The Orthodoxy's theological term for the rising tide of magic, believed to be a purifying force reanimating sacred machinery.",
-      "summary": null,
+      "dna": "LORE{v1.0[3/8/9]} #doctrine #whispered-secret\nCLAIM{SUBJ:the-rising-magic;SHAPE:justification;STAKE:vengeance}\nTRUTH{KERNEL:a-natural-process-personified;PROOF:a-second-conflicting-copy;RESOLVE:unknowable}\nKEEP{KEEPER:a-priesthood;RIVAL:none-openly;GRANTS:control-of-technology;ZEAL:1}\nPRACTICE{OBSERVE:a-recited-genealogy;SANCTION:death}\nDRIFT{VARIANT:a-folk-simplification;CORRUPT:two-things-conflated}\nTITLE{the-testament}\nTENSION{a-brewing-schism}",
+      "phenotype": "### **The Divine Breath**\n\n**Kind:** doctrine \u2014 **kept by The Orthodoxy of the Solar-Aether, carried as whispered-secret**\n**Held:** Widely held, almost universally believed across The Iron Dominion and lands under Orthodoxy influence, fiercely enforced despite internal doubts.\n\n| **Essence**                                              | **Archetype**              |\n| :------------------------------------------------------- | :------------------------- |\n| \"The sacred tide that cleanses the world and reawakens its slumbering gods.\" | Divine Manifestation / Sacred Vengeance |\n\n---\n\n### **What Is Claimed**\nThe Orthodoxy of the Solar-Aether teaches that the rising tide of magic across Skarn is not a chaotic force, but the **Divine Breath**: the living will and animating spirit of the First Architects themselves. They claim this Breath was unleashed after The Collapse as a purifying fire, intended to purge the world of the defilements that led to the Golden Age's ruin. Its ultimate purpose, believers hold, is to reanimate the sacred machinery of the First Architects, preparing Skarn for a new, purified age and exacting divine vengeance upon those who led the world astray. \"The Breath flows through the circuits of creation,\" the whispered catechism states, \"purging the unworthy and preparing the vessels for the Architects' return.\" Only the Orthodoxy, through its unbroken lineage of knowledge, is said to possess the wisdom to interpret and guide this Breath, ensuring the proper reanimation of sacred technology and preventing further defilement.\n\n### **Who Keeps It**\nThe Divine Breath doctrine is maintained by the Orthodoxy of the Solar-Aether, particularly its inner priesthood and the militant inquisitorial order known as The Thread-Keepers. Transmission occurs through a rigorous, tiered curriculum, with the deeper, more nuanced interpretations of the Breath revealed as \"whispered secrets\" during rites of passage or strategic briefings for higher-ranking clergy. The observance it demands involves the recitation of complex genealogies, known as The Breath-Chants, which trace the lineage of the First Architects and the \"worthy bloodlines\" deemed capable of interfacing with the reanimated technology.\n\nThis belief grants the Orthodoxy absolute authority over all Golden Age technology, declaring it \"sacred machinery\" that only they, as interpreters of the Divine Breath, may understand and operate. It provides the divine justification for their purges of \"tech-heretics\" who dare to tinker with ancient devices without sanction, claiming such acts defile the Breath itself. Furthermore, it underpins their claims to temporal power in regions like The Iron Dominion, as they alone are believed to be capable of guiding the world's purification and managing the awakening of its ancient power.\n\n### **Who Disputes It**\nOpen rivals to the doctrine of the Divine Breath are rare, as dissent carries the sanction of death at the hands of the Thread-Keepers. However, whispers of doubt persist among the common populace, who witness the rising magic cause destruction and unpredictable chaos as often as it \"reanimates\" anything. \"Tech-heretics,\" such as those who associate with Lore-keeper Corin, quietly argue that magic is a natural, untamed force, and that the Orthodoxy's interpretation is a self-serving fabrication. Their argument, often voiced only in secret, is that \"The Breath brings only fire, not purification. The machines awaken as beasts, not gods,\" and those who speak it aloud risk summary execution.\n\n### **What Is Actually True**\nThe rising tide of magic across Skarn is indeed a potent, natural phenomenon. However, the Orthodoxy's interpretation of this raw energy as the \"Divine Breath\"\u2014the conscious will of the First Architects\u2014is a profound personification. It conflates the resurgence of a natural force with a divine purpose, attributing intent where there is only emergent power. Evidence for this lies in the discrepancies found between the Orthodoxy's sacred texts, such as The Litany of the Unbroken Thread, and older, potentially suppressed records or \"second copies\" that reveal the Litany to be, in part, mundane machine operating instructions rather than purely divine scripture. The ultimate nature and origin of this rising magic, and whether it truly carries any \"divine will,\" remains unknowable.\n\n### **Variants & Drift**\nAmong the common populace, the Divine Breath doctrine has undergone a **folk simplification**. It is often perceived not as a grand cosmic purification, but as a more immediate, localized belief in \"Spirit-Fire\" or \"Sky-Blood\"\u2014a chaotic, unpredictable force that either blesses or curses individuals and specific locations. This version focuses less on divine reanimation and more on raw, localized power.\n\nThe core **corruption** of the Divine Breath doctrine lies in the conflation of two distinct phenomena: the natural, uncontrolled resurgence of magic and the deliberate, technological processes of Golden Age machinery. The Orthodoxy has skillfully blurred this line, presenting the machines' pre-programmed functions and reactions to magic as direct manifestations of the \"Divine Breath\" itself, rather than complex systems that merely react to or channel ambient magical energies. This convenient reinterpretation allows them to claim divine authority over both the natural world and the remnants of ancient technology.\n\n### **In Play**\n*   **The Unstable Breath:** A critical piece of Golden Age machinery, long dormant and believed by the Orthodoxy to be awaiting the purifying touch of the Divine Breath, begins to react chaotically to rising magic. Its \"awakening\" is not the controlled, purifying event the Orthodoxy predicted, but a dangerous, unpredictable surge that threatens a nearby settlement. This forces characters to question if the \"Divine Breath\" is truly divine, or merely raw, unguided power.\n*   **The Secret Genealogy:** A character discovers an older, suppressed genealogy of the First Architects or a lineage of \"Breath-Speakers\" that directly contradicts the Orthodoxy's official version taught in The Breath-Chants. This discovery could reveal a forgotten branch of legitimate technological knowledge, expose a hidden heresy, or even suggest that the Orthodoxy's current leadership is not truly descended from the \"worthy\" lines they claim, undermining their divine right to control the Breath.\n\n---\n\n### **\ud83d\udd17 Unmade Connections (DNA Stubs)**\n\n*   **Linguistic The Breath-Chants:** The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.\n*   **Item The Second Litany:** A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.\n*   **Faction The Silent Weavers:** A hidden collective of scholars and pragmatic mages who view the Divine Breath as a natural, unguided force, quietly seeking to understand and harness its raw power outside Orthodoxy dogma.\n\n---\n\n```yaml\nname: The Divine Breath\ngist: The Orthodoxy's core doctrine explaining rising magic as a purifying force from the First Architects, intended to reanimate sacred machinery and exact vengeance.\nsummary: >\n  The Divine Breath is the Orthodoxy of the Solar-Aether's theological term for the world's rising magic, claiming it's a divine, purifying force meant to reanimate ancient technology and exact vengeance for the Collapse. Believed to be the will of the First Architects, this doctrine justifies the Orthodoxy's control over all Golden Age tech and its violent suppression of \"tech-heretics.\" Though widely accepted, its inner keepers often lack true zeal, understanding it as a pragmatic tool for power, and dissent is met with death. Its true nature is a conflated natural phenomenon.\nstubs:\n  - type: linguistic\n    name: The Breath-Chants\n    gist: The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.\n  - type: item\n    name: The Second Litany\n    gist: A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.\n  - type: faction\n    name: The Silent Weavers\n    gist: A hidden collective of scholars and pragmatic mages who view the Divine Breath as a natural, unguided force, quietly seeking to understand and harness its raw power outside Orthodoxy dogma.\n```",
+      "gist": "The Orthodoxy's core doctrine explaining rising magic as a purifying force from the First Architects, intended to reanimate sacred machinery and exact vengeance.",
+      "summary": "The Divine Breath is the Orthodoxy of the Solar-Aether's theological term for the world's rising magic, claiming it's a divine, purifying force meant to reanimate ancient technology and exact vengeance for the Collapse. Believed to be the will of the First Architects, this doctrine justifies the Orthodoxy's control over all Golden Age tech and its violent suppression of \"tech-heretics.\" Though widely accepted, its inner keepers often lack true zeal, understanding it as a pragmatic tool for power, and dissent is met with death. Its true nature is a conflated natural phenomenon.",
       "tags": [
-        "stub",
         "from_089b9de9-0f98-41ba-9167-521aae1e4a7b",
-        "the_divine_breath"
+        "the_divine_breath",
+        "expanded"
       ],
       "stub_metadata": {
         "name": "The Divine Breath",
@@ -2266,6 +2266,139 @@
           "assembled from canon; no generation"
         ],
         "reviewed": "2026-07-30"
+      }
+    },
+    "e0b6ee1b-6820-4782-843c-94fd14407cf3": {
+      "id": "e0b6ee1b-6820-4782-843c-94fd14407cf3",
+      "type": "linguistic",
+      "name": "The Breath-Chants",
+      "dna": "STUB",
+      "phenotype": "[STUB] The Breath-Chants: The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
+      "gist": "The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_50dd270c-77f9-4888-b458-0accf56ca991",
+        "the_breath-chants"
+      ],
+      "stub_metadata": {
+        "name": "The Breath-Chants",
+        "description": "The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
+        "source_id": "50dd270c-77f9-4888-b458-0accf56ca991"
+      }
+    },
+    "cfb68222-661e-44b7-984a-41c0cc58cbbd": {
+      "id": "cfb68222-661e-44b7-984a-41c0cc58cbbd",
+      "type": "text",
+      "name": "The Second Litany",
+      "dna": "STUB",
+      "phenotype": "[STUB] The Second Litany: A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
+      "gist": "A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_50dd270c-77f9-4888-b458-0accf56ca991",
+        "the_second_litany"
+      ],
+      "stub_metadata": {
+        "name": "The Second Litany",
+        "description": "A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
+        "source_id": "50dd270c-77f9-4888-b458-0accf56ca991"
+      }
+    },
+    "08479ce0-d242-46e8-9e2a-d69be045045c": {
+      "id": "08479ce0-d242-46e8-9e2a-d69be045045c",
+      "type": "faction",
+      "name": "The Silent Weavers",
+      "dna": "STUB",
+      "phenotype": "[STUB] The Silent Weavers: A hidden collective of scholars and pragmatic mages who view the Divine Breath as a natural, unguided force, quietly seeking to understand and harness its raw power outside Orthodoxy dogma.",
+      "gist": "A hidden collective of scholars and pragmatic mages who view the Divine Breath as a natural, unguided force, quietly seeking to understand and harness its raw power outside Orthodoxy dogma.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_50dd270c-77f9-4888-b458-0accf56ca991",
+        "the_silent_weavers"
+      ],
+      "stub_metadata": {
+        "name": "The Silent Weavers",
+        "description": "A hidden collective of scholars and pragmatic mages who view the Divine Breath as a natural, unguided force, quietly seeking to understand and harness its raw power outside Orthodoxy dogma.",
+        "source_id": "50dd270c-77f9-4888-b458-0accf56ca991"
+      }
+    },
+    "b4dcae3e-2b2d-45c2-9c97-75994fe5521e": {
+      "id": "b4dcae3e-2b2d-45c2-9c97-75994fe5521e",
+      "type": "npc",
+      "name": "The Condemned Prisoner",
+      "dna": "STUB",
+      "phenotype": "[STUB] The Condemned Prisoner: The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.",
+      "gist": "The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+        "the_condemned_prisoner"
+      ],
+      "stub_metadata": {
+        "name": "The Condemned Prisoner",
+        "description": "The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.",
+        "source_id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+      }
+    },
+    "23bc103f-bd75-45f2-a850-4d5486ce64d5": {
+      "id": "23bc103f-bd75-45f2-a850-4d5486ce64d5",
+      "type": "location",
+      "name": "The Sanctum of Whispers",
+      "dna": "STUB",
+      "phenotype": "[STUB] The Sanctum of Whispers: A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.",
+      "gist": "A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+        "the_sanctum_of_whispers"
+      ],
+      "stub_metadata": {
+        "name": "The Sanctum of Whispers",
+        "description": "A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.",
+        "source_id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+      }
+    },
+    "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8": {
+      "id": "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8",
+      "type": "npc",
+      "name": "Elder Nykos",
+      "dna": "STUB",
+      "phenotype": "[STUB] Elder Nykos: A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.",
+      "gist": "A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+        "elder_nykos"
+      ],
+      "stub_metadata": {
+        "name": "Elder Nykos",
+        "description": "A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.",
+        "source_id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+      }
+    },
+    "0bbc812d-1591-49c4-90f4-4ff6fcd19e61": {
+      "id": "0bbc812d-1591-49c4-90f4-4ff6fcd19e61",
+      "type": "linguistic",
+      "name": "The Prisoner's Glyphs",
+      "dna": "STUB",
+      "phenotype": "[STUB] The Prisoner's Glyphs: The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.",
+      "gist": "The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.",
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+        "the_prisoner's_glyphs"
+      ],
+      "stub_metadata": {
+        "name": "The Prisoner's Glyphs",
+        "description": "The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.",
+        "source_id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
       }
     }
   },
@@ -3594,6 +3727,22 @@
         {
           "id": "089b9de9-0f98-41ba-9167-521aae1e4a7b",
           "label": "mentions_The Litany of the Unbroken Thread"
+        },
+        {
+          "id": "b4dcae3e-2b2d-45c2-9c97-75994fe5521e",
+          "label": "mentions_The Condemned Prisoner"
+        },
+        {
+          "id": "23bc103f-bd75-45f2-a850-4d5486ce64d5",
+          "label": "mentions_The Sanctum of Whispers"
+        },
+        {
+          "id": "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8",
+          "label": "mentions_Elder Nykos"
+        },
+        {
+          "id": "0bbc812d-1591-49c4-90f4-4ff6fcd19e61",
+          "label": "mentions_The Prisoner's Glyphs"
         }
       ]
     },
@@ -3604,6 +3753,18 @@
         {
           "id": "089b9de9-0f98-41ba-9167-521aae1e4a7b",
           "label": "mentions_The Divine Breath"
+        },
+        {
+          "id": "e0b6ee1b-6820-4782-843c-94fd14407cf3",
+          "label": "mentions_The Breath-Chants"
+        },
+        {
+          "id": "cfb68222-661e-44b7-984a-41c0cc58cbbd",
+          "label": "mentions_The Second Litany"
+        },
+        {
+          "id": "08479ce0-d242-46e8-9e2a-d69be045045c",
+          "label": "mentions_The Silent Weavers"
         }
       ]
     },
@@ -3687,6 +3848,76 @@
           "label": "mentions_Thorne the Rendersmith"
         }
       ]
+    },
+    "e0b6ee1b-6820-4782-843c-94fd14407cf3": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "50dd270c-77f9-4888-b458-0accf56ca991",
+          "label": "mentions_The Breath-Chants"
+        }
+      ]
+    },
+    "cfb68222-661e-44b7-984a-41c0cc58cbbd": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "50dd270c-77f9-4888-b458-0accf56ca991",
+          "label": "mentions_The Second Litany"
+        }
+      ]
+    },
+    "08479ce0-d242-46e8-9e2a-d69be045045c": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "50dd270c-77f9-4888-b458-0accf56ca991",
+          "label": "mentions_The Silent Weavers"
+        }
+      ]
+    },
+    "b4dcae3e-2b2d-45c2-9c97-75994fe5521e": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_The Condemned Prisoner"
+        }
+      ]
+    },
+    "23bc103f-bd75-45f2-a850-4d5486ce64d5": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_The Sanctum of Whispers"
+        }
+      ]
+    },
+    "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_Elder Nykos"
+        }
+      ]
+    },
+    "0bbc812d-1591-49c4-90f4-4ff6fcd19e61": {
+      "parent": [],
+      "child": [],
+      "peer": [
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_The Prisoner's Glyphs"
+        }
+      ]
     }
   },
   "tag_index": {
@@ -3725,6 +3956,9 @@
     ],
     "dr._aris_thorne": [
       "1b36ebd1-d655-470b-810d-d07a51ba58cc"
+    ],
+    "elder_nykos": [
+      "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8"
     ],
     "faction_1_(religious/ideological)": [
       "e137ae47-7858-4618-acf6-6e1b25b31b7d"
@@ -3768,6 +4002,11 @@
       "50c1a901-0020-485e-8eb9-3110bcc98ac7",
       "8094a4ee-2eee-4f3d-bb51-556a5c90a78c",
       "89832d6a-b1e2-46b6-b635-3e74434e48e9"
+    ],
+    "from_50dd270c-77f9-4888-b458-0accf56ca991": [
+      "08479ce0-d242-46e8-9e2a-d69be045045c",
+      "cfb68222-661e-44b7-984a-41c0cc58cbbd",
+      "e0b6ee1b-6820-4782-843c-94fd14407cf3"
     ],
     "from_57c77cb2-3a97-4b2a-9961-f67aa42ef10d": [
       "54141964-b877-47c5-9115-805598e07b2b"
@@ -3868,6 +4107,12 @@
       "a82f9bbf-2f81-4886-b27c-d94fe5368fb2",
       "f60b853a-b154-484e-aeee-adb17b5da5ad"
     ],
+    "from_f0fa79a0-7702-4e0d-a3e4-50d143e52c0e": [
+      "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8",
+      "0bbc812d-1591-49c4-90f4-4ff6fcd19e61",
+      "23bc103f-bd75-45f2-a850-4d5486ce64d5",
+      "b4dcae3e-2b2d-45c2-9c97-75994fe5521e"
+    ],
     "from_f4611ead-fd2a-4599-b4e0-00f622ee3be3": [
       "57154e86-2aa7-4009-99b4-138afdfb73c1",
       "a361558a-a737-492b-a329-2f8ee68a53f6",
@@ -3948,9 +4193,12 @@
     "stub": [
       "03b33938-c9f5-415d-849f-670eb8c12340",
       "046961bd-a449-4f8f-8080-f993a35a95b9",
+      "057c3b23-dcf4-4e55-9b2d-a3cd3d29e6a8",
+      "08479ce0-d242-46e8-9e2a-d69be045045c",
       "089b9de9-0f98-41ba-9167-521aae1e4a7b",
       "0994ecb7-b472-4736-8938-b830a11b3d7c",
       "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9",
+      "0bbc812d-1591-49c4-90f4-4ff6fcd19e61",
       "0de87f2e-e393-4649-8681-045ef213b98f",
       "0e452ea9-72e6-4f7d-95d8-b43ea424d894",
       "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
@@ -3959,6 +4207,7 @@
       "1b36ebd1-d655-470b-810d-d07a51ba58cc",
       "22f6a6f0-e32a-4aac-ac83-aa0013be143a",
       "239fb539-5bc1-498c-9747-d8c4cc1d98d9",
+      "23bc103f-bd75-45f2-a850-4d5486ce64d5",
       "25522f10-199a-4c23-b8b4-b13575ca8d2b",
       "2e290954-31be-4a8d-947b-3c9f1e46486d",
       "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c",
@@ -4011,6 +4260,7 @@
       "aab3d7be-17b9-4eba-9270-e7e2a8dc7051",
       "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
       "b3aca90f-5aa8-4254-b3e7-60b0296b1e92",
+      "b4dcae3e-2b2d-45c2-9c97-75994fe5521e",
       "b8be1015-61f6-4e81-a4a9-6ab44d627668",
       "be06fa28-b3e9-49f9-8951-fca6d0db53f3",
       "bf829b52-aa1c-4e0b-8b4c-bd5a91741634",
@@ -4019,11 +4269,13 @@
       "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be",
       "c7dbff3a-46e4-49a3-9d15-b503eaac4331",
       "cef18895-32d7-4e84-8a3e-386c1c95aa9b",
+      "cfb68222-661e-44b7-984a-41c0cc58cbbd",
       "d8d670cf-5ff6-4fd9-9416-48d1ac054898",
       "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e",
       "dad138a9-57c1-45c2-b399-6b5105dc46e0",
       "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588",
       "e015f15a-e33a-49df-b1ea-63788ecd02ff",
+      "e0b6ee1b-6820-4782-843c-94fd14407cf3",
       "e137ae47-7858-4618-acf6-6e1b25b31b7d",
       "e3eaab79-08c4-490d-b0db-049cb99aa321",
       "e935b9dd-ebd1-4f09-addb-facb2104e986",
@@ -4048,6 +4300,9 @@
     "the_blood-maw_cult": [
       "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588"
     ],
+    "the_breath-chants": [
+      "e0b6ee1b-6820-4782-843c-94fd14407cf3"
+    ],
     "the_cathedral_of_the_first_spark": [
       "c7dbff3a-46e4-49a3-9d15-b503eaac4331"
     ],
@@ -4071,6 +4326,9 @@
     ],
     "the_conclave_of_veils": [
       "25522f10-199a-4c23-b8b4-b13575ca8d2b"
+    ],
+    "the_condemned_prisoner": [
+      "b4dcae3e-2b2d-45c2-9c97-75994fe5521e"
     ],
     "the_council_of_nexus": [
       "95458109-70eb-4b02-8936-9b2ffddfd0e3"
@@ -4135,6 +4393,9 @@
     "the_preservationist_league": [
       "57154e86-2aa7-4009-99b4-138afdfb73c1"
     ],
+    "the_prisoner's_glyphs": [
+      "0bbc812d-1591-49c4-90f4-4ff6fcd19e61"
+    ],
     "the_quietus_seekers": [
       "f60b853a-b154-484e-aeee-adb17b5da5ad"
     ],
@@ -4147,6 +4408,9 @@
     "the_root-dwellers": [
       "dad138a9-57c1-45c2-b399-6b5105dc46e0"
     ],
+    "the_sanctum_of_whispers": [
+      "23bc103f-bd75-45f2-a850-4d5486ce64d5"
+    ],
     "the_scrambled_archives": [
       "a82f9bbf-2f81-4886-b27c-d94fe5368fb2"
     ],
@@ -4156,6 +4420,9 @@
     "the_scriveners_guild": [
       "7829c9f2-c930-463a-bb21-1f3afe7bb6ed"
     ],
+    "the_second_litany": [
+      "cfb68222-661e-44b7-984a-41c0cc58cbbd"
+    ],
     "the_shard_of_oblivion": [
       "e3eaab79-08c4-490d-b0db-049cb99aa321"
     ],
@@ -4164,6 +4431,9 @@
     ],
     "the_silent_shells": [
       "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be"
+    ],
+    "the_silent_weavers": [
+      "08479ce0-d242-46e8-9e2a-d69be045045c"
     ],
     "the_siphon-key": [
       "3c762ff4-416f-4ac6-bb54-74f0f24f91bd"

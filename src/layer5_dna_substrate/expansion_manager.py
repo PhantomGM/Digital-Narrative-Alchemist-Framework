@@ -78,7 +78,12 @@ class ExpansionManager:
         clean_phenotype = re.sub(r"###.*Gamemaster.*", "", clean_phenotype, flags=re.IGNORECASE | re.DOTALL)
         
         name_patterns = [
-            r"###\s+\*\*\\[?([^\\]\*\n]*)\\]?\*\*",           # ### **[Name]** or ### **Name**
+            # Was \\[? — an escaped backslash followed by a class-opening "[",
+            # which swallowed the capture group's "(" and made the trailing ")"
+            # unbalanced, so this raised PatternError for every input. That made
+            # the whole name fallback dead: expansion crashed instead of falling
+            # back whenever a decoder omitted the structured tail.
+            r"###\s+\*\*\[?([^\]\*\n]*)\]?\*\*",              # ### **[Name]** or ### **Name**
             r"###\s+([^#\n]*)",                             # ### Name
             r"##\s+(.*)",                                   # ## Name
             r"Name:\*\*\s+\*?([^\*\n]*)\*?$",                # **Name:** *Name* (at line end)
@@ -194,10 +199,17 @@ class ExpansionManager:
 
         return stub_ids
 
-    def expand_stub(self, stub_id: str, extra_context: str = "") -> str:
+    def expand_stub(self, stub_id: str, extra_context: str = "", **gen_kwargs) -> str:
         """
         Takes a Stub ID, generates its DNA, decodes it with context from its parent/source,
         and updates the registry record.
+
+        gen_kwargs are forwarded to the generator, for the types that accept a
+        seed and axis pins. This matters when canon already fixes something about
+        the entity: rolling those axes at random produces DNA that contradicts
+        the established world, and while the decoder is told canon outranks the
+        DNA, it is better not to hand it a conflict at all. Pin what canon
+        states and leave the rest to vary.
         """
         stub_record = self.registry.get_element(stub_id)
         if not stub_record or "stub" not in stub_record.get("tags", []):
@@ -243,7 +255,8 @@ class ExpansionManager:
             context = {"additional_notes": specific_context}
 
         # 3. Synthesize DNA
-        dna_data = self.forge.synthesize_element(e_type, constraint_package=constraints)
+        dna_data = self.forge.synthesize_element(
+            e_type, constraint_package=constraints, **gen_kwargs)
 
         # 4. Decode with full context
         full_phenotype = self.decoder.decode_element(dna_data, context=context)

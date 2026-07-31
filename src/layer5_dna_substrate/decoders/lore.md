@@ -109,6 +109,8 @@ Two hooks that turn this belief into pressure on characters: a doubt that become
 
 *Identify 2–4 entities this belief implies that do not yet have a profile — the text that carries it, its founder, a heretical splinter, a sacred site, a rival belief. If the medium is a written or sung work, the work itself belongs here as a separate entity.*
 
+*Use these type labels: `npc`, `faction`, `culture`, `location`, `item`, `creature`, `lore` (a belief or claim), `text` (a physical document — a scripture, manual, ledger or letter), `chronicle` (an event that happened), `linguistic` (a language or script). A document is a `text`, never an `item`: an item is a possession, a text is a thing that was written.*
+
 * **[Type] Name:** [Brief relationship or reason for existence]
 * **[Type] Name:** [Brief relationship or reason for existence]
 

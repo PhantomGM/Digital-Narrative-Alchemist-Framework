@@ -81,7 +81,10 @@ class ObsidianSync:
             clean_phenotype = re.sub(r"###.*Gamemaster.*", "", clean_phenotype, flags=re.IGNORECASE | re.DOTALL)
 
         name_patterns = [
-            r"###\s+\*\*\\[?([^\\]\*\n]*)\\]?\*\*",           # ### **[Name]** or ### **Name**
+            # Was \\[? — an escaped backslash followed by a class-opening "[",
+            # which swallowed the capture group's "(" and made the trailing ")"
+            # unbalanced, so this raised PatternError for every input.
+            r"###\s+\*\*\[?([^\]\*\n]*)\]?\*\*",              # ### **[Name]** or ### **Name**
             r"###\s+([^#\n]*)",                             # ### Name
             r"##\s+(.*)",                                   # ## Name
             r"Name:\*\*\s+\*?([^\*\n]*)\*?$",                # **Name:** *Name*
