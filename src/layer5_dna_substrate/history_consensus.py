@@ -1,15 +1,22 @@
 import os
+import re
+from typing import List, Dict
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from typing import List, Dict
+from layer5_dna_substrate.registry import DNARegistry
+from layer5_dna_substrate.forge import ProceduralForge
+from layer5_dna_substrate.decoder import DNADecoder
 
 class HistoryConsensusEngine:
     """
-    A 'Microscope'-style consensus engine where 4 distinct AI personas take turns
-    expanding on a core World DNA seed to generate deep historical periods and events.
+    Refactored 'Microscope'-style consensus engine.
+    Each historical epoch is now registered as a ChronicleDNA entity in the DNARegistry.
     """
-    def __init__(self, safety_governor=None):
+    def __init__(self, registry: DNARegistry, forge: ProceduralForge, decoder: DNADecoder, safety_governor=None):
+        self.registry = registry
+        self.forge = forge
+        self.decoder = decoder
         self.safety_governor = safety_governor
         
         from layer1_core.model_router import model_router
@@ -42,13 +49,39 @@ Write a 1-2 paragraph description of what happened. Do not contradict establishe
         )
         self.chain = self.prompt_template | self.llm | self.parser
 
-    async def generate_history(self, decoded_world_profile: str, rounds: int = 1, active_player_ids: List[str] = None) -> str:
+    def _extract_name(self, phenotype: str) -> str:
+        """Attempts to extract the chronicle name from the phenotype markdown."""
+        name_patterns = [
+            r"### \*\*\[?(.*?)\]?\*\*",             # ### **[Name]**
+            r"##\s+(.*)",                           # ## Name
+            r"\[Chronicle Name\]:\s+(.*)"
+        ]
+        for pattern in name_patterns:
+            match = re.search(pattern, phenotype, re.IGNORECASE)
+            if match:
+                name = match.group(1).strip()
+                name = re.sub(r"^\d+\.\s+", "", name)
+                name = name.replace("[", "").replace("]", "").replace("*", "")
+                if name.lower() not in ["chronicle name", "event name"]:
+                    return name
+        return "Unknown Historical Event"
+
+    async def generate_history(self, world_id: str, rounds: int = 1, active_player_ids: List[str] = None) -> List[str]:
         """
         Runs the consensus loop. Each persona takes a turn adding to the history log.
-        Outputs are filtered through the Safety Governor if provided.
+        Registers each event as a ChronicleDNA entity.
         """
+        world_record = self.registry.get_element(world_id)
+        if not world_record:
+            raise ValueError(f"World ID {world_id} not found in registry.")
+        
+        world_profile = world_record["phenotype"]
+        
         print(f"\n[ConsensusEngine] Initiating Microscope loop for {rounds} round(s)...")
+        
         history_log = "Dawn of the World: The fundamental forces coalesced, establishing the rules of reality.\n"
+        chronicle_ids = []
+        last_chronicle_id = None
         
         for round_num in range(rounds):
             print(f"\n--- Historical Epoch {round_num + 1} ---")
@@ -58,7 +91,7 @@ Write a 1-2 paragraph description of what happened. Do not contradict establishe
                 try:
                     contribution = await self.chain.ainvoke({
                         "persona_prompt": persona_prompt,
-                        "world_profile": decoded_world_profile,
+                        "world_profile": world_profile,
                         "current_history": history_log
                     })
                     
@@ -67,11 +100,45 @@ Write a 1-2 paragraph description of what happened. Do not contradict establishe
                         safety_check = await self.safety_governor.filter_content(contribution, active_player_ids)
                         if safety_check["status"] == "invalid":
                             print(f"[ConsensusEngine] {persona_name}'s entry struck from records (Safety Violation).")
-                            contribution = f"[{persona_name}'s dark records were sealed by the Inquisition and lost to time.]"
+                            continue
                     
-                    history_log += f"\n\n### Recorded by {persona_name}:\n{contribution.strip()}"
+                    # 1. Synthesize Chronicle DNA
+                    dna_data = self.forge.synthesize_element("chronicle")
+                    
+                    # 2. Decode with Persona context
+                    # We pass the persona's contribution as the primary context for the decoder
+                    full_phenotype = self.decoder.decode_element(dna_data, context={
+                        "persona_contribution": contribution,
+                        "historian": persona_name,
+                        "world_context": world_profile
+                    })
+                    
+                    # 3. Extract Name
+                    event_name = self._extract_name(full_phenotype)
+                    
+                    # 4. Register
+                    chronicle_id = self.registry.register_element(
+                        element_type="chronicle",
+                        raw_dna=dna_data["dna"],
+                        decoded_profile=full_phenotype,
+                        name=event_name,
+                        tags=["history", persona_name.replace(" ", "_").lower(), f"round_{round_num}"]
+                    )
+                    
+                    # 5. Link
+                    self.registry.link_elements(world_id, chronicle_id, "child", "historical_event")
+                    if last_chronicle_id:
+                        self.registry.link_elements(last_chronicle_id, chronicle_id, "peer", "precedes")
+                    
+                    last_chronicle_id = chronicle_id
+                    chronicle_ids.append(chronicle_id)
+                    
+                    # Update log for next persona
+                    history_log += f"\n\n### Recorded by {persona_name} (ID: {chronicle_id[:8]}):\n{contribution.strip()}"
                     
                 except Exception as e:
                     print(f"[ConsensusEngine] Error during {persona_name}'s turn: {e}")
+                    import traceback
+                    traceback.print_exc()
                     
-        return history_log
+        return chronicle_ids

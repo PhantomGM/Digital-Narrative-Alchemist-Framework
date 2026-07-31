@@ -1,10 +1,12 @@
 import asyncio
+import os
 from typing import Dict, Any, Optional
 from layer1_core.simulators import EnvironmentSimulator, EncounterDirector
 from layer3_operations.consistency_auditor import ConsistencyAuditor
 from layer3_operations.safety_governor import SafetyGovernor
 from layer3_operations.player_profiles import PlayerProfileManager
 from layer3_operations.chronicler import Chronicler
+from layer3_operations.wiki_bridge import WikiBridge
 from layer3_operations.state_critic import StateCritic
 from layer2_narrative.event_ledger import EventLedger, StateEvent
 from layer1_core.contracts import (
@@ -56,9 +58,18 @@ class SessionDirector:
 
         # Layer III Support
         self.profile_manager = PlayerProfileManager()
+        self.chronicler = Chronicler(compression_interval=10)
+
+        # --- Wiki RAG Integration ---
+        wiki_path = os.getenv("OBSIDIAN_WIKI_PATH", "/mnt/c/Users/nickd/Desktop/Hermes/Wiki")
+        if os.path.exists(wiki_path):
+            self.wiki_bridge = WikiBridge(wiki_path)
+            wiki_lore = self.wiki_bridge.ingest_wiki()
+            self.chronicler.add_external_lore(wiki_lore)
+        # ----------------------------
+
         self.auditor = ConsistencyAuditor()
         self.safety_gov = SafetyGovernor(campaign_tone="Dark Fantasy", profile_manager=self.profile_manager)
-        self.chronicler = Chronicler(compression_interval=10)
         self.state_critic = StateCritic()  # Bucket I: Circuit breaker
 
         self.current_scene = None
@@ -132,6 +143,23 @@ class SessionDirector:
         context_window = await self.state_keeper.get_context_window(location_tag, n=10)
         current_reality = context_window["current_state"]
 
+        # --- Wiki RAG Query ---
+        # Query lore relevant to the current location or player input
+        # For now, we search for the location name and any entities in the reality
+        search_terms = [location_tag] + list(current_reality.get("entities", {}).keys())
+        relevant_lore = []
+        for term in search_terms:
+            relevant_lore.extend(self.chronicler.query_lore(entity_id=term.lower().replace(" ", "_")))
+        
+        # Also do a broad search if no specific entities matched (stub for semantic search)
+        if not relevant_lore:
+             # Just pull the most important facts for now as a fallback
+             relevant_lore = self.chronicler.query_lore(min_importance=3)
+        
+        lore_context = "\n".join([f"- {c.fact}" for c in relevant_lore[:5]])
+        context_window["world_lore"] = lore_context
+        # ----------------------
+
         # ── TRACK A, PHASE 1: Parallel Input Processing (Bucket A) ─────
         # Safety pre-screen and Orchestrator run simultaneously.
         safety_input_task = self.safety_gov.filter_input(
@@ -198,14 +226,14 @@ class SessionDirector:
             mechanical_delta = outcome_data.copy()  # Preserve for Critic
             if injection_note:
                 outcome_data['narrative_effect'] += injection_note
-            prose = await self.weaver.render_prose(outcome_data, location_tag)
+            prose = await self.weaver.render_prose(outcome_data, str(context_window))
         elif result.get("status") == "routed_to_forge":
             prose = f"The GM pauses to consult their notes... (Forge Generation Required for: {player_input})"
         else:
              # Just narrative flow
              prose = await self.weaver.render_prose(
                  {"success": True, "narrative_effect": f"Player enacts: {player_input}{injection_note}"},
-                 location_tag
+                 str(context_window)
              )
 
         # ── TRACK A, PHASE 5: State Critic (Bucket I) ─────────────────
@@ -228,7 +256,7 @@ class SessionDirector:
         print("\n[SessionDirector] Running output through Layer III middleware...")
         safety_check, audit_check = await asyncio.gather(
             self.safety_gov.filter_content(prose, active_player_ids=[player_id]),
-            self.auditor.audit(prose, current_reality)
+            self.auditor.audit(prose, context_window)
         )
 
         # Wrap in typed contracts (Bucket G)
@@ -243,8 +271,8 @@ class SessionDirector:
         patch_attempts = 0
         while audit_verdict.status == "invalid" and patch_attempts < self._max_patch_attempts:
             print(f"[SessionDirector] Patch attempt {patch_attempts + 1}/{self._max_patch_attempts}...")
-            prose = await self.auditor.patch(prose, audit_check, current_state=current_reality)
-            audit_check = await self.auditor.audit(prose, current_reality)
+            prose = await self.auditor.patch(prose, audit_check, current_state=context_window)
+            audit_check = await self.auditor.audit(prose, context_window)
             audit_verdict = GuardrailVerdict(**audit_check)
             patch_attempts += 1
 

@@ -1,0 +1,50 @@
+{
+  "campaign": {
+    "title": "Ashes of the Sigil Coast",
+    "tone": "mysterious, grounded fantasy with hints of ancient magic",
+    "current_time": "Evening",
+    "current_location": "Port Marrow"
+  },
+  "known_locations": [
+    {
+      "name": "The Lantern's Rest",
+      "type": "tavern",
+      "description": "A weathered tavern near the harbor known for sailors, smugglers, and rumor-traders."
+    },
+    {
+      "name": "Blacksmith Row",
+      "type": "district",
+      "description": "A soot-dark row of workshops where ironworkers and rune-etchers ply their trade."
+    }
+  ],
+  "known_npcs": [
+    {
+      "name": "Mara Vey",
+      "role": "blacksmith",
+      "traits": [
+        "practical",
+        "blunt",
+        "secretive about old sigils"
+      ]
+    },
+    {
+      "name": "Tomas Reed",
+      "role": "innkeeper",
+      "traits": [
+        "observant",
+        "calm",
+        "protective of regulars"
+      ]
+    }
+  ],
+  "active_threads": [
+    "A broken sigil blade was recovered from a ruined watchtower.",
+    "Someone in Port Marrow is buying relic fragments in secret.",
+    "The player suspects the sigil blade is tied to the drowned archive."
+  ],
+  "facts_that_must_not_change": [
+    "Mara Vey is the blacksmith in Port Marrow.",
+    "The broken sigil blade is damaged and not yet understood.",
+    "The player is currently in Port Marrow."
+  ]
+}

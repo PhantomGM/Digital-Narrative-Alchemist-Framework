@@ -1,0 +1,16 @@
+{
+  "name": "Arden Vale",
+  "class_style": "stealthy explorer with a knack for reading old symbols",
+  "current_goal": "Learn more about the broken sigil blade without alerting rival relic hunters.",
+  "inventory": [
+    "broken sigil blade",
+    "salt-stained journal",
+    "hooded travel cloak"
+  ],
+  "known_relationships": [
+    {
+      "npc": "Mara Vey",
+      "status": "cautious ally"
+    }
+  ]
+}

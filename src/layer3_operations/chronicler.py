@@ -224,6 +224,13 @@ Compressed summary (bullet points only):
 
         return sorted(results, key=lambda c: c.source_turn)
 
+    def add_external_lore(self, chunks: list[LoreChunk]) -> None:
+        """
+        Incorporate pre-existing lore (e.g., from a Wiki) into the lore store.
+        """
+        self._lore_store.extend(chunks)
+        print(f"[Chronicler] Added {len(chunks)} external lore chunks. Total store: {self.lore_count}.")
+
     @property
     def lore_count(self) -> int:
         """Number of lore chunks stored."""

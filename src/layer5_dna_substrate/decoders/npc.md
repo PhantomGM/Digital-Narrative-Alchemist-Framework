@@ -146,6 +146,15 @@ Use the following internal logic to interpret the DNA. This logic must not appea
 
 ---
 
+### **🔗 Unmade Connections (DNA Stubs)**
+
+*Identify 2–4 entities mentioned in this profile that do not yet have a full DNA profile. These will be used to expand the world outwards.*
+
+* **[Type] Name:** [Brief relationship or reason for existence]
+* **[Type] Name:** [Brief relationship or reason for existence]
+
+---
+
 Let me know if you’d like this exported as a downloadable .txt or .md file, or if you’d like a lighter version for Quick NPC generation.
 
 ### EXAMPLE START
