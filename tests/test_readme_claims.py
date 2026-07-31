@@ -55,12 +55,22 @@ def test_decoder_count_is_accurate(readme, decoders):
     assert int(match.group(1)) == len(decoders)
 
 
-def test_the_decoderless_generators_are_named_correctly(readme, generators, decoders):
-    """The roadmap once named the wrong ones, including one already done."""
+def test_decoderless_generators_are_described_accurately(readme, generators, decoders):
+    """
+    The roadmap once named the wrong generators, including one already done. It
+    must now match either state: when some lack decoders they are named exactly;
+    when none do, the README must not claim otherwise.
+    """
+    missing = sorted(generators - decoders)
     match = re.search(r"generators still lack decoder prompts — (.+?)\.", readme, re.S)
-    assert match, "the README no longer lists the decoderless generators"
-    listed = sorted(re.findall(r"`([a-z_]+)`", match.group(1)))
-    assert listed == sorted(generators - decoders)
+
+    if missing:
+        assert match, f"the README does not mention the decoderless generators: {missing}"
+        assert sorted(re.findall(r"`([a-z_]+)`", match.group(1))) == missing
+    else:
+        assert not match, "the README claims generators lack decoders, but none do"
+        assert "Every one of the 21 registered generator types now has a dedicated decoder" \
+            in readme or "21 with dedicated decoders" in readme
 
 
 def test_no_invented_dna_types(readme, generators):

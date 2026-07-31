@@ -119,7 +119,7 @@ Not everything should be generated, and this is the substrate's central idea:
 
 ### DNA types
 
-21 generator types are registered; 15 have dedicated decoders. Each type exists
+Every one of the 21 registered generator types now has a dedicated decoder. Each type exists
 because a shared one leaked something it shouldn't, and each keystone axis was
 chosen to prevent a specific observed failure:
 
@@ -246,7 +246,7 @@ Specialized for vivid prose and ordered event sourcing.
 The isolated procedural engine. Generates raw world elements (Genotypes), invokes frontier models to translate them into rich narrative content (Phenotypes), and maintains the world bible those phenotypes live in.
 
 *Generation*
-* **Procedural Forge**: Master dispatcher for DNA mathematical generation (21 entity types registered; 15 with dedicated decoders).
+* **Procedural Forge**: Master dispatcher for DNA mathematical generation (21 entity types registered; 21 with dedicated decoders).
 * **DNA Decoder**: Translates pure mathematical DNA strings into playable profiles.
 * **Inheritance Engine**: Resolves constraints using graph context.
 * **Expansion Manager**: Turns the stubs a phenotype implies into real entities, forwarding seed and axis pins so canon-established facts are not re-rolled at random.
@@ -281,13 +281,14 @@ The foundational brain routing traffic between all layers.
 The DNA framework is actively under development. Current focus areas include:
 
 1. **A user-facing co-creator app**: Putting the world-building pipeline behind an interface where the author reviews, approves, and promotes without touching a command line. The canon model and the audit trail already assume a human in this seat.
-2. **Expanding Generator Coverage**: Six generators still lack decoder prompts — `agency`, `establishment`, `realm`, `regional_poi`, `trap`, `wonder`. Missing types worth adding: a *phenomenon* type for forces that are real rather than believed, and a *group* type for peoples who are neither a faction nor a culture.
-3. **More derivers**: The timeline proved the pattern. Indexes, folder hub rosters, regional gazetteers, and a faction power-web are all views over canon that should regenerate rather than be maintained by hand.
-4. **Fleshing out Layer IV (TTRPG Cartridges)**: Building comprehensive Adapters and Resolvers to handle complex mathematics (e.g., tracking HP, Condition Effects, and XP) rather than utilizing stubbed logic.
-5. **Session Pulse & Campaign Architecture**: Building out the remaining Layer III utilities to assist human co-GMs in scaffolding sessions before they begin.
-6. **Speculative Streaming**: Implementing Narrative Weaver output streaming to the client while the Auditor reviews concurrently, further reducing perceived latency.
-7. **External Graph Database**: Evaluating migration from in-memory graph to NetworkX or Neo4j for persistent cross-session relationship queries.
-8. **Template-Driven Output**: Decoded pages currently conform to the vault taxonomy through `ObsidianSync`. Reading the vault's own `Templates/` directory instead would let a vault define its page shapes rather than the code assuming them.
+2. **Deepening the recovered decoders**: `agency`, `establishment`, `realm`, `regional_poi`, `trap` and `wonder` were recovered from an early master-prompt file and are marked as drafts in their own headers. `establishment` needs the most work — its generator emits twenty genes with no vocabularies defined, and the recovered key described an older seven-gene genome. `agency.SPEC` and `realm.CONF` also reference a value table that was never in this repository.
+3. **Missing types**: a *phenomenon* type for forces that are real rather than believed, and a *group* type for peoples who are neither a faction nor a culture.
+4. **More derivers**: The timeline proved the pattern. Indexes, folder hub rosters, regional gazetteers, and a faction power-web are all views over canon that should regenerate rather than be maintained by hand.
+5. **Fleshing out Layer IV (TTRPG Cartridges)**: Building comprehensive Adapters and Resolvers to handle complex mathematics (e.g., tracking HP, Condition Effects, and XP) rather than utilizing stubbed logic.
+6. **Session Pulse & Campaign Architecture**: Building out the remaining Layer III utilities to assist human co-GMs in scaffolding sessions before they begin.
+7. **Speculative Streaming**: Implementing Narrative Weaver output streaming to the client while the Auditor reviews concurrently, further reducing perceived latency.
+8. **External Graph Database**: Evaluating migration from in-memory graph to NetworkX or Neo4j for persistent cross-session relationship queries.
+9. **Template-Driven Output**: Decoded pages currently conform to the vault taxonomy through `ObsidianSync`. Reading the vault's own `Templates/` directory instead would let a vault define its page shapes rather than the code assuming them.
 
 ---
 *The Digital Narrative Alchemist is designed to push the boundaries of AI TTRPG emulation beyond simple chatbots, creating a dynamic, internally consistent, and mechanically rigorous virtual game master.*
