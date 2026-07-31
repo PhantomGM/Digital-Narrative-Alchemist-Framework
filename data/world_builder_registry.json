@@ -2088,6 +2088,12 @@
         "name": "The Litany of the Unbroken Thread",
         "description": "The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.",
         "source_id": "089b9de9-0f98-41ba-9167-521aae1e4a7b"
+      },
+      "audit": {
+        "status": "consistent",
+        "notes": [],
+        "rounds": 1,
+        "reviewed": "2026-07-31"
       }
     },
     "50dd270c-77f9-4888-b458-0accf56ca991": {
@@ -2107,6 +2113,12 @@
         "name": "The Divine Breath",
         "description": "The Orthodoxy's theological term for the rising tide of magic, believed to be a purifying force reanimating sacred machinery.",
         "source_id": "089b9de9-0f98-41ba-9167-521aae1e4a7b"
+      },
+      "audit": {
+        "status": "consistent",
+        "notes": [],
+        "rounds": 1,
+        "reviewed": "2026-07-31"
       }
     },
     "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e": {
