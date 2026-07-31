@@ -1,6 +1,11 @@
 # Digital Narrative Alchemist (DNA) Framework
 
-A modular, multi-agent AI framework designed to serve as a comprehensive, autonomous Tabletop Roleplaying Game (TTRPG) Game Master.
+A modular, multi-agent AI framework built around one substrate serving two ends:
+
+* **A world-building backbone** — generating an internally consistent world bible that a human author owns and approves. This is intended to drive a user-facing AI **co-creator** app, where the author makes every creative decision and the machine does the drafting, cross-referencing, and consistency checking.
+* **An autonomous TTRPG Game Master** — running play, adjudicating rules deterministically, and narrating the outcome, drawing on the world the substrate built.
+
+Neither is a subsystem of the other. The GM needs a world that holds together under scrutiny; the co-creator needs those same guarantees with the author in the loop. Both are served by the same DNA substrate, the same canon model, and the same consistency auditing.
 
 Unlike simple chat-bot RPGs, the DNA framework separates narrative generation, procedural content generation (PCG), safety/consistency auditing, and hard-coded mechanical rules adjudication into specialized agent layers.
 
@@ -40,6 +45,23 @@ python main.py
 .\venv\Scripts\python.exe -m pytest tests/ -v
 ```
 
+The suite runs entirely offline: every model call is stubbed, so no API keys are
+needed to test. `tests/test_readme_claims.py` checks the counts quoted in this
+file against the code, so the two cannot drift apart unnoticed.
+
+### Pointing at a Vault
+
+Every script that touches a world bible needs to be told where it is, either with
+`--vault` or via `OBSIDIAN_VAULT_PATH`. **Nothing guesses a default.** An
+unresolvable path string is not silently created as a directory: a Windows path
+handed to a POSIX interpreter is not a path at all, and a hardcoded fallback once
+wrote an entire generated vault into a single mangled directory inside the repo.
+Scripts fail with an explanation instead.
+
+```bash
+.\venv\Scripts\python.exe scripts\sync_to_obsidian.py --vault "C:\path\to\Vault"
+```
+
 ---
 
 ## 🔄 A Single Player Turn (Minimal Lifecycle)
@@ -56,6 +78,83 @@ Multi-agent systems can seem overwhelming. So how does a simple action flow thro
 2. **Intent Routing (`Orchestrator`):** Recognizing a mechanical attack intent, the Orchestrator steps back and tokenizes the input, routing it directly into **Tier 1**. 
 3. **Deterministic Math (`Layer IV Rules`):** Pure Python math calculates the roll, the goblin's armor class, and the damage reduction *without ever touching an LLM*, ensuring zero math hallucination. It returns a strict JSON payload: `{ "target": "goblin 3", "HP_delta": -12, "status_applied": "bleeding" }`.
 4. **Response Translation (`Narrative Weaver`):** The Weaver receives the cold mathematical payload and translates it into Tier-3 generative prose. The AI hasn't done the math; it is simply playing the role of the narrator reading the math.
+
+---
+
+## 📖 The World Bible Pipeline
+
+The substrate generates a world into an Obsidian vault, one page per entity. Its
+purpose is not volume — it is a world that survives scrutiny, so that a GM can
+answer a player's question and a co-creator can trust what it is shown.
+
+### The canon model
+
+Every page carries a status, and the boundary is absolute:
+
+| Status | Meaning |
+| :--- | :--- |
+| `canon` | Approved by the author. Treated as fact. Never contradicted silently. |
+| `draft` | Proposed. May change freely. |
+| `deprecated` | No longer true. Kept, and linked forward to its replacement. |
+
+**Everything the machine invents enters as `draft`. Only the author promotes to
+canon.** The pipeline enforces this rather than merely asking: the vault sync
+refuses to overwrite a canon page, the canonize gate audits canon but will not
+patch it, and retyping an entity whose page is canon is rejected outright.
+
+### Three ways to make a page
+
+Not everything should be generated, and this is the substrate's central idea:
+
+1. **Generate** (DNA + decoder) — for entities that *should* vary: an NPC, a
+   creature, a culture. Random DNA is a constraint scaffold that forces variety;
+   the surrounding canon supplies the fit; the model supplies the novelty. The
+   same seed under different context yields a different, still-valid creation.
+2. **Compose** (from canon, no DNA, no model) — for an entity canon already
+   describes. Rolling a genome here would contradict what is established, so the
+   page is assembled from existing canon text with each statement sourced.
+3. **Derive** (a view over canon) — for things that must *not* vary: the
+   timeline, indexes, hub rosters. Regenerating these must be idempotent, so no
+   model is involved at all.
+
+### DNA types
+
+21 generator types are registered; 15 have dedicated decoders. Each type exists
+because a shared one leaked something it shouldn't, and each keystone axis was
+chosen to prevent a specific observed failure:
+
+| Type | Keystone axis | Prevents |
+| :--- | :--- | :--- |
+| `creature` | Sapience | A mindless swarm being given morality and motive |
+| `culture` | Cohesion | A whole people rendered as a monolith with one agenda |
+| `lore` | Veracity, held independent of Reach | Belief being conflated with truth |
+| `text` | Legibility, paired with purport vs. actual | A document treated as its own message |
+
+Also registered: `npc`, `faction`, `location`, `settlement`, `region`, `item`,
+`quest`, `travel`, `chronicle`, `linguistic`, `world`.
+
+### Consistency auditing
+
+Generated prose is audited against a **canon slice** assembled per entity: the
+world frame, the containment chain, the author's standing rulings, and the **full
+text** of the canon pages the passage actually depends on. Gists are not enough —
+judging a claim against a one-line summary produced both false positives (a true
+statement patched away) and false negatives (a ruling violated undetected). The
+author's terminology rulings are appended after any length cap, because they were
+once truncated out of every prompt, and a rule absent from the prompt cannot be
+followed.
+
+### Scripts
+
+| Script | Purpose |
+| :--- | :--- |
+| `seed_to_bible_demo.py` | Seed a world, decode it, register the stubs it implies |
+| `multi_agent_expansion_demo.py` | Expand pending stubs in parallel |
+| `canonize_gate.py` | Audit entities against canon, then sync drafts |
+| `compose_from_canon.py` | Build pages for stubs canon already describes |
+| `compose_timeline.py` | Re-derive the chronology from dated events |
+| `sync_to_obsidian.py` | Write the registry into the vault, canon untouched |
+| `list_models.py` | Probe which models the configured keys can actually reach |
 
 ---
 
@@ -144,10 +243,25 @@ Specialized for vivid prose and ordered event sourcing.
 
 ### 4. `[Tier 3: Semantic Heavy]` Layer V: DNA / PCG Substrate (`src/layer5_dna_substrate/`)
 **Latency:** 5-10 Seconds (Background/Pre-Computation)
-The isolated procedural engine. Generates raw world elements (Genotypes) and invokes frontier models to translate them into rich narrative content (Phenotypes).
-* **Procedural Forge**: Master dispatcher for DNA mathematical generation (14 entity types).
-* **Inheritance Engine**: Resolves constraints using graph context.
+The isolated procedural engine. Generates raw world elements (Genotypes), invokes frontier models to translate them into rich narrative content (Phenotypes), and maintains the world bible those phenotypes live in.
+
+*Generation*
+* **Procedural Forge**: Master dispatcher for DNA mathematical generation (21 entity types registered; 15 with dedicated decoders).
 * **DNA Decoder**: Translates pure mathematical DNA strings into playable profiles.
+* **Inheritance Engine**: Resolves constraints using graph context.
+* **Expansion Manager**: Turns the stubs a phenotype implies into real entities, forwarding seed and axis pins so canon-established facts are not re-rolled at random.
+* **DNA Registry**: The entity graph and working memory, with deterministic persistence.
+
+*World fit and verification*
+* **Context Assembler**: Builds the layered context package every decode and every audit reads — world frame, locale, lineage, negative space, directives — plus the cited canon text used for verification.
+* **Vault Adapter**: Read-only access to the world bible: overview, calendar, standing rulings, page text, index roster.
+* **Canonize Gate**: The audit → surgical patch → re-audit loop. Fail-closed, and it never patches a canon page.
+* **Phenotype Meta**: The structured tail decoders emit (name, gist, summary, stubs), and the scrubbing of decoder scaffolding.
+
+*Composition and derivation*
+* **Canon Composer**: Builds a sourced page for a stub canon already describes, with no DNA and no model.
+* **Timeline Composer**: Re-derives the chronology as a view over canon; idempotent by construction.
+* **Obsidian Sync**: Writes the registry into the vault by type taxonomy, refusing to overwrite canon or deprecated pages.
 * **History Consensus**: Microscope-style auto-weaving of deep campaign lore out of the semantic data mesh prior to player involvement.
 
 ### 5. `[Tier 2: Semantic Light]` Layer I: Core Runtime Intelligence (`src/layer1_core/`)
@@ -166,12 +280,14 @@ The foundational brain routing traffic between all layers.
 
 The DNA framework is actively under development. Current focus areas include:
 
-1. **Fleshing out Layer IV (TTRPG Cartridges)**: Building comprehensive Adapters and Resolvers to handle complex mathematics (e.g., tracking HP, Condition Effects, and XP) rather than utilizing stubbed logic.
-2. **Expanding Generator Coverage**: Fleshing out stub generators (realm, agency, region) into full DNA-producing generators with matching decoder prompts.
-3. **Session Pulse & Campaign Architecture**: Building out the remaining Layer III utilities to assist human co-GMs in scaffolding sessions before they begin.
-4. **Speculative Streaming**: Implementing Narrative Weaver output streaming to the client while the Auditor reviews concurrently, further reducing perceived latency.
-5. **External Graph Database**: Evaluating migration from in-memory graph to NetworkX or Neo4j for persistent cross-session relationship queries.
-6. **Template-Driven Output**: Wiring the output templates (`templates/`) into the decoder pipeline so decoded DNA conforms to the Obsidian-compatible template structure.
+1. **A user-facing co-creator app**: Putting the world-building pipeline behind an interface where the author reviews, approves, and promotes without touching a command line. The canon model and the audit trail already assume a human in this seat.
+2. **Expanding Generator Coverage**: Six generators still lack decoder prompts — `agency`, `establishment`, `realm`, `regional_poi`, `trap`, `wonder`. Missing types worth adding: a *phenomenon* type for forces that are real rather than believed, and a *group* type for peoples who are neither a faction nor a culture.
+3. **More derivers**: The timeline proved the pattern. Indexes, folder hub rosters, regional gazetteers, and a faction power-web are all views over canon that should regenerate rather than be maintained by hand.
+4. **Fleshing out Layer IV (TTRPG Cartridges)**: Building comprehensive Adapters and Resolvers to handle complex mathematics (e.g., tracking HP, Condition Effects, and XP) rather than utilizing stubbed logic.
+5. **Session Pulse & Campaign Architecture**: Building out the remaining Layer III utilities to assist human co-GMs in scaffolding sessions before they begin.
+6. **Speculative Streaming**: Implementing Narrative Weaver output streaming to the client while the Auditor reviews concurrently, further reducing perceived latency.
+7. **External Graph Database**: Evaluating migration from in-memory graph to NetworkX or Neo4j for persistent cross-session relationship queries.
+8. **Template-Driven Output**: Decoded pages currently conform to the vault taxonomy through `ObsidianSync`. Reading the vault's own `Templates/` directory instead would let a vault define its page shapes rather than the code assuming them.
 
 ---
 *The Digital Narrative Alchemist is designed to push the boundaries of AI TTRPG emulation beyond simple chatbots, creating a dynamic, internally consistent, and mechanically rigorous virtual game master.*
