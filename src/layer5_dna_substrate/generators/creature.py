@@ -90,7 +90,10 @@ def generate_creature_dna(seed=None, **pins):
             raise ValueError(f"Unknown creature pin '{key}'. Valid: {sorted(_PINS)}")
         kind, options = _PINS[key]
         if kind == "score":
-            if not (isinstance(value, int) and 1 <= value <= 9):
+            # bool is an int subclass: True would pass 1 <= v <= 9 and be
+            # written into the DNA literally, e.g. [True/3/2].
+            in_range = isinstance(value, int) and 1 <= value <= 9
+            if isinstance(value, bool) or not in_range:
                 raise ValueError(f"Pin '{key}' must be an int 1-9, got {value!r}")
         elif value not in options:
             raise ValueError(f"Pin '{key}'={value!r} not in {options}")

@@ -2,7 +2,7 @@ from layer5_dna_substrate.generators import (
     generate_npc_dna, generate_faction_dna, generate_quest_dna, generate_item_dna,
     generate_location_dna, generate_travel_dna, generate_region_dna,
     generate_realm_dna, generate_agency_dna, generate_trap_dna, generate_creature_dna,
-    generate_culture_dna,
+    generate_culture_dna, generate_lore_dna,
     generate_world_wonder_dna, generate_establishment_dna, generate_regional_poi_dna,
     WorldDNAGenerator
 )
@@ -30,6 +30,7 @@ class ProceduralForge:
             "trap": generate_trap_dna,
             "creature": generate_creature_dna,
             "culture": generate_culture_dna,
+            "lore": generate_lore_dna,
             "wonder": generate_world_wonder_dna,
             "establishment": generate_establishment_dna,
             "regional_poi": generate_regional_poi_dna,
