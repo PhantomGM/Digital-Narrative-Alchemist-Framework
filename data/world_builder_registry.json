@@ -887,7 +887,7 @@
     },
     "87b1dd50-4b83-4585-8571-280ab0753f2f": {
       "id": "87b1dd50-4b83-4585-8571-280ab0753f2f",
-      "type": "chronicle",
+      "type": "lore",
       "name": "The Doctrine of Ordered Influence",
       "dna": "STUB",
       "phenotype": "[STUB] The Doctrine of Ordered Influence: The foundational ideological text or set of principles guiding The Mind-Weavers' philosophy of control and societal manipulation.",
@@ -2073,7 +2073,7 @@
     },
     "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e": {
       "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
-      "type": "chronicle",
+      "type": "lore",
       "name": "The Litany of the Unbroken Thread",
       "dna": "STUB",
       "phenotype": "[STUB] The Litany of the Unbroken Thread: The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.",
@@ -2092,7 +2092,7 @@
     },
     "50dd270c-77f9-4888-b458-0accf56ca991": {
       "id": "50dd270c-77f9-4888-b458-0accf56ca991",
-      "type": "chronicle",
+      "type": "lore",
       "name": "The Divine Breath",
       "dna": "STUB",
       "phenotype": "[STUB] The Divine Breath: The Orthodoxy's theological term for the rising tide of magic, believed to be a purifying force reanimating sacred machinery.",
@@ -3690,106 +3690,41 @@
     }
   },
   "tag_index": {
-    "seed": [
-      "88129bf5-079d-436b-bea4-f1ada488b3aa",
-      "b3d5596e-cc9d-4385-ba0b-0e935ce618cd"
+    "aether-sealed_quantum_core": [
+      "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c"
     ],
-    "stub": [
-      "50c1a901-0020-485e-8eb9-3110bcc98ac7",
-      "3313a205-d155-406b-87a8-185b14bc2d69",
-      "0de87f2e-e393-4649-8681-045ef213b98f",
-      "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9",
-      "b8be1015-61f6-4e81-a4a9-6ab44d627668",
-      "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c",
-      "7829c9f2-c930-463a-bb21-1f3afe7bb6ed",
-      "17cfe5b7-f097-466e-ad45-36d40eeea5ca",
-      "0e452ea9-72e6-4f7d-95d8-b43ea424d894",
-      "9e31a135-ceb4-4cad-9159-6d5a6601d0ae",
-      "95458109-70eb-4b02-8936-9b2ffddfd0e3",
-      "3bcba9e6-da8f-458e-bb85-fea33ddc606c",
-      "be06fa28-b3e9-49f9-8951-fca6d0db53f3",
-      "3af3c46a-a613-46da-9ae3-f1150179f845",
-      "c7dbff3a-46e4-49a3-9d15-b503eaac4331",
-      "c09d8a36-bd90-4147-ae75-feb26f58f3aa",
-      "51f446b1-c85c-44ca-b5f4-746275ccc690",
-      "50dd270c-77f9-4888-b458-0accf56ca991",
-      "a361558a-a737-492b-a329-2f8ee68a53f6",
-      "aab3d7be-17b9-4eba-9270-e7e2a8dc7051",
-      "a82f9bbf-2f81-4886-b27c-d94fe5368fb2",
-      "bf829b52-aa1c-4e0b-8b4c-bd5a91741634",
-      "424a1549-6c4b-4c6d-b930-fc46ac43d6e8",
-      "70daf38b-732c-4dbf-ade6-7a14f23fa9cd",
-      "9b8dc2d2-e7da-43d1-b258-f43d0f282274",
-      "1b36ebd1-d655-470b-810d-d07a51ba58cc",
-      "239fb539-5bc1-498c-9747-d8c4cc1d98d9",
-      "089b9de9-0f98-41ba-9167-521aae1e4a7b",
-      "eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a",
-      "77c1583c-a067-4a76-8ff9-1478e906e1c2",
-      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
-      "619a346b-94f5-4be7-84e2-347ce5b90937",
-      "3983df2f-7b34-4ff2-bab1-936ede85f95f",
-      "6df4d759-a04f-42c8-8594-645f6888a303",
-      "cef18895-32d7-4e84-8a3e-386c1c95aa9b",
-      "8094a4ee-2eee-4f3d-bb51-556a5c90a78c",
-      "623a2fca-e798-45f6-8b61-20dbdb0c9539",
-      "0994ecb7-b472-4736-8938-b830a11b3d7c",
-      "046961bd-a449-4f8f-8080-f993a35a95b9",
-      "3c762ff4-416f-4ac6-bb54-74f0f24f91bd",
-      "60e541c1-9bb8-439b-a89e-5f031cfcd6e4",
-      "dad138a9-57c1-45c2-b399-6b5105dc46e0",
-      "e3eaab79-08c4-490d-b0db-049cb99aa321",
-      "e935b9dd-ebd1-4f09-addb-facb2104e986",
-      "443066dc-e950-4e6e-a43e-ab36a023a944",
-      "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588",
-      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
-      "d8d670cf-5ff6-4fd9-9416-48d1ac054898",
-      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
-      "57154e86-2aa7-4009-99b4-138afdfb73c1",
-      "440c64e4-222e-475e-9b15-bc0ff3ec108f",
-      "f5f9eb4f-20f7-4f60-9f21-fbd7688ae883",
-      "712240fb-e737-4554-a682-4d8b5b3eb445",
-      "87b1dd50-4b83-4585-8571-280ab0753f2f",
-      "22f6a6f0-e32a-4aac-ac83-aa0013be143a",
-      "6fe8f118-c98c-4494-ab51-6f51b4fccbe0",
-      "03b33938-c9f5-415d-849f-670eb8c12340",
-      "725b2766-b52a-4c5f-ace1-e9d17a372e18",
-      "c49405cd-ce62-40bd-b2d3-911fdefab985",
-      "a4238893-6a54-46ce-9251-7029431228b0",
-      "570d9de3-ff74-4580-bfb2-a0b2b92d9d76",
-      "59801fa8-6604-46b5-96a7-4bc57a072956",
-      "7cbeacff-1c97-4218-b428-6c06be88cff7",
-      "f38bb1eb-de1d-49ae-8ce8-13298b0edf5c",
-      "2e290954-31be-4a8d-947b-3c9f1e46486d",
-      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
-      "111653ab-a24a-41cb-af3e-4ca069f52b99",
-      "b3aca90f-5aa8-4254-b3e7-60b0296b1e92",
-      "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e",
-      "7fb8b03d-eaeb-43ad-9c08-76e25734407c",
-      "529fea16-8ca0-4e4b-bc35-a6dd49ec9915",
-      "f6e2ca08-f5ff-428a-9a86-2001fd651bad",
-      "89832d6a-b1e2-46b6-b635-3e74434e48e9",
-      "6aaff397-38e4-43e9-852e-c5469e0bc366",
-      "32a6638e-37aa-42e3-ba51-2e8512c50c78",
-      "ea2f3cd3-b4ba-4435-b7bd-a716105a26d2",
-      "57c77cb2-3a97-4b2a-9961-f67aa42ef10d",
-      "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
-      "e137ae47-7858-4618-acf6-6e1b25b31b7d",
-      "f60b853a-b154-484e-aeee-adb17b5da5ad",
-      "25522f10-199a-4c23-b8b4-b13575ca8d2b",
-      "920c777b-e90c-4e9c-aaf4-5ce470da9183",
-      "54141964-b877-47c5-9115-805598e07b2b",
-      "84574a6a-d12d-4b79-a116-c407be475eb2",
-      "58cb407a-6f0d-4f21-8d5c-7a80f3920c45",
-      "f4611ead-fd2a-4599-b4e0-00f622ee3be3",
-      "6aaa6902-0616-4057-b5ee-4fbf81111697",
-      "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be",
+    "aetherium_mines": [
+      "50c1a901-0020-485e-8eb9-3110bcc98ac7"
+    ],
+    "aetherium_shards": [
+      "aab3d7be-17b9-4eba-9270-e7e2a8dc7051"
+    ],
+    "archivist_kaelen": [
+      "57c77cb2-3a97-4b2a-9961-f67aa42ef10d"
+    ],
+    "archon_vesper_sol": [
+      "c09d8a36-bd90-4147-ae75-feb26f58f3aa"
+    ],
+    "axiom-cohesion_rod": [
+      "6fe8f118-c98c-4494-ab51-6f51b4fccbe0"
+    ],
+    "bastion_of_the_unwavering_word": [
       "e015f15a-e33a-49df-b1ea-63788ecd02ff"
     ],
-    "from_b3d5596e-cc9d-4385-ba0b-0e935ce618cd": [
-      "3bcba9e6-da8f-458e-bb85-fea33ddc606c",
-      "c49405cd-ce62-40bd-b2d3-911fdefab985",
-      "e137ae47-7858-4618-acf6-6e1b25b31b7d",
-      "920c777b-e90c-4e9c-aaf4-5ce470da9183"
+    "chief_scrivener_lyra": [
+      "32a6638e-37aa-42e3-ba51-2e8512c50c78"
+    ],
+    "council_of_sovereigns": [
+      "89832d6a-b1e2-46b6-b635-3e74434e48e9"
+    ],
+    "creature": [
+      "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e"
+    ],
+    "director-general_valeria_vance": [
+      "239fb539-5bc1-498c-9747-d8c4cc1d98d9"
+    ],
+    "dr._aris_thorne": [
+      "1b36ebd1-d655-470b-810d-d07a51ba58cc"
     ],
     "faction_1_(religious/ideological)": [
       "e137ae47-7858-4618-acf6-6e1b25b31b7d"
@@ -3797,415 +3732,480 @@
     "faction_3_(scientific/technological)": [
       "920c777b-e90c-4e9c-aaf4-5ce470da9183"
     ],
-    "shadow_1_(ancient_evil)": [
-      "3bcba9e6-da8f-458e-bb85-fea33ddc606c"
-    ],
-    "shadow_2_(hidden_society)": [
-      "c49405cd-ce62-40bd-b2d3-911fdefab985"
-    ],
-    "from_88129bf5-079d-436b-bea4-f1ada488b3aa": [
-      "443066dc-e950-4e6e-a43e-ab36a023a944",
-      "3983df2f-7b34-4ff2-bab1-936ede85f95f",
-      "aab3d7be-17b9-4eba-9270-e7e2a8dc7051"
-    ],
-    "the_sundergate_hegemony": [
-      "443066dc-e950-4e6e-a43e-ab36a023a944"
-    ],
-    "aetherium_shards": [
-      "aab3d7be-17b9-4eba-9270-e7e2a8dc7051"
-    ],
-    "the_scrivener's_archives": [
-      "3983df2f-7b34-4ff2-bab1-936ede85f95f"
-    ],
-    "from_3983df2f-7b34-4ff2-bab1-936ede85f95f": [
-      "eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a",
-      "32a6638e-37aa-42e3-ba51-2e8512c50c78",
-      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
-      "7829c9f2-c930-463a-bb21-1f3afe7bb6ed"
-    ],
-    "chief_scrivener_lyra": [
-      "32a6638e-37aa-42e3-ba51-2e8512c50c78"
-    ],
-    "the_truth_scroll": [
-      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c"
-    ],
-    "the_scriveners_guild": [
-      "7829c9f2-c930-463a-bb21-1f3afe7bb6ed"
-    ],
-    "the_null-chamber": [
-      "eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a"
-    ],
-    "from_32a6638e-37aa-42e3-ba51-2e8512c50c78": [
-      "0e452ea9-72e6-4f7d-95d8-b43ea424d894",
-      "7cbeacff-1c97-4218-b428-6c06be88cff7",
-      "60e541c1-9bb8-439b-a89e-5f031cfcd6e4",
-      "84574a6a-d12d-4b79-a116-c407be475eb2"
-    ],
-    "proctor_valerius": [
-      "0e452ea9-72e6-4f7d-95d8-b43ea424d894"
-    ],
-    "master_thelon": [
-      "60e541c1-9bb8-439b-a89e-5f031cfcd6e4"
-    ],
-    "the_whisperers": [
-      "84574a6a-d12d-4b79-a116-c407be475eb2"
-    ],
-    "the_chronicon_quill": [
-      "7cbeacff-1c97-4218-b428-6c06be88cff7"
-    ],
-    "from_443066dc-e950-4e6e-a43e-ab36a023a944": [
-      "17cfe5b7-f097-466e-ad45-36d40eeea5ca",
-      "8094a4ee-2eee-4f3d-bb51-556a5c90a78c",
-      "89832d6a-b1e2-46b6-b635-3e74434e48e9",
-      "50c1a901-0020-485e-8eb9-3110bcc98ac7"
-    ],
-    "council_of_sovereigns": [
-      "89832d6a-b1e2-46b6-b635-3e74434e48e9"
-    ],
-    "aetherium_mines": [
-      "50c1a901-0020-485e-8eb9-3110bcc98ac7"
-    ],
-    "the_hegemony_guard": [
-      "17cfe5b7-f097-466e-ad45-36d40eeea5ca"
-    ],
-    "sovereign_of_chains": [
-      "8094a4ee-2eee-4f3d-bb51-556a5c90a78c"
-    ],
-    "from_aab3d7be-17b9-4eba-9270-e7e2a8dc7051": [
-      "57c77cb2-3a97-4b2a-9961-f67aa42ef10d",
-      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c"
-    ],
-    "archivist_kaelen": [
-      "57c77cb2-3a97-4b2a-9961-f67aa42ef10d"
-    ],
-    "the_collapse": [
-      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c"
-    ],
-    "from_ac9552ce-9ecd-4d3e-91f4-eb4525cff66c": [
-      "77c1583c-a067-4a76-8ff9-1478e906e1c2",
-      "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9",
-      "95458109-70eb-4b02-8936-9b2ffddfd0e3"
-    ],
-    "the_council_of_nexus": [
-      "95458109-70eb-4b02-8936-9b2ffddfd0e3"
-    ],
-    "the_sky-shatter": [
-      "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9"
-    ],
-    "heart_of_the_collapse": [
-      "77c1583c-a067-4a76-8ff9-1478e906e1c2"
-    ],
-    "from_eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a": [
-      "f60b853a-b154-484e-aeee-adb17b5da5ad",
-      "0de87f2e-e393-4649-8681-045ef213b98f",
-      "a82f9bbf-2f81-4886-b27c-d94fe5368fb2"
-    ],
-    "the_null-pulse": [
-      "0de87f2e-e393-4649-8681-045ef213b98f"
-    ],
-    "the_scrambled_archives": [
-      "a82f9bbf-2f81-4886-b27c-d94fe5368fb2"
-    ],
-    "the_quietus_seekers": [
-      "f60b853a-b154-484e-aeee-adb17b5da5ad"
-    ],
-    "from_3bcba9e6-da8f-458e-bb85-fea33ddc606c": [
-      "f5f9eb4f-20f7-4f60-9f21-fbd7688ae883",
-      "6aaff397-38e4-43e9-852e-c5469e0bc366",
-      "e3eaab79-08c4-490d-b0db-049cb99aa321",
-      "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588"
-    ],
-    "the_whispering_hierophant": [
-      "6aaff397-38e4-43e9-852e-c5469e0bc366"
-    ],
-    "the_blood-maw_cult": [
-      "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588"
-    ],
-    "the_sunken_citadel_of_xylos": [
-      "f5f9eb4f-20f7-4f60-9f21-fbd7688ae883"
-    ],
-    "the_shard_of_oblivion": [
-      "e3eaab79-08c4-490d-b0db-049cb99aa321"
-    ],
-    "from_c49405cd-ce62-40bd-b2d3-911fdefab985": [
-      "58cb407a-6f0d-4f21-8d5c-7a80f3920c45",
-      "03b33938-c9f5-415d-849f-670eb8c12340",
-      "25522f10-199a-4c23-b8b4-b13575ca8d2b",
-      "87b1dd50-4b83-4585-8571-280ab0753f2f"
-    ],
-    "the_choreographers": [
-      "03b33938-c9f5-415d-849f-670eb8c12340"
-    ],
-    "the_conclave_of_veils": [
-      "25522f10-199a-4c23-b8b4-b13575ca8d2b"
-    ],
-    "golden_age_memory-altering_devices": [
-      "58cb407a-6f0d-4f21-8d5c-7a80f3920c45"
-    ],
-    "the_doctrine_of_ordered_influence": [
-      "87b1dd50-4b83-4585-8571-280ab0753f2f"
-    ],
-    "from_e137ae47-7858-4618-acf6-6e1b25b31b7d": [
-      "c7dbff3a-46e4-49a3-9d15-b503eaac4331",
-      "712240fb-e737-4554-a682-4d8b5b3eb445",
-      "c09d8a36-bd90-4147-ae75-feb26f58f3aa"
-    ],
-    "archon_vesper_sol": [
-      "c09d8a36-bd90-4147-ae75-feb26f58f3aa"
-    ],
-    "the_cathedral_of_the_first_spark": [
-      "c7dbff3a-46e4-49a3-9d15-b503eaac4331"
-    ],
-    "the_thread-keepers": [
-      "712240fb-e737-4554-a682-4d8b5b3eb445"
-    ],
-    "from_920c777b-e90c-4e9c-aaf4-5ce470da9183": [
-      "be06fa28-b3e9-49f9-8951-fca6d0db53f3",
-      "239fb539-5bc1-498c-9747-d8c4cc1d98d9",
-      "046961bd-a449-4f8f-8080-f993a35a95b9"
-    ],
-    "director-general_valeria_vance": [
-      "239fb539-5bc1-498c-9747-d8c4cc1d98d9"
-    ],
-    "sector_7_scrapyard": [
-      "be06fa28-b3e9-49f9-8951-fca6d0db53f3"
-    ],
-    "the_chrono-axiom_core": [
-      "046961bd-a449-4f8f-8080-f993a35a95b9"
-    ],
-    "from_57c77cb2-3a97-4b2a-9961-f67aa42ef10d": [
-      "54141964-b877-47c5-9115-805598e07b2b"
-    ],
-    "the_chrono-compass": [
-      "54141964-b877-47c5-9115-805598e07b2b"
+    "from_089b9de9-0f98-41ba-9167-521aae1e4a7b": [
+      "50dd270c-77f9-4888-b458-0accf56ca991",
+      "6df4d759-a04f-42c8-8594-645f6888a303",
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
     ],
     "from_0f2c25bd-cdf0-48a1-9d71-9a1135d9918c": [
       "70daf38b-732c-4dbf-ade6-7a14f23fa9cd"
     ],
-    "scribe_malakor": [
-      "70daf38b-732c-4dbf-ade6-7a14f23fa9cd"
+    "from_32a6638e-37aa-42e3-ba51-2e8512c50c78": [
+      "0e452ea9-72e6-4f7d-95d8-b43ea424d894",
+      "60e541c1-9bb8-439b-a89e-5f031cfcd6e4",
+      "7cbeacff-1c97-4218-b428-6c06be88cff7",
+      "84574a6a-d12d-4b79-a116-c407be475eb2"
+    ],
+    "from_3983df2f-7b34-4ff2-bab1-936ede85f95f": [
+      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
+      "32a6638e-37aa-42e3-ba51-2e8512c50c78",
+      "7829c9f2-c930-463a-bb21-1f3afe7bb6ed",
+      "eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a"
+    ],
+    "from_3bcba9e6-da8f-458e-bb85-fea33ddc606c": [
+      "6aaff397-38e4-43e9-852e-c5469e0bc366",
+      "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588",
+      "e3eaab79-08c4-490d-b0db-049cb99aa321",
+      "f5f9eb4f-20f7-4f60-9f21-fbd7688ae883"
+    ],
+    "from_431fb7e0-74bb-4e87-8ede-9c4130135b6b": [
+      "529fea16-8ca0-4e4b-bc35-a6dd49ec9915",
+      "b3aca90f-5aa8-4254-b3e7-60b0296b1e92",
+      "f4611ead-fd2a-4599-b4e0-00f622ee3be3"
+    ],
+    "from_443066dc-e950-4e6e-a43e-ab36a023a944": [
+      "17cfe5b7-f097-466e-ad45-36d40eeea5ca",
+      "50c1a901-0020-485e-8eb9-3110bcc98ac7",
+      "8094a4ee-2eee-4f3d-bb51-556a5c90a78c",
+      "89832d6a-b1e2-46b6-b635-3e74434e48e9"
+    ],
+    "from_57c77cb2-3a97-4b2a-9961-f67aa42ef10d": [
+      "54141964-b877-47c5-9115-805598e07b2b"
+    ],
+    "from_5a035452-83d4-428d-b66c-ae0f6d8f8c24": [
+      "3c762ff4-416f-4ac6-bb54-74f0f24f91bd",
+      "6aaa6902-0616-4057-b5ee-4fbf81111697",
+      "cef18895-32d7-4e84-8a3e-386c1c95aa9b"
+    ],
+    "from_5db3dbac-a669-49fa-81fe-008fa25b74b1": [
+      "725b2766-b52a-4c5f-ace1-e9d17a372e18",
+      "b8be1015-61f6-4e81-a4a9-6ab44d627668",
+      "f38bb1eb-de1d-49ae-8ce8-13298b0edf5c"
+    ],
+    "from_6aaa6902-0616-4057-b5ee-4fbf81111697": [
+      "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c",
+      "424a1549-6c4b-4c6d-b930-fc46ac43d6e8",
+      "9e31a135-ceb4-4cad-9159-6d5a6601d0ae"
+    ],
+    "from_712240fb-e737-4554-a682-4d8b5b3eb445": [
+      "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+      "e015f15a-e33a-49df-b1ea-63788ecd02ff"
     ],
     "from_7829c9f2-c930-463a-bb21-1f3afe7bb6ed": [
       "bf829b52-aa1c-4e0b-8b4c-bd5a91741634",
       "e935b9dd-ebd1-4f09-addb-facb2104e986"
     ],
-    "lore-keeper_corin": [
-      "e935b9dd-ebd1-4f09-addb-facb2104e986"
+    "from_88129bf5-079d-436b-bea4-f1ada488b3aa": [
+      "3983df2f-7b34-4ff2-bab1-936ede85f95f",
+      "443066dc-e950-4e6e-a43e-ab36a023a944",
+      "aab3d7be-17b9-4eba-9270-e7e2a8dc7051"
     ],
-    "the_redaction_vaults": [
-      "bf829b52-aa1c-4e0b-8b4c-bd5a91741634"
+    "from_920c777b-e90c-4e9c-aaf4-5ce470da9183": [
+      "046961bd-a449-4f8f-8080-f993a35a95b9",
+      "239fb539-5bc1-498c-9747-d8c4cc1d98d9",
+      "be06fa28-b3e9-49f9-8951-fca6d0db53f3"
     ],
     "from_95458109-70eb-4b02-8936-9b2ffddfd0e3": [
-      "7fb8b03d-eaeb-43ad-9c08-76e25734407c",
+      "0994ecb7-b472-4736-8938-b830a11b3d7c",
       "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
-      "0994ecb7-b472-4736-8938-b830a11b3d7c"
-    ],
-    "prime_minister_corin": [
       "7fb8b03d-eaeb-43ad-9c08-76e25734407c"
-    ],
-    "the_nexus_spire": [
-      "5a035452-83d4-428d-b66c-ae0f6d8f8c24"
-    ],
-    "the_golden_seal_of_nexus": [
-      "0994ecb7-b472-4736-8938-b830a11b3d7c"
-    ],
-    "from_5a035452-83d4-428d-b66c-ae0f6d8f8c24": [
-      "6aaa6902-0616-4057-b5ee-4fbf81111697",
-      "3c762ff4-416f-4ac6-bb54-74f0f24f91bd",
-      "cef18895-32d7-4e84-8a3e-386c1c95aa9b"
-    ],
-    "senator_malakor": [
-      "cef18895-32d7-4e84-8a3e-386c1c95aa9b"
-    ],
-    "the_siphon-key": [
-      "3c762ff4-416f-4ac6-bb54-74f0f24f91bd"
-    ],
-    "the_obsidian_trench": [
-      "6aaa6902-0616-4057-b5ee-4fbf81111697"
-    ],
-    "region": [
-      "b852d934-a642-438f-965b-42e5a5e3a755",
-      "5db3dbac-a669-49fa-81fe-008fa25b74b1",
-      "f8aea2e5-d404-47c8-acf7-003ba375e514"
-    ],
-    "from_b852d934-a642-438f-965b-42e5a5e3a755": [
-      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
-      "a4238893-6a54-46ce-9251-7029431228b0"
-    ],
-    "the_ribs": [
-      "a4238893-6a54-46ce-9251-7029431228b0"
-    ],
-    "the_soot-walker_clans": [
-      "431fb7e0-74bb-4e87-8ede-9c4130135b6b"
-    ],
-    "from_431fb7e0-74bb-4e87-8ede-9c4130135b6b": [
-      "b3aca90f-5aa8-4254-b3e7-60b0296b1e92",
-      "529fea16-8ca0-4e4b-bc35-a6dd49ec9915",
-      "f4611ead-fd2a-4599-b4e0-00f622ee3be3"
-    ],
-    "scrap-master_varr": [
-      "529fea16-8ca0-4e4b-bc35-a6dd49ec9915"
-    ],
-    "the_blighted_foundry": [
-      "b3aca90f-5aa8-4254-b3e7-60b0296b1e92"
-    ],
-    "the_aether-forged": [
-      "f4611ead-fd2a-4599-b4e0-00f622ee3be3"
     ],
     "from_a4238893-6a54-46ce-9251-7029431228b0": [
       "111653ab-a24a-41cb-af3e-4ca069f52b99",
       "22f6a6f0-e32a-4aac-ac83-aa0013be143a",
       "570d9de3-ff74-4580-bfb2-a0b2b92d9d76"
     ],
-    "scrip-broker_vane": [
-      "570d9de3-ff74-4580-bfb2-a0b2b92d9d76"
+    "from_aab3d7be-17b9-4eba-9270-e7e2a8dc7051": [
+      "57c77cb2-3a97-4b2a-9961-f67aa42ef10d",
+      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c"
     ],
-    "the_sieve-keel": [
-      "111653ab-a24a-41cb-af3e-4ca069f52b99"
+    "from_ac9552ce-9ecd-4d3e-91f4-eb4525cff66c": [
+      "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9",
+      "77c1583c-a067-4a76-8ff9-1478e906e1c2",
+      "95458109-70eb-4b02-8936-9b2ffddfd0e3"
     ],
-    "the_hull-guards": [
-      "22f6a6f0-e32a-4aac-ac83-aa0013be143a"
-    ],
-    "from_e935b9dd-ebd1-4f09-addb-facb2104e986": [
-      "623a2fca-e798-45f6-8b61-20dbdb0c9539",
-      "d8d670cf-5ff6-4fd9-9416-48d1ac054898",
-      "619a346b-94f5-4be7-84e2-347ce5b90937"
-    ],
-    "thread-keeper_vaelis": [
-      "619a346b-94f5-4be7-84e2-347ce5b90937"
-    ],
-    "the_stern-deck_deeps": [
-      "623a2fca-e798-45f6-8b61-20dbdb0c9539"
-    ],
-    "the_maintenance_codex": [
-      "d8d670cf-5ff6-4fd9-9416-48d1ac054898"
-    ],
-    "from_f4611ead-fd2a-4599-b4e0-00f622ee3be3": [
-      "a361558a-a737-492b-a329-2f8ee68a53f6",
-      "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e",
-      "57154e86-2aa7-4009-99b4-138afdfb73c1"
-    ],
-    "solder-lord_vaelen": [
-      "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e"
-    ],
-    "the_crucible_trench": [
-      "a361558a-a737-492b-a329-2f8ee68a53f6"
-    ],
-    "the_preservationist_league": [
-      "57154e86-2aa7-4009-99b4-138afdfb73c1"
+    "from_ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e": [
+      "1b36ebd1-d655-470b-810d-d07a51ba58cc",
+      "3af3c46a-a613-46da-9ae3-f1150179f845",
+      "6fe8f118-c98c-4494-ab51-6f51b4fccbe0",
+      "9b8dc2d2-e7da-43d1-b258-f43d0f282274",
+      "f6e2ca08-f5ff-428a-9a86-2001fd651bad"
     ],
     "from_b3aca90f-5aa8-4254-b3e7-60b0296b1e92": [
+      "3313a205-d155-406b-87a8-185b14bc2d69",
       "440c64e4-222e-475e-9b15-bc0ff3ec108f",
       "51f446b1-c85c-44ca-b5f4-746275ccc690",
-      "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be",
-      "3313a205-d155-406b-87a8-185b14bc2d69"
-    ],
-    "scrap-master_torvak": [
-      "51f446b1-c85c-44ca-b5f4-746275ccc690"
-    ],
-    "the_silent_shells": [
       "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be"
     ],
-    "the_drop-grate": [
-      "440c64e4-222e-475e-9b15-bc0ff3ec108f"
+    "from_b3d5596e-cc9d-4385-ba0b-0e935ce618cd": [
+      "3bcba9e6-da8f-458e-bb85-fea33ddc606c",
+      "920c777b-e90c-4e9c-aaf4-5ce470da9183",
+      "c49405cd-ce62-40bd-b2d3-911fdefab985",
+      "e137ae47-7858-4618-acf6-6e1b25b31b7d"
     ],
-    "the_iron-bargain_covenant": [
-      "3313a205-d155-406b-87a8-185b14bc2d69"
+    "from_b852d934-a642-438f-965b-42e5a5e3a755": [
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+      "a4238893-6a54-46ce-9251-7029431228b0"
     ],
-    "from_6aaa6902-0616-4057-b5ee-4fbf81111697": [
-      "9e31a135-ceb4-4cad-9159-6d5a6601d0ae",
-      "424a1549-6c4b-4c6d-b930-fc46ac43d6e8",
-      "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c"
+    "from_c49405cd-ce62-40bd-b2d3-911fdefab985": [
+      "03b33938-c9f5-415d-849f-670eb8c12340",
+      "25522f10-199a-4c23-b8b4-b13575ca8d2b",
+      "58cb407a-6f0d-4f21-8d5c-7a80f3920c45",
+      "87b1dd50-4b83-4585-8571-280ab0753f2f"
+    ],
+    "from_e137ae47-7858-4618-acf6-6e1b25b31b7d": [
+      "712240fb-e737-4554-a682-4d8b5b3eb445",
+      "c09d8a36-bd90-4147-ae75-feb26f58f3aa",
+      "c7dbff3a-46e4-49a3-9d15-b503eaac4331"
+    ],
+    "from_e935b9dd-ebd1-4f09-addb-facb2104e986": [
+      "619a346b-94f5-4be7-84e2-347ce5b90937",
+      "623a2fca-e798-45f6-8b61-20dbdb0c9539",
+      "d8d670cf-5ff6-4fd9-9416-48d1ac054898"
+    ],
+    "from_eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a": [
+      "0de87f2e-e393-4649-8681-045ef213b98f",
+      "a82f9bbf-2f81-4886-b27c-d94fe5368fb2",
+      "f60b853a-b154-484e-aeee-adb17b5da5ad"
+    ],
+    "from_f4611ead-fd2a-4599-b4e0-00f622ee3be3": [
+      "57154e86-2aa7-4009-99b4-138afdfb73c1",
+      "a361558a-a737-492b-a329-2f8ee68a53f6",
+      "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e"
+    ],
+    "from_f8aea2e5-d404-47c8-acf7-003ba375e514": [
+      "2e290954-31be-4a8d-947b-3c9f1e46486d",
+      "59801fa8-6604-46b5-96a7-4bc57a072956",
+      "dad138a9-57c1-45c2-b399-6b5105dc46e0",
+      "ea2f3cd3-b4ba-4435-b7bd-a716105a26d2"
+    ],
+    "golden_age_memory-altering_devices": [
+      "58cb407a-6f0d-4f21-8d5c-7a80f3920c45"
+    ],
+    "heart_of_the_collapse": [
+      "77c1583c-a067-4a76-8ff9-1478e906e1c2"
+    ],
+    "lore-keeper_corin": [
+      "e935b9dd-ebd1-4f09-addb-facb2104e986"
+    ],
+    "master_thelon": [
+      "60e541c1-9bb8-439b-a89e-5f031cfcd6e4"
     ],
     "master_vaelen": [
       "9e31a135-ceb4-4cad-9159-6d5a6601d0ae"
     ],
-    "the_trench-divers_syndicate": [
-      "424a1549-6c4b-4c6d-b930-fc46ac43d6e8"
-    ],
-    "aether-sealed_quantum_core": [
-      "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c"
-    ],
-    "from_f8aea2e5-d404-47c8-acf7-003ba375e514": [
-      "dad138a9-57c1-45c2-b399-6b5105dc46e0",
-      "59801fa8-6604-46b5-96a7-4bc57a072956",
-      "ea2f3cd3-b4ba-4435-b7bd-a716105a26d2",
-      "2e290954-31be-4a8d-947b-3c9f1e46486d"
-    ],
-    "the_root-dwellers": [
-      "dad138a9-57c1-45c2-b399-6b5105dc46e0"
-    ],
-    "sun-root": [
-      "2e290954-31be-4a8d-947b-3c9f1e46486d"
-    ],
-    "thorn-stalkers": [
-      "59801fa8-6604-46b5-96a7-4bc57a072956"
-    ],
     "moss-hulks": [
       "ea2f3cd3-b4ba-4435-b7bd-a716105a26d2"
-    ],
-    "from_5db3dbac-a669-49fa-81fe-008fa25b74b1": [
-      "f38bb1eb-de1d-49ae-8ce8-13298b0edf5c",
-      "725b2766-b52a-4c5f-ace1-e9d17a372e18",
-      "b8be1015-61f6-4e81-a4a9-6ab44d627668"
-    ],
-    "the_forged_peaks": [
-      "725b2766-b52a-4c5f-ace1-e9d17a372e18"
-    ],
-    "the_iron_vaults": [
-      "f38bb1eb-de1d-49ae-8ce8-13298b0edf5c"
-    ],
-    "the_iron_throne": [
-      "b8be1015-61f6-4e81-a4a9-6ab44d627668"
-    ],
-    "from_712240fb-e737-4554-a682-4d8b5b3eb445": [
-      "089b9de9-0f98-41ba-9167-521aae1e4a7b",
-      "e015f15a-e33a-49df-b1ea-63788ecd02ff"
-    ],
-    "bastion_of_the_unwavering_word": [
-      "e015f15a-e33a-49df-b1ea-63788ecd02ff"
-    ],
-    "the_first_truth_of_the_unbroken_thread": [
-      "089b9de9-0f98-41ba-9167-521aae1e4a7b"
-    ],
-    "from_089b9de9-0f98-41ba-9167-521aae1e4a7b": [
-      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
-      "6df4d759-a04f-42c8-8594-645f6888a303",
-      "50dd270c-77f9-4888-b458-0accf56ca991"
-    ],
-    "the_first_architects": [
-      "6df4d759-a04f-42c8-8594-645f6888a303"
-    ],
-    "the_litany_of_the_unbroken_thread": [
-      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
-    ],
-    "the_divine_breath": [
-      "50dd270c-77f9-4888-b458-0accf56ca991"
-    ],
-    "creature": [
-      "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e"
-    ],
-    "from_ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e": [
-      "f6e2ca08-f5ff-428a-9a86-2001fd651bad",
-      "6fe8f118-c98c-4494-ab51-6f51b4fccbe0",
-      "9b8dc2d2-e7da-43d1-b258-f43d0f282274",
-      "1b36ebd1-d655-470b-810d-d07a51ba58cc",
-      "3af3c46a-a613-46da-9ae3-f1150179f845"
-    ],
-    "the_chrome_heart": [
-      "3af3c46a-a613-46da-9ae3-f1150179f845"
     ],
     "pre-collapse_resonator": [
       "f6e2ca08-f5ff-428a-9a86-2001fd651bad"
     ],
+    "prime_minister_corin": [
+      "7fb8b03d-eaeb-43ad-9c08-76e25734407c"
+    ],
+    "proctor_valerius": [
+      "0e452ea9-72e6-4f7d-95d8-b43ea424d894"
+    ],
+    "region": [
+      "5db3dbac-a669-49fa-81fe-008fa25b74b1",
+      "b852d934-a642-438f-965b-42e5a5e3a755",
+      "f8aea2e5-d404-47c8-acf7-003ba375e514"
+    ],
+    "scrap-master_torvak": [
+      "51f446b1-c85c-44ca-b5f4-746275ccc690"
+    ],
+    "scrap-master_varr": [
+      "529fea16-8ca0-4e4b-bc35-a6dd49ec9915"
+    ],
+    "scribe_malakor": [
+      "70daf38b-732c-4dbf-ade6-7a14f23fa9cd"
+    ],
+    "scrip-broker_vane": [
+      "570d9de3-ff74-4580-bfb2-a0b2b92d9d76"
+    ],
+    "sector_7_scrapyard": [
+      "be06fa28-b3e9-49f9-8951-fca6d0db53f3"
+    ],
+    "seed": [
+      "88129bf5-079d-436b-bea4-f1ada488b3aa",
+      "b3d5596e-cc9d-4385-ba0b-0e935ce618cd"
+    ],
+    "senator_malakor": [
+      "cef18895-32d7-4e84-8a3e-386c1c95aa9b"
+    ],
+    "shadow_1_(ancient_evil)": [
+      "3bcba9e6-da8f-458e-bb85-fea33ddc606c"
+    ],
+    "shadow_2_(hidden_society)": [
+      "c49405cd-ce62-40bd-b2d3-911fdefab985"
+    ],
+    "solder-lord_vaelen": [
+      "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e"
+    ],
+    "sovereign_of_chains": [
+      "8094a4ee-2eee-4f3d-bb51-556a5c90a78c"
+    ],
+    "stub": [
+      "03b33938-c9f5-415d-849f-670eb8c12340",
+      "046961bd-a449-4f8f-8080-f993a35a95b9",
+      "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+      "0994ecb7-b472-4736-8938-b830a11b3d7c",
+      "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9",
+      "0de87f2e-e393-4649-8681-045ef213b98f",
+      "0e452ea9-72e6-4f7d-95d8-b43ea424d894",
+      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
+      "111653ab-a24a-41cb-af3e-4ca069f52b99",
+      "17cfe5b7-f097-466e-ad45-36d40eeea5ca",
+      "1b36ebd1-d655-470b-810d-d07a51ba58cc",
+      "22f6a6f0-e32a-4aac-ac83-aa0013be143a",
+      "239fb539-5bc1-498c-9747-d8c4cc1d98d9",
+      "25522f10-199a-4c23-b8b4-b13575ca8d2b",
+      "2e290954-31be-4a8d-947b-3c9f1e46486d",
+      "2e97071f-8bc7-4c3b-94d1-ddd19cae6f2c",
+      "32a6638e-37aa-42e3-ba51-2e8512c50c78",
+      "3313a205-d155-406b-87a8-185b14bc2d69",
+      "3983df2f-7b34-4ff2-bab1-936ede85f95f",
+      "3af3c46a-a613-46da-9ae3-f1150179f845",
+      "3bcba9e6-da8f-458e-bb85-fea33ddc606c",
+      "3c762ff4-416f-4ac6-bb54-74f0f24f91bd",
+      "424a1549-6c4b-4c6d-b930-fc46ac43d6e8",
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+      "440c64e4-222e-475e-9b15-bc0ff3ec108f",
+      "443066dc-e950-4e6e-a43e-ab36a023a944",
+      "50c1a901-0020-485e-8eb9-3110bcc98ac7",
+      "50dd270c-77f9-4888-b458-0accf56ca991",
+      "51f446b1-c85c-44ca-b5f4-746275ccc690",
+      "529fea16-8ca0-4e4b-bc35-a6dd49ec9915",
+      "54141964-b877-47c5-9115-805598e07b2b",
+      "570d9de3-ff74-4580-bfb2-a0b2b92d9d76",
+      "57154e86-2aa7-4009-99b4-138afdfb73c1",
+      "57c77cb2-3a97-4b2a-9961-f67aa42ef10d",
+      "58cb407a-6f0d-4f21-8d5c-7a80f3920c45",
+      "59801fa8-6604-46b5-96a7-4bc57a072956",
+      "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+      "60e541c1-9bb8-439b-a89e-5f031cfcd6e4",
+      "619a346b-94f5-4be7-84e2-347ce5b90937",
+      "623a2fca-e798-45f6-8b61-20dbdb0c9539",
+      "6aaa6902-0616-4057-b5ee-4fbf81111697",
+      "6aaff397-38e4-43e9-852e-c5469e0bc366",
+      "6df4d759-a04f-42c8-8594-645f6888a303",
+      "6fe8f118-c98c-4494-ab51-6f51b4fccbe0",
+      "70daf38b-732c-4dbf-ade6-7a14f23fa9cd",
+      "712240fb-e737-4554-a682-4d8b5b3eb445",
+      "725b2766-b52a-4c5f-ace1-e9d17a372e18",
+      "77c1583c-a067-4a76-8ff9-1478e906e1c2",
+      "7829c9f2-c930-463a-bb21-1f3afe7bb6ed",
+      "7cbeacff-1c97-4218-b428-6c06be88cff7",
+      "7fb8b03d-eaeb-43ad-9c08-76e25734407c",
+      "8094a4ee-2eee-4f3d-bb51-556a5c90a78c",
+      "84574a6a-d12d-4b79-a116-c407be475eb2",
+      "87b1dd50-4b83-4585-8571-280ab0753f2f",
+      "89832d6a-b1e2-46b6-b635-3e74434e48e9",
+      "920c777b-e90c-4e9c-aaf4-5ce470da9183",
+      "95458109-70eb-4b02-8936-9b2ffddfd0e3",
+      "9b8dc2d2-e7da-43d1-b258-f43d0f282274",
+      "9e31a135-ceb4-4cad-9159-6d5a6601d0ae",
+      "a361558a-a737-492b-a329-2f8ee68a53f6",
+      "a4238893-6a54-46ce-9251-7029431228b0",
+      "a82f9bbf-2f81-4886-b27c-d94fe5368fb2",
+      "aab3d7be-17b9-4eba-9270-e7e2a8dc7051",
+      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+      "b3aca90f-5aa8-4254-b3e7-60b0296b1e92",
+      "b8be1015-61f6-4e81-a4a9-6ab44d627668",
+      "be06fa28-b3e9-49f9-8951-fca6d0db53f3",
+      "bf829b52-aa1c-4e0b-8b4c-bd5a91741634",
+      "c09d8a36-bd90-4147-ae75-feb26f58f3aa",
+      "c49405cd-ce62-40bd-b2d3-911fdefab985",
+      "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be",
+      "c7dbff3a-46e4-49a3-9d15-b503eaac4331",
+      "cef18895-32d7-4e84-8a3e-386c1c95aa9b",
+      "d8d670cf-5ff6-4fd9-9416-48d1ac054898",
+      "da4ed7be-55b2-48d2-9d6d-ca4963c32b7e",
+      "dad138a9-57c1-45c2-b399-6b5105dc46e0",
+      "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588",
+      "e015f15a-e33a-49df-b1ea-63788ecd02ff",
+      "e137ae47-7858-4618-acf6-6e1b25b31b7d",
+      "e3eaab79-08c4-490d-b0db-049cb99aa321",
+      "e935b9dd-ebd1-4f09-addb-facb2104e986",
+      "ea2f3cd3-b4ba-4435-b7bd-a716105a26d2",
+      "eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a",
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+      "f38bb1eb-de1d-49ae-8ce8-13298b0edf5c",
+      "f4611ead-fd2a-4599-b4e0-00f622ee3be3",
+      "f5f9eb4f-20f7-4f60-9f21-fbd7688ae883",
+      "f60b853a-b154-484e-aeee-adb17b5da5ad",
+      "f6e2ca08-f5ff-428a-9a86-2001fd651bad"
+    ],
+    "sun-root": [
+      "2e290954-31be-4a8d-947b-3c9f1e46486d"
+    ],
+    "the_aether-forged": [
+      "f4611ead-fd2a-4599-b4e0-00f622ee3be3"
+    ],
+    "the_blighted_foundry": [
+      "b3aca90f-5aa8-4254-b3e7-60b0296b1e92"
+    ],
+    "the_blood-maw_cult": [
+      "dcc6df33-ccb8-4cae-bd8f-e2afc1bbb588"
+    ],
+    "the_cathedral_of_the_first_spark": [
+      "c7dbff3a-46e4-49a3-9d15-b503eaac4331"
+    ],
+    "the_choreographers": [
+      "03b33938-c9f5-415d-849f-670eb8c12340"
+    ],
+    "the_chrome_heart": [
+      "3af3c46a-a613-46da-9ae3-f1150179f845"
+    ],
+    "the_chronicon_quill": [
+      "7cbeacff-1c97-4218-b428-6c06be88cff7"
+    ],
+    "the_chrono-axiom_core": [
+      "046961bd-a449-4f8f-8080-f993a35a95b9"
+    ],
+    "the_chrono-compass": [
+      "54141964-b877-47c5-9115-805598e07b2b"
+    ],
+    "the_collapse": [
+      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c"
+    ],
+    "the_conclave_of_veils": [
+      "25522f10-199a-4c23-b8b4-b13575ca8d2b"
+    ],
+    "the_council_of_nexus": [
+      "95458109-70eb-4b02-8936-9b2ffddfd0e3"
+    ],
+    "the_crucible_trench": [
+      "a361558a-a737-492b-a329-2f8ee68a53f6"
+    ],
+    "the_divine_breath": [
+      "50dd270c-77f9-4888-b458-0accf56ca991"
+    ],
+    "the_doctrine_of_ordered_influence": [
+      "87b1dd50-4b83-4585-8571-280ab0753f2f"
+    ],
+    "the_drop-grate": [
+      "440c64e4-222e-475e-9b15-bc0ff3ec108f"
+    ],
+    "the_first_architects": [
+      "6df4d759-a04f-42c8-8594-645f6888a303"
+    ],
+    "the_first_truth_of_the_unbroken_thread": [
+      "089b9de9-0f98-41ba-9167-521aae1e4a7b"
+    ],
+    "the_forged_peaks": [
+      "725b2766-b52a-4c5f-ace1-e9d17a372e18"
+    ],
+    "the_golden_seal_of_nexus": [
+      "0994ecb7-b472-4736-8938-b830a11b3d7c"
+    ],
+    "the_hegemony_guard": [
+      "17cfe5b7-f097-466e-ad45-36d40eeea5ca"
+    ],
+    "the_hull-guards": [
+      "22f6a6f0-e32a-4aac-ac83-aa0013be143a"
+    ],
+    "the_iron-bargain_covenant": [
+      "3313a205-d155-406b-87a8-185b14bc2d69"
+    ],
+    "the_iron_throne": [
+      "b8be1015-61f6-4e81-a4a9-6ab44d627668"
+    ],
+    "the_iron_vaults": [
+      "f38bb1eb-de1d-49ae-8ce8-13298b0edf5c"
+    ],
+    "the_litany_of_the_unbroken_thread": [
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+    ],
+    "the_maintenance_codex": [
+      "d8d670cf-5ff6-4fd9-9416-48d1ac054898"
+    ],
+    "the_nexus_spire": [
+      "5a035452-83d4-428d-b66c-ae0f6d8f8c24"
+    ],
+    "the_null-chamber": [
+      "eebd4bbf-9f3a-4a1f-b9ff-a14d4594c93a"
+    ],
+    "the_null-pulse": [
+      "0de87f2e-e393-4649-8681-045ef213b98f"
+    ],
+    "the_obsidian_trench": [
+      "6aaa6902-0616-4057-b5ee-4fbf81111697"
+    ],
+    "the_preservationist_league": [
+      "57154e86-2aa7-4009-99b4-138afdfb73c1"
+    ],
+    "the_quietus_seekers": [
+      "f60b853a-b154-484e-aeee-adb17b5da5ad"
+    ],
+    "the_redaction_vaults": [
+      "bf829b52-aa1c-4e0b-8b4c-bd5a91741634"
+    ],
+    "the_ribs": [
+      "a4238893-6a54-46ce-9251-7029431228b0"
+    ],
+    "the_root-dwellers": [
+      "dad138a9-57c1-45c2-b399-6b5105dc46e0"
+    ],
+    "the_scrambled_archives": [
+      "a82f9bbf-2f81-4886-b27c-d94fe5368fb2"
+    ],
+    "the_scrivener's_archives": [
+      "3983df2f-7b34-4ff2-bab1-936ede85f95f"
+    ],
+    "the_scriveners_guild": [
+      "7829c9f2-c930-463a-bb21-1f3afe7bb6ed"
+    ],
+    "the_shard_of_oblivion": [
+      "e3eaab79-08c4-490d-b0db-049cb99aa321"
+    ],
+    "the_sieve-keel": [
+      "111653ab-a24a-41cb-af3e-4ca069f52b99"
+    ],
+    "the_silent_shells": [
+      "c53ece77-22c7-4e93-a7c6-3ce2c7f4b4be"
+    ],
+    "the_siphon-key": [
+      "3c762ff4-416f-4ac6-bb54-74f0f24f91bd"
+    ],
+    "the_sky-shatter": [
+      "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9"
+    ],
+    "the_soot-walker_clans": [
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b"
+    ],
+    "the_stern-deck_deeps": [
+      "623a2fca-e798-45f6-8b61-20dbdb0c9539"
+    ],
+    "the_sundergate_hegemony": [
+      "443066dc-e950-4e6e-a43e-ab36a023a944"
+    ],
+    "the_sunken_citadel_of_xylos": [
+      "f5f9eb4f-20f7-4f60-9f21-fbd7688ae883"
+    ],
+    "the_thread-keepers": [
+      "712240fb-e737-4554-a682-4d8b5b3eb445"
+    ],
+    "the_trench-divers_syndicate": [
+      "424a1549-6c4b-4c6d-b930-fc46ac43d6e8"
+    ],
+    "the_truth_scroll": [
+      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c"
+    ],
     "the_veil_weavers": [
       "9b8dc2d2-e7da-43d1-b258-f43d0f282274"
     ],
-    "axiom-cohesion_rod": [
-      "6fe8f118-c98c-4494-ab51-6f51b4fccbe0"
+    "the_whisperers": [
+      "84574a6a-d12d-4b79-a116-c407be475eb2"
     ],
-    "dr._aris_thorne": [
-      "1b36ebd1-d655-470b-810d-d07a51ba58cc"
+    "the_whispering_hierophant": [
+      "6aaff397-38e4-43e9-852e-c5469e0bc366"
+    ],
+    "thorn-stalkers": [
+      "59801fa8-6604-46b5-96a7-4bc57a072956"
+    ],
+    "thread-keeper_vaelis": [
+      "619a346b-94f5-4be7-84e2-347ce5b90937"
     ]
   }
 }

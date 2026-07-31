@@ -125,6 +125,46 @@ class DNARegistry:
         """Retrieves a specific element by its ID."""
         return self._records.get(entity_id)
 
+    def retype_element(self, entity_id: str, new_type: str, force: bool = False) -> str:
+        """
+        Changes an element's type and returns the type it had before.
+
+        Needed because a stub's type is guessed from a fuzzy match on the label a
+        decoder wrote ("[Chronicle] The Divine Breath"), so entities regularly
+        land under the wrong type and have to be corrected once a better type
+        exists. Retyping is not cosmetic: ObsidianSync files a page by type, so a
+        retyped entity's page is written to a different folder.
+
+        That is why canonized entities are refused unless force=True. Their page
+        is already canon, sync will not overwrite it, and moving where new pages
+        are written would leave the canon page orphaned in its old folder while a
+        second page appears elsewhere. Retype a canonized entity only when you
+        intend to move its page by hand as well.
+        """
+        record = self._records.get(entity_id)
+        if record is None:
+            raise KeyError(f"No element with id {entity_id!r}")
+
+        if not isinstance(new_type, str) or not new_type.strip():
+            raise ValueError(f"new_type must be a non-empty string, got {new_type!r}")
+        new_type = new_type.strip().lower()
+
+        old_type = record["type"]
+        if old_type == new_type:
+            return old_type
+
+        if "canonized" in (record.get("tags") or []) and not force:
+            raise ValueError(
+                f"{self._entity_display_name(entity_id)} is canonized; retyping would "
+                f"orphan its canon page in the old folder. Pass force=True only if you "
+                f"will move the page yourself."
+            )
+
+        record["type"] = new_type
+        print(f"[DNARegistry] Retyped {self._entity_display_name(entity_id)}: "
+              f"{old_type} -> {new_type}")
+        return old_type
+
     def find_by_tag(self, tag: str, element_type: str = None) -> list[Dict[str, Any]]:
         """Finds elements matching a specific tag, optionally filtered by type."""
         tag_key = tag.lower()
@@ -181,11 +221,19 @@ class DNARegistry:
         return None
 
     def save_to_json(self, filepath: str):
-        """Persists the entire registry and graph to a JSON file."""
+        """
+        Persists the entire registry and graph to a JSON file.
+
+        The tag index holds sets, whose iteration order varies between processes.
+        Serialising them unsorted made every save rewrite most of the file: a
+        three-field change produced a 128-line diff of shuffled ids, which buries
+        the real change and makes world-state history unreviewable. Sorting makes
+        the output a function of the content alone.
+        """
         data = {
             "records": self._records,
             "edges": self._edges,
-            "tag_index": {k: list(v) for k, v in self._tag_index.items()}
+            "tag_index": {k: sorted(v) for k, v in sorted(self._tag_index.items())}
         }
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
