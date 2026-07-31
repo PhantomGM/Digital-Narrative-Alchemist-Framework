@@ -77,11 +77,20 @@ AGENT_MODEL_CHAINS: dict[str, list[tuple[str, Optional[str]]]] = {
         ("gemini-2.5-flash", None),      # Primary: Gemini Flash
         ("claude-haiku-4.5", None),      # Fallback 1: Claude Haiku
         ("deepseek-v3.2", None),         # Fallback 2: DeepSeek V3.2
+        ("gemini-3.5-flash", None),        # Quota fallback: separate free-tier bucket
+        ("gemini-2.0-flash", None),        # Quota fallback 2: separate free-tier bucket
+        ("gemini-3.6-flash", None),        # Quota fallback 3: separate free-tier bucket
+        ("gemini-3.5-flash-lite", None),   # Quota fallback 4: separate free-tier bucket
     ],
     "auditor_patch": [
         ("claude-sonnet-4.6", None),     # Primary: Claude Sonnet (best editing)
         ("mistral-medium-3.1", None),    # Fallback 1: Mistral Medium
         ("gpt-5.4-mini", None),          # Fallback 2: GPT-5.4 mini
+        ("gemini-2.5-flash", None),        # Universal Hermes Fallback
+        ("gemini-3.5-flash", None),        # Quota fallback: separate free-tier bucket
+        ("gemini-2.0-flash", None),        # Quota fallback 2: separate free-tier bucket
+        ("gemini-3.6-flash", None),        # Quota fallback 3: separate free-tier bucket
+        ("gemini-3.5-flash-lite", None),   # Quota fallback 4: separate free-tier bucket
     ],
     "narrative_weaver": [
         ("claude-opus-4.6", None),       # Primary: Claude Opus (SOTA prose)
@@ -97,11 +106,21 @@ AGENT_MODEL_CHAINS: dict[str, list[tuple[str, Optional[str]]]] = {
         ("claude-opus-4.6", None),       # Primary: Opus (richest profiles)
         ("deepseek-r1", None),           # Fallback 1: DeepSeek R1
         ("llama-4-maverick", "groq"),    # Fallback 2: Maverick on Groq
+        ("gemini-2.5-flash", None),        # Universal Hermes Fallback
+        ("gemini-3.5-flash", None),        # Quota fallback: separate free-tier bucket
+        ("gemini-2.0-flash", None),        # Quota fallback 2: separate free-tier bucket
+        ("gemini-3.6-flash", None),        # Quota fallback 3: separate free-tier bucket
+        ("gemini-3.5-flash-lite", None),   # Quota fallback 4: separate free-tier bucket
     ],
     "history_consensus": [
         ("claude-opus-4.6", None),       # Primary: Opus (deep reasoning)
         ("deepseek-r1", None),           # Fallback 1: DeepSeek R1
         ("gemini-2.5-pro", None),        # Fallback 2: Gemini Pro
+        ("gemini-2.5-flash", None),        # Universal Hermes Fallback
+        ("gemini-3.5-flash", None),        # Quota fallback: separate free-tier bucket
+        ("gemini-2.0-flash", None),        # Quota fallback 2: separate free-tier bucket
+        ("gemini-3.6-flash", None),        # Quota fallback 3: separate free-tier bucket
+        ("gemini-3.5-flash-lite", None),   # Quota fallback 4: separate free-tier bucket
     ],
     "lore_extractor": [
         ("gemini-2.5-flash", None),      # Primary: Flash (structured extraction)
