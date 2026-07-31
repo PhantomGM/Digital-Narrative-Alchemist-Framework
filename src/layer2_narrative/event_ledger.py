@@ -31,9 +31,14 @@ class StateEvent:
     timestamp: float = field(default_factory=time.time)
 
     def to_context_string(self) -> str:
-        """Render this event as a human-readable context line for LLM injection."""
+        """Render this event as a human-readable context line for LLM injection.
+
+        Kept ASCII on purpose. This string is printed by emit(), and on Windows
+        a piped or redirected stdout uses the locale encoding (cp1252), where a
+        "→" raises UnicodeEncodeError — which made every emit() call fail.
+        """
         delta_summary = ", ".join(f"{k}: {v}" for k, v in self.delta.items())
-        return f"[{self.source_agent}] {self.event_type} → {self.target}: {delta_summary}"
+        return f"[{self.source_agent}] {self.event_type} -> {self.target}: {delta_summary}"
 
 class EventLedger:
     """
@@ -42,6 +47,11 @@ class EventLedger:
     All agents sequentially await emit calls. Any agent can await queries
     to the ledger to get an authoritative, chronologically ordered view of
     recent state changes across the parallel multi-agent environment without blocking.
+
+    Ordering is by the autoincrement `id`, i.e. insertion order, not by
+    `timestamp`. time.time() is not monotonic and collides under rapid emits
+    (ten successive calls here yield six distinct values), so ordering by it
+    left event replay — and the pruning of oldest events — non-deterministic.
     """
 
     def __init__(self, db_path: str = "dna_ledger.db", max_events: int = 500):
@@ -77,13 +87,13 @@ class EventLedger:
             print(f"[EventLedger] Recorded: {event.to_context_string()}")
             
             # Prune old events beyond max_events to bound the db cost
-            await db.execute(f"DELETE FROM events WHERE id NOT IN (SELECT id FROM events ORDER BY timestamp DESC LIMIT {self._max_events})")
+            await db.execute(f"DELETE FROM events WHERE id NOT IN (SELECT id FROM events ORDER BY id DESC LIMIT {self._max_events})")
             await db.commit()
 
     async def get_recent(self, n: int = 10) -> List[StateEvent]:
         """Return the last N events in chronological order directly from the database."""
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute(f"SELECT * FROM events ORDER BY timestamp DESC LIMIT {n}") as cursor:
+            async with db.execute(f"SELECT * FROM events ORDER BY id DESC LIMIT {n}") as cursor:
                 rows = await cursor.fetchall()
                 events = []
                 for row in reversed(rows): # Reverse back to chronological order
@@ -101,7 +111,7 @@ class EventLedger:
     async def get_by_target(self, target_id: str) -> List[StateEvent]:
         """Return all events affecting a specific entity or location."""
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute("SELECT * FROM events WHERE target = ? ORDER BY timestamp ASC", (target_id,)) as cursor:
+            async with db.execute("SELECT * FROM events WHERE target = ? ORDER BY id ASC", (target_id,)) as cursor:
                 rows = await cursor.fetchall()
                 return [StateEvent(
                         event_id=row[1],
@@ -116,7 +126,7 @@ class EventLedger:
     async def get_by_location(self, location: str) -> List[StateEvent]:
         """Return all events within a specific scene/location."""
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute("SELECT * FROM events WHERE location = ? ORDER BY timestamp ASC", (location,)) as cursor:
+            async with db.execute("SELECT * FROM events WHERE location = ? ORDER BY id ASC", (location,)) as cursor:
                 rows = await cursor.fetchall()
                 return [StateEvent(
                         event_id=row[1],
@@ -131,7 +141,7 @@ class EventLedger:
     async def get_by_type(self, event_type: str) -> List[StateEvent]:
         """Return all events of a specific type."""
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute("SELECT * FROM events WHERE event_type = ? ORDER BY timestamp ASC", (event_type,)) as cursor:
+            async with db.execute("SELECT * FROM events WHERE event_type = ? ORDER BY id ASC", (event_type,)) as cursor:
                 rows = await cursor.fetchall()
                 return [StateEvent(
                         event_id=row[1],
@@ -146,7 +156,7 @@ class EventLedger:
     async def get_since(self, timestamp: float) -> List[StateEvent]:
         """Return all events after a given timestamp (for Chronicler archival)."""
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute("SELECT * FROM events WHERE timestamp > ? ORDER BY timestamp ASC", (timestamp,)) as cursor:
+            async with db.execute("SELECT * FROM events WHERE timestamp > ? ORDER BY id ASC", (timestamp,)) as cursor:
                 rows = await cursor.fetchall()
                 return [StateEvent(
                         event_id=row[1],
@@ -168,7 +178,7 @@ class EventLedger:
             events = await self.get_by_location(location)
         else:
             async with aiosqlite.connect(self.db_path) as db:
-                async with db.execute("SELECT * FROM events ORDER BY timestamp ASC") as cursor:
+                async with db.execute("SELECT * FROM events ORDER BY id ASC") as cursor:
                     rows = await cursor.fetchall()
                     events = [StateEvent(
                         event_id=row[1],
@@ -207,9 +217,16 @@ class EventLedger:
         lines.append("===========================")
         return "\n".join(lines)
 
+    async def event_count(self) -> int:
+        """Number of events currently retained (post-pruning)."""
+        async with aiosqlite.connect(self.db_path) as db:
+            async with db.execute("SELECT COUNT(*) FROM events") as cursor:
+                row = await cursor.fetchone()
+                return row[0] if row else 0
+
     async def get_last_timestamp(self) -> float:
         """Timestamp of the most recent event in the DB, or 0.0 if empty."""
         async with aiosqlite.connect(self.db_path) as db:
-            async with db.execute("SELECT timestamp FROM events ORDER BY timestamp DESC LIMIT 1") as cursor:
+            async with db.execute("SELECT timestamp FROM events ORDER BY id DESC LIMIT 1") as cursor:
                 row = await cursor.fetchone()
                 return row[0] if row else 0.0

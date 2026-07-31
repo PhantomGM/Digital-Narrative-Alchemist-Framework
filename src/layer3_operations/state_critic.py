@@ -13,8 +13,6 @@ If the Critic flags a mismatch, the Session Director re-runs the Weaver
 once with the Critic's feedback injected as a correction constraint.
 """
 
-import os
-from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -78,21 +76,26 @@ MISMATCH | [One sentence explaining what the prose got wrong]
         if not prose.strip() or not mechanical_delta:
             return {"is_consistent": True, "mismatch_detail": ""}
 
+        # Only the model call may fail open. This except clause used to wrap the
+        # parsing and logging too, so anything raised after a verdict was reached
+        # was reported as "consistent" — a detected mismatch could be swallowed.
+        # That was reachable: the mismatch log used a non-ASCII glyph, and on a
+        # piped Windows stdout (cp1252) printing it raised UnicodeEncodeError.
         try:
             response = await self.chain.ainvoke({
                 "mechanical_delta": str(mechanical_delta),
                 "prose": prose
             })
-            response = response.strip()
-
-            if response.startswith("MATCH"):
-                print("[StateCritic] ✓ Prose matches mechanical outcome.")
-                return {"is_consistent": True, "mismatch_detail": ""}
-            else:
-                detail = response.split("|", 1)[1].strip() if "|" in response else response
-                print(f"[StateCritic] ✗ MISMATCH: {detail}")
-                return {"is_consistent": False, "mismatch_detail": detail}
-
         except Exception as e:
             print(f"[StateCritic] Validation error: {e}. Defaulting to consistent.")
             return {"is_consistent": True, "mismatch_detail": ""}
+
+        response = str(response or "").strip()
+
+        if response.startswith("MATCH"):
+            print("[StateCritic] MATCH - prose matches mechanical outcome.")
+            return {"is_consistent": True, "mismatch_detail": ""}
+
+        detail = response.split("|", 1)[1].strip() if "|" in response else response
+        print(f"[StateCritic] MISMATCH: {detail}")
+        return {"is_consistent": False, "mismatch_detail": detail}
