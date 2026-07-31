@@ -28,15 +28,21 @@ You are the Consistency Auditor for a TTRPG engine.
 Your job is to read the CURRENT WORLD STATE and a newly generated PASSAGE of text.
 You must determine if the PASSAGE contradicts the WORLD STATE or makes logical errors (e.g. claiming a dead NPC is alive, or an item is present when it isn't).
 
+CRITICAL: the WORLD STATE is a PARTIAL view. It summarises some entities in a single line and omits
+most detail about them. New or additional detail is NOT a contradiction. Flag a passage ONLY when it
+asserts something that cannot be true alongside an explicit statement in the WORLD STATE - a direct
+conflict of fact, not an absence of confirmation. If the WORLD STATE is merely silent on a claim, or
+gives a shorter version of it, the passage is VALID. When in doubt, answer VALID.
+
 CURRENT WORLD STATE:
 {state}
 
 NEW PASSAGE:
 {passage}
 
-If the passage is perfectly consistent, reply ONLY with the exact word: VALID
-If the passage contains a contradiction, reply with this exact format:
-INVALID | [The exact sentence from the passage that is wrong] | [A short explanation of the error]
+If the passage is consistent (including when it adds detail the WORLD STATE does not mention), reply ONLY with the exact word: VALID
+If the passage directly contradicts an explicit statement in the WORLD STATE, reply with this exact format:
+INVALID | [The exact sentence from the passage that is wrong] | [A short explanation naming the world-state statement it conflicts with]
 """
         self.audit_prompt = PromptTemplate(
             template=audit_template,
@@ -71,14 +77,19 @@ Output the COMPLETE corrected passage (with the fixed sentence in place). Do not
         )
         self.patch_chain = self.patch_prompt | self.patch_llm | self.parser
 
-    async def audit(self, passage: str, current_state: dict) -> dict:
+    async def audit(self, passage: str, current_state: dict, fail_open: bool = True) -> dict:
         """
         Runs the LLM consistency check.
 
         Returns:
-            - status: "valid" or "invalid"
+            - status: "valid", "invalid", or "error" (only when fail_open=False)
             - correction_note: explanation of the error (empty if valid)
             - offending_text: the exact sentence that is wrong (empty if valid)
+
+        fail_open: on an audit exception, True (default) returns "valid" so a
+        live session never hangs; False returns "error" so batch consumers
+        (e.g. the canonize gate) can mark the passage unreviewed instead of
+        silently trusting it.
         """
         print("[ConsistencyAuditor] Auditing passage against World State...")
 
@@ -110,8 +121,11 @@ Output the COMPLETE corrected passage (with the fixed sentence in place). Do not
                 return {"status": "invalid", "correction_note": note, "offending_text": offending}
 
         except Exception as e:
-            print(f"[ConsistencyAuditor] Error during audit: {e}. Defaulting to valid to prevent hang.")
-            return {"status": "valid", "correction_note": "", "offending_text": ""}
+            if fail_open:
+                print(f"[ConsistencyAuditor] Error during audit: {e}. Defaulting to valid to prevent hang.")
+                return {"status": "valid", "correction_note": "", "offending_text": ""}
+            print(f"[ConsistencyAuditor] Error during audit: {e}. Reporting error (fail_open=False).")
+            return {"status": "error", "correction_note": str(e), "offending_text": ""}
 
     async def patch(self, prose: str, audit_result: dict, current_state: dict = None) -> str:
         """
