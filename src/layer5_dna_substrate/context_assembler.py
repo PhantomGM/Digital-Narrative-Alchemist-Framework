@@ -18,15 +18,42 @@ package.canon_slice() feeds the ConsistencyAuditor (verification) —
 both read the same truth.
 """
 
+import re
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
 from layer5_dna_substrate.registry import DNARegistry
 from layer5_dna_substrate.vault_adapter import VaultAdapter
 
-# Fraction of the token budget granted to each capped layer
-_LAYER_BUDGET = {"world_frame": 0.25, "locale": 0.25, "lineage": 0.20, "roster": 0.30}
+# Fraction of the token budget granted to each capped decoder layer.
+_LAYER_BUDGET = {"world_frame": 0.25, "locale": 0.25, "lineage": 0.20,
+                 "roster": 0.30}
 _CHARS_PER_TOKEN = 4
+
+# How much of each cited canon page to carry, and how many pages at most.
+# A gist is one line; verifying a claim needs the paragraph that established it —
+# and the deciding paragraph can sit anywhere in the page, so a short head
+# excerpt is no better than the gist. Corin's reveal about the Litany lies past
+# 3,000 characters into its page.
+_CITATION_CHARS_PER_PAGE = 6000
+_MAX_CITED_PAGES = 8
+# Citations get an absolute ceiling rather than a share of budget_tokens: they
+# exist only in the audit slice, so scaling them through the shared budget would
+# inflate the decoder layers to no purpose. The anchor page is emitted first and
+# therefore survives truncation.
+_CITATION_TOTAL_CHARS = 40000
+
+# Vault machinery, not world facts. Log.md in particular is a 35KB append-only
+# operations log that would swallow the whole citation budget.
+_NON_CANON_SOURCES = {"log", "index", "home", "world overview"}
+
+_CITATION_HEADER = (
+    "FULL TEXT of the canon pages this passage refers to. These are the "
+    "authoritative record. A statement that agrees with them is correct even if "
+    "the one-line summaries below omit it; a statement that contradicts them is "
+    "wrong. Where these pages leave a question open, it IS open — do not treat "
+    "silence as permission to resolve it:"
+)
 
 _ROSTER_HEADER = (
     "The following entities ALREADY EXIST in this world. Reference them and "
@@ -67,6 +94,9 @@ class AssemblyRequest:
     imprint: str = ""                    # stub name + description from Unmade Connections
     directives: str = ""                 # caller's specialist guidance
     budget_tokens: int = 3000
+    # The text to be verified. Supplied by the auditor path only; when present,
+    # the canon pages it names are carried in full (see _build_citations).
+    passage: str = ""
 
 
 @dataclass
@@ -76,6 +106,9 @@ class ContextPackage:
     lineage: str = ""
     roster: str = ""
     directives: str = ""
+    # Full text of the canon pages the audited passage refers to. Audit slice
+    # only: generation is steered by roster and locale, verification needs sources.
+    citations: str = ""
 
     def _sections(self, include_directives: bool) -> List[str]:
         parts = []
@@ -98,16 +131,28 @@ class ContextPackage:
 
     def canon_slice(self) -> str:
         """
-        The authoritative-truth subset (world frame + locale + roster),
-        for use as the ConsistencyAuditor's world state.
+        The authoritative-truth subset, for use as the ConsistencyAuditor's
+        world state.
+
+        Citations come before the roster deliberately. The roster is one gist per
+        entity, enough to prevent duplicate names but not to verify a claim — and
+        judging claims against gists caused every audit failure on this world. A
+        TRUE statement about Kaelen was patched away because his gist did not
+        mention it, and a page asserting proof about the First Architects passed
+        because no gist contradicted it. The cited pages are the actual record;
+        the roster is only a directory.
         """
         parts = []
         if self.world_frame:
             parts.append(self.world_frame)
         if self.locale:
             parts.append(self.locale)
+        if self.citations:
+            parts.append(self.citations)
         if self.roster:
-            parts.append(self.roster)
+            parts.append(
+                "SUMMARY DIRECTORY (one line each, for names only — an omission "
+                "here is not evidence of anything):\n" + self.roster)
         return "\n\n".join(parts)
 
 
@@ -195,6 +240,29 @@ class ContextAssembler:
 
     # ── Layers ───────────────────────────────────────────────
 
+    def _with_rulings(self, frame: str) -> str:
+        """
+        Guarantee the standing rulings are in the world frame, appended after the
+        cap rather than subject to it.
+
+        The rulings sit at the end of the World Overview, which is longer than the
+        world-frame budget, so capping silently cut exactly the content that
+        exists to prevent canon violations — in both the decoder context and the
+        audit slice. Rules that are not in the prompt cannot be followed.
+        """
+        if not self.vault:
+            return frame
+        rulings = self.vault.standing_rulings()
+        if not rulings:
+            return frame
+        # Compare the ruling BODY, not the tagged block: the "[CANON RULINGS...]"
+        # header is added here and never appears in the overview, so testing the
+        # whole string always missed and appended a duplicate copy.
+        body = rulings.split("\n", 1)[-1].strip()
+        if body and body in frame:
+            return frame
+        return f"{frame}\n\n{rulings}" if frame else rulings
+
     def _build_world_frame(self, chain_ids: List[str]) -> str:
         parts = []
         if self.vault:
@@ -238,6 +306,101 @@ class ContextAssembler:
             parts.extend(f"  • {fact}" for fact in facts)
         return "\n".join(parts)
 
+    def _cited_page_names(self, passage: str, anchor_id: Optional[str] = None) -> List[str]:
+        """
+        Canon pages whose text is needed to verify this passage, most specific first.
+
+        Three sources, in priority order:
+
+        1. The anchor's own page. The entity being audited was generated FROM it,
+           so it is the page most likely to contain the fact under test — and it
+           is frequently not named in the prose at all. The Litany never writes
+           "The First Truth of the Unbroken Thread", yet that page is where its
+           canon description lives.
+        2. Pages the passage names outright. At audit time references are bare
+           names, since ObsidianSync only adds wikilinks afterwards.
+        3. Nothing else. An unrelated canon page is noise that costs budget.
+
+        Matching is on word boundaries: a substring test let "Log" — the vault's
+        operations log — match on "technological".
+        """
+        if not self.vault:
+            return []
+
+        selected: List[str] = []
+
+        def consider(name: str) -> None:
+            if not name or name.lower() in _NON_CANON_SOURCES:
+                return
+            if any(name.lower() == chosen.lower() for chosen in selected):
+                return
+            # A shorter name already covered by a selected one adds nothing.
+            if any(name.lower() in chosen.lower() for chosen in selected):
+                return
+            selected.append(name)
+
+        entries = [e for e in self.vault.roster()
+                   if e["status"] == "canon" and e["name"]
+                   and not e["gist"].lower().startswith("hub")]
+
+        by_name = {e["name"].strip().lower(): e["name"] for e in entries}
+
+        def consider_entity(entity_id: Optional[str]) -> None:
+            record = self.registry.get_element(entity_id) if entity_id else None
+            name = (record or {}).get("name")
+            if name and name.strip().lower() in by_name:
+                consider(by_name[name.strip().lower()])
+
+        # 1. the anchor's own page, then the entity it was generated FROM.
+        #    The source matters most and is the one a passage rarely names: the
+        #    Litany never writes "The First Truth of the Unbroken Thread", yet
+        #    that page holds its canon description and Corin's reveal.
+        if anchor_id:
+            consider_entity(anchor_id)
+            record = self.registry.get_element(anchor_id) or {}
+            consider_entity((record.get("stub_metadata") or {}).get("source_id"))
+            for tag in record.get("tags", []):
+                if tag.startswith("from_"):
+                    consider_entity(tag[len("from_"):])
+
+        # 2. pages the passage names, longest first so the specific name wins
+        if passage:
+            haystack = passage.lower()
+            for name in sorted((e["name"] for e in entries), key=len, reverse=True):
+                if len(selected) >= _MAX_CITED_PAGES:
+                    break
+                if re.search(rf"(?<!\w){re.escape(name.lower())}(?!\w)", haystack):
+                    consider(name)
+
+        return selected[:_MAX_CITED_PAGES]
+
+    def _build_citations(self, passage: str, anchor_id: Optional[str] = None) -> str:
+        """
+        Full text of the canon pages needed to verify this passage.
+
+        Citations are evidence FOR a passage, so nothing is built without one.
+        for_decoder() ignores this layer — generation is steered by the roster and
+        locale — which would otherwise make this pure waste on every decode.
+        """
+        if not passage:
+            return ""
+        names = self._cited_page_names(passage, anchor_id)
+        if not names:
+            return ""
+
+        blocks = []
+        for name in names:
+            excerpt = self.vault.page_excerpt(name, max_chars=_CITATION_CHARS_PER_PAGE)
+            if excerpt.strip():
+                blocks.append(excerpt)
+
+        if not blocks:
+            return ""
+        body = "\n\n---\n\n".join(blocks)
+        if len(body) > _CITATION_TOTAL_CHARS:
+            body = body[:_CITATION_TOTAL_CHARS].rsplit("\n", 1)[0].rstrip()
+        return _CITATION_HEADER + "\n\n" + body
+
     def _build_roster(self, req: AssemblyRequest, chain_ids: List[str]) -> str:
         lines: List[str] = []
         seen_names = set()
@@ -280,9 +443,12 @@ class ContextAssembler:
         directives = "\n\n".join(p for p in [req.imprint.strip(), req.directives.strip()] if p)
 
         return ContextPackage(
-            world_frame=self._cap(self._build_world_frame(chain_ids), req.budget_tokens, _LAYER_BUDGET["world_frame"]),
+            world_frame=self._with_rulings(
+                self._cap(self._build_world_frame(chain_ids),
+                          req.budget_tokens, _LAYER_BUDGET["world_frame"])),
             locale=self._cap(self._build_locale(req.locale_id), req.budget_tokens, _LAYER_BUDGET["locale"]),
             lineage=self._cap(self._build_lineage(req.anchor_id), req.budget_tokens, _LAYER_BUDGET["lineage"]),
             roster=self._cap(self._build_roster(req, chain_ids), req.budget_tokens, _LAYER_BUDGET["roster"]),
             directives=directives,
+            citations=self._build_citations(req.passage, req.anchor_id),
         )

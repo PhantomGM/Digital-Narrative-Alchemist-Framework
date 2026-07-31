@@ -104,6 +104,26 @@ class VaultAdapter:
             return ""
         return f"{self._status_tag(page['status'])}\n{page['body']}"
 
+    def standing_rulings(self) -> str:
+        """
+        The '## Terminology rulings' section of the World Overview.
+
+        Separated out because it must never be dropped. These are the author's
+        binding decisions on ambiguous words and on questions that stay open, and
+        they sit near the END of the overview — so any length cap on the world
+        frame removed them from the prompt entirely. Every canon violation on this
+        world so far was a violation of a ruling that was not actually present.
+        """
+        page = self._read_page(self.overview_page)
+        if not page:
+            return ""
+        match = re.search(r"##\s*Terminology rulings\s*\n(.*?)(?=\n##\s|\Z)",
+                          page["body"], re.DOTALL)
+        if not match:
+            return ""
+        section = match.group(1).strip()
+        return f"[CANON RULINGS - binding, never override]\n{section}" if section else ""
+
     def calendar_rules(self) -> str:
         """The '## Calendar' section of the Timeline page, if defined."""
         page = self._read_page(self.timeline_page)

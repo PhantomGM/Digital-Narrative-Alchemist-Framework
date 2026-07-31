@@ -59,15 +59,19 @@ class CanonizeGate:
         if not record:
             return {"entity_id": entity_id, "status": "unreviewed", "notes": ["not in registry"]}
 
+        # The prose is extracted first so it can be handed to the assembler:
+        # passing the passage is what lets the canon slice carry the full text of
+        # the pages the passage actually refers to, instead of one-line gists.
+        original_prose, tail = split_phenotype_tail(record.get("phenotype", ""))
+        prose = original_prose
+
         package = self.assembler.assemble(AssemblyRequest(
             element_type=record["type"],
             anchor_id=entity_id,
             locale_id=resolve_locale(self.registry, entity_id),
+            passage=original_prose,
         ))
         canon_state = package.canon_slice()
-
-        original_prose, tail = split_phenotype_tail(record.get("phenotype", ""))
-        prose = original_prose
         notes: List[str] = []
         status: Optional[str] = None
         rounds = 0
