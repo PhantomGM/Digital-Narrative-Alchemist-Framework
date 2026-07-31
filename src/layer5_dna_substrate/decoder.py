@@ -3,6 +3,28 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
+from layer5_dna_substrate.phenotype_meta import TAIL_INSTRUCTION
+
+
+def format_context(context) -> str:
+    """
+    Normalizes a decode context into prompt-ready markdown.
+    Accepts a ContextPackage (anything with for_decoder()), a string, or a
+    legacy dict of notes.
+    """
+    if context is None:
+        return "No additional context provided."
+    if isinstance(context, str):
+        return context or "No additional context provided."
+    if hasattr(context, "for_decoder"):
+        return context.for_decoder()
+    if isinstance(context, dict):
+        if not context:
+            return "No additional context provided."
+        return "\n".join(f"{key}: {value}" for key, value in context.items())
+    return str(context)
+
+
 class DNADecoder:
     """
     Translates raw DNA strings into rich, evocative TTRPG content using the Master Decoder prompts.
@@ -22,8 +44,8 @@ class DNADecoder:
                     with open(os.path.join(decoders_dir, filename), 'r', encoding='utf-8') as f:
                         base_template = f.read()
                     
-                    # Append the necessary variable injection points
-                    full_template = base_template + "\n\nHere is the context provided (if any):\n{context}\n\n{constraints}\n\nHere is the DNA string to decode:\n{dna_string}\n\nPlease provide the final decoded profile:"
+                    # Append the structured-tail requirement and the variable injection points
+                    full_template = base_template + "\n\n" + TAIL_INSTRUCTION + "\n\nHere is the context provided (if any):\n{context}\n\n{constraints}\n\nHere is the DNA string to decode:\n{dna_string}\n\nPlease provide the final decoded profile:"
                     
                     # Some prompts have curly braces like TRAVEL{4-2-2} or JSON examples in them,
                     # Langchain will try to parse them. To prevent crash, we use partial string formatting,
@@ -37,12 +59,17 @@ class DNADecoder:
                         input_variables=["context", "dna_string", "constraints"]
                     )
 
-    def decode_element(self, element_data: dict, context: dict = None) -> str:
-        """Master dispatcher for DNA decoding."""
+    def decode_element(self, element_data: dict, context=None) -> str:
+        """
+        Master dispatcher for DNA decoding.
+
+        context may be a ContextPackage (preferred), a pre-formatted string,
+        or a legacy dict of notes.
+        """
         element_type = element_data['type'].lower()
         if element_type in self.prompts:
             chain = self.prompts[element_type] | self.llm | self.parser
-            context_str = str(context) if context else "No additional context provided."
+            context_str = format_context(context)
             constraints_str = element_data.get('constraints', '')
             
             return chain.invoke({

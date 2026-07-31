@@ -1,4 +1,7 @@
 import uuid
+import os
+import json
+import re
 from typing import Dict, Any, List, Optional, Set
 
 class DNARegistry:
@@ -20,24 +23,30 @@ class DNARegistry:
         # Format: { "id_123": { "parent": [{"id": "id_456", "label": "faction_of"}], ... } }
         self._edges: Dict[str, Dict[str, List[Dict[str, str]]]] = {}
 
-    def register_element(self, element_type: str, raw_dna: str, decoded_profile: str, tags: list[str] = None) -> str:
+    def register_element(self, element_type: str, raw_dna: str, decoded_profile: str, tags: list[str] = None, name: str = None,
+                         gist: str = None, summary: str = None) -> str:
         """
         Registers a newly generated DNA element and returns its unique ID.
+
+        gist: one-line identity of the entity (from the phenotype's structured tail).
+        summary: ~100-word compression of the phenotype, used as generation context.
         """
         entity_id = str(uuid.uuid4())
         tags = tags or []
-        
+
         record = {
             "id": entity_id,
             "type": element_type,
+            "name": name,
             "dna": raw_dna,
             "phenotype": decoded_profile,
+            "gist": gist,
+            "summary": summary,
             "tags": tags
         }
         
         self._records[entity_id] = record
         self._edges[entity_id] = {"parent": [], "child": [], "peer": []}
-        self._name_cache: Dict[str, str] = {}  # id -> display name for graph queries
         
         for tag in tags:
             tag_key = tag.lower()
@@ -49,10 +58,15 @@ class DNARegistry:
         return entity_id
 
     def _entity_display_name(self, entity_id: str) -> str:
-        """Returns a human-readable display name for an entity (type + first tag or short ID)."""
+        """Returns a human-readable display name for an entity (prioritize 'name' field)."""
         record = self._records.get(entity_id)
         if not record:
             return entity_id[:8]
+        
+        name = record.get("name")
+        if name:
+            return f"{record['type'].title()} '{name}'"
+            
         tags = record.get("tags", [])
         name_hint = tags[0].title() if tags else entity_id[:8]
         return f"{record['type'].title()} '{name_hint}'"
@@ -128,6 +142,65 @@ class DNARegistry:
     def get_all_by_type(self, element_type: str) -> list[Dict[str, Any]]:
         """Returns all registered elements of a specific type."""
         return [record for record in self._records.values() if record["type"] == element_type]
+
+    @staticmethod
+    def _normalize_name(name: str) -> str:
+        """
+        Folds a name to its comparison form: lowercase, punctuation-insensitive,
+        and without a leading article. Decoders refer to the same entity as
+        "The Scriveners Guild" and "Scriveners Guild" interchangeably, and a
+        stray article should not mint a duplicate.
+        """
+        folded = (name or "").strip().lower()
+        for article in ("the ", "an ", "a "):
+            if folded.startswith(article):
+                folded = folded[len(article):]
+                break
+        # Apostrophes vanish rather than split, so "Scrivener's" folds onto
+        # "Scriveners"; other punctuation becomes a separator.
+        folded = folded.replace("'", "").replace("’", "")
+        return re.sub(r"[^a-z0-9]+", " ", folded).strip()
+
+    def find_by_name(self, name: str, element_type: str = None) -> Optional[Dict[str, Any]]:
+        """
+        Case-insensitive lookup of an element by its registered name or any of
+        its aliases (set when entities are merged or renamed). Matching ignores
+        a leading article and punctuation differences.
+        """
+        if not name:
+            return None
+        needle = self._normalize_name(name)
+        if not needle:
+            return None
+        for record in self._records.values():
+            if element_type and record["type"] != element_type:
+                continue
+            candidates = [record.get("name")] + list(record.get("aliases", []))
+            if any(c and self._normalize_name(c) == needle for c in candidates):
+                return record
+        return None
+
+    def save_to_json(self, filepath: str):
+        """Persists the entire registry and graph to a JSON file."""
+        data = {
+            "records": self._records,
+            "edges": self._edges,
+            "tag_index": {k: list(v) for k, v in self._tag_index.items()}
+        }
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+        print(f"[DNARegistry] Saved to {filepath}")
+
+    def load_from_json(self, filepath: str):
+        """Loads registry and graph from a JSON file."""
+        if not os.path.exists(filepath):
+            return
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self._records = data.get("records", {})
+        self._edges = data.get("edges", {})
+        self._tag_index = {k: set(v) for k, v in data.get("tag_index", {}).items()}
+        print(f"[DNARegistry] Loaded {len(self._records)} entities from {filepath}")
 
     # ──────────────────────────────────────────────────────────
     # Graph-Augmented Retrieval (Bucket D Enhancement)

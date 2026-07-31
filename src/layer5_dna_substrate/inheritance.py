@@ -12,12 +12,28 @@ class InheritanceEngine:
 
     def _extract_core_traits(self, entity: dict) -> str:
         """Helper to boil down a massive phenotype into actionable constraints."""
-        # For MVP, we pass the first 500 characters of the phenotype, plus tags.
-        # In a fully scaled system, you might ask an LLM to summarize it first.
-        phenotype = entity.get('phenotype', '')
         tags = ", ".join(entity.get('tags', []))
-        summary = f"[Type: {entity.get('type')}] [Tags: {tags}]\n{phenotype[:500]}..."
-        return summary
+        header = f"[Type: {entity.get('type')}] [Tags: {tags}]"
+
+        # Prefer the structured summary/gist written by the decoder's tail —
+        # it compresses drives, secrets, and relationships, which is exactly
+        # what constraints need. Raw phenotype truncation is the legacy path
+        # (its first 500 chars are mostly name and appearance).
+        name = entity.get('name')
+        gist = entity.get('gist')
+        summary = entity.get('summary')
+        if gist or summary:
+            parts = [header]
+            if name:
+                parts.append(f"Name: {name}")
+            if gist:
+                parts.append(gist)
+            if summary:
+                parts.append(summary)
+            return "\n".join(parts)
+
+        phenotype = entity.get('phenotype', '')
+        return f"{header}\n{phenotype[:500]}..."
 
     def compile_constraints(self, origin_ids: list[str]) -> str:
         """
@@ -44,12 +60,16 @@ class InheritanceEngine:
             block += self._extract_core_traits(entity) + "\n"
 
             # Fetch relationships (using legacy-compatible ID-only method)
+            # Registry edge semantics: link_elements(A, B, "parent") makes A the
+            # parent OF B, stored as edges[A]["parent"]=[B] and edges[B]["child"]=[A].
+            # So an entity's actual parents sit on its "child" edges and its
+            # children on its "parent" edges.
             links = self.registry.get_link_ids(origin_id)
 
             # DOWNWARD (Inheriting from Parents)
-            if links.get("parent"):
+            if links.get("child"):
                 block += f"\n  -> Inheriting from PARENT Entities:\n"
-                for parent_id in links["parent"]:
+                for parent_id in links["child"]:
                     parent = self.registry.get_element(parent_id)
                     if parent:
                         block += f"     - {self._extract_core_traits(parent)}\n"
@@ -63,9 +83,9 @@ class InheritanceEngine:
                         block += f"     - {self._extract_core_traits(peer)}\n"
 
             # UPWARD (Incorporating lore from Children)
-            if links.get("child"):
+            if links.get("parent"):
                 block += f"\n  -> Must incorporate lore from CHILD Entities:\n"
-                for child_id in links["child"]:
+                for child_id in links["parent"]:
                     child = self.registry.get_element(child_id)
                     if child:
                         block += f"     - {self._extract_core_traits(child)}\n"
