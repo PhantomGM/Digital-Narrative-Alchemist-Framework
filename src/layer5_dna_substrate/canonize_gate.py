@@ -128,6 +128,25 @@ class CanonizeGate:
         if status == "patched":
             record["phenotype"] = prose.rstrip() + ("\n\n" + tail + "\n" if tail else "\n")
 
+        # An audit that never ran is not evidence about the entity, so it must not
+        # erase a verdict that did run. Without this, one exhausted API quota
+        # partway through a re-audit sweep would silently downgrade every
+        # already-passing record to "unreviewed" and lose the real result.
+        prior = record.get("audit")
+        if (status == "unreviewed" and isinstance(prior, dict)
+                and prior.get("status") in ("consistent", "patched", "flagged")):
+            prior_notes = list(prior.get("notes") or [])
+            prior_notes.append(
+                f"re-audit on {date.today().isoformat()} could not run: "
+                + (notes[-1] if notes else "audit error")
+            )
+            record["audit"] = {**prior, "notes": prior_notes}
+            print(f"[CanonizeGate] {record.get('name') or entity_id[:8]}: audit failed, "
+                  f"keeping prior verdict '{prior.get('status')}'")
+            return {"entity_id": entity_id, "name": record.get("name"),
+                    "status": "unreviewed", "rounds": rounds, "notes": prior_notes,
+                    "kept_prior": prior.get("status")}
+
         record["audit"] = {
             "status": status,
             "notes": notes,

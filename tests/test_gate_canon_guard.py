@@ -102,6 +102,53 @@ def test_a_draft_is_still_patched():
     assert "auditor rewrote" in registry.get_element(entity_id)["phenotype"]
 
 
+def test_a_failed_audit_does_not_erase_a_prior_verdict():
+    """
+    An audit that never ran is not evidence. Without this, one exhausted API
+    quota partway through a re-audit sweep would downgrade every already-passing
+    record to "unreviewed" and lose the real result.
+    """
+
+    class Broken:
+        async def audit(self, prose, world_state, fail_open=False):
+            return {"status": "error", "correction_note": "quota exhausted"}
+
+        async def patch(self, prose, result, current_state=""):
+            raise AssertionError("must not patch after an audit error")
+
+    registry = DNARegistry()
+    entity_id = registry.register_element(
+        "lore", "LORE{}", PROSE, name="A Page", tags=["expanded", "canonized"])
+    registry.get_element(entity_id)["audit"] = {
+        "status": "consistent", "notes": [], "rounds": 1, "reviewed": "2026-07-26"}
+
+    gate = CanonizeGate(registry, ContextAssembler(registry, None), Broken())
+    report = asyncio.run(gate.review_entity(entity_id))
+
+    stored = registry.get_element(entity_id)["audit"]
+    assert stored["status"] == "consistent", "the real verdict must survive"
+    assert stored["reviewed"] == "2026-07-26", "and keep its original date"
+    assert any("could not run" in note for note in stored["notes"])
+    assert report["kept_prior"] == "consistent"
+
+
+def test_a_failed_audit_on_a_never_reviewed_entity_is_unreviewed():
+    """The guard must not invent a verdict where none existed."""
+
+    class Broken:
+        async def audit(self, prose, world_state, fail_open=False):
+            return {"status": "error", "correction_note": "quota exhausted"}
+
+    registry = DNARegistry()
+    entity_id = registry.register_element(
+        "lore", "LORE{}", PROSE, name="A Page", tags=["expanded"])
+    gate = CanonizeGate(registry, ContextAssembler(registry, None), Broken())
+
+    report = asyncio.run(gate.review_entity(entity_id))
+    assert report["status"] == "unreviewed"
+    assert registry.get_element(entity_id)["audit"]["status"] == "unreviewed"
+
+
 def test_a_clean_canon_page_passes_normally():
     class Clean(Auditor):
         async def audit(self, prose, world_state, fail_open=False):

@@ -13,12 +13,10 @@
         "canonized"
       ],
       "audit": {
-        "status": "patched",
-        "notes": [
-          "This entity was referenced and connected in the \"Current State\" summary and the \"The Awakened God-Engine\" campaign hook, making its inclusion under \"Unmade Connections\" a logical error within the passage itself."
-        ],
-        "rounds": 2,
-        "reviewed": "2026-07-25"
+        "status": "consistent",
+        "notes": [],
+        "rounds": 1,
+        "reviewed": "2026-07-31"
       }
     },
     "e137ae47-7858-4618-acf6-6e1b25b31b7d": {
@@ -41,12 +39,13 @@
         "source_id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd"
       },
       "audit": {
-        "status": "patched",
+        "status": "flagged",
         "notes": [
-          "The passage uses the placeholder \"[[Faction 3 (Scientific/Technological)]]\" instead of referencing the already existing faction \"The Axiom Assembly\", which is defined in the world state as the pragmatic syndicate of technocrats."
+          "Conflicts with the canon ruling stating that who the First Architects were is unresolved, stays unresolved, and nothing may prove their identity.",
+          "canon page: reported, not patched \u2014 the author edits canon"
         ],
-        "rounds": 2,
-        "reviewed": "2026-07-25"
+        "rounds": 1,
+        "reviewed": "2026-07-31"
       }
     },
     "920c777b-e90c-4e9c-aaf4-5ce470da9183": {
@@ -72,7 +71,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "3bcba9e6-da8f-458e-bb85-fea33ddc606c": {
@@ -98,7 +97,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "c49405cd-ce62-40bd-b2d3-911fdefab985": {
@@ -124,7 +123,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "88129bf5-079d-436b-bea4-f1ada488b3aa": {
@@ -140,12 +139,10 @@
         "canonized"
       ],
       "audit": {
-        "status": "patched",
-        "notes": [
-          "The World State explicitly defines the vital resource as 'Aetherium Shards', making the speculation about its nature a contradiction."
-        ],
-        "rounds": 2,
-        "reviewed": "2026-07-25"
+        "status": "consistent",
+        "notes": [],
+        "rounds": 1,
+        "reviewed": "2026-07-31"
       }
     },
     "443066dc-e950-4e6e-a43e-ab36a023a944": {
@@ -171,7 +168,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "aab3d7be-17b9-4eba-9270-e7e2a8dc7051": {
@@ -197,7 +194,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "3983df2f-7b34-4ff2-bab1-936ede85f95f": {
@@ -223,7 +220,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "32a6638e-37aa-42e3-ba51-2e8512c50c78": {
@@ -249,7 +246,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c": {
@@ -275,7 +272,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "7829c9f2-c930-463a-bb21-1f3afe7bb6ed": {
@@ -333,7 +330,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "0e452ea9-72e6-4f7d-95d8-b43ea424d894": {
@@ -567,7 +564,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c": {
@@ -593,7 +590,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-25"
+        "reviewed": "2026-07-31"
       }
     },
     "95458109-70eb-4b02-8936-9b2ffddfd0e3": {
@@ -619,7 +616,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "0b1c6731-e3bb-43d8-b1d7-9d48d3cbb2e9": {
@@ -979,7 +976,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "239fb539-5bc1-498c-9747-d8c4cc1d98d9": {
@@ -1114,7 +1111,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "bf829b52-aa1c-4e0b-8b4c-bd5a91741634": {
@@ -1188,7 +1185,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "0994ecb7-b472-4736-8938-b830a11b3d7c": {
@@ -1274,7 +1271,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "b852d934-a642-438f-965b-42e5a5e3a755": {
@@ -1319,7 +1316,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "431fb7e0-74bb-4e87-8ede-9c4130135b6b": {
@@ -1345,7 +1342,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "529fea16-8ca0-4e4b-bc35-a6dd49ec9915": {
@@ -1397,7 +1394,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "f4611ead-fd2a-4599-b4e0-00f622ee3be3": {
@@ -1423,7 +1420,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "570d9de3-ff74-4580-bfb2-a0b2b92d9d76": {
@@ -1787,7 +1784,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "dad138a9-57c1-45c2-b399-6b5105dc46e0": {
@@ -1910,7 +1907,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-26"
+        "reviewed": "2026-07-31"
       }
     },
     "725b2766-b52a-4c5f-ace1-e9d17a372e18": {
@@ -2143,7 +2140,7 @@
         "status": "consistent",
         "notes": [],
         "rounds": 1,
-        "reviewed": "2026-07-30"
+        "reviewed": "2026-07-31"
       }
     },
     "3af3c46a-a613-46da-9ae3-f1150179f845": {
