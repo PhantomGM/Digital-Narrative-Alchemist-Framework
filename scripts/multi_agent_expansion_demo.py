@@ -16,11 +16,15 @@ from layer5_dna_substrate.inheritance import InheritanceEngine
 from layer5_dna_substrate.decoder import DNADecoder
 from layer5_dna_substrate.expansion_manager import ExpansionManager
 from layer1_core.multi_agent_coordinator import MultiAgentCoordinator
-from sync_to_obsidian import sync_registry_to_obsidian
+from sync_to_obsidian import sync_registry_to_obsidian, resolve_vault_or_exit
 
-async def main(limit: int = 5):
+async def main(limit: int = 5, vault: str = None):
     print("🎭 INITIALIZING MULTI-AGENT WORLD BIBLE COORDINATOR")
-    
+
+    # Resolve the sync destination before spending any API quota — the expansion
+    # below is the expensive part, and it would be wasted if the vault is bad.
+    vault_path = resolve_vault_or_exit(vault)
+
     # 1. Setup Framework
     registry = DNARegistry()
     
@@ -64,12 +68,14 @@ async def main(limit: int = 5):
     
     # Sync to Obsidian
     print("🔄 Syncing team output to Obsidian vault...")
-    sync_registry_to_obsidian(registry)
+    sync_registry_to_obsidian(registry, vault_path)
     print("✨ Sync complete! Check your Obsidian vault for the new entries.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Multi-Agent DNA Expansion Demo")
     parser.add_argument("--limit", type=int, default=5, help="Number of stubs to expand concurrently")
+    parser.add_argument("--vault", default=None,
+                        help="Obsidian vault to sync into (or set OBSIDIAN_VAULT_PATH)")
     args = parser.parse_args()
-    
-    asyncio.run(main(limit=args.limit))
+
+    asyncio.run(main(limit=args.limit, vault=args.vault))

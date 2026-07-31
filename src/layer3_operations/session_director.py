@@ -1,5 +1,4 @@
 import asyncio
-import os
 from typing import Dict, Any, Optional
 from layer1_core.simulators import EnvironmentSimulator, EncounterDirector
 from layer3_operations.consistency_auditor import ConsistencyAuditor
@@ -8,6 +7,7 @@ from layer3_operations.player_profiles import PlayerProfileManager
 from layer3_operations.chronicler import Chronicler
 from layer3_operations.wiki_bridge import WikiBridge
 from layer3_operations.state_critic import StateCritic
+from common.paths import PathConfigError, resolve_wiki_path
 from layer2_narrative.event_ledger import EventLedger, StateEvent
 from layer1_core.contracts import (
     IntentResult,
@@ -60,12 +60,25 @@ class SessionDirector:
         self.profile_manager = PlayerProfileManager()
         self.chronicler = Chronicler(compression_interval=10)
 
-        # --- Wiki RAG Integration ---
-        wiki_path = os.getenv("OBSIDIAN_WIKI_PATH", "/mnt/c/Users/nickd/Desktop/Hermes/Wiki")
-        if os.path.exists(wiki_path):
+        # --- Wiki RAG Integration (optional) ---
+        # Configured via OBSIDIAN_WIKI_PATH. This used to fall back to a
+        # hardcoded WSL path, which does not exist on Windows — so the exists()
+        # guard below silently skipped ingestion and the session ran with no
+        # wiki lore at all, reporting nothing. It now always says why it is off.
+        self.wiki_bridge = None
+        try:
+            wiki_path = resolve_wiki_path(required=False)
+        except PathConfigError as exc:
+            wiki_path = None
+            print(f"[SessionDirector] Wiki RAG disabled — {exc}")
+
+        if wiki_path:
             self.wiki_bridge = WikiBridge(wiki_path)
             wiki_lore = self.wiki_bridge.ingest_wiki()
             self.chronicler.add_external_lore(wiki_lore)
+            print(f"[SessionDirector] Wiki RAG enabled: {len(wiki_lore)} lore chunks from {wiki_path}")
+        else:
+            print("[SessionDirector] Wiki RAG disabled — OBSIDIAN_WIKI_PATH is not set.")
         # ----------------------------
 
         self.auditor = ConsistencyAuditor()

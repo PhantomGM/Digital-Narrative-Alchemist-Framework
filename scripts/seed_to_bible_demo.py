@@ -104,7 +104,7 @@ def main():
     data_dir = os.path.join(os.path.dirname(__file__), "../data")
     os.makedirs(data_dir, exist_ok=True)
     registry.save_to_json(os.path.join(data_dir, "dna_registry.json"))
-    print(f"\nRegistry saved. Run 'python scripts/sync_to_obsidian.py' to export to your World Bible.")
+    print(f"\nRegistry saved. Run 'python scripts/sync_to_obsidian.py --vault <path>' to export to your World Bible.")
 
 if __name__ == "__main__":
     main()

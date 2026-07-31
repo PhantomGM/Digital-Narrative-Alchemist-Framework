@@ -92,10 +92,23 @@ class WikiBridge:
                     ))
 
 if __name__ == "__main__":
+    import argparse
     import sys
-    sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-    # Test ingestion
-    bridge = WikiBridge("/mnt/c/Users/nickd/Desktop/Hermes/Wiki")
-    chunks = bridge.ingest_wiki()
+
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+    from common.paths import PathConfigError, resolve_wiki_path
+
+    ap = argparse.ArgumentParser(description="Test wiki ingestion.")
+    ap.add_argument("--wiki", default=None,
+                    help="Wiki directory to ingest (or set OBSIDIAN_WIKI_PATH)")
+    args = ap.parse_args()
+
+    try:
+        wiki_path = resolve_wiki_path(args.wiki)
+    except PathConfigError as exc:
+        raise SystemExit(f"{exc}\n  (pass --wiki PATH)")
+
+    chunks = WikiBridge(wiki_path).ingest_wiki()
+    print(f"Ingested {len(chunks)} chunks from {wiki_path}")
     for chunk in chunks[:5]:
         print(f"[{chunk.importance}] {chunk.fact}")
