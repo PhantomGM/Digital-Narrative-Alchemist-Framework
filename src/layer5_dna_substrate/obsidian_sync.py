@@ -21,14 +21,17 @@ class ObsidianSync:
     # unknown types land in Drafts for the author to sort.
     TYPE_FOLDER_MAP = {
         "npc": "Characters",
-        "location": "Atlas",
-        "region": "Atlas",
-        "settlement": "Atlas",
-        "realm": "Atlas",
-        "travel": "Atlas",
-        "establishment": "Atlas",
-        "regional_poi": "Atlas",
-        "wonder": "Atlas",
+        # Atlas is subdivided by scale. Eight spatial types shared one folder,
+        # which put a tavern and a continent side by side; each now has its own
+        # room while still living under the Atlas.
+        "realm": "Atlas/Realms",
+        "region": "Atlas/Regions",
+        "settlement": "Atlas/Settlements",
+        "location": "Atlas/Locations",
+        "regional_poi": "Atlas/Points of Interest",
+        "establishment": "Atlas/Establishments",
+        "wonder": "Atlas/Wonders",
+        "travel": "Atlas/Routes",
         "item": "Artifacts",
         "faction": "Factions",
         "agency": "Factions",
@@ -123,6 +126,23 @@ class ObsidianSync:
             filename = self._sanitize_filename(name) + ".md"
             self._id_to_filename[entity_id] = (folder, filename)
 
+    def _find_page_elsewhere(self, filename: str, expected_path: str) -> str:
+        """
+        Path of a page with this filename living somewhere other than expected.
+
+        Obsidian resolves [[wikilinks]] by name rather than path, so a page can be
+        moved freely without breaking links — which is exactly why one can drift
+        away from where the type map expects it, and why the sync has to look.
+        """
+        expected = os.path.normcase(os.path.abspath(expected_path))
+        for dirpath, dirnames, filenames in os.walk(self.vault_path):
+            dirnames[:] = [d for d in dirnames if not d.startswith(".")]
+            if filename in filenames:
+                found = os.path.normcase(os.path.abspath(os.path.join(dirpath, filename)))
+                if found != expected:
+                    return os.path.join(dirpath, filename)
+        return ""
+
     def _existing_file_meta(self, file_path: str) -> Dict[str, str]:
         """Reads status and created date from an existing note's frontmatter."""
         meta = {}
@@ -164,6 +184,20 @@ class ObsidianSync:
             if existing.get("status") in self.PROTECTED_STATUSES:
                 counts["skipped_protected"] += 1
                 print(f"[ObsidianSync] SKIP (status: {existing['status']}): {os.path.join(folder, filename)}")
+                continue
+
+            # A page of this name may already live somewhere else — most often
+            # because TYPE_FOLDER_MAP was changed, or the author moved it by hand.
+            # Writing to the mapped path regardless would leave two pages for one
+            # entity, and if the other copy is canon the vault would hold a canon
+            # page and a fresh draft of the same thing. Refuse and say where it is.
+            elsewhere = self._find_page_elsewhere(filename, file_path)
+            if elsewhere:
+                counts["skipped_moved"] = counts.get("skipped_moved", 0) + 1
+                print(f"[ObsidianSync] SKIP (already at another path): "
+                      f"{os.path.relpath(elsewhere, self.vault_path)} "
+                      f"-> expected {os.path.join(folder, filename)}. "
+                      f"Move it there, or delete it, to let the sync manage it.")
                 continue
 
             os.makedirs(target_dir, exist_ok=True)

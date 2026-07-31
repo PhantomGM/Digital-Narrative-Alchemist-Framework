@@ -66,10 +66,14 @@ def test_obsidian_sync_relations_direction():
         sync = ObsidianSync(reg, out_dir)
         sync.sync()
 
-        atlas = os.path.join(out_dir, "Atlas")
-        with open(os.path.join(atlas, "Blackspire Keep.md"), encoding="utf-8") as f:
+        # Paths come from the type map so a folder reorganisation cannot break
+        # a test about relation-label direction.
+        fmap = ObsidianSync.TYPE_FOLDER_MAP
+        settlement_path = os.path.join(out_dir, fmap["settlement"], "Blackspire Keep.md")
+        region_path = os.path.join(out_dir, fmap["region"], "Cindermarch.md")
+        with open(settlement_path, encoding="utf-8") as f:
             settlement_note = f.read()
-        with open(os.path.join(atlas, "Cindermarch.md"), encoding="utf-8") as f:
+        with open(region_path, encoding="utf-8") as f:
             region_note = f.read()
 
         # The settlement's container renders as its Parent, not its Child
@@ -94,7 +98,9 @@ def test_obsidian_sync_inverts_containment_labels():
     out_dir = tempfile.mkdtemp(prefix="test_sync_inv_")
     try:
         ObsidianSync(reg, out_dir).sync()
-        with open(os.path.join(out_dir, "Atlas", "The Verdant Scars.md"), encoding="utf-8") as f:
+        region_path = os.path.join(
+            out_dir, ObsidianSync.TYPE_FOLDER_MAP["region"], "The Verdant Scars.md")
+        with open(region_path, encoding="utf-8") as f:
             region_note = f.read()
         with open(os.path.join(out_dir, "Cosmology", "Skarn.md"), encoding="utf-8") as f:
             world_note = f.read()
