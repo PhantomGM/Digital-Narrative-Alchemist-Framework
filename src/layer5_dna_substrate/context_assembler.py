@@ -363,14 +363,24 @@ class ContextAssembler:
                 if tag.startswith("from_"):
                     consider_entity(tag[len("from_"):])
 
-        # 2. pages the passage names, longest first so the specific name wins
+        # 2. Pages the passage names, ordered by how much it discusses them.
+        #    Ranking by name LENGTH (as a specificity proxy) crowded out short but
+        #    central names: "Archivist Kaelen" lost its slot to eight longer names
+        #    on the very page whose central claim concerns him. Mention count is
+        #    the better signal, with first appearance breaking ties.
         if passage:
             haystack = passage.lower()
-            for name in sorted((e["name"] for e in entries), key=len, reverse=True):
+            hits = []
+            for name in {e["name"] for e in entries}:
+                pattern = rf"(?<!\w){re.escape(name.lower())}(?!\w)"
+                found = list(re.finditer(pattern, haystack))
+                if found:
+                    hits.append((len(found), -found[0].start(), len(name), name))
+            # Most-mentioned first, then earliest, then the more specific name.
+            for _, _, _, name in sorted(hits, reverse=True):
                 if len(selected) >= _MAX_CITED_PAGES:
                     break
-                if re.search(rf"(?<!\w){re.escape(name.lower())}(?!\w)", haystack):
-                    consider(name)
+                consider(name)
 
         return selected[:_MAX_CITED_PAGES]
 

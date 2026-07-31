@@ -246,6 +246,21 @@ def test_citation_count_is_bounded(setup):
     assert len(assembler._cited_page_names(passage, entity_id)) <= _MAX_CITED_PAGES
 
 
+def test_ordering_is_by_relevance_not_name_length(setup):
+    """
+    Ranking by name length as a specificity proxy crowded out short but central
+    names: "Archivist Kaelen" lost its citation slot to eight longer names on the
+    very page whose disputed claim was about him. Mention count decides now.
+    """
+    _, assembler, _, _ = setup
+    passage = (
+        "Archivist Kaelen founded it. Archivist Kaelen wrote of it. "
+        "Archivist Kaelen is remembered still. A passing nod to The First Truth."
+    )
+    names = assembler._cited_page_names(passage, None)
+    assert names[0] == "Archivist Kaelen", names
+
+
 def test_a_shorter_contained_name_does_not_take_a_second_slot(setup):
     """"Kaelen" must not be cited separately from "Archivist Kaelen"."""
     _, assembler, _, _ = setup

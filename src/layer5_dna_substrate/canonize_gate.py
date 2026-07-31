@@ -59,6 +59,8 @@ class CanonizeGate:
         if not record:
             return {"entity_id": entity_id, "status": "unreviewed", "notes": ["not in registry"]}
 
+        is_canonized = "canonized" in (record.get("tags") or [])
+
         # The prose is extracted first so it can be handed to the assembler:
         # passing the passage is what lets the canon slice carry the full text of
         # the pages the passage actually refers to, instead of one-line gists.
@@ -92,6 +94,15 @@ class CanonizeGate:
             # Invalid
             note = result.get("correction_note", "")
             notes.append(note)
+
+            if is_canonized:
+                # Canon prose belongs to the author. Patching it here would also
+                # diverge silently from the vault: ObsidianSync refuses to write
+                # over a canon page, so the registry would claim "patched" while
+                # the page kept its original text. Report and stop.
+                status = "flagged"
+                notes.append("canon page: reported, not patched — the author edits canon")
+                break
 
             if not result.get("offending_text"):
                 # No pinpointed sentence: nothing to patch surgically —
