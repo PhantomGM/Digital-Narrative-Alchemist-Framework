@@ -27,6 +27,7 @@ from layer5_dna_substrate.vault_adapter import VaultAdapter
 from layer5_dna_substrate.context_assembler import ContextAssembler
 from layer5_dna_substrate.canonize_gate import CanonizeGate
 from layer5_dna_substrate.obsidian_sync import ObsidianSync
+from common.console import enable_safe_stdout
 
 
 def main():
@@ -66,4 +67,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     main()

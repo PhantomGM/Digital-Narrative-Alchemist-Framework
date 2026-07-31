@@ -27,6 +27,7 @@ from layer5_dna_substrate.history_consensus import HistoryConsensusEngine
 from layer5_dna_substrate.lore_extractor import LoreExtractor
 from layer1_core.world_state import WorldStateKeeper
 from layer3_operations.safety_governor import SafetyGovernor
+from common.console import enable_safe_stdout
 
 async def run_pre_session_setup():
     load_dotenv()
@@ -70,4 +71,7 @@ async def run_pre_session_setup():
     print("The World State Keeper is now seeded with empirical history and ready for SessionDirector handover.")
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     asyncio.run(run_pre_session_setup())

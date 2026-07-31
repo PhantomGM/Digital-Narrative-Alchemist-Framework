@@ -14,6 +14,7 @@ from layer5_dna_substrate.forge import ProceduralForge
 from layer5_dna_substrate.inheritance import InheritanceEngine
 from layer5_dna_substrate.decoder import DNADecoder
 from layer5_dna_substrate.expansion_manager import ExpansionManager
+from common.console import enable_safe_stdout
 
 def main():
     parser = argparse.ArgumentParser(description="Seed-to-Bible Workflow Demo")
@@ -107,4 +108,7 @@ def main():
     print(f"\nRegistry saved. Run 'python scripts/sync_to_obsidian.py --vault <path>' to export to your World Bible.")
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     main()

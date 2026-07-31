@@ -21,6 +21,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from layer5_dna_substrate.timeline_composer import TimelineComposer
+from common.console import enable_safe_stdout
 
 
 def main():
@@ -85,4 +86,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     main()

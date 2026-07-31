@@ -29,6 +29,7 @@ sys.path.append(os.path.abspath(os.path.join(script_dir, "..")))
 from layer5_dna_substrate.registry import DNARegistry
 from layer5_dna_substrate.obsidian_sync import ObsidianSync
 from common.paths import PathConfigError, resolve_vault_path
+from common.console import enable_safe_stdout
 
 DEFAULT_REGISTRY = os.path.abspath(os.path.join(script_dir, "..", "data", "dna_registry.json"))
 
@@ -74,4 +75,7 @@ def run_sync(argv=None):
 
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     run_sync()

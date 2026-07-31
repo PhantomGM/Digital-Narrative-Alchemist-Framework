@@ -6,6 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from layer2_narrative.event_ledger import EventLedger, StateEvent
 from layer1_core.world_state import WorldStateKeeper
+from common.console import enable_safe_stdout
 
 async def run_db_test():
     print("=== Testing Async DB Initialization ===")
@@ -36,4 +37,6 @@ async def run_db_test():
     print("\n[SUCCESS] All Async DB methods successfully passed!")
 
 if __name__ == "__main__":
+    # Ledger output echoes event data, which is not guaranteed ASCII.
+    enable_safe_stdout()
     asyncio.run(run_db_test())

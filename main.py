@@ -17,6 +17,7 @@ from layer5_dna_substrate.inheritance import InheritanceEngine
 from layer4_rules.one_page_5e.arbiter import GameSystemArbiter as OnePage5eArbiter
 from layer4_rules.coin_flip.arbiter import GameSystemArbiter as CoinFlipArbiter
 from layer3_operations.session_director import SessionDirector
+from common.console import enable_safe_stdout
 
 # The freestanding test_input function has been removed.
 # The SessionDirector now handles this logic internally via advance_scene.
@@ -123,4 +124,7 @@ async def main():
     print("\n=== DNA Framework Test Complete ===")
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     asyncio.run(main())

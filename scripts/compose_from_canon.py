@@ -23,6 +23,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from layer5_dna_substrate.registry import DNARegistry
 from layer5_dna_substrate.canon_composer import CanonComposer
 from layer5_dna_substrate.obsidian_sync import ObsidianSync
+from common.console import enable_safe_stdout
 
 
 def main():
@@ -84,4 +85,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     main()

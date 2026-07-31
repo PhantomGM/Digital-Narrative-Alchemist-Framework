@@ -16,6 +16,7 @@ from layer5_dna_substrate.inheritance import InheritanceEngine
 from layer5_dna_substrate.decoder import DNADecoder
 from layer5_dna_substrate.expansion_manager import ExpansionManager
 from layer1_core.multi_agent_coordinator import MultiAgentCoordinator
+from common.console import enable_safe_stdout
 from sync_to_obsidian import sync_registry_to_obsidian, resolve_vault_or_exit
 
 async def main(limit: int = 5, vault: str = None):
@@ -72,6 +73,9 @@ async def main(limit: int = 5, vault: str = None):
     print("✨ Sync complete! Check your Obsidian vault for the new entries.")
 
 if __name__ == "__main__":
+    # Unencodable characters must degrade, not crash: a piped
+    # stdout on Windows is cp1252 and this output is not ASCII.
+    enable_safe_stdout()
     parser = argparse.ArgumentParser(description="Multi-Agent DNA Expansion Demo")
     parser.add_argument("--limit", type=int, default=5, help="Number of stubs to expand concurrently")
     parser.add_argument("--vault", default=None,

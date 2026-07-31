@@ -359,7 +359,11 @@ def _clip(text: str, limit: int) -> str:
 if __name__ == "__main__":
     import argparse
 
+    from common.console import enable_safe_stdout
     from common.paths import PathConfigError, resolve_wiki_path
+
+    # Vault prose carries em dashes and emoji; a piped cp1252 stdout would raise.
+    enable_safe_stdout()
 
     ap = argparse.ArgumentParser(description="Test wiki ingestion.")
     ap.add_argument("--wiki", default=None,
@@ -382,9 +386,5 @@ if __name__ == "__main__":
         canon_only=not args.include_drafts,
     ).ingest_wiki()
 
-    # Vault prose can contain characters the console encoding cannot represent
-    # (emoji, dashes); never let sampling output crash the run.
-    encoding = sys.stdout.encoding or "utf-8"
     for chunk in chunks[:args.limit]:
-        line = f"[{chunk.importance}] ({chunk.entity_id}) {chunk.fact}"
-        print(line.encode(encoding, errors="replace").decode(encoding))
+        print(f"[{chunk.importance}] ({chunk.entity_id}) {chunk.fact}")
