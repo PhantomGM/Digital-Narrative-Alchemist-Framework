@@ -50,6 +50,17 @@ Thumbs.db
 *.log
 logs/
 
+# Event Ledger databases — runtime state, recreated on demand. Deliberately
+# not *.db: the PF2E rules data under src/layer4_rules/PF2EDNA/data/ is
+# legitimately tracked and must stay so.
+dna_ledger.db
+dna_ledger_test.db
+*_ledger.db
+# sqlite sidecars, should the ledger ever run in WAL mode
+*.db-wal
+*.db-shm
+*.db-journal
+
 # Obsidian config (this repo is code; the world bible lives in its own vault)
 .obsidian/
 
