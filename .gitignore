@@ -50,6 +50,12 @@ Thumbs.db
 *.log
 logs/
 
+# A separate project. These build an Obsidian "DNA Brain" vault at a hardcoded
+# OC2 path and were once intended for the AI GM side, not this framework. They
+# import nothing from src/ and nothing here imports them.
+build_brain_vault.py
+expand_brain_vault.py
+
 # Event Ledger databases — runtime state, recreated on demand. Deliberately
 # not *.db: the PF2E rules data under src/layer4_rules/PF2EDNA/data/ is
 # legitimately tracked and must stay so.
