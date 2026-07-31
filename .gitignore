@@ -55,5 +55,7 @@ logs/
 
 # Stray artifacts
 Untitled.md
-# Created by a script that wrote to a literal path string instead of a real path.
-CUsersnickdDesktopHermes/
+# Created by a script that wrote to a literal path string instead of a real
+# path. The real directory name contains fullwidth colon/backslash characters,
+# so it is matched by suffix rather than spelled out.
+*Hermes/
