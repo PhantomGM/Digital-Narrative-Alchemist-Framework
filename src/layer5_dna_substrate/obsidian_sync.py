@@ -37,15 +37,15 @@ class ObsidianSync:
         # Languages belong with the peoples who speak them.
         "linguistic": "Cultures",
         # Peoples and societies, as distinct from institutions with goals (faction).
-        # No culture decoder exists yet; such entities are decoded with the faction
-        # decoder and retyped so they file under the right part of the bible.
         "culture": "Cultures",
-        # Myths, doctrines, prophecies and in-world texts — what the world BELIEVES,
-        # as distinct from what happened (chronicle). No lore decoder exists yet
-        # either; such entities are decoded with the chronicle decoder and retyped.
+        # What the world BELIEVES, as distinct from what happened (chronicle):
+        # myths, doctrines, prophecies. The vault's CLAUDE.md puts in-world texts
+        # here too, so `text` shares the folder — but they are separate types: a
+        # lore page is a claim, a text page is the document carrying it.
         "lore": "Lore",
+        "text": "Lore",
         # Creatures and monsters. Sapient peoples belong in culture; a creature
-        # page is ecology and threat. Decoded with the npc decoder and retyped.
+        # page is ecology and threat.
         "creature": "Bestiary",
         "quest": "Drafts",
     }

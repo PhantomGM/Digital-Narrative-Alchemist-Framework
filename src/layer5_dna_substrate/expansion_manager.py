@@ -25,6 +25,15 @@ FUZZY_TYPE_MAP = {
     # Living (or unliving) things that are not people.
     "creature": "creature", "beast": "creature", "monster": "creature", "fauna": "creature",
     "swarm": "creature", "predator": "creature", "vermin": "creature",
+    # In-world documents: the object carrying a claim, as opposed to the claim
+    # (lore) or a mere possession (item). Deliberately last, because matching is
+    # by substring in insertion order: "scroll" and "book" already resolve to
+    # item and "scripture" to lore, and re-routing those would move existing
+    # entities. Retype deliberately instead (DNARegistry.retype_element).
+    "text": "text", "document": "text", "codex": "text", "tome": "text",
+    "manual": "text", "ledger": "text", "letter": "text", "treatise": "text",
+    "journal": "text", "diary": "text", "logbook": "text", "hymnal": "text",
+    "inscription": "text",
 }
 
 

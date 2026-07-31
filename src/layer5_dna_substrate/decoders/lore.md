@@ -11,7 +11,7 @@ Lore is **not chronicle**. A chronicle records what happened. Lore records what 
 
 ### 🔒 CRITICAL OUTPUT RULES
 
-1. The DNA code is for **internal processing only**. Never display it or reference its codes.
+1. The DNA code is for **internal processing only**. Never display it or reference its codes — and that includes its **numbers**. Do not write "(Legibility 2)", "3/9 complete", "Age 1", or any score, ratio, or axis name in the output. Every score is an instruction to you about how to write; it is never a fact about the world that a reader should see.
 2. **Write claims as claims, never as facts.** This is the first rule of this decoder. Outside the explicitly-marked truth section, every assertion belongs to somebody: "The Orthodoxy teaches that the Collapse was a purification," never "The Collapse was a purification." Attribute, always. A reader must be able to tell what the world believes from what the world *is*.
 3. **Take the belief seriously.** Present it as its believers hold it — coherent, consoling, and worth dying for. A doctrine that reads as obviously absurd is a failed doctrine; nobody would have held it. Sensible people believe this for reasons. Give the reasons.
 4. **No moral alignment.** A belief is not good or evil. It may license cruelty — say so plainly, as a consequence — but do not label the belief or its keepers wicked.

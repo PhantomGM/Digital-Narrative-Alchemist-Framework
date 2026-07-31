@@ -2073,7 +2073,7 @@
     },
     "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e": {
       "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
-      "type": "lore",
+      "type": "text",
       "name": "The Litany of the Unbroken Thread",
       "dna": "STUB",
       "phenotype": "[STUB] The Litany of the Unbroken Thread: The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.",

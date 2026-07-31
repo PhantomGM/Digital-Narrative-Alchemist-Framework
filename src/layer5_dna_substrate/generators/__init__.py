@@ -11,6 +11,7 @@ from .trap import generate_trap_dna
 from .creature import generate_creature_dna
 from .culture import generate_culture_dna
 from .lore import generate_lore_dna
+from .text import generate_text_dna
 from .wonder import generate_world_wonder_dna
 from .establishment import generate_establishment_dna
 from .regional_poi import generate_regional_poi_dna

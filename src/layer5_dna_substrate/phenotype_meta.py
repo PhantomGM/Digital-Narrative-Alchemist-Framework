@@ -59,9 +59,10 @@ _REQUIRED_ANY = ("name", "gist", "summary")
 VALID_STUB_TYPES = {
     "npc", "faction", "location", "settlement", "region",
     "item", "quest", "chronicle", "linguistic", "world",
-    # Peoples, and the things they believe. Both file to their own part of the
-    # bible; neither has a dedicated decoder yet (see ObsidianSync.TYPE_FOLDER_MAP).
-    "culture", "lore", "creature",
+    # Peoples, the things they believe, the documents carrying those beliefs, and
+    # the beasts. Each files to its own part of the bible and each has its own
+    # decoder (see ObsidianSync.TYPE_FOLDER_MAP).
+    "culture", "lore", "text", "creature",
 }
 
 
