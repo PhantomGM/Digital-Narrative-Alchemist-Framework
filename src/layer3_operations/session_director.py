@@ -5,7 +5,7 @@ from layer3_operations.consistency_auditor import ConsistencyAuditor
 from layer3_operations.safety_governor import SafetyGovernor
 from layer3_operations.player_profiles import PlayerProfileManager
 from layer3_operations.chronicler import Chronicler
-from layer3_operations.wiki_bridge import WikiBridge
+from layer3_operations.wiki_bridge import WikiBridge, normalize_entity_id
 from layer3_operations.state_critic import StateCritic
 from common.paths import PathConfigError, resolve_wiki_path
 from layer2_narrative.event_ledger import EventLedger, StateEvent
@@ -161,9 +161,23 @@ class SessionDirector:
         # For now, we search for the location name and any entities in the reality
         search_terms = [location_tag] + list(current_reality.get("entities", {}).keys())
         relevant_lore = []
+        seen_facts = set()
         for term in search_terms:
-            relevant_lore.extend(self.chronicler.query_lore(entity_id=term.lower().replace(" ", "_")))
-        
+            # query_lore matches entity_id exactly, so the term must be reduced
+            # the same way ingestion reduces a page title. The old
+            # lower()/replace(" ", "_") missed every hyphenated name — an
+            # "Arch-Librarian Kaelen" page was ingested but never retrievable.
+            # The raw and legacy forms are still tried, because event-sourced
+            # chunks store their target verbatim.
+            for key in {normalize_entity_id(term), term.lower().replace(" ", "_"), term}:
+                if not key:
+                    continue
+                for chunk in self.chronicler.query_lore(entity_id=key):
+                    if chunk.fact not in seen_facts:
+                        seen_facts.add(chunk.fact)
+                        relevant_lore.append(chunk)
+
+
         # Also do a broad search if no specific entities matched (stub for semantic search)
         if not relevant_lore:
              # Just pull the most important facts for now as a fallback
