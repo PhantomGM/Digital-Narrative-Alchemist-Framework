@@ -121,6 +121,88 @@ class TestGeneratorSmokeTests:
         dna = generate_establishment_dna()
         assert isinstance(dna, str) and len(dna) > 10
 
+    def test_creature_generator(self):
+        from layer5_dna_substrate.generators.creature import generate_creature_dna
+        dna = generate_creature_dna()
+        assert isinstance(dna, str) and len(dna) > 50
+        # Ecology genome, not a personality genome: it must carry a Sapience score
+        # and the hazard blocks, and must NOT carry the NPC moral axes (LNC/GNE).
+        assert dna.startswith("CREATURE{")
+        for block in ("BODY{", "HUNT{", "ECO{", "ANOM{"):
+            assert block in dna, f"creature DNA missing {block}"
+        sap = int(dna.split("[")[1].split("/")[2].split("]")[0])
+        assert 1 <= sap <= 9
+
+    def test_creature_is_a_first_class_forge_type(self):
+        from layer5_dna_substrate.forge import ProceduralForge
+        out = ProceduralForge().synthesize_element("creature")
+        assert out["type"] == "creature" and out["dna"].startswith("CREATURE{")
+
+    def test_creature_seed_is_reproducible(self):
+        from layer5_dna_substrate.generators.creature import generate_creature_dna
+        assert generate_creature_dna(seed=42) == generate_creature_dna(seed=42)
+        # different seeds should (essentially always) differ
+        assert generate_creature_dna(seed=1) != generate_creature_dna(seed=2)
+
+    def test_creature_pins_override_the_roll(self):
+        from layer5_dna_substrate.generators.creature import generate_creature_dna
+        # Pin the Dust-Wraith invariants; the rest still rolls, but pinned axes are fixed.
+        dna = generate_creature_dna(seed=7, sapience=2, form="swarm", origin="nanite-born",
+                                    diet="flesh-and-metal", method="swarm", aggression=8,
+                                    ability="swarm-mind", weakness="specific-frequency")
+        assert "[9/" not in dna.split("]")[0] or True  # threat still free
+        top = dna.splitlines()[0]
+        assert top.endswith("#nanite-born #swarm")
+        assert top.split("/")[2].startswith("2")           # sapience pinned to 2
+        assert "DIET:flesh-and-metal" in dna and "MTH:swarm" in dna and "AGG:8" in dna
+        assert "PWK:swarm-mind" in dna and "WKN:specific-frequency" in dna
+
+    def test_creature_pins_are_validated(self):
+        import pytest
+        from layer5_dna_substrate.generators.creature import generate_creature_dna
+        with pytest.raises(ValueError):
+            generate_creature_dna(form="dragon")          # not in vocabulary
+        with pytest.raises(ValueError):
+            generate_creature_dna(sapience=12)            # out of 1-9 range
+        with pytest.raises(ValueError):
+            generate_creature_dna(nonsense="x")           # unknown axis
+
+    def test_forge_forwards_creature_pins(self):
+        from layer5_dna_substrate.forge import ProceduralForge
+        out = ProceduralForge().synthesize_element("creature", sapience=1, form="ooze")
+        assert "#ooze" in out["dna"] and out["dna"].splitlines()[0].split("/")[2].startswith("1")
+
+    def test_culture_generator(self):
+        from layer5_dna_substrate.generators.culture import generate_culture_dna
+        dna = generate_culture_dna()
+        assert isinstance(dna, str) and len(dna) > 50
+        assert dna.startswith("CULTURE{")
+        # A way-of-life genome, not a personality one: it carries lifecycle/belief
+        # blocks and a kinship tag, and no NPC moral axes.
+        for block in ("VALUES{", "LIFE{", "RITE{", "BELIEF{", "WORLD{", "NAME{"):
+            assert block in dna, f"culture DNA missing {block}"
+
+    def test_culture_is_a_first_class_forge_type(self):
+        from layer5_dna_substrate.forge import ProceduralForge
+        out = ProceduralForge().synthesize_element("culture")
+        assert out["type"] == "culture" and out["dna"].startswith("CULTURE{")
+
+    def test_culture_seed_and_pins(self):
+        from layer5_dna_substrate.generators.culture import generate_culture_dna
+        import pytest
+        assert generate_culture_dna(seed=5) == generate_culture_dna(seed=5)
+        # Pin a known people's invariants (a scavenger, covenant-bound, waste taboo).
+        dna = generate_culture_dna(seed=1, subsistence="scavenger", kinship="covenant",
+                                   taboo="waste", cohesion=6)
+        top = dna.splitlines()[0]
+        assert top.endswith("#scavenger #covenant")
+        assert top.split("/")[1] == "6"                    # cohesion pinned
+        assert "TABOO:waste" in dna
+        with pytest.raises(ValueError):
+            generate_culture_dna(kinship="monarchy")       # not in vocabulary
+        with pytest.raises(ValueError):
+            generate_culture_dna(cohesion=0)               # out of range
+
     def test_regional_poi_generator(self):
         from layer5_dna_substrate.generators.regional_poi import generate_regional_poi_dna
         dna = generate_regional_poi_dna()

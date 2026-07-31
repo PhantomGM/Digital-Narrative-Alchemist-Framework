@@ -8,6 +8,8 @@ from .region import generate_region_dna
 from .realm import generate_realm_dna
 from .agency import generate_agency_dna
 from .trap import generate_trap_dna
+from .creature import generate_creature_dna
+from .culture import generate_culture_dna
 from .wonder import generate_world_wonder_dna
 from .establishment import generate_establishment_dna
 from .regional_poi import generate_regional_poi_dna
