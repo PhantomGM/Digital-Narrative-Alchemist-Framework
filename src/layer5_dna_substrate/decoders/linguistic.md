@@ -49,6 +49,10 @@ Format: `LING{P:x; V:x; S:x; T:x}` — four axes, each **1–99**. This logic mu
 
 ### 🔗 Unmade Connections (DNA Stubs)
 
+> **Do not list your example names here.** The five NPC names, five location names and five faction names above are *demonstrations of the rules*. They are not people, places or factions this world contains, and registering them would fill the unmade-stub backlog with entities nobody meant to create. A single run of this decoder produced fifteen such false stubs.
+>
+> List a stub only for something the world genuinely has because of its language: a body that governs or teaches it, a script or dialect named in the profile, a text the conventions depend on. If there is nothing, say so and list none.
+
 * **[Type] Name:** [Brief relationship or reason for existence]
 
 ---
