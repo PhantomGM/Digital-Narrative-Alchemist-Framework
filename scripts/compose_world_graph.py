@@ -2,7 +2,10 @@
 Derive an interactive knowledge graph of the world from the registry.
 
 Usage (from the repo root):
-    .\\venv\\Scripts\\python.exe scripts\\compose_world_graph.py --registry data\\world_builder_registry.json
+    .\\venv\\Scripts\\python.exe scripts\\compose_world_graph.py --registry data\\showcase_registry.json
+
+(data\\showcase_registry.json is the curated example world that ships with the
+repo. Point --registry at your own working registry to graph your own world.)
 
 The registry already holds a graph: every entity the pipeline created, its type
 and gist, and the labelled edges it recorded while building. This renders that

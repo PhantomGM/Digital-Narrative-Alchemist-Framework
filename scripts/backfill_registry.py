@@ -2,7 +2,7 @@
 Reconcile the registry against the vault, and derive the authoring worklist.
 
 Usage (from the repo root):
-    .\\venv\\Scripts\\python.exe scripts\\backfill_registry.py --registry data\\world_builder_registry.json --vault "C:\\path\\to\\Vault"
+    .\\venv\\Scripts\\python.exe scripts\\backfill_registry.py --registry data\\showcase_registry.json --vault "C:\\path\\to\\Vault"
     ... --apply                 write the harvested edges into the registry
     ... --apply --register-doctrines "Law of Utility" "Order of the Gate"
 

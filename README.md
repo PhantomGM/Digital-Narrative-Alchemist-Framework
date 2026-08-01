@@ -158,8 +158,26 @@ followed.
 | `compose_stub_index.py` | Re-derive the list of named-but-unwritten entities |
 | `compose_world_graph.py` | Render the registry as a self-contained interactive graph |
 | `backfill_registry.py` | Reconcile the registry against the vault; derive the link-gap worklist |
+| `export_showcase.py` | Carve the curated example registry out of a working one |
 | `sync_to_obsidian.py` | Write the registry into the vault, canon untouched |
 | `list_models.py` | Probe which models the configured keys can actually reach |
+
+### Which registry?
+
+The registry is where a world lives — every entity, its DNA, its decoded prose,
+and the graph of what relates to what. Two of them matter here:
+
+| File | Tracked | What it is |
+| :--- | :---: | :--- |
+| `data/showcase_registry.json` | yes | A curated slice of a real generated world. What the scripts above default to, and what a fresh clone runs against. |
+| `data/world_builder_registry.json` | no | Your working world. Grows on every run, carries the full text of every page, stays local. |
+
+The example slice is not a fixture — it is genuine pipeline output, one entity
+per generated type plus a few unmade stubs, so the derivers, the graph view and
+the stub index all have something real to work on. Regenerate it with
+`export_showcase.py`; choose what goes in by editing `data/showcase_names.txt`.
+
+Nothing forces this split. If your world is meant to be public, track it.
 
 ---
 

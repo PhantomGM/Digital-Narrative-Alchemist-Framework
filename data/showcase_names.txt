@@ -1,0 +1,32 @@
+# Entities carried into the public example registry, one name per line.
+#
+# The working registry is a live world and is not tracked. This list is the
+# curated slice that is: enough for the derivers, the graph view and a new
+# clone to run against real generated content, without the whole world going
+# public every time it grows.
+#
+# Edit this file and re-run:
+#   scripts\export_showcase.py --registry data\world_builder_registry.json \
+#       --out data\showcase_registry.json --names-file data\showcase_names.txt
+#
+# Chosen for type coverage first, then for interconnection -- a slice of
+# unrelated pages produces a graph with nothing to look at.
+
+# --- one of each generated type ---
+Skarn                                    # world
+The Ash Wastes                           # region
+The Ribs                                 # settlement
+The Nexus Spire                          # location
+The Sundergate Hegemony                  # faction
+Lore-keeper Corin                        # npc
+The Truth Scroll                         # item
+The First Truth of the Unbroken Thread   # lore
+The Litany of the Unbroken Thread        # text
+The Collapse                             # chronicle
+Dust-Wraiths                             # creature
+The Soot-Walker Clans                    # culture
+
+# --- stubs, so the unmade-stub backlog has something to show ---
+The Breath-Chants                        # linguistic (stub)
+The Second Litany                        # text (stub)
+Vow of the Blank Page                    # lore (stub, harvested from canon prose)

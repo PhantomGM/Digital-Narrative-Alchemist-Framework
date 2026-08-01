@@ -2,7 +2,10 @@
 Derive the pending-stub listing into the vault.
 
 Usage (from the repo root):
-    .\\venv\\Scripts\\python.exe scripts\\compose_stub_index.py --registry data\\world_builder_registry.json --vault "C:\\path\\to\\Vault"
+    .\\venv\\Scripts\\python.exe scripts\\compose_stub_index.py --registry data\\showcase_registry.json --vault "C:\\path\\to\\Vault"
+
+(data\\showcase_registry.json is the curated example world that ships with the
+repo. Point --registry at your own working registry to index your own stubs.)
 
 Stubs are the entities an existing page has named without describing. They are not
 written as pages — the sync holds them back, since a stub is a name plus a reason

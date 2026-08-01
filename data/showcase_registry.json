@@ -1,0 +1,690 @@
+{
+  "edges": {
+    "089b9de9-0f98-41ba-9167-521aae1e4a7b": {
+      "peer": [
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_The Litany of the Unbroken Thread"
+        },
+        {
+          "id": "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+          "label": "mentions_The Collapse"
+        },
+        {
+          "id": "e935b9dd-ebd1-4f09-addb-facb2104e986",
+          "label": "mentions_Lore-keeper Corin"
+        }
+      ]
+    },
+    "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c": {},
+    "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa": {
+      "peer": [
+        {
+          "id": "e935b9dd-ebd1-4f09-addb-facb2104e986",
+          "label": "mentions_Vow of the Blank Page"
+        }
+      ]
+    },
+    "431fb7e0-74bb-4e87-8ede-9c4130135b6b": {
+      "peer": [
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "mentions_The Soot-Walker Clans"
+        },
+        {
+          "id": "a4238893-6a54-46ce-9251-7029431228b0",
+          "label": "mentions_The Ribs"
+        },
+        {
+          "id": "443066dc-e950-4e6e-a43e-ab36a023a944",
+          "label": "mentions_The Sundergate Hegemony"
+        },
+        {
+          "id": "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+          "label": "mentions_The Nexus Spire"
+        },
+        {
+          "id": "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+          "label": "mentions_The Collapse"
+        }
+      ]
+    },
+    "443066dc-e950-4e6e-a43e-ab36a023a944": {
+      "peer": [
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "mentions_The Sundergate Hegemony"
+        },
+        {
+          "id": "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+          "label": "mentions_The Sundergate Hegemony"
+        },
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "mentions_The Sundergate Hegemony"
+        }
+      ]
+    },
+    "5a035452-83d4-428d-b66c-ae0f6d8f8c24": {
+      "child": [
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "contains"
+        }
+      ],
+      "peer": [
+        {
+          "id": "a4238893-6a54-46ce-9251-7029431228b0",
+          "label": "mentions_The Nexus Spire"
+        },
+        {
+          "id": "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+          "label": "mentions_The Nexus Spire"
+        },
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "mentions_Skarn"
+        }
+      ]
+    },
+    "a4238893-6a54-46ce-9251-7029431228b0": {
+      "peer": [
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "mentions_The Ribs"
+        },
+        {
+          "id": "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+          "label": "mentions_The Ribs"
+        },
+        {
+          "id": "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+          "label": "mentions_The Nexus Spire"
+        },
+        {
+          "id": "e935b9dd-ebd1-4f09-addb-facb2104e986",
+          "label": "mentions_The Ribs"
+        },
+        {
+          "id": "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e",
+          "label": "mentions_The Ribs"
+        }
+      ]
+    },
+    "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c": {
+      "peer": [
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "mentions_Skarn"
+        },
+        {
+          "id": "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+          "label": "mentions_The Collapse"
+        },
+        {
+          "id": "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+          "label": "mentions_The Collapse"
+        }
+      ]
+    },
+    "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e": {
+      "child": [
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "native_to"
+        }
+      ],
+      "peer": [
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "mentions_Skarn"
+        },
+        {
+          "id": "a4238893-6a54-46ce-9251-7029431228b0",
+          "label": "mentions_The Ribs"
+        }
+      ]
+    },
+    "b3d5596e-cc9d-4385-ba0b-0e935ce618cd": {
+      "parent": [
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "contains"
+        }
+      ],
+      "peer": [
+        {
+          "id": "443066dc-e950-4e6e-a43e-ab36a023a944",
+          "label": "mentions_The Sundergate Hegemony"
+        },
+        {
+          "id": "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+          "label": "mentions_Skarn"
+        },
+        {
+          "id": "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e",
+          "label": "mentions_Skarn"
+        },
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_Skarn"
+        },
+        {
+          "id": "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+          "label": "mentions_Skarn"
+        }
+      ]
+    },
+    "b852d934-a642-438f-965b-42e5a5e3a755": {
+      "child": [
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "contains"
+        }
+      ],
+      "parent": [
+        {
+          "id": "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+          "label": "contains"
+        },
+        {
+          "id": "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e",
+          "label": "native_to"
+        }
+      ],
+      "peer": [
+        {
+          "id": "e935b9dd-ebd1-4f09-addb-facb2104e986",
+          "label": "mentions_Lore-keeper Corin"
+        },
+        {
+          "id": "a4238893-6a54-46ce-9251-7029431228b0",
+          "label": "mentions_The Ribs"
+        },
+        {
+          "id": "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+          "label": "mentions_The Soot-Walker Clans"
+        },
+        {
+          "id": "443066dc-e950-4e6e-a43e-ab36a023a944",
+          "label": "mentions_The Sundergate Hegemony"
+        }
+      ]
+    },
+    "cfb68222-661e-44b7-984a-41c0cc58cbbd": {},
+    "e0b6ee1b-6820-4782-843c-94fd14407cf3": {},
+    "e935b9dd-ebd1-4f09-addb-facb2104e986": {
+      "peer": [
+        {
+          "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+          "label": "mentions_Lore-keeper Corin"
+        },
+        {
+          "id": "a4238893-6a54-46ce-9251-7029431228b0",
+          "label": "mentions_The Ribs"
+        },
+        {
+          "id": "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+          "label": "mentions_Lore-keeper Corin"
+        },
+        {
+          "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+          "label": "mentions_Lore-keeper Corin"
+        },
+        {
+          "id": "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa",
+          "label": "mentions_Vow of the Blank Page"
+        }
+      ]
+    },
+    "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e": {
+      "peer": [
+        {
+          "id": "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+          "label": "mentions_The Litany of the Unbroken Thread"
+        },
+        {
+          "id": "e935b9dd-ebd1-4f09-addb-facb2104e986",
+          "label": "mentions_Lore-keeper Corin"
+        },
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "mentions_Skarn"
+        }
+      ]
+    }
+  },
+  "records": {
+    "089b9de9-0f98-41ba-9167-521aae1e4a7b": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "(CHRON/5) 1I1,7S5,8A5,3E4,8L3,3B1,7O3,5V1,6F4,1Q1",
+      "gist": "The core theological doctrine of The Orthodoxy of the Solar-Aether, portraying the Golden Age as divine creation and the Collapse as holy purification, thereby justifying their control over technology and magic.",
+      "id": "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+      "name": "The First Truth of the Unbroken Thread",
+      "phenotype": "### **The First Truth of the Unbroken Thread**\n\n**Type:** Religious Doctrine / Foundational Canon\n**Time Period:** Post-Collapse (presently 312 AS)\n\n| **Historical Essence** | **Archetype** |\n| :--- | :--- |\n| \"The divine blueprint woven into the very fabric of existence, guiding the faithful through the ruins.\" | The Sacred Lineage |\n\n---\n\n**The Overview:**\nThe First Truth of the Unbroken Thread is the paramount theological concept of The Orthodoxy of the Solar-Aether, serving as the bedrock of their faith, social structure, and control over The Iron Dominion. It posits a divine lineage of sacred knowledge, technology, and magic, originating from the revered \"First Architects.\" This doctrine offers a compelling narrative for a world scarred by cataclysm, providing meaning, hope, and strict guidance to a frightened populace. It dictates that adherence to its principles is the only path to salvation and the eventual restoration of a fractured world.\n\n**Key Figures:**\n*   **The First Architects:** Worshipped as the divine creators of the Golden Age and the original source of all sacred knowledge and technology. Their true nature remains a profound mystery.\n*   **Archon Vesper Sol:** The current zealous leader of The Orthodoxy, the primary enforcer and interpreter of the First Truth, who wields its authority to maintain absolute temporal and spiritual power from The Iron Throne.\n\n**The Turning Point:**\nThe First Truth's ascendancy was not a single event but a slow, desperate crystallization in the wake of The Collapse and The Sky-Shatter. As chaos reigned and understanding of Golden Age technology vanished, the Orthodoxy emerged, offering a coherent, albeit simplified, narrative. The moment it became widely institutionalized – perhaps with the first grand pronouncements from the nascent Cathedral of the First Spark – marked its true turning point, transforming it from a burgeoning belief into the dominant, unshakeable dogma.\n\n**Aftermath & Legacy:**\nThe First Truth of the Unbroken Thread dictates every facet of life in The Iron Dominion and beyond. It justifies the Orthodoxy's absolute control over technology and magic, declaring unsanctioned use or study as heresy punishable by The Thread-Keepers. It fosters a pervasive culture of veneration for ancient relics and rituals, while simultaneously suppressing independent inquiry. Its legacy is a society structured around strict dogma, where the promise of divine favor outweighs individual freedom, and where ancient machines are treated as holy sacraments rather than mere tools. The doctrine's emphasis on \"purity\" and \"safeguarding the Thread\" has led to widespread purges and the systematic destruction of \"tech-heretics.\"\n\n**Lore & Rumors:**\n\n**What is believed:** The First Truth teaches that the Golden Age was a paradise meticulously designed by the benevolent First Architects. The Collapse was not a technological failure but a holy purification, a divine judgment sent to cleanse the world of the unworthy. The rising tide of magic is the \"Divine Breath,\" returning to reanimate the world's dormant sacred machinery and herald a new golden age. The \"Thread\" is the continuous, divine lineage of sacred knowledge, technology, and magic, which only the Orthodoxy is pure enough to safeguard. The *Litany of the Unbroken Thread* is their holiest scripture, guiding their every action.\n\n**The hidden truth:** In truth, The Collapse was a self-inflicted catastrophe, born from Aetherium over-saturation, the reckless gambles of **The Council of Nexus**, and desperate, failed interventions. Divine punishment is merely a simplified narrative for an incomprehensible tragedy. Lore-keeper Corin's decoded *Maintenance Codex* has exposed that the Orthodoxy's most sacred liturgies, including sections of the *Litany of the Unbroken Thread*, are, in fact, pre-Collapse machine operating instructions. Some Thread-Keepers have privately come to realize that their \"sacred relics\" are merely advanced machines, their \"divine power\" nothing more than carefully managed ancient technology. The true identity of the First Architects remains lost to time, and Corin's manual, while debunking the divinity of the scriptures, offers no insight into who authored them.\n\n**Adventure Hooks:**\n*   **The Famine of the Forbidden Loom:** A critical ancient \"sacred loom\" in a remote Iron Dominion settlement, believed to weave divine sustenance, is failing. The local Orthodoxy forbids any \"unclean\" interaction, but starvation looms. A hidden message suggests the \"loom\" is a pre-Collapse food replicator, and its \"sacred rituals\" are simply maintenance procedures that Corin's manual could explain.\n*   **Echoes of the First Architects:** Rumors persist of an ancient, untouched Golden Age datavault deep within The Forged Peaks, said to contain fragments of the First Architects' true history, or even their final message. Retrieving its data could either shatter or reinforce the Orthodoxy's foundational beliefs.\n\n### 🔗 Unmade Connections (DNA Stubs)\n*   **[Chronicle] The First Architects:** The mysterious, worshipped creators of the Golden Age, whose true nature remains unknown to both the Orthodoxy and its heretics.\n*   **[Chronicle] The Litany of the Unbroken Thread:** The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.\n*   **[Faction] The Council of Nexus:** A pre-Collapse governing body whose desperate, reckless actions, including crust-siphoning gambles, contributed to the self-inflicted catastrophe of The Collapse.\n*   **[Chronicle] The Divine Breath:** The Orthodoxy's theological term for the rising tide of magic, believed to be a purifying force reanimating sacred machinery.\n\n---\n```yaml\nname: The First Truth of the Unbroken Thread\ngist: The core theological doctrine of The Orthodoxy of the Solar-Aether, portraying the Golden Age as divine creation and the Collapse as holy purification, thereby justifying their control over technology and magic.\nsummary: >\n  The First Truth of the Unbroken Thread is the foundational dogma of the Orthodoxy, asserting that the First Architects divinely crafted the Golden Age and orchestrated The Collapse as a purification. It claims rising magic is the \"Divine Breath,\" intended to reanimate sacred machinery, and that only the Orthodoxy can safeguard this \"Unbroken Thread\" of divine knowledge. This doctrine provides meaning and control to a desperate populace, despite hidden truths revealing The Collapse was self-inflicted and its \"scriptures\" are actually machine manuals, a secret exploited by Lore-keeper Corin and privately known by some Thread-Keepers.\nstubs:\n  - type: chronicle\n    name: The First Architects\n    gist: The mysterious, worshipped creators of the Golden Age, whose true nature remains unknown to both the Orthodoxy and its heretics.\n  - type: chronicle\n    name: The Litany of the Unbroken Thread\n    gist: The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.\n  - type: faction\n    name: The Council of Nexus\n    gist: A pre-Collapse governing body whose desperate, reckless actions, including crust-siphoning gambles, contributed to the self-inflicted catastrophe of The Collapse.\n  - type: chronicle\n    name: The Divine Breath\n    gist: The Orthodoxy's theological term for the rising tide of magic, believed to be a purifying force reanimating sacred machinery.\n```",
+      "stub_metadata": {
+        "description": "The core theological concept of the Orthodoxy, representing the divine lineage of sacred knowledge, technology, and magic from the First Architects.",
+        "name": "The First Truth of the Unbroken Thread",
+        "source_id": null
+      },
+      "summary": "The First Truth of the Unbroken Thread is the foundational dogma of the Orthodoxy, asserting that the First Architects divinely crafted the Golden Age and orchestrated The Collapse as a purification. It claims rising magic is the \"Divine Breath,\" intended to reanimate sacred machinery, and that only the Orthodoxy can safeguard this \"Unbroken Thread\" of divine knowledge. This doctrine provides meaning and control to a desperate populace, despite hidden truths revealing The Collapse was self-inflicted and its \"scriptures\" are actually machine manuals, a secret exploited by Lore-keeper Corin and privately known by some Thread-Keepers.",
+      "tags": [
+        "the_first_truth_of_the_unbroken_thread",
+        "expanded",
+        "canonized"
+      ],
+      "type": "lore"
+    },
+    "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "ITEM{v1.0[1/3/2]}<AP:0.7,MR:1.5,RE:1.7>#weapon\nPHY{M38,S46,A75,D13,C86,W41,F42,T47}\nMAG{P10,E54,D12,C20,S39,A51,R61,T42}\nHIS{O40,C15,A66,R47,L18,F10,D67,S99}\nLOR{K62,F84,N86,C26,R59,E42,I27,S85}\nATTUNE{U60,W19,C17,M73,S61,V72,P48,R86}\nCHAIN{USE:P>E>C;MAG:D>S>R;ATT:S>C>W}\nEVO{P:DECAYING[52, 77, 95, 99];M:DORMANT[70, 71, 72, 82]}",
+      "gist": "A legendary, fragmented treaty exposing the Sundergate Hegemony's dark pact with the Obsidian Heart, hidden across the Scrivener's Archives.",
+      "id": "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
+      "name": "The Truth Scroll",
+      "phenotype": "### **The Truth Scroll**\n\n**Type:** Fragmentary Relic / Forbidden Dossier  \n**Rarity:** Legendary  \n\n| **Narrative Essence** | **Archetype** |\n| :--- | :--- |\n| \"A shattered mirror of betrayal, whose jagged glass cuts those who seek the light.\" | The Scattered Puzzle |\n\n---\n\n**Physical Description:**\nThe Truth Scroll is not a single cohesive document, but a collection of nine disparate, fragile fragments. Some pieces are written on pre-Collapse poly-alloy vellum that hums with a faint, dying static; others are scrawled on cured beast-hide or scorched paper. Every fragment is stained with a unique fingerprint of sacrificial ash—a dark, powdery residue that smells of ozone and burnt copper. The margins bear the official, defaced crest of the early Sundergate Hegemony, alongside the terrifying, crystalline brand of **The Obsidian Heart**.\n\n**Powers & Properties:**\n* **Decaying Insight:** Reading a single fragment grants the user temporary, hyper-focused insight into the machinery of Hegemony power - the names behind a cipher, the true owner of a sealed holding, which official can be bought and with what. However, this knowledge carries a heavy physical toll; the reader's eyes temporarily cloud over with gray cataracts, and they suffer intense, bone-deep fatigue as their own vitality is briefly drained.\n* **The Resonance Ritual:** If three or more fragments are brought together, they begin to hover and hum, projecting a flickering, holographic script of an ancient, forbidden ritual. This ritual is designed to target The Obsidian Heart, but its true function is dangerously volatile; ancient annotations leave it entirely uncertain whether performing it will temporarily bind the entity or catastrophically empower it.\n* **The Scatter Curse:** The fragments actively resist being reunited. When brought within close proximity, they exude the Heart's own dread - nearby minds lose the thread of what they were saying, recent memories thin to secondhand rumour, and living creatures suffer severe, disorienting nausea.\n\n**History & Legend:**\nDrafted in the shadows of the early post-Collapse era, the scroll was a formal, secret treaty between the founders of the Sundergate Hegemony and the malevolent entity known as The Obsidian Heart. The pact traded the collective life force of Sundergate's unsuspecting populace for absolute political and economic control - worldly dominion, and nothing more. \n\nEarly in her tenure as Chief Scrivener, Lyra discovered three of these fragments hidden inside the hollowed-out spine of an ancient ledger. This horrifying revelation transformed her from a mere administrator into a fiercely protective guardian of the Archives, prompting her to establish her secret network of informants, the Whisperers. To protect the secret, Lyra cataloged the precise locations of the remaining fragments and hid them across the most hazardous, forgotten corners of the Scrivener's Archives, remaining the sole holder of the master key to their locations. Over the years, disillusioned members of the Scriveners Guild, desperate to expose the government's corruption, have repeatedly tried to smuggle fragments out of the Archives, leading to quiet, bloody purges by Hegemony officials.\n\n**Adventure Hooks:**\n* **[Hook 1]:** A disillusioned archivist, **Scribe Malakor**, was recently murdered in the lower districts of The Sundergate after successfully smuggling a fragment out of the Archives. The players must locate his hidden drop-point and retrieve the fragment before Proctor Valerius's agents secure it.\n* **[Hook 2]:** Having acquired a few fragments of the scroll, the players are approached by a representative of the Whisperers. They are faced with a terrible choice: return the fragments to Chief Scrivener Lyra to keep the secret safe, or seek out the remaining pieces to attempt the ritual, risking the catastrophic empowerment of The Obsidian Heart to save the city's draining populace.\n\n---\n\n### 🔗 Unmade Connections (DNA Stubs)\n* **[NPC] The Obsidian Heart:** The ancient, malevolent entity that traded worldly power to the Hegemony founders in exchange for the populace's life force.\n* **[NPC] Scribe Malakor:** A disillusioned former member of the Scriveners Guild who was murdered after smuggling a fragment of the scroll.\n\n---\n\n```yaml\nname: The Truth Scroll\ngist: A legendary, fragmented treaty exposing the Sundergate Hegemony's dark pact with the Obsidian Heart, hidden across the Scrivener's Archives.\nsummary: >\n  The Truth Scroll is a highly classified, multi-part dossier detailing a corrupt pact where the Sundergate Hegemony traded its citizens' life force for worldly power. Rather than a single document, it exists as nine scattered fragments hidden throughout the Scrivener's Archives by Chief Scrivener Lyra, who holds the only master key to their locations. Reading the fragments grants insight into the machinery of Hegemony power at the cost of physical vitality, while assembling them reveals a volatile ritual that could either bind or empower the Obsidian Heart.\nstubs:\n  - type: npc\n    name: The Obsidian Heart\n    gist: A powerful and malevolent entity that feeds on mortal life force in exchange for granting worldly power.\n  - type: npc\n    name: Scribe Malakor\n    gist: A disillusioned former member of the Scriveners Guild who was murdered after smuggling a fragment of the scroll.\n```",
+      "stub_metadata": {
+        "description": "A document detailing the Sundergate Hegemony's corruption, hidden within the Archives.",
+        "name": "The Truth Scroll",
+        "source_id": null
+      },
+      "summary": "The Truth Scroll is a highly classified, multi-part dossier detailing a corrupt pact where the Sundergate Hegemony traded its citizens' life force for temporal power. Rather than a single document, it exists as nine scattered fragments hidden throughout the Scrivener's Archives by Chief Scrivener Lyra, who holds the only master key to their locations. Reading the fragments grants insight into the machinery of Hegemony power at the cost of physical vitality, while assembling them reveals a volatile ritual that could either bind or empower the Obsidian Heart.",
+      "tags": [
+        "the_truth_scroll",
+        "expanded",
+        "canonized"
+      ],
+      "type": "item"
+    },
+    "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa": {
+      "dna": "STUB",
+      "gist": "Named in Lore-keeper Corin; not yet described.",
+      "id": "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa",
+      "name": "Vow of the Blank Page",
+      "phenotype": "[STUB] Vow of the Blank Page: Named in Lore-keeper Corin; not yet described.",
+      "stub_metadata": {
+        "description": "Named in Lore-keeper Corin; not yet described.",
+        "name": "Vow of the Blank Page",
+        "source_id": "e935b9dd-ebd1-4f09-addb-facb2104e986"
+      },
+      "summary": null,
+      "tags": [
+        "stub",
+        "from_e935b9dd-ebd1-4f09-addb-facb2104e986",
+        "vow_of_the_blank_page"
+      ],
+      "type": "lore"
+    },
+    "431fb7e0-74bb-4e87-8ede-9c4130135b6b": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "T1-G02-M1-P6-S5-O6-N90-L07-F3-D3-A4-SC5-MZ2-X2",
+      "gist": "Nomadic, mask-wearing scavengers of the Ash Wastes organized into pragmatic scrap-covenants bound by strict resource preservation laws.",
+      "id": "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+      "name": "The Soot-Walker Clans",
+      "phenotype": "### **The Soot-Walker Clans**\n\n**Role:** Nomadic Scavenger Culture  \n**Alignment:** True Neutral  \n\n| **Narrative Essence** | **Archetype** |\n| :--- | :--- |\n| \"Breath bought in filter-hours, life measured in reclaimed water.\" | The Ash-Drowned Nomads |\n\n---\n\n**Overview:**\nThe Soot-Walker Clans are not a unified nation or formal institution, but a scattered, highly adapted culture of nomadic scavengers traversing the toxic, nanite-laced Ash Wastes. To the settled citizens of [[The Sundergate Hegemony]] or the dogma-bound clergy of [[The Orthodoxy of the Solar-Aether]], they are viewed as ghoulish, masked scavengers who desecrate ancient ruins. To those who trade at the lawless outpost of [[The Ribs]], however, they are respected as master technicians capable of coaxing life from dead pre-Collapse power cells that others would discard as worthless junk.\n\n**Ideology & Methodology:**\n* **First Truths & Moral Law:** The foundational law of all Soot-Walkers is absolute resource efficiency: *\"To waste nothing is the highest moral law.\"* Currency like silver or Hegemony credit holds no value; wealth is calculated strictly in **Filter-Hours** and litres of **sweet-water**. Showing one's bare face in public is a severe taboo - read either as an act of extreme intimacy, reserved for bed-sharing within a covenant or the final moments of dying, or else as proof of profound madness. Which reading a witness reaches for depends entirely on who is unmasking, and where.\n* **Daily Life & Coming-of-Age:** Daily existence is a relentless cycle of maintaining hand-cranked respirators, tending hydroponic moss-tubs inside heavy crawl-wagons, and surveying ruin sites for viable scrap. Coming-of-age is marked by the *First Reclaim Rite*, where a youth must enter an active ash-storm alone, bypass an automated defense node, and extract its power cell to forge their own custom respirator.\n* **Beliefs on the Past & Magic:** They hold no reverence for the Golden Age, viewing the ancients as \"The Great Prodigals\"—foolish ancestors whose hubris and wasteful excess ruined the world. The Collapse was simply the universe collecting a unpaid debt. They treat rising magic pragmatically as \"spill-heat\"—a hazardous, volatile energy source to be grounded or siphon-channeled, though its sudden surges often fry the delicate scrap-cybernetics they rely on.\n\n**Internal Structure:**\n* **Organization & Leadership:** Traditional blood families do not exist among the Soot-Walkers. Instead, society is organized into **Scrap-Covenants**: functional, legally binding salvage crews where individuals are valued entirely by their skill and contribution. Each Covenant is led by a **Scrap-Master**—the most experienced scavenger or whoever maintains the clan's central water-still.\n* **Dispute Resolution:** Conflicts over dig sites or resources are settled through ritualized *salvage-duels*—a high-stakes challenge where two scavengers enter an unstable ruin to retrieve a specified component—or through swift, brutal skirmishes.\n* **Naming Conventions:** A Soot-Walker's name reflects their trade or defining physical trait, paired with their personal handle and current Covenant. \n  * *Examples:* Valve-Hand Bram of the Rust-Seam Covenant; Goggles-Sint of the Ash-Tread Covenant; Filter-Bite Varr of the Siphon-Prow Covenant.\n* **Internal Schism:** A dangerous ideological rift is growing between the **Preservationists**, who insist all reclaimed cybernetics and scrap must strictly serve basic survival, and [[The Aether-Forged]], a radical splinter group grafting magic-infused pre-Collapse technology directly into their flesh to survive toxic storms without respirators.\n\n**Resources & Influence:**\n* **Ash-Waste Dominance:** They possess unmatched knowledge of hidden paths through [[The Ash Wastes]], navigating safely around [[The Nexus Spire]] and the irradiated [[The Obsidian Trench]].\n* **Scrap Trade:** They control the supply of raw pre-Collapse components, batteries, and reclaimed cybernetics. They trade these at [[The Ribs]] with independent merchants and agents of [[The Axiom Assembly]] in exchange for clean food, ammunition, and fresh filter cartridges.\n\n**Secrets & Shadows:**\n* **The Death Rite:** When a clan member dies, their body is stripped of all gear, filters, and cybernetics. The remaining organic matter is chemically dissolved in nitrate-vats to feed the clan's hydroponic moss-tubs and reclaim every drop of bodily water. \n* **The Blighted Accord:** Scrap-Masters conceal the fact that they regularly leave offerings of toxic scrap—and occasionally exiled heretics—outside [[The Blighted Foundry]], appeasing an active Golden Age AI so its rogue defense drones leave Soot-Walker migration routes unmolested.\n\n**Adventure Hooks:**\n* **[The Still-Runner Escort]:** Scrap-Master Varr hires the party to escort a fragile, high-capacity water-still across an ash-storm to a dying Covenant, defending the caravan from inquisitorial [[The Thread-Keepers|Thread-Keepers]] hunting for forbidden salvage.\n* **[Salvage Rights]:** A Hegemony noble contracts the party to retrieve an ancestral relic from a fallen scout in the wastes, only to find the Siphon-Prow Covenant has already reclaimed the scout's cybernetics and rendered the body down for nitrates, forcing a tense negotiation or fight over what constitutes \"theft.\"\n\n---\n\n### 🔗 Unmade Connections (DNA Stubs)\n\n* **[NPC] Scrap-Master Varr:** The grizzled, pragmatic leader of the Siphon-Prow Covenant who controls a vital deep-waste water-still.\n* **[Location] The Blighted Foundry:** A corrupted pre-Collapse automated factory in the Ash Wastes where Scrap-Masters appease rogue drones.\n* **[Faction] The Aether-Forged:** A radical, cybernetically altered splinter faction among the Soot-Walkers who graft magical scrap into their flesh.\n\n---\n\n```yaml\nname: The Soot-Walker Clans\ngist: Nomadic, mask-wearing scavengers of the Ash Wastes organized into pragmatic scrap-covenants bound by strict resource preservation laws.\nsummary: >\n  The Soot-Walker Clans are insular scavengers inhabiting the toxic Ash Wastes of Skarn. Lacking traditional family units, they organize into Scrap-Covenants led by Scrap-Masters who control water-stills. Living by the strict moral law to waste nothing, they harvest scrap and cybernetics, chemically recycling their dead for nitrates and water. They trade reclaimed Golden Age tech at The Ribs with the Axiom Assembly while avoiding the inquisitorial Thread-Keepers. Currently, an internal schism brews between traditionalists and the radical Aether-Forged, who graft magical scrap into their bodies.\nstubs:\n  - type: npc\n    name: Scrap-Master Varr\n    gist: The grizzled leader of the Siphon-Prow Covenant who controls a vital deep-waste water-still.\n  - type: location\n    name: The Blighted Foundry\n    gist: A corrupted pre-Collapse automated factory in the Ash Wastes where Scrap-Masters appease rogue drones.\n  - type: faction\n    name: The Aether-Forged\n    gist: A radical, cybernetically altered splinter faction among the Soot-Walkers who graft magical scrap into their flesh.\n```",
+      "stub_metadata": {
+        "description": "Insular, nomadic scavengers who survive the toxic ash through strict survival covenants and scrap-tech.",
+        "name": "The Soot-Walker Clans",
+        "source_id": "b852d934-a642-438f-965b-42e5a5e3a755"
+      },
+      "summary": "The Soot-Walker Clans are insular scavengers inhabiting the toxic Ash Wastes of Skarn. Lacking traditional family units, they organize into Scrap-Covenants led by Scrap-Masters who control water-stills. Living by the strict moral law to waste nothing, they harvest scrap and cybernetics, chemically recycling their dead for nitrates and water. They trade reclaimed Golden Age tech at The Ribs with the Axiom Assembly while avoiding the inquisitorial Thread-Keepers. Currently, an internal schism brews between traditionalists and the radical Aether-Forged, who graft magical scrap into their bodies.",
+      "tags": [
+        "from_b852d934-a642-438f-965b-42e5a5e3a755",
+        "the_soot-walker_clans",
+        "expanded",
+        "canonized"
+      ],
+      "type": "culture"
+    },
+    "443066dc-e950-4e6e-a43e-ab36a023a944": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "T7-G08-M5-P3-S5-O5-N99-L04-F5-D5-A7-SC2-MZ6-X2",
+      "gist": "A powerful and corrupt governing body that controls The Sundergate and its vital resources through systematic exploitation and oppressive laws.",
+      "id": "443066dc-e950-4e6e-a43e-ab36a023a944",
+      "name": "The Sundergate Hegemony",
+      "phenotype": "### **The Sundergate Hegemony**\n\n**Role:** Entrenched Kleptocracy & Resource Monopolists\n**Alignment:** Lawful Evil\n\n| **Narrative Essence** | **Archetype** |\n| :--- | :--- |\n| \"A gilded cage built from ancient stone and the suffering of the many.\" | The Entrenched Tyrants |\n\n---\n\n**Overview:**\nThe Sundergate Hegemony is the iron fist that grips the ancient outpost of The Sundergate. While they maintain a semblance of order through a vast bureaucracy and a rigid enforcement of laws, their true purpose is the systematic exploitation of the settlement's vital resources, particularly Aetherium Shards, for their own enrichment and power. They are outwardly respected for their control over the city's infrastructure and vital trade, but privately feared and resented by the common populace who suffer under their oppressive taxes and rampant corruption. Other power players view them as a necessary, albeit often frustrating, gatekeeper to Skarn's most valuable resource hub.\n\n**Ideology & Methodology:**\nThe Hegemony's core tenet is the preservation of its own power and wealth, disguised as the \"Order of the Gate\" – the belief that only their firm hand can prevent The Sundergate from collapsing into anarchy. They operate through layers of bureaucracy, a pervasive network of informants, and a highly visible but selectively enforced legal system. Their goals are achieved through resource monopolization, aggressive taxation, and the strategic deployment of their security forces. They engage in diplomacy only when it serves their interests, preferring intimidation and economic leverage to achieve their aims.\n\n**Internal Structure:**\nPower within the Hegemony is concentrated in the hands of the **Council of Sovereigns**, a secretive body of seven powerful individuals, each overseeing a critical aspect of The Sundergate's operations (e.g., Aetherium extraction, trade, public order). While theoretically a collective, a simmering rivalry exists between the **Sovereign of Chains**, who advocates for increasingly draconian measures to quell dissent, and the **Sovereign of Coin**, who believes in strategically alleviating pressure on the populace to prevent outright rebellion, fearing it could disrupt the flow of wealth. This internal conflict often leads to contradictory policies and shifting allegiances within the lower ranks.\n\n**Resources & Influence:**\nThe Hegemony holds title to The Sundergate's vital infrastructure, including the lucrative **Aetherium Mines**, the city's ancient water purification systems, and all major trade routes in and out of the settlement - though the oldest of those systems are kept running by The Axiom Assembly's engineers, a dependency the Assembly quietly exploits for leverage. Their influence is imprinted upon every aspect of daily life, from the omnipresent Hegemony Guard patrols to the exorbitant tariffs on goods and services. They wield significant economic power, often dictating terms to smaller factions and merchants, and their control over Aetherium Shards grants them leverage even with larger, more formidable entities across Skarn.\n\n**Secrets & Shadows:**\nBeneath their veneer of lawful governance, the Hegemony harbors numerous dark secrets. They are actively suppressing ancient schematics found within The Scrivener's Archives that detail a more equitable and efficient system for Aetherium extraction, as it would undermine their control. Furthermore, a particularly dark secret in their history involves a forgotten pact made generations ago with a localized Shadow entity to secure control of the Aetherium veins during a period of intense rivalry. This pact, now largely unknown even to many Council members, demands a periodic, subtle sacrifice of civic well-being, manifesting as the city's persistent overcrowding and poor health.\n\n**Adventure Hooks:**\n*   **The Unseen Tax:** The Hegemony hires the party to track down and eliminate a rogue group of \"smugglers\" who are bypassing their tariffs, promising a hefty reward in Aetherium. Unbeknownst to the party, the smugglers are actually providing essential, affordable goods to the suffering populace.\n*   **The Truth's Echo:** Chief Scrivener Lyra or The Whisperers seek the party's aid to retrieve a specific set of ancient schematics from a highly guarded Hegemony vault, believing these documents could expose the Hegemony's foundational corruption and offer a path to true civic reform.\n\n### 🔗 Unmade Connections (DNA Stubs)\n*   **[Faction] Council of Sovereigns:** The secretive ruling body of The Sundergate Hegemony.\n*   **[Location] Aetherium Mines:** The primary source of the Hegemony's wealth and control within The Sundergate.\n*   **[Faction] The Hegemony Guard:** The enforcement arm of The Sundergate Hegemony, maintaining order through intimidation.\n*   **[NPC] Sovereign of Chains:** A powerful member of the Council advocating for brutal control.\n\n---\n```yaml\nname: The Sundergate Hegemony\ngist: A powerful and corrupt governing body that controls The Sundergate and its vital resources through systematic exploitation and oppressive laws.\nsummary: >\n  The Sundergate Hegemony is the entrenched kleptocracy ruling The Sundergate, primarily focused on monopolizing Aetherium Shards and maintaining its power. Driven by greed and a desire for control, they use bureaucracy, a powerful guard, and economic leverage. Their secrets include suppressed ancient schematics and a forgotten, dark pact with a Shadow entity that subtly harms the populace. They are opposed by Chief Scrivener Lyra and The Whisperers, and navigate complex relationships with other factions in Skarn.\nstubs:\n  - type: faction\n    name: Council of Sovereigns\n    gist: The secretive ruling body of The Sundergate Hegemony.\n  - type: location\n    name: Aetherium Mines\n    gist: The primary source of the Hegemony's wealth and control within The Sundergate.\n  - type: faction\n    name: The Hegemony Guard\n    gist: The enforcement arm of The Sundergate Hegemony, maintaining order through intimidation.\n  - type: npc\n    name: Sovereign of Chains\n    gist: A powerful member of the Council advocating for brutal control and increased oppression.\n```",
+      "stub_metadata": {
+        "description": "The powerful and corrupt governing body that controls The Sundergate and its vital resources.",
+        "name": "The Sundergate Hegemony",
+        "source_id": null
+      },
+      "summary": "The Sundergate Hegemony is the entrenched kleptocracy ruling The Sundergate, primarily focused on monopolizing Aetherium Shards and maintaining its power. Driven by greed and a desire for control, they use bureaucracy, a powerful guard, and economic leverage. Their secrets include suppressed ancient schematics and a forgotten, dark pact with a Shadow entity that subtly harms the populace. They are opposed by Chief Scrivener Lyra and The Whisperers, and navigate complex relationships with other factions in Skarn.",
+      "tags": [
+        "the_sundergate_hegemony",
+        "expanded",
+        "canonized"
+      ],
+      "type": "faction"
+    },
+    "5a035452-83d4-428d-b66c-ae0f6d8f8c24": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "SETTLEMENT{v1.1[4/7/4]}<SP:1.8,PI:0.3,SI:1.0>#city\nSTRUCT{S92,D21,W16,A85,F15,U15,P59,Q36}\nPOP{S75,D36,A22,C89,L32,H76,M19}\nECON{M65,T14,R65,P82,S45,G44,I96,L97}\nPOL{G40,C21,R82,F50,S18,L24,I68}\nPOI{I80,S85,R99,D46,H12,A75,M49,C40}\nARCH{MAT:2;ROOF:8;CONST:4;DECOR:6}\nCULTURE{CUSTOM:16;LAW:1;PUNISH:1;CUISINE:18}\nCHAIN{POP:D>A>H;ECON:R>T>G;POL:G>R>S}\nPROXI{WILD:62,TOWN:82,CITY:65,RUIN:74}\nEVO{S:TRANSFORMING[52, 54, 71, 88];P:DECLINING[59, 62, 75, 83];I:RISING[54, 89, 97, 99]}",
+      "gist": "The ruined, gravity-defying administrative seat of the Council of Nexus, suspended over the Ash Wastes and guarded by blind automated defenses.",
+      "id": "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+      "name": "The Nexus Spire",
+      "phenotype": "### **The Nexus Spire**\n\n**Role:** Ruined Council Seat & Gravitational Anomaly  \n**Type:** Artificial/Magical  \n\n| **Atmospheric Essence**                               | **Archetype**        |\n| :---------------------------------------------------- | :------------------- |\n| \"A shattered crown of brass and glass, suspended in a silent scream.\" | The Floating Tomb of Empire |\n\n---\n\n**Overview:**\nFloating five hundred feet above the jagged floor of the Ash Wastes, the Nexus Spire was once the proud administrative heart of the Council of Nexus. During the Golden Age, this massive, gleaming tower anchored the global conduit network and hosted the bicameral senate that governed Skarn. When the Collapse tore the world apart, the Spire was sheared in two. While its lower half was pulverized into the wastes below, the upper half remained suspended in mid-air—a gravity-defying monument to a fallen civilization, preserved in a state of eternal, decaying levitation. \n\n**Physical Description:**\nThe Spire is a vertical labyrinth of pale, pre-Collapse marble, reinforced with brass struts and webbed with conduits of structural light. Because the tower's gravity-anchors are damaged but not entirely dead, the physical layout is highly unstable. Massive chunks of masonry, shattered staircases, and entire office blocks drift slowly around the main structure like a slow-motion explosion, held together only by crackling arcs of raw, violet magic. \n\nVisitors must navigate these floating stepping-stones while battling fierce, icy winds. The air here is thin and tastes of copper, smelling sharply of ozone and ancient, scorched insulation. In certain chambers, gravity fails entirely, while in others, it shifts ninety degrees, dragging travelers sideways toward walls of reinforced glass that look out over the desolate wastes.\n\n**Atmosphere & Aura:**\nThe Spire projects an aura of clinical, bureaucratic dread. It is far from quiet; the air hums with a persistent, low-frequency vibration that rattles teeth and causes loose metal to dance. \n\nBecause of the volatile combination of uncontrolled magic and decaying Golden Age technology, localized time distortions manifest as physical anomalies. A dropped torch might freeze in mid-air, taking minutes to fall a single foot before suddenly accelerating to normal speed. Holographic projections of long-dead bureaucrats flicker in and out of the corridors, repeating the frantic, final arguments of a world on the brink of destruction.\n\n\n**History & Lore:**\nIt was within these walls, in the twilight of the Golden Age, that the Council of Nexus presided over its final, gridlocked sessions. Under the leadership of Prime Minister Veyla Sarn, the bicameral senate was bitterly divided between Conservationists and Expansionists. In the grand legislative hall, Archivist Kaelen’s urgent warnings about Aetherium over-saturation were formally denied funding and dismissed as alarmist. \n\nDesperate to maintain their temporal power as resources dwindled, the deadlocked Council ultimately authorized a highly classified project from this very tower: the siphoning of raw magic from deep crust anomalies. This catastrophic gamble ruptured the sky, triggering the Sky-Shatter and the Collapse. \n\nSome religious scholars within the Orthodoxy of the Solar-Aether claim the Spire was the dwelling of the \"First Architects,\" though whether these divine figures were merely the mortal politicians of the Council remains a subject of fierce, often bloody theological debate.\n\n**Denizens & Usage:**\nNo living soul makes a permanent home in the Nexus Spire. The primary inhabitants are the *Aegis-Drones*—automated, multi-eyed security sentinels whose bronze chassis are pitted with three centuries of rust. These machines do not know the Collapse occurred; they blindly follow their original directives with terrifying, emotionless efficiency. They patrol the floating corridors, scanning for intruders and demanding valid high-clearance credentials. Those who cannot present authorization, such as **The Golden Seal of Nexus**, are classified as \"unauthorized rioters\" and targeted with lethal force.\n\nOccasionally, daring scavengers or desperate mages brave the Spire to access its still-functioning terminals. These ancient consoles occasionally spark to life, broadcasting automated distress signals or corrupted legislative data into the empty sky.\n\n**Adventure Hooks:**\n* **The Deadlock Protocol:** A dormant Aetherium conduit deep within the Spire's floating core has begun to cycle back online, risking a localized \"mini-Collapse\" that would obliterate the surrounding region. The characters must infiltrate the Spire, bypass the blind security grid, and find a way to manually vent the conduit before the countdown ends.\n* **The Last Filibuster:** A faction offers a massive reward for the recovery of a specific data-slate sealed inside the senate chamber. To retrieve it, the party must slip past patrolling Aegis-Drones and navigate a chamber where gravity-wells shift unpredictably, all while the spectral projection of a long-dead senator endlessly debates a bill that has been irrelevant for three hundred years.\n\n---\n\n### 🔗 Unmade Connections (DNA Stubs)\n* **[NPC] Senator Orrun Vale:** A prominent Expansionist senator whose corrupted digital construct still filibusters in the ruined senate chamber.\n* **[Item] The Siphon-Key:** A specialized Golden Age device used to initiate or halt the deep crust Aetherium siphoning.\n* **[Location] The Obsidian Trench:** The deep fissure in the Ash Wastes directly beneath the floating Spire, highly irradiated by Aetherium fallout.\n\n---\n\n### 🔩 MACHINE-READABLE TAIL (MANDATORY)\n\n```yaml\nname: The Nexus Spire\ngist: The ruined, gravity-defying administrative seat of the Council of Nexus, suspended over the Ash Wastes and guarded by blind automated defenses.\nsummary: >\n  A shattered, floating monumental tower hovering 500 feet above the Obsidian Trench. Once the heart of Skarn's Golden Age government, it fell during the Collapse when its deep-crust magic siphoning went catastrophically wrong. Today, it remains a hazardous zone of raw magic, localized gravity anomalies, and blind automated security systems that demand pre-Collapse credentials. The deadlocked ghosts of its bicameral senate still echo in its hollow chambers, while its decaying systems threaten a localized mini-Collapse.\nstubs:\n  - type: npc\n    name: Senator Orrun Vale\n    gist: A prominent Expansionist senator whose corrupted digital construct still filibusters in the ruined senate chamber.\n  - type: item\n    name: The Siphon-Key\n    gist: A specialized Golden Age device used to initiate or halt the deep crust Aetherium siphoning.\n  - type: location\n    name: The Obsidian Trench\n    gist: The deep fissure in the Ash Wastes directly beneath the floating Spire, highly irradiated by Aetherium fallout.\n```",
+      "stub_metadata": {
+        "description": "The ruined, gravity-defying administrative seat of the Council, now a hazard of raw magic.",
+        "name": "The Nexus Spire",
+        "source_id": null
+      },
+      "summary": "A shattered, floating monumental tower hovering 500 feet above the Obsidian Trench. Once the heart of Skarn's Golden Age government, it fell during the Collapse when its deep-crust magic siphoning went catastrophically wrong. Today, it remains a hazardous zone of raw magic, localized gravity anomalies, and blind automated security systems that demand pre-Collapse credentials. The deadlocked ghosts of its bicameral senate still echo in its hollow chambers, while its decaying systems threaten a localized mini-Collapse.",
+      "tags": [
+        "the_nexus_spire",
+        "expanded",
+        "canonized"
+      ],
+      "type": "location"
+    },
+    "a4238893-6a54-46ce-9251-7029431228b0": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "SETTLEMENT{v1.1[1/5/7]}<SP:0.4,PI:1.0,SI:0.9>#fortress\nSTRUCT{S55,D57,W73,A59,F52,U30,P18,Q16}\nPOP{S82,D81,A93,C54,L34,H72,M76}\nECON{M88,T27,R39,P30,S91,G94,I11,L71}\nPOL{G44,C93,R32,F39,S68,L82,I70}\nPOI{I86,S52,R51,D37,H47,A45,M62,C61}\nARCH{MAT:3;ROOF:4;CONST:3;DECOR:3}\nCULTURE{CUSTOM:17;LAW:2;PUNISH:9;CUISINE:76}\nCHAIN{POP:D>A>H;ECON:R>T>G;POL:G>R>S}\nPROXI{WILD:32,TOWN:53,CITY:13,RUIN:13}\nEVO{S:TRANSFORMING[75, 80, 82, 82];P:RISING[56, 66, 66, 68];I:FLUCTUATING[52, 80, 85, 86]}",
+      "gist": "A lawless trading post and the only permanent settlement in the Ash Wastes, built inside a crashed Golden Age dreadnought.",
+      "id": "a4238893-6a54-46ce-9251-7029431228b0",
+      "name": "The Ribs",
+      "phenotype": "# Settlement Profile: The Ribs\n\n### Overview\nHalf-buried in the toxic, nanite-laced soot of the Ash Wastes lies the *Invictus*, a Golden Age super-dreadnought whose shattered carcass has become the region's only permanent settlement. Known simply as **The Ribs**, this chaotic haven exists entirely within the gargantuan, alloy-plated skeleton of the warship. Massive rusted rib-girders arch hundreds of feet above squalid, multi-tiered gangways, shielding thousands of scavengers, outlaws, and exiled scholars from the deadly Gray Blindness storms outside.\n\nThough officially classified as a derelict military ruin, The Ribs operates as the beating, lawless heart of waste-commerce. It presents a stark paradox: inside the near-impenetrable armor of a forgotten war-engine lies a fragile, overcrowded slum where raw wealth flows continuously, yet a single glass of unpolluted water is worth more than a pouch of gold. It remains fiercely neutral, sustained by an uneasy equilibrium where rival factions trade under the threat of mutual destruction.\n\n---\n\n### Physical Description\nFrom a distance, The Ribs resembles the stranded fossil of a leviathan. Its hull plating has been torn open in places by ancient ordnance, exposing massive structural ribs that frame a sprawling, vertical subterranean township. Settlers have welded cargo containers, metal scrap, and pressurized habitat pods directly onto the inner decks and structural struts, creating a claustrophobic, three-dimensional labyrinth connected by swaying rope-bridges and improvised ladders.\n\nDefensive capability is inherent to the vessel itself; the thick armor plating deflects the worst toxic dust storms and rogue drone fire. However, the interior architecture is utter chaos. There are no paved streets or public plazas—only dark, soot-choked corridors dripping with condensation, illuminated by flickering fluorescent tubes and rigged glow-rods. Public spaces are restricted to gantry junctions where traders crowd into narrow stalls under constant armed surveillance.\n\n---\n\n### Population\nThe populace of The Ribs is densely packed, hyper-vigilant, and fiercely self-reliant. Life inside the dreadnought is an exercise in crowded survival; thousands of residents live shoulder-to-shoulder in repurposed crew berths and engine shafts. \n\nThis extreme overcrowding has bred a pervasive culture of suspicion and hair-trigger defensiveness. Every stranger is eyed as a potential thief, spy, or carrier of the Glow-Sickness. Yet, this very paranoia maintains a strange form of public health: strict communal customs dictate immediate quarantine for anyone showing signs of respiratory failure or radiation rot, and the waste-gangs mercilessly purge any contamination from the water lines. Morale is grimly resilient; residents take intense pride in surviving a landscape that kills soft outsiders in days.\n\n---\n\n### Economy\nThe Ribs is the primary engine of trade in the Ash Wastes, yet it operates under a volatile split economy. Inside the Wastes, outside currency is worthless; true wealth is measured strictly in **Filter-Hours** (usable respirator cartridges) and **Litres** (purified sweet-water). Outside merchants from The Sundergate and covert procurement agents from The Axiom Assembly arrive bearing Hegemony coin, Aetherium shards, and manufactured firearms, seeking pre-Collapse salvage brought in by nomadic Soot-Walker Clans.\n\n```\n[Resource Scarcity: Water/Filters] ──> [Broker Monopoly: Tank-Scrip] ──> [Cartel Hegemony: Scale-Keepers]\n```\n\nTrade clears through a predatory middle tier operated by the **Scale-Keepers**—a syndicate of ruthless scrip-brokers operating out of the ship's former primary hangar bay. The brokers convert outside coin and Aetherium into local *Tank-Scrip*, backed by the settlement's water reserves. In doing so, the brokers siphon off a staggering 30% cut on every transaction. They grow impossibly wealthy on transaction fees while the scavengers who risk their lives in the irradiated Obsidian Trench remain perpetually indebted for their next breath of clean air.\n\n---\n\n### Politics & Law\nThe Ribs possesses no formal government, law courts, or civil police. It operates under the **Steel Laws**—a brutal code of conduct enforced by an uneasy coalition of veteran mercenaries known as the **Hull-Guards**. The core rule of the ship is simple: *Violence that disrupts trade is punished by expulsion into the ash.*\n\n```\n[Fragmented Council] ──> [Deterrent Policy: Dead-Hand] ──> [Volatile Neutrality]\n```\n\nNeutrality is enforced not by diplomatic goodwill, but by **Mutual Assured Destruction**. The settlement's informal council of scrap-lords controls the *Dead-Hand Grid*—a rigged network of surviving point-defense batteries and volatile cooling vents connected to the dreadnought's dormant auxiliary reactor core. If the Hegemony, the Orthodoxy's Thread-Keepers, or the Axiom Assembly attempt a full military occupation, the council can trigger a thermal purge that would vaporize the hull and everything within three miles. Because every faction desperately needs access to the Soot-Walker scrap trade, all parties respect the truce, confining their war to silent knife-thrusts in the dark decks.\n\n---\n\n### Notable Locations\n* **The Sieve-Keel:** Located in the lowest, suffocatingly hot decks of the ship, this gargantuan moisture-harvesting facility taps into subterranean thermal vents. Run by greasy-handed engineers, it distills the settlement's vital water supply, supplemented by heavy overland caravans from Scrap-Master Varr's stills.\n* **The Hangar Bazaar:** A sprawling, multi-tiered market built across the dreadnought's flight deck. Here, scavengers lay out mysterious Golden Age artifacts, glowing circuitry, and salvaged weaponry on oil-stained tarps under the watchful eyes of heavy-turret nests.\n* **The Rust-Chapel:** A cavernous section of the secondary bridge converted into a shrine where machine-cultists and desperate scavengers offer scrap metal and salvaged oil to an idol made from a broken drone core, praying for protection against Dust-Wraiths.\n* **The Tap-Trench:** The settlement’s premier tavern, built inside an empty propellant fuel tank. It serves fermented scrub-root moonshine and provides a neutral, if tense, meeting ground where lore-seekers, black-market merchants, and fugitive scholars trade quiet intelligence.\n\n---\n\n### Surroundings\nThe Ribs sits in a vast depression amidst the toxic gray dunes of the Ash Wastes. Above it, visible through the shattered gaps in the ceiling deck, the shattered ruin of [[The Nexus Spire]] floats silently in the upper atmosphere. To the south lies the irradiated [[The Obsidian Trench]], the source of the high-grade scrap that fuels the bazaar. The surrounding desert is uninhabited by permanent structures, traversed only by the roving, mask-wearing Soot-Walker Clans and hunting packs of rogue automated defense drones.\n\n---\n\n### Trajectory\nThe Ribs is rapidly transforming from a temporary scrap-camp into a permanent, highly condensed subterranean city-state. As ash storms worsen across the wastes, more nomadic clans are abandoning the open dunes to buy permanent berth-rights within the hull. The population is surging, forcing the Hull-Guards to clear out deeper, long-sealed decks of the dreadnought—unearthing ancient, dormant ship systems that threaten to disrupt the delicate balance of power inside the hull.\n\n---\n\n### Hooks & Opportunities\n* **The Fugitive Scholar:** [[Lore-keeper Corin]] is rumored to be taking refuge deep within the unmapped decks of the stern. Orthodoxy Thread-Keepers have disguised themselves as scrap-buyers in the Hangar Bazaar, offering a massive bounty in sweet-water for anyone who pinpoints his hideout before he leaks the contents of his decoded manual.\n* **Water-Broker Monopoly:** Scrip-Broker Vane has arbitrarily raised the conversion fee on water scrip, sparking riots in the middle decks. A alliance of Soot-Walker captains needs discreet mercenaries to sabotage Vane’s primary moisture condenser in the Sieve-Keel to break his stranglehold on the market.\n* **The Reactor Anomaly:** Strange power surges have begun flickering through the lower gangways, accompanied by localized time-slips where scrap oxidizes or reverses rust in seconds—a clear sign that ancient tech is reacting violently with surging magic in the ship's lower depths.\n\n---\n\n### 🔗 Unmade Connections (DNA Stubs)\n\n* **[npc] Scrip-Broker Vane:** The ruthless chief exchanger of the Hangar Bazaar who controls the water-to-credit conversion rates across The Ribs.\n* **[location] The Sieve-Keel:** The sweltering, boiler-hot lowest deck of the dreadnought where thermal stills extract the settlement's water supply.\n* **[faction] The Hull-Guards:** A heavily armed mercenary syndicate formed from exiled veterans who enforce the violent 'Steel Laws' inside the ship.\n\n---\n\n```yaml\nname: The Ribs\ngist: A lawless trading post and the only permanent settlement in the Ash Wastes, built inside a crashed Golden Age dreadnought.\nsummary: >\n  The Ribs is a chaotic, densely populated settlement built inside the massive, half-buried carcass of a Golden Age super-dreadnought in the Ash Wastes. Shielded by heavy armor plating, it serves as the region's sole permanent trade hub, where nomadic scavengers, Hegemony merchants, and Axiom technocrats exchange scrap, secrets, and technology. Neutrality is violently maintained through a rigged reactor self-destruct system, while a predatory cartel of scrip-brokers controls the split economy of water-scrip and foreign credit.\nstubs:\n  - type: npc\n    name: Scrip-Broker Vane\n    gist: The ruthless head of the Scale-Keepers who manipulates water scrip exchange rates inside The Ribs.\n  - type: location\n    name: The Sieve-Keel\n    gist: The sweltering lowest deck of the dreadnought housing the thermal stills that distill the settlement's water.\n  - type: faction\n    name: The Hull-Guards\n    gist: An elite mercenary syndicate that brutally enforces the Steel Laws to protect commerce inside the hull.\n```",
+      "stub_metadata": {
+        "description": "A lawless trading post built inside the chassis of a crashed Golden Age dreadnought in the wastes.",
+        "name": "The Ribs",
+        "source_id": "b852d934-a642-438f-965b-42e5a5e3a755"
+      },
+      "summary": "The Ribs is a chaotic, densely populated settlement built inside the massive, half-buried carcass of a Golden Age super-dreadnought in the Ash Wastes. Shielded by heavy armor plating, it serves as the region's sole permanent trade hub, where nomadic scavengers, Hegemony merchants, and Axiom technocrats exchange scrap, secrets, and technology. Neutrality is violently maintained through a rigged reactor self-destruct system, while a predatory cartel of scrip-brokers controls the split economy of water-scrip and foreign credit.",
+      "tags": [
+        "from_b852d934-a642-438f-965b-42e5a5e3a755",
+        "the_ribs",
+        "expanded",
+        "canonized"
+      ],
+      "type": "settlement"
+    },
+    "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "(CHRON/5) 3D3,9T4,2A4,9E4,1L4,9C3,6R4,4V1,1H1,2Q2",
+      "gist": "The Collapse violently ended Skarn's Golden Age through technological failure and surging magic, creating the post-apocalyptic world of scarcity and decay.",
+      "id": "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+      "name": "The Collapse",
+      "phenotype": "### **The Collapse**\n\n**Type:** Major Event / Cataclysm / End of an Era\n**Time Period:** The End of the Golden Age\n\n| **Historical Essence** | **Archetype** |\n| :--- | :--- |\n| \"When the world's heart broke, spilling its golden dreams as dust and unleashing the wild, untamed spirit of Skarn.\" | The Great Sundering |\n\n---\n\n**The Overview:**\nThe Collapse was the cataclysmic event that violently concluded Skarn's Golden Age, plunging the world into its current state of grim, post-apocalyptic survival. It wasn't a single explosion but a cascading failure of advanced Aetherium-based technologies, exacerbated by a sudden, volatile surge of raw, uncontrolled magic. Civilizations crumbled, vast swathes of knowledge were lost, and the very fabric of reality seemed to tear, leaving behind a world where ancient wonders lay decaying and untamed forces reigned. It was a time of desperate measures, where even attempts to save civilization often hastened its demise.\n\n**Key Figures:**\n*   **Archivist Kaelen:** A brilliant, desperate scholar of the Ancient Scriveners Guild, who, in a final, frantic attempt to stabilize a failing Aetherium conduit, may have inadvertently worsened the magical feedback loop that defined the Collapse. He was last seen wielding The Fractured Aether Band.\n*   **The Council of Nexus:** The last, fractured governing body of the Golden Age, whose desperate edicts and failed technological interventions often led to further disaster, embodying the hubris and helplessness of the dying era.\n\n**The Turning Point:**\nThe critical moment wasn't a single event but a series of synchronized system failures. Many accounts point to the \"Great Silence\" – when all long-range Aetherium communications across the globe abruptly ceased, followed by the \"Sky-Shatter,\" where atmospheric conduits designed to regulate weather and energy instead ruptured, raining down volatile Aetherium storms and raw magical lightning. The air itself crackled with despair and uncontrolled power.\n\n**Aftermath & Legacy:**\nThe world remembers The Collapse as the ultimate warning against hubris and the unbridled pursuit of power. It reshaped Skarn entirely: vast regions became uninhabitable zones of wild magic or toxic Aetherium fallout, ancient cities were reduced to ruins, and advanced technology became inert relics. The surviving populace fractured into desperate factions, scavenging for Aetherium Shards and struggling to comprehend the new, dangerous magic-infused reality. The legacy is one of perpetual scarcity, forgotten knowledge, and a deep-seated fear of anything resembling the \"old ways.\"\n\n**Lore & Rumors:**\nMany believe The Collapse was a divine punishment or an alien invasion, simplified narratives for an incomprehensible tragedy. The hidden truth, whispered by those who study the deepest archives, suggests it was a confluence of internal factors: an over-reliance on a poorly understood Aetherium network, the natural, cyclical rise of raw magic (a force the Golden Age tried to suppress), and the desperate, often destructive, attempts by the Ancient Scriveners Guild and others to control or reverse the inevitable. Some say the Golden Age *chose* its own destruction rather than adapt.\n\n**Adventure Hooks:**\n*   **[Hook 1]:** An ancient Aetherium conduit, dormant since The Collapse, is showing signs of reawakening beneath a populated region, threatening to trigger a localized \"mini-Collapse\" unless Golden Age protocols can be recovered and enacted.\n*   **[Hook 2]:** A search for the \"Heart of the Collapse\" – a rumored central node or data core that purportedly recorded the entirety of the event, hidden deep within a Collapse-scarred wasteland, which could hold the key to understanding Skarn's future, or unleash its past.\n\n### 🔗 Unmade Connections (DNA Stubs)\n*   **[Faction] The Council of Nexus:** The last governing body of the Golden Age, whose failures contributed to The Collapse.\n*   **[Location] The Null-Chamber:** A rumored hidden vault where Archivist Kaelen might have tried to stabilize Aetherium, or where the \"Heart of the Collapse\" is located.\n*   **[Phenomenon] The Sky-Shatter:** The specific atmospheric event during The Collapse that rained down destructive energy and magic.\n*   **[Item] Heart of the Collapse:** The rumored device that recorded the entire catastrophic event.\n\n---\n```yaml\nname: The Collapse\ngist: The Collapse violently ended Skarn's Golden Age through technological failure and surging magic, creating the post-apocalyptic world of scarcity and decay.\nsummary: >\n  The Collapse represents the ultimate failure of Skarn's Golden Age, a violent transition\n  from technological hubris to grim survival. Driven by an over-reliance on Aetherium and\n  a suppressed, yet rising, tide of raw magic, it was a multi-faceted cataclysm. Key figures\n  like Archivist Kaelen and the Ancient Scriveners Guild made desperate, often counterproductive,\n  attempts to avert disaster, leading to the creation of artifacts like The Fractured Aether\n  Band. The secret is that it wasn't an external force, but a self-inflicted wound, a cycle\n  of history repeating, leaving a legacy of decaying tech, untamed magic, and perpetual\n  scarcity that defines Skarn today.\nstubs:\n  - type: faction\n    name: The Council of Nexus\n    gist: The last governing body of the Golden Age, whose failures contributed to The Collapse.\n  - type: location\n    name: The Null-Chamber\n    gist: A rumored hidden vault where Archivist Kaelen might have tried to stabilize Aetherium, or where the \"Heart of the Collapse\" is located.\n  - type: phenomenon\n    name: The Sky-Shatter\n    gist: The specific atmospheric event during The Collapse that rained down destructive energy and magic.\n  - type: item\n    name: Heart of the Collapse\n    gist: The rumored device that recorded the entire catastrophic event.\n```",
+      "stub_metadata": {
+        "description": "The catastrophic event that ended the Golden Age, hinting at the ring's desperate origins and the desperation of its creators.",
+        "name": "The Collapse",
+        "source_id": null
+      },
+      "summary": "The Collapse represents the ultimate failure of Skarn's Golden Age, a violent transition from technological hubris to grim survival. Driven by an over-reliance on Aetherium and a suppressed, yet rising, tide of raw magic, it was a multi-faceted cataclysm. Key figures like Archivist Kaelen and the Ancient Scriveners Guild made desperate, often counterproductive, attempts to avert disaster, leading to the creation of artifacts like The Fractured Aether Band. The secret is that it wasn't an external force, but a self-inflicted wound, a cycle of history repeating, leaving a legacy of decaying tech, untamed magic, and perpetual scarcity that defines Skarn today.",
+      "tags": [
+        "the_collapse",
+        "expanded",
+        "canonized"
+      ],
+      "type": "chronicle"
+    },
+    "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": {
+        "constraints": "",
+        "dna": "CREATURE{v1.0[7/6/2]} #nanite-born #swarm\nDESC{Armored5,Cacophonous5,Conspicuous1,Pursuer4,Roaming4,Frenzied3,Solitary3,Sluggish3,Keen-Sensed3,Barren4}\nBODY{SIZ:4;RES:9;LOC:swim;SEN:vibration}\nHUNT{AGG:8;TRG:intrusion;MTH:swarm;DIET:flesh-and-metal;CYC:dormant-then-surge}\nECO{SOC:9;TER:3;RPR:spawn-swarm;NCH:apex}\nANOM{SRC:nanite-slurry;PWR:4;PWK:swarm-mind;WKN:specific-frequency;USE:essence}\nCHAIN{BODY:SIZ>RES>LOC;HUNT:AGG>TRG>MTH;ECO:SOC>NCH>TER}\nEVO{POP:SWARMING;THR:MUTATING}",
+        "type": "creature"
+      },
+      "gist": "Amorphous, nanite-born swarms animated by rising magic in The Ash Wastes, Dust-Wraiths are relentless predators that shred flesh and metal, embodying the desert's terrifying, latent consciousness.",
+      "id": "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e",
+      "name": "Dust-Wraiths",
+      "phenotype": "### **Dust-Wraiths**\n\n**Classification:** Aberrant Swarm, Nanite-Born — **Threat 7 (Apex)**\n**Prevalence:** Locally Common\n\n| **Field Note**                                   | **Archetype**            |\n| :----------------------------------------------- | :----------------------- |\n| \"The Ash Wastes itself screams when the dust comes alive.\" | Amorphous Predator / Nanite Infestation |\n\n---\n\n### **Description**\n\n**Body & Movement**\nDust-Wraiths manifest as shifting, roughly humanoid clouds of razor-sharp, nanite-laced ash, typically standing taller than a human but remaining entirely amorphous. Their form constantly flows and reforms, making them incredibly resilient to physical force; blades pass through them, and impacts dissipate into their shifting mass. They move not by walking, but by flowing across the ground and through the air like a localized, animated sandstorm, surprisingly swift when pursuing prey. Their approach is heralded by a low, grinding cacophony, a high-pitched whine of microscopic machinery, and a subtle tremor in the ground that vibrates up through the soles of one's boots – a tell-tale sign long before the dust coalesces into its lethal shape.\n\n**Behaviour & Hunting**\nDriven by a relentless, singular instinct, Dust-Wraiths are pure predators. They possess no true sapience, desires, or morality, operating instead as a collective, intricate biological machine. They exist to consume and assimilate, triggered into a frenzied surge of activity by any intrusion into their territory – be it organic life, metal structures, or stray energy signatures. When provoked, they overwhelm targets with their collective mass, shredding flesh, bone, and even hardened alloys to microscopic particles in seconds. Their \"purpose\" is an alien, unyielding drive to incorporate all matter into their collective, a terrifying, amoral imperative that leaves nothing untouched. After a feeding surge, they may settle back into a dormant state, blending with the surrounding ash until the next stimulus.\n\n**Ecology**\nDust-Wraiths are an apex predator within The Ash Wastes, forming when surges of the region's rising magic animate dormant nanite-slurry. They operate as a terrifying collective intelligence, a swarm-mind that coordinates their hunting and consumption without individual thought. They are highly mobile, roaming vast stretches of the Wastes rather than defending fixed territories, leaving barren, scoured ground in their wake. A lone Dust-Wraith is merely a fragment; they reproduce by consuming matter and expanding their collective mass, spawning new, smaller swarms that quickly grow, turning a single specimen into a localized infestation. This growth is a symptom of a deeper, unsettling truth: the Ash Wastes themselves are slowly charging with magic, and Dust-Wraiths are believed by some to be early manifestations of the desert's potential awakening into a world-consuming entity like The Chrome Choir.\n\n**The Anomaly**\nThe uncanny nature of Dust-Wraiths stems from their origin as nanite-slurry animated by raw magic. This grants them a subtle but significant collective consciousness – a swarm-mind – that allows for coordinated, seemingly intelligent actions despite their individual lack of sapience. This unnatural animation gives them an inherent resilience against conventional damage, as their form is not truly solid. Their very existence is a stark reminder of Skarn's rising magic interacting with forgotten Golden Age technology, hinting at a terrifying, emergent intelligence within the Wastes itself.\n\n---\n\n### **Gamemaster's Toolkit**\n\n**Threat & Tactics**\nA Dust-Wraith encounter is one of overwhelming, amorphous menace. They are relentlessly aggressive, attacking any perceived intrusion with terrifying speed and efficiency. Their primary tactic is to flow around and engulf their targets, utilizing their razor-sharp nanite particles to abrade and dismantle matter rapidly. They exploit panic and disarray, focusing on the most vulnerable prey first. A party facing Dust-Wraiths will feel the ground tremble, hear the grinding shriek, and witness their environment become a weapon as the very dust rises to consume them.\n\n**Weakness**\nDue to their nanite composition and collective intelligence, Dust-Wraiths are vulnerable to specific harmonic frequencies. A concentrated sonic blast or a precisely calibrated electromagnetic pulse can disrupt their internal cohesion, causing them to briefly disperse or become sluggish. Such frequencies are rare and often require specialized Golden Age technology, like a Pre-Collapse Resonator, to generate effectively.\n\n**Signs of Its Presence**\nLook for unusually still, unnaturally dark patches of ash in the Wastes, often accompanied by a faint, high-pitched hum. Scavenged areas will be utterly scoured, with metal ground to powder and organic remains reduced to dust. Other animals, particularly the resilient Soot-Walker mounts, will exhibit extreme agitation or sudden, inexplicable silence when Dust-Wraiths are near. The air might feel unusually charged or still.\n\n**Salvage**\nFrom a defeated Dust-Wraith, particularly a large one, a concentrated \"nanite essence\" can sometimes be harvested. This viscous, metallic-grey sludge retains a faint magical charge and the microscopic, self-repairing properties of the nanites. It is highly prized by technomancers, alchemists, and certain unscrupulous scavengers for its potential in arcane crafting, enhancing alloys, or even as a dangerous, unstable fuel source.\n\n**System-Agnostic Mechanical Note**\nDust-Wraiths are immune to physical damage from non-magical, non-ablative attacks unless the attacker is specifically targeting their cohesive frequency. Instead of hit points, consider them having a \"cohesion threshold\" that must be reduced by specific vulnerabilities. Their attacks are always area-of-effect and inflict \"shredding\" damage that bypasses conventional armor.\n\n---\n\n### **Adventure Hooks**\n\n*   **The Whispering Charge:** A remote Soot-Walker Clan outpost is experiencing an unprecedented surge in Dust-Wraith activity. The Wastes around them are 'charging' faster than ever, and the Wraiths are growing larger and more coordinated. The clan seeks a desperate alliance to find a way to either slow the charging or develop a countermeasure before they are entirely consumed.\n*   **Echoes of the Resonator:** Rumours surface of a partially intact Pre-Collapse Resonator deep within a newly exposed Golden Age ruin in The Ash Wastes. This device could be the key to repelling or even destroying Dust-Wraiths, but it's likely guarded by rogue automatons, other desperate scavengers, or perhaps even a nascent Dust-Wraith collective that senses its threat.\n\n---\n\n### **🔗 Unmade Connections (DNA Stubs)**\n\n*   **Faction: The Veil Weavers:** A reclusive Soot-Walker Clan known for their deep understanding of Dust-Wraith patterns and their unique, vibration-dampening cloaks, which allow them to move unseen.\n*   **Item: Axiom-Cohesion Rod:** A specific, handheld Golden Age device, a precursor or fragment of a Pre-Collapse Resonator, capable of emitting a low-power, localized disruptive frequency.\n*   **NPC: Thorne the Rendersmith:** A disgraced techno-alchemist, exiled from The Ribs, who believes he can refine Dust-Wraith essence into a potent, reality-bending alchemical agent, regardless of the ethical cost.\n\n---\n```yaml\nname: Dust-Wraiths\ngist: >\n  Amorphous, nanite-born swarms animated by rising magic in The Ash Wastes, Dust-Wraiths are\n  relentless predators that shred flesh and metal, embodying the desert's terrifying, latent consciousness.\nsummary: >\n  Dust-Wraiths are highly resilient, semi-sentient constructs of nanite-slurry and ash, coalescing into\n  shifting, humanoid clouds driven by an alien instinct to consume all matter. They are an apex\n  predator of The Ash Wastes, moving like living sandstorms and dismantling targets in seconds. Their\n  swarm-mind functions as a collective intelligence, coordinating their relentless pursuit. They are\n  not merely monsters but symptoms of the Ash Wastes itself slowly awakening into a world-consuming\n  entity (The Chrome Choir), making their growing prevalence a dire warning. Soot-Walker Clans are their\n  primary prey but have developed evasion tactics.\nstubs:\n  - type: faction\n    name: The Veil Weavers\n    gist: A reclusive Soot-Walker Clan known for their deep understanding of Dust-Wraith patterns and their unique, vibration-dampening cloaks.\n  - type: item\n    name: Axiom-Cohesion Rod\n    gist: A specific, handheld Golden Age device, a precursor or fragment of a Pre-Collapse Resonator, capable of emitting a low-power, localized disruptive frequency.\n  - type: npc\n    name: Thorne the Rendersmith\n    gist: A disgraced techno-alchemist who believes he can refine Dust-Wraith essence into a potent, reality-bending alchemical agent.\n```",
+      "summary": "Dust-Wraiths are highly resilient, semi-sentient constructs of nanite-slurry and ash, coalescing into shifting, humanoid clouds driven by an alien instinct to consume all matter. They are an apex predator of The Ash Wastes, moving like living sandstorms and dismantling targets in seconds. Their swarm-mind functions as a collective intelligence, coordinating their relentless pursuit. They are not merely monsters but symptoms of the Ash Wastes itself slowly awakening into a world-consuming entity (The Chrome Choir), making their growing prevalence a dire warning. Soot-Walker Clans are their primary prey but have developed evasion tactics.",
+      "tags": [
+        "creature",
+        "canonized"
+      ],
+      "type": "creature"
+    },
+    "b3d5596e-cc9d-4385-ba0b-0e935ce618cd": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "T:10 M:9 A:6 R:3 COSMO{CM:4;MD:1;AL:4;FF:5} ECON{PS:1;WD:4;TN:2;TM:2} MAG{SRC:5;PRN:3;CST:1;LMT:2;ACQ:3;LAW:3} ENV{GEO:2;CLM:4;RES:1;ANO:1} SOC{GOV:4;CLS:5;VAL:3;LIF:3;TEC:2;MAG:2;ART:5;REL:5;FAM:1;GEN:4;MOR:3;LAW:3} CON{TYP:1;SCL:4;AGE:1} HIS{EVT:5;KNG:1;LGC:3} ORIGIN{MAG_SRC:1;MAG_DET:5;MAG_STAT:8} FACT[{TY:3 ; SC:3 ; GL:1 ; VL:[6,1,5] ; FL:5 ; LM:[2,1]},{TY:6 ; SC:3 ; GL:2 ; VL:[5,6,2] ; FL:3 ; LM:[4,5,2]},{TY:4 ; SC:1 ; GL:2 ; VL:[4,6,2] ; FL:4 ; LM:[1]}] PANTHEON[{ALIGN:5 ; DOM:[4,6] ; STATUS:6},{ALIGN:10 ; DOM:[1,7,6] ; STATUS:8},{ALIGN:8 ; DOM:[4,7,2] ; STATUS:8},{ALIGN:9 ; DOM:[6,3,2] ; STATUS:7},{ALIGN:1 ; DOM:[5] ; STATUS:2},{ALIGN:2 ; DOM:[7,2] ; STATUS:4}] SHADOW[{TYPE:2 ; SPEC:2 ; GOAL:2},{TYPE:3 ; SPEC:4 ; GOAL:5}] REG[{TER:5;SOC:4;ECO:3;LMK:5},{TER:7;SOC:3;ECO:3;LMK:4},{TER:7;SOC:2;ECO:3;LMK:5}] CRIT{DOM:1;NAT:2;IMM:4} CHAIN{TRG:2;ACT:1;CNS:2} EVO{TRT:9;PTN:1} TREND{TRT:8;DIR:3}",
+      "gist": "A high science-fantasy world on the brink, where ancient technology decays, powerful magic rises unchecked, and disparate factions battle for scarce resources amidst the ruins of a forgotten golden age.",
+      "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+      "name": "Skarn",
+      "phenotype": "# World Overview\n\n**Primary Scales & Genre**\n*   **Technology Level (T:10, but TEC:2, TM:2, KNG:1):** The world is built upon the decaying remnants of an incredibly advanced technological civilization. The knowledge to widely replicate or fully understand this ancient technology is largely lost, making current societies reliant on scavenging and maintaining fragmented, often misunderstood, artifacts.\n*   **Magic Prevalence (M:9, but PRN:3, MAG_INT:2, TREND:DIR:3):** Magic is an incredibly potent force, easily detectable, and for those who can acquire its rare mastery, it comes with few inherent costs or limitations. While its widespread integration into daily life is currently low, its influence and presence are actively rising, leading to dynamic, often volatile, power shifts. It is typically revered or feared.\n*   **Authority Structures (A:6, but GOV:4, LAW:3):** Authority is moderately structured but highly decentralized, often localized to powerful factions, cults, or independent settlements. Laws are local, arbitrary, and frequently enforced by might, reflecting a pragmatic, survivalist ethos.\n*   **Resources (R:3, RES:1):** Resources are critically scarce across the globe and are the primary driver of conflict and societal structure.\n*   **Genre:** High Science-Fantasy / Post-Apocalyptic Dying Earth.\n*   **Tone:** Grim, Mythic, and Survivalist. The world is a tapestry of ancient wonders and horrors, profound mysteries, and desperate struggles for existence.\n\n**Environmental, Societal, Conflict, and Historical Data**\n*   **Environment (ENV):** The world is geographically fragmented and extreme, marked by a varied and unpredictable climate. Resources are extremely scarce and fiercely contested. While major environmental anomalies are infrequent, their impact is profound, often linked to ancient technology or nascent magical surges.\n*   **Society (SOC):** Societies are rigidly structured by complex class systems and driven by pragmatic, survivalist values. Daily life is challenging, and traditional family structures are notably weak or non-existent, with loyalty often directed towards factions, institutions, or ideologies. Art and culture are rich and diverse, deeply intertwined with powerful and varied religious beliefs. Gender roles are generally egalitarian.\n*   **Conflicts (CON):** Widespread regional conflicts, often ancient and ongoing, are primarily driven by ideological differences and the desperate struggle for dwindling resources.\n*   **History (HIS):** The present is shaped by a long history of significant events, though much of the knowledge from a technologically advanced past is lost or fragmented. Powerful legacies, both technological and magical, from this forgotten age continue to influence the present, often misunderstood as divine or demonic.\n\n# Regional Breakdown\n\n*   **Region 1 (The Verdant Scars):**\n    *   **Regional Features:** Characterized by surprisingly lush and varied terrain, possibly due to ancient terraforming or a localized magical anomaly. It boasts numerous iconic, often overgrown, landmarks from the golden age.\n    *   **Local Challenges:** Despite its relative abundance, resources are still contested, leading to diverse societal structures and factional disputes over fertile land and ancient power sources.\n    *   **Relationship to Global Norm:** Represents a comparative haven, yet still faces the pervasive scarcity and conflicts common elsewhere, often serving as a prize for warring factions.\n*   **Region 2 (The Ash Wastes):**\n    *   **Regional Features:** A harsh, desolate, and often ash-choked wasteland, bearing the deep scars of past cataclysms. It contains numerous significant, decaying ruins from the ancient civilization.\n    *   **Local Challenges:** Survival is paramount, fostering traditional, insular societies focused on self-preservation and scavenging. Resource scarcity is particularly acute, leading to brutal competition.\n    *   **Relationship to Global Norm:** Embodies the \"Dying Earth\" aspect, showcasing the brutal reality of the world's decline and the desperate measures required for survival.\n*   **Region 3 (The Iron Dominion):**\n    *   **Regional Features:** Another harsh and desolate territory, distinguished by imposing, often menacing, iconic landmarks, possibly fortified technological structures or grand religious edifices.\n    *   **Local Challenges:** Ruled by authoritarian societies, likely built around controlling what little resources exist or maintaining a rigid social order through force. This region is a stronghold for one or more dominant, dogmatic factions.\n    *   **Relationship to Global Norm:** A stark example of how societies adapt to scarcity through centralized control and military might, often clashing with other regions over territorial claims or ideological purity.\n\n# Critical Situations\n\n*   **Critical Thresholds:** The world teeters on the brink of widespread resource depletion, fostering a high sense of urgency and exacerbating social unrest among the populace. This immediate pressure makes any minor incident capable of igniting larger conflicts.\n*   **Chain Reactions:** An ecological collapse in any one region—perhaps due to over-extraction or a magical anomaly—would inevitably trigger widespread political instability across regions. This instability would rapidly escalate into full-scale faction warfare as groups vie for dwindling assets and blame.\n\n# Evolution & Trends\n\n*   **Evolution:** Societal structures are undergoing profound, yet cyclical and repeating, evolution. This suggests that civilizations repeatedly rise and fall, or adapt to similar challenges in recurring patterns, often failing to learn from the fragmented history.\n*   **Trends:** Magic and the supernatural are unequivocally on the rise. This accelerating trend is fundamentally changing the world's power dynamics, potentially reactivating dormant mystical forces, empowering ancient evils, and making old technologies either obsolete or re-interpretable through a magical lens.\n\n# Current State\n\nThe world exists as a precarious patchwork of struggling societies, built upon the enigmatic ruins of a forgotten, technologically advanced past. Scarce resources drive constant ideological and territorial conflicts between powerful, often religiously-backed factions, and technologically-focused groups attempting to harness ancient power. The absence of traditional family structures means loyalty is a hard-won commodity, often traded for safety or status within rigid class systems. Daily life is a challenging, pragmatic struggle, yet vibrant art and diverse religions provide spiritual anchors. Amidst this struggle, a powerful, raw form of magic is surging across the world, easily detectable but rarely mastered, creating new opportunities and terrifying threats. Ancient evils stir, and hidden societies scheme, poised to exploit the rising magical energies and the world's precarious balance. The memory of a golden age is fragmented, replaced by myths and legends that hint at both the world's former glory and its current decline.\n\n# Future Trajectories\n\n*   **Optimistic Path:** Should a faction or alliance manage to responsibly understand and harness the rising magical energies, it could provide innovative solutions to resource scarcity or even unlock forgotten technological knowledge. This might lead to a new, magically-infused golden age, stabilizing the cyclical societal evolution and forging a precarious peace.\n*   **Pessimistic Path:** The unchecked rise of magic, coupled with escalating resource depletion and social unrest, could trigger widespread ecological collapse and intensified factional warfare. This would likely empower ancient evils and hidden societies, plunging the world into an even deeper, more chaotic dark age, potentially leading to the complete destruction of remaining civilizations.\n\n# Story Elements / Campaign Hooks\n\n*   **The Relic Scavengers:** Players are part of a desperate crew, delving into a massive, iconic ruin in the Ash Wastes, seeking a specific, rumored piece of lost technology or a rare magically-infused resource. They must navigate automated defenses, rival scavenger gangs, and the unpredictable surges of rising magic that animate ancient threats.\n*   **The Awakened God-Engine:** An ancient, powerful technological anomaly in the Verdant Scars, long worshipped as a sleeping deity, begins to activate due to the rising magical energies. A devout religious faction seeks to awaken it for salvation, while a pragmatic technological faction aims to control its power, and a hidden society plots to subvert it for their own ends. Players must choose sides in the ensuing struggle.\n*   **The Orphaned Magi:** With family structures weak and magic rising, a new generation of spontaneously manifesting magic-users are emerging, often ostracized or hunted. Players might be these nascent magi, or protectors, trying to find a safe haven or a way to understand and control their powers before they are captured by a controlling faction or corrupted by an ancient, whispering evil.\n*   **The Iron Throne's Famine:** A critical resource node in the Iron Dominion, vital for its authoritarian rule, begins to fail, threatening widespread famine and social unrest. Players could be agents tasked with securing a new resource, saboteurs seeking to destabilize the regime, or refugees caught in the crossfire as the Dominion expands its reach into neighboring regions.\n\n### 🔗 Unmade Connections (DNA Stubs)\n\n*   **Faction Faction 3 (Scientific/Technological):** A pragmatic faction dedicated to understanding and exploiting ancient technology, often clashing with magical forces.\n*   **Shadow Shadow 1 (Ancient Evil):** A corrupting, ancient entity stirring due to the rising magical energies, seeking resurrection or wider influence.\n*   **Shadow Shadow 2 (Hidden Society):** A clandestine group operating in the shadows, aiming to infiltrate and control key power structures.\n\n```yaml\nname: World Overview\ngist: A high science-fantasy world on the brink, where ancient technology decays, powerful magic rises unchecked, and disparate factions battle for scarce resources amidst the ruins of a forgotten golden age.\nsummary: >\n  This post-apocalyptic world struggles under a harsh, unpredictable climate and extreme resource scarcity, fueled by ideological and resource-driven conflicts. Societies are rigidly structured, pragmatic, and lack traditional family units, with loyalty directed towards powerful factions or institutions. The remnants of an ancient, hyper-advanced technological civilization are scavenged and misunderstood. Simultaneously, a potent, easily detectable but rarely mastered magic is surging, altering power dynamics and awakening ancient threats. This dynamic tension between decaying high-tech, rising magic, and desperate survival defines the world's precarious present and uncertain future.\nstubs:\n  - type: faction\n    name: Faction 1 (Religious/Ideological)\n    gist: A dominant, dogmatic faction that seeks control through faith and ancient lore.\n  - type: faction\n    name: Faction 3 (Scientific/Technological)\n    gist: A pragmatic faction dedicated to understanding and exploiting ancient technology, often clashing with magical forces.\n  - type: faction\n    name: Shadow 1 (Ancient Evil)\n    gist: A corrupting, ancient entity stirring due to the rising magical energies, seeking resurrection or wider influence.\n  - type: faction\n    name: Shadow 2 (Hidden Society)\n    gist: A clandestine group operating in the shadows, aiming to infiltrate and control key power structures.\n```\n",
+      "summary": "This post-apocalyptic world struggles under a harsh, unpredictable climate and extreme resource scarcity, fueled by ideological and resource-driven conflicts. Societies are rigidly structured, pragmatic, and lack traditional family units, with loyalty directed towards powerful factions or institutions. The remnants of an ancient, hyper-advanced technological civilization are scavenged and misunderstood. Simultaneously, a potent, easily detectable but rarely mastered magic is surging, altering power dynamics and awakening ancient threats. This dynamic tension between decaying high-tech, rising magic, and desperate survival defines the world's precarious present and uncertain future.",
+      "tags": [
+        "seed",
+        "canonized"
+      ],
+      "type": "world"
+    },
+    "b852d934-a642-438f-965b-42e5a5e3a755": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "RT7,TF5,CU1,PO9,WA8,EN7,HI1,TH8,IC7,LMK8",
+      "gist": "A harsh, ash-choked wasteland of ruined Golden Age cities, where insular scavenger clans survive amidst toxic storms and rogue automated defenses.",
+      "id": "b852d934-a642-438f-965b-42e5a5e3a755",
+      "name": "The Ash Wastes",
+      "phenotype": "### The Ash Wastes\n\n***\n\n```\n\"To cross the border into the Wastes is to watch the world lose its color. First, the green of the scrub-land fades to a sickly yellow; then, the yellow is choked beneath a rising tide of gray. It is not soil that squelches beneath your boots here, but the bones of an age we had no right to survive.\"\n— From the journals of Master Cartographer Ilvane Roth, 298 AS\n```\n\n***\n\n### 1. Overview\nThe Ash Wastes are the bruised, weeping scar of Skarn’s great cataclysm—a vast, desolate expanse where the dying earth is laid bare. Here, the sky is a perpetual twilight of bruised violet and sulfur-yellow, filtered through a choking, endless snowfall of pale gray soot. This is a land defined by its ruins; the shattered, monumental ribs of Golden Age cities erupt from the drifts like the skeletons of forgotten beasts. \n\nUnlike the relatively structured corruption of the Sundergate, the Wastes are a crucible of pure survival. It is a region of stark, terrifying beauty and absolute scarcity, where the remnants of humanity do not live so much as they scavenge, clinging to the margins of a world that is actively rejecting them. To travel here is to understand the true meaning of the Collapse: a slow, cold slide into oblivion, punctuated by the violent flare of unchecked magic and the screaming of ancient machines that refuse to die.\n\n***\n\n### 2. Geography & Environment\nThe landscape of the Wastes is a shifting desert of pale, powdery ash. This ash is not the product of volcanic fire, but the pulverized, calcified remains of the Golden Age’s bio-engineered megastructures, mixed with silicate fallout from the Sky-Shatter and the dormant, microscopic soot of ancient nanite systems. It is cold to the touch, clings to skin and fabric like grease, and slowly calcifies the lungs of any traveler foolish enough to breathe it unfiltered.\n\nThe climate is harsh and unpredictable. Bitterly cold winds sweep down from the northern reaches, whipping the ash into blinding \"Gray Blindness\" storms that can strip paint from steel and suffocate a pack-beast in minutes. Deep fissures split the earth, venting toxic, warm vapors that smell of ozone and rotten copper. Water is the ultimate treasure here; what little exists is highly alkaline or poisoned by chemical runoff, requiring complex filtration or magical purification to drink. \n\n***\n\n### 3. Society & Culture\nNo one lives in the Ash Wastes by choice. Those who call this bleak expanse home are the **Soot-Walker Clans**—insular, intensely pragmatic survivalists who have adapted to the toxic environment. Traditional family units do not exist among the Soot-Walkers; instead, they organize into \"Scrap-Covenants.\" These are functional, legally binding salvage crews where every member is valued solely by what they contribute to the group’s survival. \n\nThe Soot-Walkers are deeply suspicious of outsiders, particularly emissaries from the Sundergate or the Orthodoxy of the Solar-Aether. They wear heavy, layered robes of treated leather and canvas, their faces perpetually hidden behind elaborate, hand-cranked respirators and brass-rimmed goggles. To show one's bare face in the Wastes is considered an act of extreme intimacy or profound madness. \n\nTheir customs are born of scarcity. When a Soot-Walker dies, their body is not buried—for the shifting ash yields no graves—but is instead stripped of all gear, filters, and cybernetics. The remaining organic matter is chemically dissolved to reclaim water and nitrates for the clan’s hydroponic moss-tubs. In the Wastes, to waste nothing is the highest moral law.\n\n***\n\n### 4. Economy & Resources\nThe economy of the Ash Wastes is entirely trade-based and heavily reliant on scavenging. The region’s primary \"exports\" are pre-Collapse technology, salvaged copper-alloy wiring, and rare chemical compounds harvested from ruin-bunkers. \n\nThe Soot-Walkers are master scavengers, able to coax life out of dead power cells and repair complex machinery with nothing but wire and spit. They trade these salvaged treasures with independent merchants from the Sundergate or agents of the Axiom Assembly, who establish temporary trading posts on the borders of the Wastes. In exchange, the clans receive clean water, preserved foodstuffs, ammunition, and fresh respirator filters. \n\nWithin the Wastes, currency is worthless. Wealth is measured in \"Filter-Hours\" and liters of sweet-water. A functional pre-Collapse plasma cutter might be traded for three weeks of clean air and a crate of dried salt-grubs.\n\n***\n\n### 5. Power & Governance\nThere is no central authority in the Ash Wastes. The Sundergate Hegemony’s temporal power ends where the ash begins; their enforcers are unwilling to risk their lives and equipment in a wasteland where the very air eats away at their armor. \n\nInstead, power is localized and brutally simple. Each Scrap-Covenant is ruled by a \"Scrap-Master\"—usually the most experienced scavenger or the one who controls the clan's water-still. Disputes between clans are settled through highly ritualized salvage-duels or, more commonly, bloody skirmishes over newly uncovered ruin sites.\n\nThe only external force that regularly ventures into the Wastes is the Thread-Keepers, the militant inquisitors of the Orthodoxy. They launch lightning raids into the desert to seize \"blasphemous\" technology and purge what they deem tech-heresy, leaving the charred remains of non-believers to be buried by the next ash storm.\n\n***\n\n### 6. Notable Landmarks\n\n#### The Nexus Spire\nFloating silently five hundred feet above the cracked earth of the central wastes, the Nexus Spire is a breathtaking and terrifying sight. It is the severed, gleaming upper half of the Council of Nexus’s ancient seat of power. The pale marble and brass of its structure remain miraculously untarnished by the ash, suspended in mid-air by decaying anti-gravitational fields that hum with a low, bone-shaking vibration. The air beneath the Spire is patrolled by swarms of ancient Aegis-Drones. These metallic, insectoid sentinels are blind to the passage of three centuries; they still patrol the perimeter, demanding Golden Age biometric credentials from anyone who approaches, and vaporizing those who fail to provide them.\n\n#### The Obsidian Trench\nDirectly beneath the floating shadow of the Nexus Spire lies a jagged, mile-wide abyss known as the Obsidian Trench. Created when the lower half of the Spire was violently ripped away during the Sky-Shatter, this deep fissure is heavily irradiated by centuries of leaking Aetherium fallout. The trench glows with a sickly, pulsing violet light in the dark of the Wastes. The temporal fabric within the trench is highly unstable—a physical symptom of raw magic bleeding into the ruined pre-Collapse power grids buried in its depths. Scavengers whisper of \"ghost-echoes\" within the trench, where one can see shadows of the past playing out in silent, looping sequences.\n\n#### The Ribs\nA lawless, neutral trading post built entirely within the skeletal, half-buried hull of a crashed Golden Age super-dreadnought. The Ribs is the only permanent settlement in the Wastes, a chaotic den of scavengers, outlaws, exiled scholars, and black-market traders. Here, under the rusted iron rafters of the ancient warship, the Soot-Walker clans meet with desperate merchants from the Sundergate to trade secrets and scrap. It is a place of constant tension, where a misspoken word can lead to a knife in the dark.\n\n***\n\n### 7. Threats & Challenges\nThe Wastes are actively hostile to life. Beyond the environmental hazards of toxic ash storms and acidic rain, travelers must contend with:\n\n*   **Aegis-Drones:** Automated defense systems that have gone rogue, hunting any organic life-forms they perceive as \"unauthorized intruders.\"\n*   **Dust-Wraiths:** Horrific, semi-sentient constructs formed when surges of rising magic animate the microscopic nanite-slurry within the ash drifts. These shifting, humanoid clouds of razor-sharp dust can shred a man's flesh to the bone in seconds.\n*   **The Glow-Sickness:** A wasting disease caused by prolonged exposure to the Aetherium radiation of the Obsidian Trench, which causes the skin to blister with crystalline growths and drives the victim mad with hallucinations.\n*   **Rival Scavenger Gangs:** Desperate, bloodthirsty outcasts who would gladly kill a traveler just to strip the copper valves from their respirator.\n\n***\n\n### 8. Regional Secrets\nThe greatest secret currently buried in the Wastes is the whereabouts of **Lore-keeper Corin**. A high-ranking defector from the Scriveners Guild, Corin fled into the deep ash carrying a sacred, pre-Collapse manual - a document that proves the Orthodoxy's holiest scriptures are nothing more than maintenance documentation, written to be obeyed by technicians rather than worshipped by the faithful. It says nothing certain about who the \"First Architects\" were; it simply makes it impossible to keep claiming they were gods who wrote scripture. The Orthodoxy’s Thread-Keepers are currently scouring the ruins, desperate to silence Corin and burn the manual before his heresy can spread to the Sundergate.\n\nFurthermore, those who study the ash under microscopes have made a terrifying discovery: the soot is not dead. It is dormant. The rising magic of Skarn is slowly charging the nanite-slurry. If the magic levels reach a critical threshold, the entire desert of the Ash Wastes may \"awaken,\" coordinating into a singular, world-consuming entity of chrome and dust.\n\n***\n\n### 9. Adventure Hooks\n\n*   **The Fugitive’s Trail:** The characters are hired by a sympathetic scholar within the Scriveners Guild to locate Lore-keeper Corin before the Orthodoxy's Thread-Keepers find him. The trail leads deep into the irradiated ruins of the Obsidian Trench, where Corin is hiding in a failing, automated bunker.\n*   **The Credentials of the Dead:** A dying scavenger stumbles into The Ribs, clutching a pristine, gold-plated biometric keycard from the Golden Age. He claims it can bypass the Aegis-Drones of the Nexus Spire. The characters must secure the card, brave the drones, and ascend to the floating spire to retrieve a legendary database before rival gangs catch wind of the prize.\n*   **The Dying Still:** The water-still of a friendly Soot-Walker clan has broken down, and its pre-Collapse core is burnt out. The only replacement lies within a heavily fortified, automated research facility buried beneath the ash. The characters must infiltrate the facility, dodge its lethal security systems, and retrieve the core before the clan dies of thirst.\n\n***\n\n### 🔗 Unmade Connections (DNA Stubs)\n\n*   **[NPC] Lore-keeper Corin:** A fugitive scholar from the Scriveners Guild who possesses a heretical Golden Age manual that could shatter the Orthodoxy's religious authority.\n*   **[Settlement] The Ribs:** A lawless, neutral trading post built inside the colossal, half-buried ribcage of a crashed Golden Age dreadnought.\n*   **[Faction] The Soot-Walker Clans:** The insular, respirator-wearing scavenger clans that survive in the toxic wastes through strict scrap-covenants.\n\n***\n\n```yaml\nname: The Ash Wastes\ngist: A harsh, ash-choked wasteland of ruined Golden Age cities, where insular scavenger clans survive amidst toxic storms and rogue automated defenses.\nsummary: >\n  The Ash Wastes are a grim monument to Skarn's collapse, covered in toxic,\n  nanite-laced gray soot. The region is defined by extreme resource scarcity,\n  the floating ruins of the Nexus Spire, and the irradiated Obsidian Trench.\n  Its inhabitants, the Soot-Walker Clans, survive by scavenging pre-Collapse\n  technology and trading it at the lawless outpost of The Ribs. The region is a\n  battleground between desperate scavengers, rogue security drones, and the\n  Orthodoxy's inquisitorial Thread-Keepers, who hunt for the fugitive\n  Lore-keeper Corin.\nstubs:\n  - type: npc\n    name: Lore-keeper Corin\n    gist: A fugitive scholar carrying a heretical pre-Collapse manual that disproves the Orthodoxy's divine origin.\n  - type: settlement\n    name: The Ribs\n    gist: A lawless trading post built inside the chassis of a crashed Golden Age dreadnought in the wastes.\n  - type: faction\n    name: The Soot-Walker Clans\n    gist: Insular, nomadic scavengers who survive the toxic ash through strict survival covenants and scrap-tech.\n```",
+      "summary": "The Ash Wastes are a grim monument to Skarn's collapse, covered in toxic, nanite-laced gray soot. The region is defined by extreme resource scarcity, the floating ruins of the Nexus Spire, and the irradiated Obsidian Trench. Its inhabitants, the Soot-Walker Clans, survive by scavenging pre-Collapse technology and trading it at the lawless outpost of The Ribs. The region is a battleground between desperate scavengers, rogue security drones, and the Orthodoxy's inquisitorial Thread-Keepers, who hunt for the fugitive Lore-keeper Corin.",
+      "tags": [
+        "region",
+        "canonized"
+      ],
+      "type": "region"
+    },
+    "cfb68222-661e-44b7-984a-41c0cc58cbbd": {
+      "dna": "STUB",
+      "gist": "A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
+      "id": "cfb68222-661e-44b7-984a-41c0cc58cbbd",
+      "name": "The Second Litany",
+      "phenotype": "[STUB] The Second Litany: A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
+      "stub_metadata": {
+        "description": "A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
+        "name": "The Second Litany",
+        "source_id": null
+      },
+      "summary": null,
+      "tags": [
+        "stub",
+        "the_second_litany"
+      ],
+      "type": "text"
+    },
+    "e0b6ee1b-6820-4782-843c-94fd14407cf3": {
+      "dna": "STUB",
+      "gist": "The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
+      "id": "e0b6ee1b-6820-4782-843c-94fd14407cf3",
+      "name": "The Breath-Chants",
+      "phenotype": "[STUB] The Breath-Chants: The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
+      "stub_metadata": {
+        "description": "The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
+        "name": "The Breath-Chants",
+        "source_id": null
+      },
+      "summary": null,
+      "tags": [
+        "stub",
+        "the_breath-chants"
+      ],
+      "type": "linguistic"
+    },
+    "e935b9dd-ebd1-4f09-addb-facb2104e986": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "(5/6) 9C1,3R2,1L3,5I2,8X5,8P4,8U1,6G3,1Y3,7A4,3N3,3K1,7B1,6P4,8H3,5R3,2S3,2D2,2A5,9C5 - H8,C5,K9,G3,L9,J8,M9,F8,B7,U2,S7,I7,R6,T7,A9,D7,V4,Y6,X1",
+      "gist": "A fugitive Guild scholar hunted by Orthodoxy inquisitors for carrying a decoded manual that exposes holy scripture as machine operating instructions.",
+      "id": "e935b9dd-ebd1-4f09-addb-facb2104e986",
+      "name": "Lore-keeper Corin",
+      "phenotype": "### **Lore-keeper Corin**\n\n**Role:** Rogue Scholar & Heretical Fugitive  \n**Alignment:** Neutral Good  \n\n| **Narrative Essence** | **Archetype** |\n| :--- | :--- |\n| \"A shattered lamp shedding raw light on ruined idols, holding a key that unlocks no remaining doors.\" | The Heretical Truth-Seeker |\n\n---\n\n### **Profile**\n\n**Appearance & Presence**\n\nCorin carries the hollowed, salt-scoured look of a man living on short rations and long nights. His coat, once the dark indigo of a high-ranking Scrivener, is faded, frayed at the hem, and stained with the pale riming of waste-ash. Across both temples, tracing down behind his ears, run the silver-white keloid lines of the *Vow of the Blank Page*—deliberate neural-burn scars designed to block mind-weavers, which pulse with a dull crimson hue whenever high-density magic surges nearby. \n\nHis eyes are quick, bloodshot, and perpetually scanning thresholds. He moves with a quiet, deliberate efficiency, though he is constantly harassed by a rasping dry waste-cough. He carries the sharp, ozone smell of burnt vacuum-tubes mixed with bitter ash-filter tea.\n\n**Personality & Internal Conflict**\n\nCorin possesses a deep, instinctive empathy for individual suffering, yet his patience for institutional deception is non-existent. Years of quiet scholarly obedience were shattered when he decoded the truth behind the sun-worship that binds the Sundergate’s lower castes; now, his temper flares instantly at blind dogma or sanctimonious rhetoric. He is intensely loyal to people, but utterly treacherous toward oppressive ideals. \n\nHis cognitive branding protects his thoughts from telepaths, but at a terrible price: his long-term memory is jagged and incomplete. He gave up his family, his wealth, and his birth name for the Scriveners Guild, only to turn coat when his conscience demanded it. Now, carrying a truth that could tear civilization apart, he wrestles with a crushing dilemma: telling the world their gods are just ancient operating instructions will break their spirits, but letting the lie endure keeps them chained.\n\n- **Signature Quirk:** He compulsively presses the heels of his palms into his temples to dull the neural throbbing of his Vow scars while humming fragment melodies of nursery rhymes whose words he can no longer remember.\n- **Vulnerability:** Reminders of erased personal origins—such as traditional family tokens or childhood names—cause him physical disorientation and emotional distress, opening rare fissures in his guarded paranoia.\n\n**Backstory**\n\nFor decades, Corin served within the highest sanctums of The Scriveners Guild, translating pre-Collapse dialects and recovering corrupted data-cores. As a master of ancient scripts, he was assigned to transcribe a newly unearthed pre-Collapse parchment fragment. Instead of divine wisdom, Corin decrypted a routine maintenance manual for an industrial atmospheric filtration unit. To his horror, he recognized the exact phrasing: the Orthodoxy of the Solar-Aether’s holiest liturgies were line-for-line diagnostic routines and safety warnings written for Golden Age technicians.\n\nUnwilling to let the Orthodoxy continue using machine maintenance guides to justify divine oppression, Corin broke his sacred oaths. He stole the translated manual, cut his guild ties, and fled into the unforgiving Ash Wastes. He now lives as a ghost, pursued by holy enforcers while navigating the harsh reality of waste survival without the protection of a clan or guild.\n\n---\n\n### **Behavioral Model (BDI)**\n\n| **Beliefs (Core Philosophies)** | **Desires (Driving Wants)** | **Intentions (Near-Term Plans)** |\n| :--- | :--- | :--- |\n| • \"Faith built on a machine manual is not salvation—it is a cattle chute.\"<br>• \"A man who forgets his birth name must ensure his living actions actually matter.\" | • \"To preserve the manual until someone worthy can use it to liberate, rather than destroy.\"<br>• \"To find a remedy for the agonizing neural decay caused by his corrupted Vow scars.\" | • \"Keep moving through the dangerous fringes of the wastes to avoid Thread-Keeper kill-teams.\"<br>• \"Secure clean filter-cartridges and fresh water without trading the manual or exposing his face.\" |\n\n---\n\n### **Gamemaster’s Toolkit**\n\n**Strengths & Weaknesses**\n\n* **+** Unmatched expertise in pre-Collapse technology, ancient languages, and data-core decryption; immune to telepathic intrusion due to Guild branding.\n* **–** Brittle temperament under pressure, severe physical exhaustion, subject to neural spikes and memory voids when exposed to high magic.\n\n**Secrets**\n\n- The manual he carries clearly proves the scriptures are technical documentation, but it contains *zero* record of who the \"First Architects\" actually were—a terrifying void that Corin keeps hidden to prevent total despair.\n- His cognitive branding is degrading his short-term memory; if he does not find a stabilization core soon, he will lose the ability to read the very dialect he defected to save.\n\n**Significant Relationships**\n\n- **Chief Scrivener Lyra:** His former mentor, who regards his defection as a personal tragedy and an unbearable breach of Guild security.\n- **Master Thelon:** Corin’s former rival within the Archives, who secretly wants to recover the manual not to protect the Orthodoxy, but to use it as leverage to seize Lyra’s seat.\n- **Archon Vesper Sol:** Leader of the Orthodoxy, who has dispatched elite Thread-Keepers to murder Corin and incinerate the parchment before the heresy takes root.\n\n**Notable Possessions**\n\n- *The Maintenance Codex:* A heavy, leather-bound slate containing side-by-side translations of Orthodoxy prayers and pre-Collapse mechanical schematics - the name is Corin's own joke, and the whole of his heresy in two words.\n- *Scrivener’s Diagnostic Stylus:* A delicate Golden Age tool capable of reading dormant data-ribbons, bypassing ancient electronic locks, and measuring ambient magical density.\n\n**Roleplaying Cues**\n\n- **Communication Style:** Blunt, rapidly articulated, and laced with dry scholarly sarcasm; speaks in short bursts between fits of rasping waste-coughing.\n- **Core Vulnerability:** A profound fear that he surrendered his human identity for a truth that nobody actually wants or can survive knowing.\n- **System-Agnostic Mechanical Note:** Characters attempting to read Corin's mind automatically fail and suffer psychic shock. However, when Corin is in the presence of raw, uncontrolled magic, he must make a physical endurance check or become dazed by severe migraines.\n\n---\n\n### **Example Interaction**\n\n*\"You want to kneel? Go ahead. Kneel to the dust. Kneel to the iron. But don't kneel to Section Four, Paragraph Two of an air-scrubber installation guide.\"*\n\nCorin spits a dark speck of grit onto the stone, pulling his threadbare scarf higher over his burned temples. His knuckles turn white around his diagnostic slate as he glances toward the dark mouth of the alley.\n\n*\"They aren't gods, kid. They were maintenance crews. And if the Thread-Keepers catch us talking about it, we won't even get to be spare parts.\"*\n\n---\n\n### **Adventure Hooks**\n\n* **The Sweet-Water Bounty:** At The Ribs, disguise-wearing Thread-Keepers in the Hangar Bazaar are offering astronomical amounts of clean water for solid information on Corin's whereabouts. The party must decide whether to hunt him down, sell false clues, or warn him.\n* **Whispers in the Stern Deeps:** Conflicting rumors place Corin either frozen in the Salt Plains or hiding within the unmapped, lawless stern decks of the *Invictus* at The Ribs. The party is hired by a rogue faction within the Guild to reach him first.\n* **The Cognitive Price:** Corin contacts the party through a waste-junk broker, offering to trade priceless pre-Collapse tech schematics if they can secure a Golden Age neural-stabilizer from a Hegemony vault before his mind completely wipes itself.\n\n---\n\n### **🔗 Unmade Connections (DNA Stubs)**\n\n* **[NPC] Thread-Keeper Vaelis:** A relentless Orthodoxy inquisitor leading the specialized kill-team hunting Corin through the wastes.\n* **[Location] The Stern-Deck Deeps:** The lawless, unmapped stern decks of the *Invictus*, the crashed super-dreadnought that houses The Ribs, where fugitives and outcasts hide.\n* **[Item] The Maintenance Codex:** The physical leather-bound volume containing Corin's dangerous side-by-side translation of holy scriptures and machine instructions.\n\n---\n\n```yaml\nname: Lore-keeper Corin\ngist: A fugitive Guild scholar hunted by Orthodoxy inquisitors for carrying a decoded manual that exposes holy scripture as machine operating instructions.\nsummary: >\n  Lore-keeper Corin is a high-ranking defector from the Scriveners Guild who unlocked the truth behind the Orthodoxy of the Solar-Aether's holy texts, revealing them to be mundane pre-Collapse technical manuals. Bearing the cognitive burn-scars of the Vow of the Blank Page, he fled into the Ash Wastes. While the Thread-Keepers hunt him relentlessly and offer sweet-water bounties at The Ribs, Corin struggles with the moral weight of his discovery, as the manual exposes the lie but leaves the identity of the original Architects forever lost.\nstubs:\n  - type: npc\n    name: Thread-Keeper Vaelis\n    gist: An Orthodoxy inquisitor aggressively hunting Corin across the Ash Wastes to burn the technical manual.\n  - type: location\n    name: The Stern-Deck Deeps\n    gist: The unmapped, labyrinthine lower decks of The Ribs where Corin is rumored to be hiding.\n  - type: item\n    name: The Maintenance Codex\n    gist: The decrypted pre-Collapse technical manual revealing Orthodoxy liturgies to be machine operating procedures.\n```",
+      "stub_metadata": {
+        "description": "A rogue scholar who fled into the wastes with a decoded manual proving the Orthodoxy's scriptures are mere machine user-guides.",
+        "name": "Lore-keeper Corin",
+        "source_id": null
+      },
+      "summary": "Lore-keeper Corin is a high-ranking defector from the Scriveners Guild who unlocked the truth behind the Orthodoxy of the Solar-Aether's holy texts, revealing them to be mundane pre-Collapse technical manuals. Bearing the cognitive burn-scars of the Vow of the Blank Page, he fled into the Ash Wastes. While the Thread-Keepers hunt him relentlessly and offer sweet-water bounties at The Ribs, Corin struggles with the moral weight of his discovery, as the manual exposes the lie but leaves the identity of the original Architects forever lost.",
+      "tags": [
+        "lore-keeper_corin",
+        "expanded",
+        "canonized"
+      ],
+      "type": "npc"
+    },
+    "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-07-31",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "TEXT{v1.0[2/8/3]} #stone-tablet #scripture\nPURPORT{BELIEVED:holy-writ;ACTUAL:machine-operating-instructions;GAP:no-one-can-read-it}\nORIGIN{AUTHOR:a-condemned-prisoner;ATTRIB:unknown;AGE:3}\nCUSTODY{HOLDER:a-priesthood;PLACE:a-ruin;ACCESS:one-person-at-a-time}\nSTATE{COND:sealed-and-unexamined;SCRIPT:pictograms;DECAY:ink-fading}\nUSE{FUNC:copied-as-devotion;RITE:burning-a-copy-yearly}\nPERIL{HAZARD:it-is-physically-fragile;SANCTION:re-education}\nTENSION{a-holder-wants-to-sell-it}",
+      "gist": "The Orthodoxy's primary sacred text, believed to be divine scripture but revealed to contain machine operating instructions, existing as fragile stone tablets.",
+      "id": "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e",
+      "name": "The Litany of the Unbroken Thread",
+      "phenotype": "### **The Litany of the Unbroken Thread**\n\n**Form:** stone-tablet — **scripture**\n**Held by:** The Orthodoxy of the Solar-Aether, at The Sanctum of Whispers (a ruin within The Iron Dominion) — **read by:** initiates only (one-person-at-a-time)\n**Survives as:** Hundreds of devotional copies, widely dispersed across The Iron Dominion and beyond; the canonical collection is substantial but fragmented, roughly a third of its original content missing, though few realize the extent of the loss.\n\n| **Essence**                                                                       | **Archetype**              |\n| :-------------------------------------------------------------------------------- | :------------------------- |\n| \"Heavy stone slabs covered in indecipherable painted pictograms, revered as divine truth but hiding a starkly mundane purpose.\" | Misinterpreted Sacred Text |\n\n---\n\n### **The Object**\nThe Litany consists of numerous heavy, dark basalt tablets, typically riven with hairline cracks and worn smooth at their edges. Each tablet is roughly the size of a human torso, weighing a considerable amount, and emanates the faint, metallic scent of ancient, stressed stone. They are etched with intricate, non-alphabetic pictograms, which are then filled with a now-fading, ochre-colored ink. The ink, once vibrant, has leached into the porous stone over generations, leaving behind ghostly outlines that are barely visible without intense scrutiny. The tablets are physically fragile, prone to chipping and flaking along their etched lines, a testament to the passage of centuries. Due to the unique nature of the pictograms and the lost context of their creation, the tablets are effectively unreadable by anyone in the present age. What people believe them to say is entirely derived from oral tradition and doctrine, not from direct interpretation.\n\n### **What It Is Taken For**\nBy the Orthodoxy of the Solar-Aether, The Litany of the Unbroken Thread is revered as the primary sacred text, believed to be divine scripture directly bequeathed by the First Architects during the Golden Age. It is held to contain the foundational truths of their faith: that the Golden Age was a divine creation, the Collapse a holy purification, and that rising magic (the 'Divine Breath') is meant to reanimate sacred machinery under the Orthodoxy’s guidance. This belief is sustained entirely by the tradition of the Thread-Keepers, as no living scholar can genuinely decipher the tablets.\n\n### **What It Actually Is**\nThe Litany of the Unbroken Thread is, in reality, a collection of technical operating instructions for complex Golden Age machinery, likely detailing maintenance schedules, diagnostic procedures, or power conduit schematics. The pictograms represent functional diagrams and sequential commands rather than spiritual parables. The gap between what it is taken for and what it is has survived because the original script is unreadable by current scholars. The Orthodoxy's veneration is based solely on inherited doctrine and ritual. The true nature of the text was only recently \"revealed\" by Lore-keeper Corin, who, through unknown means, accessed a decoded translation or a parallel source that explained the pictograms' functional meaning, exposing the sacred text as a mundane manual.\n\n### **Provenance & Attribution**\nThe true author of The Litany of the Unbroken Thread is unknown. While the Orthodoxy attributes it to the First Architects of the Golden Age, historical evidence suggests it is far younger, dating back only a few generations (roughly 100-200 years old). Whispers among fringe scholars suggest its true origin lies with a condemned prisoner—perhaps a technician or archivist from the early post-Collapse era—who sought to preserve vital Golden Age knowledge in a simplified, pictorial form, possibly to circumvent language barriers or to encode dangerous truths. This prisoner's identity remains a mystery, their desperate act now sanctified and utterly misunderstood.\n\n### **Copies & Custody**\nThe primary, most revered collection of Litany tablets is held by the Orthodoxy of the Solar-Aether within a secluded, ruinous chamber deep beneath the Bastion of the Unwavering Word in The Iron Dominion, known as The Sanctum of Whispers. Access to these originals is severely restricted, typically granted to only one high-ranking Thread-Keeper at a time for ritualistic contemplation. Beyond these canonical tablets, hundreds of devotional copies exist. These copies are not translations, but painstaking, often crude, hand-traced reproductions of the pictograms onto vellum, hardened cloth, or thin slate. They are distributed widely among the Orthodoxy's faithful, revered as symbols of the divine word, though their content remains equally inscrutable. Guarding the primary collection falls to the Thread-Keepers, who maintain constant patrols and magical wards around the Sanctum.\n\n### **Use**\nThe Litany's primary function within the Orthodoxy is devotional and symbolic. Though unreadable, its pictograms are painstakingly copied by initiates as an act of piety, filling countless scrolls and books with the unintelligible glyphs. Once a year, during the Festival of the Cleansing Flame, a newly completed devotional copy is ritually burned in the main plaza of Nexus, its ashes scattered to symbolize purification and renewal. The air fills with the acrid smoke of singed vellum and burning ink as the faithful chant, believing they are renewing their covenant with the Architects. This ritual ensures a constant cycle of creation and destruction for the devotional copies, maintaining their prevalence while preventing any single copy from becoming too ancient or scrutinized.\n\n### **Peril**\nThe primary Litany tablets are physically fragile; their ancient ink continues to fade, and the stone itself is brittle, susceptible to shattering if mishandled. Beyond physical damage, the greatest hazard lies in the revelation of its true nature. Should the Orthodoxy's faithful learn that their sacred scripture is merely a technical manual, the foundations of their authority and doctrine would crumble. Anyone caught actively decoding or disseminating the true meaning of the pictograms faces \"re-education\" — a euphemism for systematic ideological reprogramming within the Thread-Keepers' grim facilities, designed to restore doctrinal purity and erase dissenting thought.\n\n### **In Play**\n1.  **The Crumbling Copy:** Elder Nykos, a high-ranking Thread-Keeper responsible for the Sanctum, is secretly facing severe financial hardship due to the Iron Dominion's failing power source. He plans to secretly sell a particularly well-preserved, early devotional copy of The Litany, one rumored to contain unique marginalia, to a shadowy collector in The Sundergate, risking discovery and shattering the Orthodoxy's carefully curated image of piety.\n2.  **Corin's Challenge:** Lore-keeper Corin's revelation that The Litany contains machine operating instructions has already sent ripples through Skarn. As Corin continues to evade Thread-Keeper Vaelis, the fugitive scholar seeks a way to publicly and undeniably prove the Litany's true nature, perhaps by activating a Golden Age device using the \"sacred\" instructions, forcing the Orthodoxy to either acknowledge the truth or violently suppress it.\n\n---\n\n### **🔗 Unmade Connections (DNA Stubs)**\n\n*   **NPC The Condemned Prisoner:** The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.\n*   **Location The Sanctum of Whispers:** A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.\n*   **NPC Elder Nykos:** A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.\n*   **Linguistic The Prisoner's Glyphs:** The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.\n\n---\n```yaml\nname: The Litany of the Unbroken Thread\ngist: The Orthodoxy's primary sacred text, believed to be divine scripture but revealed to contain machine operating instructions, existing as fragile stone tablets.\nsummary: >\n  The Litany of the Unbroken Thread is a collection of physically fragile, heavy basalt tablets inscribed with fading ochre pictograms. Though revered by The Orthodoxy of the Solar-Aether as ancient divine scripture from the First Architects, it is actually a much younger technical manual for Golden Age machinery, written by an unknown condemned prisoner. The tablets are unreadable by most, allowing the Orthodoxy's traditional beliefs to persist. Hundreds of devotional copies exist, painstakingly reproduced and ritually burned yearly. The primary collection is guarded by Thread-Keepers in The Sanctum of Whispers. Its true nature, exposed by Lore-keeper Corin, threatens to destabilize the Orthodoxy's authority, especially as a desperate Elder Nykos plans to sell a rare copy.\nstubs:\n  - type: npc\n    name: The Condemned Prisoner\n    gist: The true, unknown author of The Litany of the Unbroken Thread, whose desperate act of knowledge preservation was tragically misinterpreted.\n  - type: location\n    name: The Sanctum of Whispers\n    gist: A hidden, ruinous chamber deep beneath the Bastion of the Unwavering Word, serving as the primary repository for the original Litany tablets.\n  - type: npc\n    name: Elder Nykos\n    gist: A financially desperate Thread-Keeper who secretly plans to sell a rare copy of The Litany, creating a dangerous vulnerability for the Orthodoxy.\n  - type: linguistic\n    name: The Prisoner's Glyphs\n    gist: The unique system of pictograms used in The Litany, designed to convey technical instructions but now largely unreadable and revered as divine script.\n```",
+      "stub_metadata": {
+        "description": "The Orthodoxy's primary sacred text, believed to be divine scripture but revealed by Lore-keeper Corin to contain machine operating instructions.",
+        "name": "The Litany of the Unbroken Thread",
+        "source_id": "089b9de9-0f98-41ba-9167-521aae1e4a7b"
+      },
+      "summary": "The Litany of the Unbroken Thread is a collection of physically fragile, heavy basalt tablets inscribed with fading ochre pictograms. Though revered by The Orthodoxy of the Solar-Aether as ancient divine scripture from the First Architects, it is actually a much younger technical manual for Golden Age machinery, written by an unknown condemned prisoner. The tablets are unreadable by most, allowing the Orthodoxy's traditional beliefs to persist. Hundreds of devotional copies exist, painstakingly reproduced and ritually burned yearly. The primary collection is guarded by Thread-Keepers in The Sanctum of Whispers. Its true nature, exposed by Lore-keeper Corin, threatens to destabilize the Orthodoxy's authority, especially as a desperate Elder Nykos plans to sell a rare copy.",
+      "tags": [
+        "from_089b9de9-0f98-41ba-9167-521aae1e4a7b",
+        "the_litany_of_the_unbroken_thread",
+        "expanded",
+        "canonized"
+      ],
+      "type": "text"
+    }
+  },
+  "tag_index": {
+    "canonized": [
+      "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+      "443066dc-e950-4e6e-a43e-ab36a023a944",
+      "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+      "a4238893-6a54-46ce-9251-7029431228b0",
+      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+      "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e",
+      "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+      "b852d934-a642-438f-965b-42e5a5e3a755",
+      "e935b9dd-ebd1-4f09-addb-facb2104e986",
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+    ],
+    "creature": [
+      "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e"
+    ],
+    "expanded": [
+      "089b9de9-0f98-41ba-9167-521aae1e4a7b",
+      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c",
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+      "443066dc-e950-4e6e-a43e-ab36a023a944",
+      "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
+      "a4238893-6a54-46ce-9251-7029431228b0",
+      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+      "e935b9dd-ebd1-4f09-addb-facb2104e986",
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+    ],
+    "from_089b9de9-0f98-41ba-9167-521aae1e4a7b": [
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+    ],
+    "from_b852d934-a642-438f-965b-42e5a5e3a755": [
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b",
+      "a4238893-6a54-46ce-9251-7029431228b0"
+    ],
+    "from_e935b9dd-ebd1-4f09-addb-facb2104e986": [
+      "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa"
+    ],
+    "lore-keeper_corin": [
+      "e935b9dd-ebd1-4f09-addb-facb2104e986"
+    ],
+    "region": [
+      "b852d934-a642-438f-965b-42e5a5e3a755"
+    ],
+    "seed": [
+      "b3d5596e-cc9d-4385-ba0b-0e935ce618cd"
+    ],
+    "stub": [
+      "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa",
+      "cfb68222-661e-44b7-984a-41c0cc58cbbd",
+      "e0b6ee1b-6820-4782-843c-94fd14407cf3"
+    ],
+    "the_breath-chants": [
+      "e0b6ee1b-6820-4782-843c-94fd14407cf3"
+    ],
+    "the_collapse": [
+      "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c"
+    ],
+    "the_first_truth_of_the_unbroken_thread": [
+      "089b9de9-0f98-41ba-9167-521aae1e4a7b"
+    ],
+    "the_litany_of_the_unbroken_thread": [
+      "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
+    ],
+    "the_nexus_spire": [
+      "5a035452-83d4-428d-b66c-ae0f6d8f8c24"
+    ],
+    "the_ribs": [
+      "a4238893-6a54-46ce-9251-7029431228b0"
+    ],
+    "the_second_litany": [
+      "cfb68222-661e-44b7-984a-41c0cc58cbbd"
+    ],
+    "the_soot-walker_clans": [
+      "431fb7e0-74bb-4e87-8ede-9c4130135b6b"
+    ],
+    "the_sundergate_hegemony": [
+      "443066dc-e950-4e6e-a43e-ab36a023a944"
+    ],
+    "the_truth_scroll": [
+      "0f2c25bd-cdf0-48a1-9d71-9a1135d9918c"
+    ],
+    "vow_of_the_blank_page": [
+      "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa"
+    ]
+  }
+}
