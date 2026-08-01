@@ -61,6 +61,17 @@ expand_brain_vault.py
 unique_links.txt
 docs/vault_integrity_report.md
 
+# Graphify's knowledge graph of this repo. Regenerated from the source by
+# `graphify extract . --code-only` (local AST, no API calls), so it is derived
+# output rather than source: 5.8 MB of it, dominated by graph.html and
+# graph.json, both rewritten wholesale on every run.
+#
+# Graphify's own docs suggest committing this so a team shares one map. Not done
+# here because the repo is public and the graph would add megabytes of churn to
+# every commit that touches code. Anyone cloning can rebuild it in seconds.
+graphify-out/
+graph.json
+
 # Event Ledger databases — runtime state, recreated on demand. Deliberately
 # not *.db: the PF2E rules data under src/layer4_rules/PF2EDNA/data/ is
 # legitimately tracked and must stay so.

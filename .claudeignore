@@ -1,0 +1,12 @@
+# Files Claude Code should not read into context.
+#
+# Graphify writes its graph into the workspace on every extract. Left visible,
+# each write invalidates the prompt cache and forces a full re-upload at
+# cache-write rates on the next turn — and graph.json alone is 1.5 MB, so the
+# cost is real. Graphify's own troubleshooting notes recommend exactly this.
+#
+# Nothing is lost by ignoring them: the graph is meant to be reached through
+# `graphify query`, `graphify path` and `graphify explain`, which read the file
+# from disk rather than needing it in context.
+graphify-out/
+graph.json
