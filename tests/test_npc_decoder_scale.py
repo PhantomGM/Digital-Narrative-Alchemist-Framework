@@ -108,6 +108,46 @@ def test_trait_score_and_intensity_are_distinguished(decoder):
     assert "how loud" in section and "what shape" in section
 
 
+def test_contradictions_are_framed_as_the_point_not_as_errors(decoder):
+    """
+    The 39 traits are rolled independently precisely so they collide. If the
+    decoder reads as an instruction to tidy that up, the genome's main source
+    of depth is sanded off on the way to the page.
+    """
+    section = decoder.split("**4. CONTRADICTIONS")[1].split("---")[0]
+
+    assert "not bad rolls" in section.lower() or "not errors" in section.lower()
+    assert "never by averaging" in section
+    assert "flattened" in section
+
+
+def test_contradiction_section_names_its_lens(decoder):
+    """Every other decoder names one -- ecology, transmission, circumstance."""
+    section = decoder.split("**4. CONTRADICTIONS")[1].split("---")[0]
+
+    assert "lived history" in section
+    assert "Biography is this decoder's lens" in section
+
+
+def test_reconcile_is_disambiguated_from_settle(decoder):
+    """
+    'Resolve' carries both senses across the decoder set: make believable, and
+    answer an open question. The second is forbidden by a standing rule, so the
+    creative sense must not be spelled the same way.
+    """
+    section = decoder.split("**4. CONTRADICTIONS")[1].split("---")[0]
+
+    assert "Reconcile contradictions" in section
+    assert "It never means settle" in section
+    assert "Resolve contradictions through:" not in decoder
+
+
+def test_backstory_is_where_the_contradiction_gets_its_origin(decoder):
+    section = decoder.split("**Backstory**")[1][:900]
+
+    assert "contradiction" in section.lower()
+
+
 def test_the_band_boundaries_still_agree_with_the_generator(decoder):
     """The generator's bands and the decoder's bands must not drift apart."""
     from layer5_dna_substrate.generators.npc import GNE_BANDS, LNC_BANDS

@@ -74,12 +74,28 @@ Two characters can share an alignment, share a corner, and still be opposites be
 
 **4. CONTRADICTIONS**
 
-* Resolve contradictions through:
+The 39 trait scores are rolled independently, so the genome **deliberately** produces combinations that do not sit together: `9B4` Brave beside `1I5` Insecure, rigid organisation in someone impulsive, a devout `L9` with `H2` for honesty. These are not bad rolls. They are the character. A profile whose traits all agree means the contradiction was flattened on the way out, not that the roll was tame.
 
-  * Internal conflict
-  * Social facade vs. private self
-  * Dilemmas between values
-  * Reactive behavior under pressure
+**Reconcile contradictions through lived history — never by averaging them.**
+
+Biography is this decoder's lens, the way ecology is the creature decoder's and transmission is the text decoder's. A contradiction becomes believable the moment the reader can see how a person ends up that way:
+
+* **Internal conflict** — both impulses are still live; they have not settled it either.
+* **Facade vs. private self** — one is what they show, the other what they are.
+* **Domain separation** — rigorous at work, reckless at home; context decides which surfaces.
+* **Sequence** — they were one thing, became another, and the first never fully left.
+* **Dilemma between values** — invisible until a specific pressure forces the choice.
+* **Default vs. under pressure** — who they are calm is not who they are cornered.
+
+Never:
+
+* split the difference between two opposed traits
+* quietly drop the weaker one, or keep only the one that suits the alignment
+* have the character neatly explain their own contradiction — most people have never noticed theirs, and showing it twice is stronger than naming it once
+
+**Carry the sharpest two or three into the Backstory.** That section exists to show how these traits became this way: the turning point that left them both brave and insecure is worth more than either trait described on its own. The strongest contradiction should be the most interesting thing on the page, not the thing the page smooths over.
+
+*(Note the word. "Reconcile" here means make believable. It never means settle — see the standing rule against answering questions the setting leaves open.)*
 
 ---
 
@@ -127,6 +143,7 @@ Two characters can share an alignment, share a corner, and still be opposites be
 
 * Describe how they came to be this way—emotionally, morally, or socially.
 * Include a **turning point** or past mistake tied to their current beliefs.
+* **Show the origin of the sharpest trait contradiction here.** This is where a combination that looked impossible in the DNA becomes inevitable in the person: the event that left them both brave and insecure, or devout and dishonest. A backstory that explains only the traits that already agree has skipped its main job.
 * Tie backstory to **current conflicts or factions** if context is provided.
 
 ---
