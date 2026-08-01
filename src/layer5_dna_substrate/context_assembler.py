@@ -42,6 +42,13 @@ _MAX_CITED_PAGES = 8
 # inflate the decoder layers to no purpose. The anchor page is emitted first and
 # therefore survives truncation.
 _CITATION_TOTAL_CHARS = 40000
+# Naming rules plus worked examples. Enough for five example names and the rule
+# behind them; the phonetics and idioms are not needed to name one person.
+_NAMING_CHARS = 1800
+_NAMING_HEADER = (
+    "[NAMING CONVENTIONS - canon. Names in this world are formed by these "
+    "rules. Any name invented for a person, place, faction or object must obey "
+    "them rather than falling back on generic fantasy naming.]")
 
 # Vault machinery, not world facts. Log.md in particular is a 35KB append-only
 # operations log that would swallow the whole citation budget.
@@ -226,8 +233,16 @@ class ContextAssembler:
         return found
 
     def _linguistic_anchor(self, chain_ids: List[str]) -> Optional[dict]:
-        """The linguistic profile linked to the locale chain, else the first one."""
-        linguistics = self.registry.get_all_by_type("linguistic")
+        """
+        The linguistic profile linked to the locale chain, else the first one.
+
+        Written profiles beat stubs. A stub is a name and a reason for existing,
+        so anchoring to one supplies no conventions at all while still looking
+        like a hit — and the stub would then shadow a real profile elsewhere in
+        the registry.
+        """
+        linguistics = [r for r in self.registry.get_all_by_type("linguistic")
+                       if "stub" not in (r.get("tags") or [])]
         if not linguistics:
             return None
         chain_set = set(chain_ids)
@@ -237,6 +252,50 @@ class ContextAssembler:
             if neighbors & chain_set:
                 return record
         return linguistics[0]
+
+    def _naming_conventions(self, chain_ids: List[str]) -> str:
+        """
+        The world's naming rules, verbatim, for the decoder to follow.
+
+        The linguistic decoder exists to be a "Root Truth ... across all future
+        NPCs, Locations, and Factions", and it earns that by being concrete:
+        five worked example names and the rule behind them. A gist cannot carry
+        that. Without it every decode invents names from the model's own
+        defaults, which is why one DNA string across five worlds produced three
+        characters surnamed Vane and two called Lyra.
+        """
+        record = self._linguistic_anchor(chain_ids)
+        if not record:
+            return ""
+        body = (record.get("phenotype") or "").strip()
+        if not body:
+            return ""
+
+        # Prefer the naming section; the phonetics and idioms matter less to a
+        # decoder that only has to name a person and make them sound local.
+        match = re.search(
+            r"^.{0,8}\**\s*Naming Conventions\b.*?(?=^\s*\**\s*(?:Common Idioms|"
+            r"Linguistic Taboos|Influence on Other|###)|\Z)",
+            body, re.M | re.S | re.I)
+        section = match.group(0).strip() if match else body
+        if len(section) > _NAMING_CHARS:
+            section = section[:_NAMING_CHARS].rsplit("\n", 1)[0]
+        name = record.get("name") or "the world's language"
+        return f"{_NAMING_HEADER}\n({name})\n{section}"
+
+    def _with_naming(self, frame: str, chain_ids: List[str]) -> str:
+        """
+        Append the naming conventions after the cap, never before it.
+
+        Appending them inside _build_world_frame put them last in a block that
+        is then trimmed to a fraction of the budget, and the World Overview
+        alone overflows that fraction — so the conventions were cut from every
+        prompt that ever ran. Exactly the failure the standing rulings had.
+        """
+        naming = self._naming_conventions(chain_ids)
+        if not naming or naming in frame:
+            return frame
+        return f"{frame}\n\n{naming}" if frame else naming
 
     # ── Layers ───────────────────────────────────────────────
 
@@ -272,9 +331,9 @@ class ContextAssembler:
             calendar = self.vault.calendar_rules()
             if calendar:
                 parts.append(calendar)
-        linguistic = self._linguistic_anchor(chain_ids)
-        if linguistic:
-            parts.append("Naming conventions:\n" + self._entity_block(linguistic))
+        # The naming conventions are NOT added here. They are appended after the
+        # cap by _with_naming, because anything added here is subject to
+        # truncation and they were being cut every time.
         return "\n\n".join(parts)
 
     def _build_locale(self, locale_id: Optional[str]) -> str:
@@ -453,9 +512,11 @@ class ContextAssembler:
         directives = "\n\n".join(p for p in [req.imprint.strip(), req.directives.strip()] if p)
 
         return ContextPackage(
-            world_frame=self._with_rulings(
-                self._cap(self._build_world_frame(chain_ids),
-                          req.budget_tokens, _LAYER_BUDGET["world_frame"])),
+            world_frame=self._with_naming(
+                self._with_rulings(
+                    self._cap(self._build_world_frame(chain_ids),
+                              req.budget_tokens, _LAYER_BUDGET["world_frame"])),
+                chain_ids),
             locale=self._cap(self._build_locale(req.locale_id), req.budget_tokens, _LAYER_BUDGET["locale"]),
             lineage=self._cap(self._build_lineage(req.anchor_id), req.budget_tokens, _LAYER_BUDGET["lineage"]),
             roster=self._cap(self._build_roster(req, chain_ids), req.budget_tokens, _LAYER_BUDGET["roster"]),

@@ -176,10 +176,18 @@ def test_assembler_budget_caps_layers():
         req = AssemblyRequest(element_type="npc", anchor_id=npc, locale_id=settlement,
                               budget_tokens=100)  # absurdly small
         pkg = assembler.assemble(req)
-        for layer in (pkg.world_frame, pkg.locale, pkg.lineage, pkg.roster):
+        for layer in (pkg.locale, pkg.lineage, pkg.roster):
             assert len(layer) <= 100 * 0.30 * 4 + 1
+        # The world frame has two deliberate exemptions appended AFTER the cap:
+        # the standing rulings and the naming conventions. Both were being
+        # truncated out of every prompt when they sat inside the capped body,
+        # which is the bug those appends exist to fix. Only the capped portion
+        # of the frame is bounded.
+        body = pkg.world_frame.split("[NAMING CONVENTIONS")[0]
+        body = body.split("[CANON RULINGS")[0]
+        assert len(body) <= 100 * 0.30 * 4 + 1
         # Caps drop whole lines, so what's left starts intact
-        assert pkg.world_frame == "" or not pkg.world_frame.endswith(("Magi", "pric"))
+        assert body == "" or not body.rstrip().endswith(("Magi", "pric"))
     with_vault(check)
     print("✓ test_assembler_budget_caps_layers passed")
 
