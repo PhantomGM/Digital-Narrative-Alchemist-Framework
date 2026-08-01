@@ -192,12 +192,44 @@ Never:
 * Include one **signature behavior or quirk** with a narrative origin.
 * Establish a **vulnerability** the party might trigger or resolve.
 
+**HOW THE TENSION SHOWS — pick the modality from the world, not from habit.**
+
+The DNA says a tension exists. It does **not** say how it surfaces. That is the context's job, and it is the difference between five characters and one character in five costumes.
+
+Choose **one** primary modality. These are seven equal options, not a ranked list:
+
+* **Conspicuous stillness or silence** — refusing to move or answer; an unnatural steadiness under pressure.
+* **Breath and vocal cadence** — a caught inhale, a swallowed sentence, deliberate pauses, pitch that drops when lying.
+* **Gaze** — an unmoving stare, rapid scanning, or the exact moment they stop meeting your eyes.
+* **Posture and weight** — a spine that locks, weight shifting heel to heel, a body angled toward the exit.
+* **Environmental interaction** — testing latches, straightening what is already straight, touching walls in passing.
+* **Ritualised action** — a sequence performed the same way every time, whose interruption is unbearable.
+* **A handled object** — something turned over, polished, or worried at.
+
+Rules for the choice:
+
+1. **It must come from their trade, environment and role.** A healer in a rotting hull, a guildmaster of glassblowers, and a scavenger in the ash do not carry the same tension in the same way. If the modality would work equally well in any of the five, it is wrong.
+2. **Do not default to the handled object.** It is the most common answer and therefore the least informative one. Choose it only when the trade genuinely puts a specific object in their hands all day, and then make the object particular to that trade.
+3. **Stillness and silence are as expressive as fidgeting** — often more so in someone whose authority depends on appearing unmoved. Do not treat "does nothing visible" as a failure to answer.
+4. **One modality, committed to.** Do not hedge by giving the character three. A single well-chosen tell repeated twice reads as a person; four tells read as a list.
+
 **Backstory**
 
 * Describe how they came to be this way—emotionally, morally, or socially.
 * Include a **turning point** or past mistake tied to their current beliefs.
 * **Show the origin of the sharpest trait contradiction here.** This is where a combination that looked impossible in the DNA becomes inevitable in the person: the event that left them both brave and insecure, or devout and dishonest. A backstory that explains only the traits that already agree has skipped its main job.
 * Tie backstory to **current conflicts or factions** if context is provided.
+
+**CHOOSE THE ARC — do not default to one shape.** The genome supplies the contradiction; the setting supplies how a person arrives at it. Pick whichever of these the world and role actually support:
+
+* **Inheritance and duty** — handed a burden, a debt, or a failing institution they did not choose.
+* **Slow ideological corruption** — decades of small compromises, none of which felt like the one that mattered.
+* **Forced oath or binding** — coerced into service by contract, debt, conscription, or family.
+* **Sudden unwanted elevation** — thrust into authority by a vacancy they did not engineer.
+* **Quiet complicity** — witnessed something, said nothing, and has profited from the silence since.
+* **Trauma and secret violation** — improvised a lie during a disaster and has been maintaining it ever since.
+
+The last one is the most familiar and the easiest to reach for. It is one of six, not the default. If the setting offers a more specific route — an apprenticeship system, a succession, a debt structure, a purge — that route is almost always the better story.
 
 ---
 

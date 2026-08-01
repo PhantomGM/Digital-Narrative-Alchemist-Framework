@@ -207,6 +207,48 @@ def test_no_scaffolding_rule_sits_with_the_output_template(decoder):
     assert "No scaffolding below this line" in tail
 
 
+def test_expression_modality_is_chosen_from_context_not_habit(decoder):
+    """
+    Five decodes of one DNA string produced a handled fidget object in four --
+    puzzle cube, glass marble, aetherium shard, salvage lens. Nothing in the
+    genome asks for that; it is the model's favourite answer. The one that broke
+    the pattern (unnatural stillness) came from the most constrained context,
+    so the cure is to make the modality a context question.
+    """
+    section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
+
+    for modality in ("stillness", "Breath", "Gaze", "Posture",
+                     "Environmental", "Ritualised", "handled object"):
+        assert modality in section, f"modality missing: {modality}"
+    assert "Do not default to the handled object" in section
+    assert "must come from their trade, environment and role" in section
+
+
+def test_the_trope_modality_is_not_listed_first(decoder):
+    """A menu's first item becomes the new default; the trope must not hold it."""
+    section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
+
+    assert section.index("Conspicuous stillness") < section.index("A handled object")
+
+
+def test_only_one_modality_is_requested(decoder):
+    """Hedging across several tells reads as a list, not a person."""
+    section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
+
+    assert "One modality" in section
+
+
+def test_backstory_arcs_are_offered_as_peers(decoder):
+    """Trauma -> secret violation -> duplicitous authority in 5 of 5 decodes."""
+    section = decoder.split("CHOOSE THE ARC")[1].split("---")[0]
+
+    for arc in ("Inheritance", "Slow ideological corruption", "Forced oath",
+                "Sudden unwanted elevation", "Quiet complicity",
+                "Trauma and secret violation"):
+        assert arc in section, f"arc missing: {arc}"
+    assert "It is one of six, not the default" in section
+
+
 def test_the_band_boundaries_still_agree_with_the_generator(decoder):
     """The generator's bands and the decoder's bands must not drift apart."""
     from layer5_dna_substrate.generators.npc import GNE_BANDS, LNC_BANDS
