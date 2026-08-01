@@ -50,7 +50,13 @@ class ObsidianSync:
         # Creatures and monsters. Sapient peoples belong in culture; a creature
         # page is ecology and threat.
         "creature": "Bestiary",
-        "quest": "Drafts",
+        # Play content, not world facts. Every other folder answers "what is true
+        # about the world"; these answer "what happens at the table". Quest sat in
+        # Drafts, which the vault defines as a holding pen for the not-yet-canon,
+        # and trap was absent from this map entirely — so it fell through to the
+        # same place while its stubs were being registered as npc.
+        "trap": "Encounters/Traps",
+        "quest": "Encounters/Quests",
     }
     DEFAULT_FOLDER = "Drafts"
     PROTECTED_STATUSES = {"canon", "deprecated"}

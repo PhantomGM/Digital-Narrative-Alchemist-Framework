@@ -63,6 +63,10 @@ VALID_STUB_TYPES = {
     # the beasts. Each files to its own part of the bible and each has its own
     # decoder (see ObsidianSync.TYPE_FOLDER_MAP).
     "culture", "lore", "text", "creature",
+    # Play content rather than world content. Omitting trap was not harmless: an
+    # unrecognised label falls through _resolve_stub_type's default, so every
+    # "[Trap]" stub was silently registered as an npc and filed under Characters.
+    "trap",
 }
 
 

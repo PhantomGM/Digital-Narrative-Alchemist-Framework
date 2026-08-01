@@ -25,6 +25,11 @@ FUZZY_TYPE_MAP = {
     # Living (or unliving) things that are not people.
     "creature": "creature", "beast": "creature", "monster": "creature", "fauna": "creature",
     "swarm": "creature", "predator": "creature", "vermin": "creature",
+    # Play content: an obstacle or an adventure, not a thing in the world.
+    "trap": "trap", "snare": "trap", "hazard": "trap", "pitfall": "trap",
+    "deadfall": "trap", "ward": "trap",
+    "quest": "quest", "adventure": "quest", "mission": "quest", "job": "quest",
+    "contract": "quest", "errand": "quest",
     # In-world documents: the object carrying a claim, as opposed to the claim
     # (lore) or a mere possession (item). Deliberately last, because matching is
     # by substring in insertion order: "scroll" and "book" already resolve to
