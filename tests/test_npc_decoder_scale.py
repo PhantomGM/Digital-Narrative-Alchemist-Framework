@@ -148,6 +148,65 @@ def test_backstory_is_where_the_contradiction_gets_its_origin(decoder):
     assert "contradiction" in section.lower()
 
 
+def test_paired_key_matches_the_generator_slot_for_slot(decoder):
+    """
+    A live decode read slot 15 ('2C5', Calm) as Hot-headed, slot 7 ('9U3',
+    Impulsive) as methodical, and slot 18 ('3A4', Apathetic) as driven. Letters
+    repeat across slots -- C is Cowardly in slot 1 and Calm in slot 15 -- so the
+    key is only usable if it is positional and matches the generator exactly.
+    """
+    from layer5_dna_substrate.generators.npc import LNC_TRAITS
+
+    rows = re.findall(r"^\|\s*(\d+)\s*\|\s*([A-Z])\s*/\s*([A-Z])\s*\|",
+                      decoder, re.M)
+    by_slot = {int(n): (a, b) for n, a, b in rows}
+
+    assert len(by_slot) == len(LNC_TRAITS) == 20
+    for index, pair in enumerate(LNC_TRAITS, start=1):
+        assert by_slot[index] == pair, \
+            f"slot {index}: decoder says {by_slot[index]}, generator emits {pair}"
+
+
+def test_unpaired_key_matches_the_generator_slot_for_slot(decoder):
+    """
+    The key listed E=Empathetic at slot 9, which the generator never emits, so
+    every slot from 9 on was shifted by one against the genome. Harmless while
+    the model matched by letter; corrupting the moment it reads by position.
+    """
+    from layer5_dna_substrate.generators.npc import GNE_TRAITS
+
+    rows = re.findall(r"^\|\s*(\d+)\s*\|\s*([A-Z])\s*\|\s*[A-Z][a-z]", decoder, re.M)
+    by_slot = {int(n): letter for n, letter in rows}
+
+    assert len(by_slot) == len(GNE_TRAITS) == 19
+    for index, letter in enumerate(GNE_TRAITS, start=1):
+        assert by_slot[index] == letter, \
+            f"slot {index}: decoder says {by_slot[index]}, generator emits {letter}"
+    assert "Empathetic" not in decoder, "not in the genome; would shift every later slot"
+
+
+def test_positional_reading_is_stated_for_both_trait_blocks(decoder):
+    assert decoder.count("READ THESE BY POSITION") == 2
+    assert "Letters repeat across slots" in decoder
+    assert "count to the slot, then read the letter" in decoder
+
+
+def test_the_paired_score_is_told_not_to_flip_the_trait(decoder):
+    """The observed failure: a low score on C read as its opposite."""
+    section = decoder.split("**2. PAIRED TRAITS")[1].split("**3.")[0]
+
+    assert "the score never overrides it" in section
+    assert "It does not flip to Brave" in section
+    assert "do not carry that rule over here" in section
+
+
+def test_no_scaffolding_rule_sits_with_the_output_template(decoder):
+    """One decode printed '(2C5)' into its backstory; the rule was 120 lines up."""
+    tail = decoder.split("STRUCTURED OUTPUT FORMAT")[1]
+
+    assert "No scaffolding below this line" in tail
+
+
 def test_the_band_boundaries_still_agree_with_the_generator(decoder):
     """The generator's bands and the decoder's bands must not drift apart."""
     from layer5_dna_substrate.generators.npc import GNE_BANDS, LNC_BANDS

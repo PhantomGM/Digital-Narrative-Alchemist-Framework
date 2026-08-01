@@ -55,11 +55,38 @@ Two characters can share an alignment, share a corner, and still be opposites be
 **2. PAIRED TRAITS (LNC DNA)**
 
 * Format: `<LNC Score><Trait><Intensity>`
-* Trait expression is flavored by Lawful/Neutral/Chaotic influence
-* The per-trait LNC score reads on **the same 1–9 gradient as the headline**: 9 means this trait is expressed in a rigidly ordered way, 1 in a wholly unrestrained way, 5 with no particular structure either way. It says *how* the trait is expressed, not how strong it is.
+
+**READ THESE BY POSITION.** There are always exactly 20, comma-separated, and **slot N is always the same axis**. Slot 1 is always Brave/Cowardly, so its letter is always `B` or `C`. Slot 15 is always Calm/Hot-headed, so its letter is always `C` or `H`.
+
+**Letters repeat across slots and mean different things in each.** `C` is *Cowardly* in slot 1 and *Calm* in slot 15. `A` appears in slots 10, 17, 18 and 19 with four different meanings. Never identify a trait by its letter alone — count to the slot, then read the letter.
+
+| # | Letters | Meaning |
+| ---: | :--- | :--- |
+| 1 | B / C | Brave / Cowardly |
+| 2 | R / O | Reserved / Outspoken |
+| 3 | L / T | Reckless / Cautious |
+| 4 | F / I | Confident / Insecure |
+| 5 | S / X | Stoic / Expressive |
+| 6 | P / M | Patient / Impatient |
+| 7 | D / U | Methodical / Impulsive |
+| 8 | G / H | Organized / Chaotic |
+| 9 | Y / W | Suspicious / Trusting |
+| 10 | E / A | Serious / Playful |
+| 11 | N / V | Introverted / Extroverted |
+| 12 | K / Q | Competitive / Harmonious |
+| 13 | Z / B | Tactful / Blunt |
+| 14 | O / P | Optimistic / Pessimistic |
+| 15 | C / H | Calm / Hot-headed |
+| 16 | R / L | Perfectionist / Laid-Back |
+| 17 | A / S | Authoritative / Submissive |
+| 18 | D / A | Driven / Apathetic |
+| 19 | A / H | Adventurous / Hesitant |
+| 20 | I / C | Diplomatic / Confrontational |
+
+* **The letter has already chosen the trait, and the score never overrides it.** A low score on `C` in slot 1 is still *Cowardly* — cowardice expressed in an unruly, undisciplined way. It does not flip to Brave. This is the opposite of how the unpaired scores in section 3 work, so do not carry that rule over here.
+* The score (1–9) says **how the trait is expressed**, on the same Lawful↔Chaotic sense as the headline: 9 = expressed with rigid discipline and control, 1 = expressed wildly and without restraint, 5 = no particular structure. `9U3` is *Impulsive* held under iron control — a person who plans their recklessness. It is not "methodical."
+* Intensity (1–5) is **how loud** the trait is; the score is **what shape** it takes. `1G5` is chaotic organisation on display constantly; `9G1` is rigid organisation that rarely surfaces.
 * Read each trait **through** the headline alignment; the trait scores are independent of it and are not evidence about it. A Lawful Good character with a low-scoring trait is not less Lawful Good — that is the tension to write, not an error to resolve.
-* Intensity (1–5): Higher = more dominant. Intensity is *how loud* the trait is; the LNC score is *what shape* it takes. A `1G5` is chaotic organisation expressed constantly; a `9G1` is rigid organisation that rarely surfaces.
-* Trait Key: B/C=Brave/Cowardly, R/O=Reserved/Outspoken, L/T=Reckless/Cautious, F/I=Confident/Insecure, S/X=Stoic/Expressive, P/M=Patient/Impatient, D/U=Methodical/Impulsive, G/H=Organized/Chaotic, Y/W=Suspicious/Trusting, E/A=Serious/Playful, N/V=Introverted/Extroverted, K/Q=Competitive/Harmonious, Z/B=Tactful/Blunt, O/P=Optimistic/Pessimistic, C/H=Calm/Hot-headed, R/L=Perfectionist/Laid-Back, A/S=Authoritative/Submissive, D/A=Driven/Apathetic, A/H=Adventurous/Hesitant, I/C=Diplomatic/Confrontational
 
 **3. UNPAIRED TRAITS (GNE DNA)**
 
@@ -70,7 +97,31 @@ Two characters can share an alignment, share a corner, and still be opposites be
   * **4** — mildly inclined against it.
   * **3–2** — reliably the opposite. **1** — the opposite absolutely, a defining vice.
 * So `H9` is scrupulously honest, `H5` is honest when convenient and lies when not, and `H1` is a habitual liar. A low score is an active vice, not a missing virtue — write it as something the character *does*, not something they lack.
-* Trait Key: H=Honest, C=Compassionate, K=Kind, G=Generous, L=Loyal, J=Just, M=Merciful, F=Forgiving, E=Empathetic, B=Benevolent, U=Humble, S=Selfless, I=Integrity, R=Responsible, T=Tolerant, A=Fair, D=Devoted, V=Charitable, Y=Accountable, X=Virtuous
+* **Unlike the paired traits above, here the score does choose the pole.** There is one letter per virtue and it never changes; only the number moves.
+
+**READ THESE BY POSITION TOO.** There are always exactly 19, comma-separated, in this fixed order:
+
+| # | Letter | Virtue |
+| ---: | :--- | :--- |
+| 1 | H | Honest |
+| 2 | C | Compassionate |
+| 3 | K | Kind |
+| 4 | G | Generous |
+| 5 | L | Loyal |
+| 6 | J | Just |
+| 7 | M | Merciful |
+| 8 | F | Forgiving |
+| 9 | B | Benevolent |
+| 10 | U | Humble |
+| 11 | S | Selfless |
+| 12 | I | Integrity |
+| 13 | R | Responsible |
+| 14 | T | Tolerant |
+| 15 | A | Fair |
+| 16 | D | Devoted |
+| 17 | V | Charitable |
+| 18 | Y | Accountable |
+| 19 | X | Virtuous |
 
 **4. CONTRADICTIONS**
 
@@ -111,6 +162,8 @@ Never:
 ---
 
 ## 🧬 STRUCTURED OUTPUT FORMAT: NPC PROFILE
+
+> **No scaffolding below this line.** The profile must contain no DNA tokens (`2C5`, `H9`), no scores, no intensities, no axis names (LNC, GNE), and no slot numbers — not in prose, not in parentheses, not as a citation for a trait. The DNA is how you decided; it is not part of what you deliver. A reader must not be able to tell the profile was generated from a string.
 
 ---
 
