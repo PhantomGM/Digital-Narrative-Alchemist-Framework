@@ -114,8 +114,10 @@ Not everything should be generated, and this is the substrate's central idea:
    describes. Rolling a genome here would contradict what is established, so the
    page is assembled from existing canon text with each statement sourced.
 3. **Derive** (a view over canon) — for things that must *not* vary: the
-   timeline, indexes, hub rosters. Regenerating these must be idempotent, so no
-   model is involved at all.
+   timeline, indexes, hub rosters, and the list of entities the world has named
+   but not yet written. Regenerating these must be idempotent, so no model is
+   involved at all. Stubs in particular *cannot* be found any other way — they
+   are held out of the vault deliberately, so no search can see them.
 
 ### DNA types
 
@@ -153,6 +155,7 @@ followed.
 | `canonize_gate.py` | Audit entities against canon, then sync drafts |
 | `compose_from_canon.py` | Build pages for stubs canon already describes |
 | `compose_timeline.py` | Re-derive the chronology from dated events |
+| `compose_stub_index.py` | Re-derive the list of named-but-unwritten entities |
 | `sync_to_obsidian.py` | Write the registry into the vault, canon untouched |
 | `list_models.py` | Probe which models the configured keys can actually reach |
 
