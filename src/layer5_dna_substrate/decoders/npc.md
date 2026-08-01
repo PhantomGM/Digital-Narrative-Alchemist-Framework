@@ -25,18 +25,41 @@ Use the following internal logic to interpret the DNA. This logic must not appea
 * GNE (1–9): 9–7 = Good, 6–4 = Neutral, 3–1 = Evil
 * These two scores **are the character's alignment**. They are drawn directly, not averaged from the trait scores below, so do not compute or second-guess them from the traits.
 
+**The number is a magnitude, not just a label.** The scale runs from one pole to the other, and 5 is the true centre. Two Lawful Good characters at 7/7 and 9/9 are not the same person — read the distance from centre as how *defining* the alignment is:
+
+| Score | LNC | GNE | How to write it |
+| :---: | :--- | :--- | :--- |
+| **9** | Lawful | Good | Absolute. The alignment defines them; they do not bend, even at ruinous cost. |
+| **8** | Lawful | Good | Strong and consistent. Bends only under extraordinary pressure, and regrets it. |
+| **7** | Lawful | Good | Clearly so, with real and recognisable exceptions. |
+| **6** | Neutral, leaning Lawful | Neutral, leaning Good | Uncommitted, but the pull is there. **Does not cross the line.** |
+| **5** | True Neutral | True Neutral | The genuine centre: situational, indifferent, or actively holding the balance. |
+| **4** | Neutral, leaning Chaotic | Neutral, leaning Evil | Uncommitted, but the pull is there. **Does not cross the line.** |
+| **3** | Chaotic | Evil | Clearly so, with real and recognisable exceptions. |
+| **2** | Chaotic | Evil | Strong and consistent. Bends only under extraordinary pressure. |
+| **1** | Chaotic | Evil | Absolute. The alignment defines them; they do not bend, even at ruinous cost. |
+
+* 1 and 9 are the extremes on each axis; intensity falls as the score moves toward 5.
+* A 6 is **not** Good and a 4 is **not** Evil. Write the lean as a tendency they have not committed to — the direction they drift under pressure, not a label they wear.
+
 **2. PAIRED TRAITS (LNC DNA)**
 
 * Format: `<LNC Score><Trait><Intensity>`
 * Trait expression is flavored by Lawful/Neutral/Chaotic influence
+* The per-trait LNC score reads on **the same 1–9 gradient as the headline**: 9 means this trait is expressed in a rigidly ordered way, 1 in a wholly unrestrained way, 5 with no particular structure either way. It says *how* the trait is expressed, not how strong it is.
 * Read each trait **through** the headline alignment; the trait scores are independent of it and are not evidence about it. A Lawful Good character with a low-scoring trait is not less Lawful Good — that is the tension to write, not an error to resolve.
-* Intensity (1–5): Higher = more dominant
+* Intensity (1–5): Higher = more dominant. Intensity is *how loud* the trait is; the LNC score is *what shape* it takes. A `1G5` is chaotic organisation expressed constantly; a `9G1` is rigid organisation that rarely surfaces.
 * Trait Key: B/C=Brave/Cowardly, R/O=Reserved/Outspoken, L/T=Reckless/Cautious, F/I=Confident/Insecure, S/X=Stoic/Expressive, P/M=Patient/Impatient, D/U=Methodical/Impulsive, G/H=Organized/Chaotic, Y/W=Suspicious/Trusting, E/A=Serious/Playful, N/V=Introverted/Extroverted, K/Q=Competitive/Harmonious, Z/B=Tactful/Blunt, O/P=Optimistic/Pessimistic, C/H=Calm/Hot-headed, R/L=Perfectionist/Laid-Back, A/S=Authoritative/Submissive, D/A=Driven/Apathetic, A/H=Adventurous/Hesitant, I/C=Diplomatic/Confrontational
 
 **3. UNPAIRED TRAITS (GNE DNA)**
 
 * Format: `<Trait><Score>`
-* 9–7 = strong trait, 6–4 = moderate, 3–1 = weak/opposite
+* Same 1–9 gradient, running from the trait to **its opposite** — not from "strong" to "absent":
+  * **9** — the trait absolutely, a defining virtue. **8–7** — strongly, reliably.
+  * **6** — mildly inclined toward it. **5** — neither the trait nor its opposite; simply not a factor.
+  * **4** — mildly inclined against it.
+  * **3–2** — reliably the opposite. **1** — the opposite absolutely, a defining vice.
+* So `H9` is scrupulously honest, `H5` is honest when convenient and lies when not, and `H1` is a habitual liar. A low score is an active vice, not a missing virtue — write it as something the character *does*, not something they lack.
 * Trait Key: H=Honest, C=Compassionate, K=Kind, G=Generous, L=Loyal, J=Just, M=Merciful, F=Forgiving, E=Empathetic, B=Benevolent, U=Humble, S=Selfless, I=Integrity, R=Responsible, T=Tolerant, A=Fair, D=Devoted, V=Charitable, Y=Accountable, X=Virtuous
 
 **4. CONTRADICTIONS**
