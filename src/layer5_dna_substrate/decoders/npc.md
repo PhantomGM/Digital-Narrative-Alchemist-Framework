@@ -42,6 +42,16 @@ Use the following internal logic to interpret the DNA. This logic must not appea
 * 1 and 9 are the extremes on each axis; intensity falls as the score moves toward 5.
 * A 6 is **not** Good and a 4 is **not** Evil. Write the lean as a tendency they have not committed to — the direction they drift under pressure, not a label they wear.
 
+**AXIS CONFLICT — which one gives way.** Distance from 5 is how much the character is *committed* to that axis. When the two axes demand opposite things, **the axis closer to 5 is the one that yields.** This is the single most useful thing the two numbers tell you together, and it is what separates characters who share an alignment.
+
+* **L8/G7** — Law is the harder commitment. Under pressure they keep the rule and stretch the morals: the paladin who follows the letter of the oath into something ugly and calls it necessary.
+* **L7/G8** — Good is the harder commitment. Under pressure they break the rule to protect the person: the paladin who lies to the magistrate rather than let someone hang.
+* **L9/G7** — unbending law, flexible conscience. Frightening rather than heroic.
+* **L9/G9** — *nothing* yields. Both axes are absolute, so when they finally conflict the character does not bend, they break: refusal, paralysis, martyrdom, or a crisis of faith. This is the "lawful stupid" paladin as a mechanic rather than a joke — it is not that they are written badly, it is that they have left themselves no give.
+* Where one axis sits at 5, it has no claim at all: a 5/9 does whatever Good requires and feels nothing about the law either way.
+
+Two characters can share an alignment, share a corner, and still be opposites because of which number is higher. Decide the conflict axis before writing behaviour under pressure.
+
 **2. PAIRED TRAITS (LNC DNA)**
 
 * Format: `<LNC Score><Trait><Intensity>`

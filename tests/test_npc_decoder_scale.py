@@ -58,6 +58,32 @@ def test_six_and_four_lean_without_crossing(decoder):
     assert "A 6 is **not** Good and a 4 is **not** Evil" in decoder
 
 
+def test_the_axis_conflict_rule_is_stated(decoder):
+    """
+    Two characters can share an alignment and be opposites depending on which
+    axis is the harder commitment. The per-score table cannot say that, because
+    it reads each axis on its own.
+    """
+    assert "AXIS CONFLICT" in decoder
+    assert "the axis closer to 5 is the one that yields" in decoder.lower() \
+        or "axis closer to 5 is the one that yields" in decoder
+
+
+def test_equal_extremes_break_rather_than_bend(decoder):
+    """L9/G9 is the lawful-stupid paladin as a mechanic, not a reputation."""
+    section = decoder.split("AXIS CONFLICT")[1].split("**2.")[0]
+
+    assert "L9/G9" in section
+    assert "break" in section
+
+
+def test_both_asymmetric_paladins_are_distinguished(decoder):
+    section = decoder.split("AXIS CONFLICT")[1].split("**2.")[0]
+
+    assert "L8/G7" in section and "L7/G8" in section
+    assert section.index("L8/G7") != section.index("L7/G8")
+
+
 def test_the_headline_is_not_described_as_an_average(decoder):
     """It was drawn from an average until the distribution fix; it is not now."""
     head = decoder.split("**2. PAIRED TRAITS")[0]
