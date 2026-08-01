@@ -55,9 +55,11 @@ logs/
 # import nothing from src/ and nothing here imports them.
 build_brain_vault.py
 expand_brain_vault.py
-# A UTF-16 dump of the 49 wikilinks found in that vault. No reader, and the same
-# list appears in readable form in docs/vault_integrity_report.md.
+# A UTF-16 dump of the 49 wikilinks found in that vault, and the audit report on
+# them. The report's twenty "unbuilt" endpoints are all already implemented here
+# — it was auditing that vault's page coverage, not this codebase.
 unique_links.txt
+docs/vault_integrity_report.md
 
 # Event Ledger databases — runtime state, recreated on demand. Deliberately
 # not *.db: the PF2E rules data under src/layer4_rules/PF2EDNA/data/ is
