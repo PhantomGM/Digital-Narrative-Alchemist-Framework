@@ -156,6 +156,8 @@ followed.
 | `compose_from_canon.py` | Build pages for stubs canon already describes |
 | `compose_timeline.py` | Re-derive the chronology from dated events |
 | `compose_stub_index.py` | Re-derive the list of named-but-unwritten entities |
+| `compose_world_graph.py` | Render the registry as a self-contained interactive graph |
+| `backfill_registry.py` | Reconcile the registry against the vault; derive the link-gap worklist |
 | `sync_to_obsidian.py` | Write the registry into the vault, canon untouched |
 | `list_models.py` | Probe which models the configured keys can actually reach |
 
