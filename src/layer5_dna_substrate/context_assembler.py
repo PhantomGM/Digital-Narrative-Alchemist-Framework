@@ -45,10 +45,15 @@ _CITATION_TOTAL_CHARS = 40000
 # Naming rules plus worked examples. Enough for five example names and the rule
 # behind them; the phonetics and idioms are not needed to name one person.
 _NAMING_CHARS = 1800
-_NAMING_HEADER = (
+_NAMING_HEADER_CANON = (
     "[NAMING CONVENTIONS - canon. Names in this world are formed by these "
     "rules. Any name invented for a person, place, faction or object must obey "
     "them rather than falling back on generic fantasy naming.]")
+_NAMING_HEADER_DRAFT = (
+    "[NAMING CONVENTIONS - draft, not yet approved as canon. Follow these when "
+    "inventing a name for a person, place, faction or object rather than "
+    "falling back on generic fantasy naming. Because they are unapproved, they "
+    "do not override anything canon already establishes.]")
 
 # Vault machinery, not world facts. Log.md in particular is a 35KB append-only
 # operations log that would swallow the whole citation budget.
@@ -116,11 +121,20 @@ class ContextPackage:
     # Full text of the canon pages the audited passage refers to. Audit slice
     # only: generation is steered by roster and locale, verification needs sources.
     citations: str = ""
+    # The world's naming rules. Held apart from world_frame because the two
+    # consumers need different things: a decoder should follow the best rules
+    # available, canon or not, while the auditor must only ever weigh a page
+    # against approved canon. Folding these into world_frame made an unapproved
+    # draft profile part of the baseline other pages are judged against.
+    naming: str = ""
+    naming_is_canon: bool = False
 
     def _sections(self, include_directives: bool) -> List[str]:
         parts = []
         if self.world_frame:
             parts.append("## WORLD FRAME (applies to everything)\n" + self.world_frame)
+        if self.naming:
+            parts.append(self.naming)
         if self.locale:
             parts.append("## LOCALE (where this entity lives)\n" + self.locale)
         if self.lineage:
@@ -152,6 +166,11 @@ class ContextPackage:
         parts = []
         if self.world_frame:
             parts.append(self.world_frame)
+        # Only canonized naming rules are evidence. A draft profile is a
+        # proposal; auditing canon pages against it would let unapproved
+        # content generate contradictions in approved ones.
+        if self.naming and self.naming_is_canon:
+            parts.append(self.naming)
         if self.locale:
             parts.append(self.locale)
         if self.citations:
@@ -253,7 +272,7 @@ class ContextAssembler:
                 return record
         return linguistics[0]
 
-    def _naming_conventions(self, chain_ids: List[str]) -> str:
+    def _naming_conventions(self, chain_ids: List[str]) -> tuple:
         """
         The world's naming rules, verbatim, for the decoder to follow.
 
@@ -266,10 +285,11 @@ class ContextAssembler:
         """
         record = self._linguistic_anchor(chain_ids)
         if not record:
-            return ""
+            return "", False
         body = (record.get("phenotype") or "").strip()
         if not body:
-            return ""
+            return "", False
+        is_canon = "canonized" in (record.get("tags") or [])
 
         # Prefer the naming section; the phonetics and idioms matter less to a
         # decoder that only has to name a person and make them sound local.
@@ -281,21 +301,8 @@ class ContextAssembler:
         if len(section) > _NAMING_CHARS:
             section = section[:_NAMING_CHARS].rsplit("\n", 1)[0]
         name = record.get("name") or "the world's language"
-        return f"{_NAMING_HEADER}\n({name})\n{section}"
-
-    def _with_naming(self, frame: str, chain_ids: List[str]) -> str:
-        """
-        Append the naming conventions after the cap, never before it.
-
-        Appending them inside _build_world_frame put them last in a block that
-        is then trimmed to a fraction of the budget, and the World Overview
-        alone overflows that fraction — so the conventions were cut from every
-        prompt that ever ran. Exactly the failure the standing rulings had.
-        """
-        naming = self._naming_conventions(chain_ids)
-        if not naming or naming in frame:
-            return frame
-        return f"{frame}\n\n{naming}" if frame else naming
+        header = _NAMING_HEADER_CANON if is_canon else _NAMING_HEADER_DRAFT
+        return f"{header}\n({name})\n{section}", is_canon
 
     # ── Layers ───────────────────────────────────────────────
 
@@ -508,15 +515,17 @@ class ContextAssembler:
 
     def assemble(self, req: AssemblyRequest) -> ContextPackage:
         chain_ids = [r["id"] for r in self._containment_chain(req.locale_id)] if req.locale_id else []
+        naming_text, naming_is_canon = self._naming_conventions(chain_ids)
 
         directives = "\n\n".join(p for p in [req.imprint.strip(), req.directives.strip()] if p)
 
         return ContextPackage(
-            world_frame=self._with_naming(
-                self._with_rulings(
-                    self._cap(self._build_world_frame(chain_ids),
-                              req.budget_tokens, _LAYER_BUDGET["world_frame"])),
-                chain_ids),
+            world_frame=self._with_rulings(
+                self._cap(self._build_world_frame(chain_ids),
+                          req.budget_tokens, _LAYER_BUDGET["world_frame"])),
+            # Not capped, and not folded into the frame: see ContextPackage.naming.
+            naming=naming_text,
+            naming_is_canon=naming_is_canon,
             locale=self._cap(self._build_locale(req.locale_id), req.budget_tokens, _LAYER_BUDGET["locale"]),
             lineage=self._cap(self._build_lineage(req.anchor_id), req.budget_tokens, _LAYER_BUDGET["lineage"]),
             roster=self._cap(self._build_roster(req, chain_ids), req.budget_tokens, _LAYER_BUDGET["roster"]),

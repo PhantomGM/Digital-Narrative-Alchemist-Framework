@@ -129,7 +129,11 @@ def test_assembler_layers():
         # Layer 1: pillars + calendar + linguistic anchor (linked via locale chain)
         assert "Magic always has a price" in pkg.world_frame
         assert "Year zero is the Sundering" in pkg.world_frame
-        assert "Cinder Tongue" in pkg.world_frame
+        # Naming rules now live in their own field rather than the world frame:
+        # they must escape the frame's budget cap, and the audit slice must be
+        # able to drop them when the profile is not yet canon.
+        assert "Cinder Tongue" in pkg.naming
+        assert "Cinder Tongue" in pkg.for_decoder()
 
         # Layer 2: containment chain innermost-first, enriched by the vault page
         assert pkg.locale.index("Blackspire Keep") < pkg.locale.index("Cindermarch")
@@ -163,7 +167,7 @@ def test_assembler_without_vault_or_ids():
     pkg = assembler.assemble(AssemblyRequest(element_type="quest"))
     # No anchor, no locale, no vault: world frame still finds the linguistic
     # profile, roster still lists registry names, and nothing crashes.
-    assert "Cinder Tongue" in pkg.world_frame
+    assert "Cinder Tongue" in pkg.naming
     assert pkg.locale == "" and pkg.lineage == ""
     assert isinstance(pkg.for_decoder(), str)
     print("✓ test_assembler_without_vault_or_ids passed")

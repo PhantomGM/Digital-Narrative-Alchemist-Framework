@@ -53,8 +53,10 @@ def build(with_profile=True, stub_too=False):
             "name": "The Breath-Chants", "description": "Sung liturgy.",
             "source_id": world}
     if with_profile:
+        # Draft by default: a freshly generated profile is not canon until the
+        # author promotes it, and that is the state most of these test.
         reg.register_element("linguistic", "LING{}", PROFILE,
-                             name="Throat-Speak Resonance", tags=["canonized"],
+                             name="Throat-Speak Resonance", tags=["expanded"],
                              gist="The world's tongue.")
     return reg, world
 
@@ -86,12 +88,41 @@ def test_they_survive_a_budget_far_too_small_to_hold_them():
     assert "doubled consonant" in text
 
 
-def test_the_block_is_marked_canon():
-    reg, _ = build()
+def test_a_draft_profile_still_steers_generation():
+    """
+    Waiting for canonization would mean every page generated in the meantime
+    uses the model's default names — the exact problem this fixes.
+    """
+    reg, _ = build()          # registered without the 'canonized' tag
     text = package(reg).for_decoder()
 
-    assert "NAMING CONVENTIONS" in text
-    assert "must obey" in text
+    assert "Kharr-Vel" in text
+    assert "draft, not yet approved as canon" in text
+
+
+def test_a_draft_profile_is_kept_out_of_the_audit_baseline():
+    """
+    The slice is what canon pages are judged against. An unapproved proposal in
+    it would let a draft generate contradictions in approved canon — the exact
+    boundary the canon model exists to hold.
+    """
+    reg, _ = build()
+    pkg = package(reg)
+
+    assert "NAMING CONVENTIONS" in pkg.for_decoder()
+    assert "NAMING CONVENTIONS" not in pkg.canon_slice()
+    assert pkg.naming_is_canon is False
+
+
+def test_a_canonized_profile_is_marked_canon_and_enters_the_slice():
+    reg, world = build(with_profile=False)
+    reg.register_element("linguistic", "LING{}", PROFILE,
+                         name="Throat-Speak Resonance", tags=["canonized"])
+    pkg = package(reg)
+
+    assert pkg.naming_is_canon is True
+    assert "NAMING CONVENTIONS - canon" in pkg.for_decoder()
+    assert "Kharr-Vel" in pkg.canon_slice()
 
 
 def test_a_stub_never_shadows_a_written_profile():
@@ -135,16 +166,13 @@ def test_conventions_are_not_duplicated_into_the_frame():
     assert text.count("NAMING CONVENTIONS") == 1
 
 
-def test_the_canon_slice_carries_them_too():
+def test_conventions_are_not_capped_away():
     """
-    Deliberate. The conventions ride in the world frame, which the audit slice
-    includes, and that is the right outcome: how this world forms names is a
-    fact about the world, so a page whose names contradict it is a genuine
-    inconsistency. The header is worded as canon rather than as an instruction
-    so it reads correctly in both places.
+    They are held outside world_frame precisely so the budget cannot reach them;
+    inside it they sat behind a World Overview that already overflows the cap.
     """
     reg, _ = build()
-    slice_text = package(reg).canon_slice()
+    pkg = package(reg, budget=40)
 
-    assert "NAMING CONVENTIONS" in slice_text
-    assert "Names in this world are formed by these rules" in slice_text
+    assert pkg.world_frame == "" or len(pkg.naming) > len(pkg.world_frame)
+    assert "doubled consonant" in pkg.naming
