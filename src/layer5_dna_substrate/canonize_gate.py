@@ -45,7 +45,14 @@ class CanonizeGate:
             if not record.get("phenotype"):
                 continue
             prior = record.get("audit", {}).get("status")
-            if not force and prior in ("consistent", "patched"):
+            # "composed" belongs here too. A composed page is assembled from
+            # canon rather than invented, so it has already been through a path
+            # that cannot contradict canon — but it was missing from this list,
+            # so every plain run re-audited all 38 of them. That is 38 model
+            # calls and roughly half an hour to reach the one entity that
+            # actually needed reviewing, which makes the gate too expensive to
+            # run casually and easy to abandon half-finished.
+            if not force and prior in ("consistent", "patched", "composed"):
                 continue
             ids.append(entity_id)
         return ids

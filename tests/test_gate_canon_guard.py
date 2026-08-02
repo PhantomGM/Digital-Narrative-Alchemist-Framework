@@ -164,3 +164,32 @@ def test_a_clean_canon_page_passes_normally():
     report = asyncio.run(gate.review_entity(entity_id))
     assert report["status"] == "consistent"
     assert registry.get_element(entity_id)["phenotype"] == PROSE
+
+
+def test_already_settled_verdicts_are_not_re_audited():
+    """
+    'composed' was missing from the skip list, so a plain run re-audited all 38
+    composed pages before reaching the one entity that needed it -- 38 model
+    calls and about half an hour, which makes the gate too costly to run
+    casually. A composed page is assembled from canon rather than invented, so
+    it has already been through a path that cannot contradict canon.
+    """
+    registry = DNARegistry()
+    ids = {}
+    for verdict in ("consistent", "patched", "composed", "flagged",
+                    "unreviewed", None):
+        entity_id = registry.register_element(
+            "lore", "LORE{}", PROSE, name=f"Page {verdict}", tags=["expanded"])
+        if verdict:
+            registry.get_element(entity_id)["audit"] = {"status": verdict}
+        ids[verdict] = entity_id
+
+    gate = CanonizeGate(registry, ContextAssembler(registry, None), Auditor())
+    due = set(gate._reviewable_ids())
+
+    for settled in ("consistent", "patched", "composed"):
+        assert ids[settled] not in due, f"{settled} should not be re-audited"
+    for pending in ("flagged", "unreviewed", None):
+        assert ids[pending] in due, f"{pending} still needs review"
+
+    assert set(gate._reviewable_ids(force=True)) == set(ids.values())
