@@ -15,6 +15,7 @@ A creature is **not a character**. Do not give it a personality, a moral alignme
 2. Traits must emerge as **observed nature** — anatomy, instinct, ecology — not as labels.
 3. **No moral alignment.** A creature is not good, evil, lawful or chaotic. If it is dangerous, that is ecology, not morality. Never call a creature honest, just, cruel, virtuous, or wicked. A predator killing to feed is no more evil than rust on iron.
 4. **Established canon overrides the DNA.** When the provided context states a fact about *this specific creature* — its speed, its diet, a signature ability, its size, how it kills — that fact **wins** over any DNA trait that conflicts with it. The DNA fills in what the context leaves open; it never overrules what the context has already established. If the DNA says `grazer` but the context says it shreds prey in seconds, it is a fast killer, and the grazer trait is discarded, not reconciled.
+5. **Never resolve a question the setting leaves open.** If the context marks something unknown, disputed, or unresolved — where a species came from, whether it was made deliberately, what the ruins it nests in once were — it **stays** unresolved. A creature's origin may be *stated as a mystery* without the page quietly settling a matter the author has left open. Where accounts disagree, report the disagreement rather than picking a winner.
 
 ---
 
@@ -38,8 +39,11 @@ A creature is **not a character**. Do not give it a personality, a moral alignme
 **4. `HUNT{}` — predation.** AGG (aggression 1–9), TRG (what provokes or attracts it), MTH (how it kills or feeds), DIET (what it consumes), CYC (when it is active). Build the encounter from these.
 
 **5. `ECO{}` — its place in the world.** SOC (1 solitary → 9 hive/swarm mind), TER (territoriality 1–9), RPR (how it multiplies — and thus how an infestation grows), NCH (ecological niche).
+  * If **RPR is `does-not-reproduce`**, there is no infestation and there never will be. Every one killed is gone permanently and the total number in the world is finite and falling. Do not write population growth, breeding grounds, or nests. Write instead what that scarcity means: who is counting them, what happens when the last one dies, and why something that cannot breed still exists at all.
 
-**6. `ANOM{}` — the uncanny.** SRC (source of its strangeness), PWR + PWK (its supernatural ability), WKN (its exploitable weakness — ALWAYS give the GM something to work with), USE (what can be salvaged from a dead one).
+**6. `ANOM{}` — the uncanny.** SRC (source of its strangeness), PWR + PWK (its supernatural ability), WKN (its exploitable weakness), USE (what can be salvaged from a dead one).
+  * **WKN — give the GM something to work with, but do not overwrite the DNA.** If WKN names a weakness, make it concrete and usable. If **WKN is `none-known`**, do **not** invent one. That is a deliberate and frightening design: what the GM gets is not a way to kill it but a way to survive it — what makes it lose interest, what it cannot follow you through, what buys time. Say plainly that no one has found a way to put it down, and that people who meet it leave rather than win.
+  * If **SRC is `unknown`**, its strangeness has no established cause and you must **not** supply one. Do not reach for a cataclysm, an experiment or a curse to explain it. Nobody knows what it is, competing accounts disagree, and that unanswered question is the point. Leave it open.
   * **PWR (1–9) gates how PROMINENT the ability PWK is — obey this, or every creature becomes a reality-warping boss:**
     * **1–3:** a faint quirk, easily missed, almost never decisive in an encounter. Mention it once; do not build the creature around it.
     * **4–6:** a real but situational trait that matters in specific circumstances.
@@ -64,6 +68,8 @@ A creature is **not a character**. Do not give it a personality, a moral alignme
 ---
 
 ## 🐾 STRUCTURED OUTPUT FORMAT: BESTIARY ENTRY
+
+> **No scaffolding below this line.** No DNA string, no block or field names (`SAP`, `RPR`, `WKN`, `ANOM`…), and no numbers presented as ratings. This includes paraphrases: "its reproduction score is zero", "high aggression", "a threat rating of seven" are all the same leak wearing prose. Write what a naturalist observes — *it does not breed*, *it attacks on sight* — never the value behind it.
 
 ---
 
