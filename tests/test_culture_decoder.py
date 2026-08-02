@@ -93,7 +93,11 @@ def test_no_scaffolding_rule_sits_with_the_output_template(decoder):
     tail = decoder.split("STRUCTURED OUTPUT FORMAT")[1]
 
     assert "No scaffolding below this line" in tail
-    assert "Paraphrase counts as a leak" in tail
+    assert "The axis names themselves are scaffolding" in tail
+    # Name the exact sentence that got through, so the rule cannot be softened
+    # back into an abstraction that a model reads past.
+    assert "cohesion is** naturally loose" in tail
+    assert "still make sense with a number after it" in tail
 
 
 def test_the_keystone_still_governs(decoder):
