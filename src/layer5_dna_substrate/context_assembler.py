@@ -42,18 +42,23 @@ _MAX_CITED_PAGES = 8
 # inflate the decoder layers to no purpose. The anchor page is emitted first and
 # therefore survives truncation.
 _CITATION_TOTAL_CHARS = 40000
-# Naming rules plus worked examples. Enough for five example names and the rule
-# behind them; the phonetics and idioms are not needed to name one person.
-_NAMING_CHARS = 1800
+# Naming rules with worked examples, plus the idioms and taboos. Skarn's own
+# profile needs 3037 characters, so a 3000 cap severed its last taboo
+# mid-sentence — and half a taboo is worse than none, since "words that
+# translate to failure are avoided in formal contexts" reads as a rule while
+# the clause naming the euphemisms reads as the way out of it. The headroom is
+# deliberate. Phonetics and register are still excluded rather than raising
+# this further; they describe a sound the naming rules already demonstrate.
+_NAMING_CHARS = 3400
 _NAMING_HEADER_CANON = (
-    "[NAMING CONVENTIONS - canon. Names in this world are formed by these "
-    "rules. Any name invented for a person, place, faction or object must obey "
-    "them rather than falling back on generic fantasy naming.]")
+    "[LANGUAGE - canon. Any name invented for a person, place, faction or "
+    "object must obey these rules rather than falling back on generic fantasy "
+    "naming. The taboos are binding: a speaker who breaks one is doing "
+    "something transgressive, and should be written as such.]")
 _NAMING_HEADER_DRAFT = (
-    "[NAMING CONVENTIONS - draft, not yet approved as canon. Follow these when "
-    "inventing a name for a person, place, faction or object rather than "
-    "falling back on generic fantasy naming. Because they are unapproved, they "
-    "do not override anything canon already establishes.]")
+    "[LANGUAGE - draft, not yet approved as canon. Follow these when inventing "
+    "a name, and treat the taboos as how people speak here. Because they are "
+    "unapproved, they do not override anything canon already establishes.]")
 
 # Vault machinery, not world facts. Log.md in particular is a 35KB append-only
 # operations log that would swallow the whole citation budget.
@@ -293,9 +298,21 @@ class ContextAssembler:
 
         # Prefer the naming section; the phonetics and idioms matter less to a
         # decoder that only has to name a person and make them sound local.
+        # Naming Conventions through the end of Common Idioms & Taboos.
+        #
+        # Naming alone was too little. The taboos in particular are not flavour:
+        # Skarn's language forbids speaking the pre-Collapse architects' names,
+        # which is an in-world reason nobody can identify them — the same thing
+        # the standing ruling protects from the other direction. Dropping it
+        # left a canon-safety rule out of every prompt.
+        #
+        # Phonetics and "Influence on Other DNA" are still skipped. Both are
+        # abstract descriptions of how the language sounds, which the naming
+        # rules and idioms already demonstrate concretely, and context budget
+        # spent on them buys less than the same space spent on locale or lineage.
         match = re.search(
-            r"^.{0,8}\**\s*Naming Conventions\b.*?(?=^\s*\**\s*(?:Common Idioms|"
-            r"Linguistic Taboos|Influence on Other|###)|\Z)",
+            r"^.{0,8}\**\s*Naming Conventions\b.*?(?=^\s*\**\s*(?:Influence on "
+            r"Other|###)|\Z)",
             body, re.M | re.S | re.I)
         section = match.group(0).strip() if match else body
         if len(section) > _NAMING_CHARS:

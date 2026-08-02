@@ -109,8 +109,8 @@ def test_a_draft_profile_is_kept_out_of_the_audit_baseline():
     reg, _ = build()
     pkg = package(reg)
 
-    assert "NAMING CONVENTIONS" in pkg.for_decoder()
-    assert "NAMING CONVENTIONS" not in pkg.canon_slice()
+    assert "[LANGUAGE" in pkg.for_decoder()
+    assert "[LANGUAGE" not in pkg.canon_slice()
     assert pkg.naming_is_canon is False
 
 
@@ -121,7 +121,7 @@ def test_a_canonized_profile_is_marked_canon_and_enters_the_slice():
     pkg = package(reg)
 
     assert pkg.naming_is_canon is True
-    assert "NAMING CONVENTIONS - canon" in pkg.for_decoder()
+    assert "LANGUAGE - canon" in pkg.for_decoder()
     assert "Kharr-Vel" in pkg.canon_slice()
 
 
@@ -141,29 +141,45 @@ def test_a_registry_with_only_stubs_adds_nothing_rather_than_noise():
     reg, _ = build(with_profile=False, stub_too=True)
     text = package(reg).for_decoder()
 
-    assert "NAMING CONVENTIONS" not in text
+    assert "[LANGUAGE" not in text
 
 
 def test_no_linguistic_profile_is_not_an_error():
     reg = DNARegistry()
     reg.register_element("world", "W{}", "A world.", name="Skarn")
 
-    assert "NAMING CONVENTIONS" not in package(reg).for_decoder()
+    assert "[LANGUAGE" not in package(reg).for_decoder()
 
 
-def test_the_idioms_section_is_not_carried():
-    """Only what is needed to name things; the rest is budget spent for nothing."""
+def test_idioms_and_taboos_are_carried_too():
+    """
+    Naming alone was too little. A live run confirmed no idiom or taboo reached
+    any of five decodes, because only the Naming Conventions section was
+    extracted — and Skarn's taboo against speaking the pre-Collapse architects'
+    names is the in-world reason nobody can identify them, which is a
+    canon-safety rule, not flavour.
+    """
     reg, _ = build()
     text = package(reg).for_decoder()
 
-    assert "salt on the seal" not in text
+    assert "salt on the seal" in text
+
+
+def test_phonetics_and_register_are_still_left_out():
+    """
+    The naming rules and idioms demonstrate the sound concretely; an abstract
+    description of it costs budget that locale and lineage use better.
+    """
+    reg, _ = build()
+
+    assert "guttural stops" not in package(reg).naming
 
 
 def test_conventions_are_not_duplicated_into_the_frame():
     reg, _ = build()
     text = package(reg).for_decoder()
 
-    assert text.count("NAMING CONVENTIONS") == 1
+    assert text.count("[LANGUAGE") == 1
 
 
 def test_conventions_are_not_capped_away():
@@ -176,3 +192,29 @@ def test_conventions_are_not_capped_away():
 
     assert pkg.world_frame == "" or len(pkg.naming) > len(pkg.world_frame)
     assert "doubled consonant" in pkg.naming
+
+
+def test_a_taboo_is_never_delivered_half_finished():
+    """
+    Skarn's profile needed 3037 chars and the cap was 3000, which cut its last
+    taboo mid-sentence. That is worse than dropping it: the surviving half reads
+    as the prohibition and the severed half named the euphemisms that satisfy
+    it, so the decoder got the rule without the way to obey it.
+    """
+    long_profile = PROFILE.replace(
+        '* Sayings: "salt on the seal" means a bargain nobody intends to keep.',
+        '* Sayings: "salt on the seal" means a bargain nobody intends to keep.\n'
+        + "* Filler line to push the section past the old ceiling.\n" * 40
+        + '* Taboo: the drowned king\'s name is never spoken; say "the Wet Crown".')
+    reg = DNARegistry()
+    reg.register_element("world", "W{}", "A hard world.", name="Skarn")
+    reg.register_element("linguistic", "LING{}", long_profile,
+                         name="Throat-Speak Resonance", tags=["canonized"])
+    naming = package(reg).naming
+
+    # Truncation, when it happens, drops the whole trailing line rather than
+    # stopping mid-clause.
+    assert not naming.endswith("Filler line to push the section past the old")
+    for line in naming.splitlines():
+        assert line == "" or line in long_profile or line.startswith("[LANGUAGE") \
+            or line.startswith("("), f"partial line delivered: {line[-40:]!r}"

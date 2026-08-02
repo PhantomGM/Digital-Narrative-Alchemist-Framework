@@ -187,7 +187,7 @@ def test_assembler_budget_caps_layers():
         # truncated out of every prompt when they sat inside the capped body,
         # which is the bug those appends exist to fix. Only the capped portion
         # of the frame is bounded.
-        body = pkg.world_frame.split("[NAMING CONVENTIONS")[0]
+        body = pkg.world_frame.split("[LANGUAGE")[0]
         body = body.split("[CANON RULINGS")[0]
         assert len(body) <= 100 * 0.30 * 4 + 1
         # Caps drop whole lines, so what's left starts intact
