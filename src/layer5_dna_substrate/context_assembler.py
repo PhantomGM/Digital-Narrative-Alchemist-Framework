@@ -42,14 +42,14 @@ _MAX_CITED_PAGES = 8
 # inflate the decoder layers to no purpose. The anchor page is emitted first and
 # therefore survives truncation.
 _CITATION_TOTAL_CHARS = 40000
-# Naming rules with worked examples, plus the idioms and taboos. Skarn's own
-# profile needs 3037 characters, so a 3000 cap severed its last taboo
-# mid-sentence — and half a taboo is worse than none, since "words that
-# translate to failure are avoided in formal contexts" reads as a rule while
-# the clause naming the euphemisms reads as the way out of it. The headroom is
-# deliberate. Phonetics and register are still excluded rather than raising
-# this further; they describe a sound the naming rules already demonstrate.
-_NAMING_CHARS = 3400
+# Naming rules with worked examples, the roster of names in use, and the idioms
+# and taboos. Skarn's profile needs 3783, so the headroom is deliberate — this
+# number has been raised twice already, each time because an edit to the profile
+# silently severed the last taboo. _fit_language_block is the actual guarantee:
+# past this ceiling, whole bullets are dropped by priority instead of the text
+# being cut mid-sentence. Phonetics and register stay excluded rather than
+# raising this again; they describe a sound the naming rules demonstrate.
+_NAMING_CHARS = 4000
 _NAMING_HEADER_CANON = (
     "[LANGUAGE - canon. Any name invented for a person, place, faction or "
     "object must obey these rules rather than falling back on generic fantasy "
@@ -80,6 +80,45 @@ _ROSTER_HEADER = (
 
 
 SPATIAL_TYPES = {"location", "settlement", "region", "world", "realm"}
+
+
+def _fit_language_block(section: str, budget: int) -> str:
+    """
+    Trim a language profile to budget by dropping whole labelled bullets.
+
+    A character cap alone kept severing the last taboo. Half a taboo is worse
+    than none: "words that translate to failure are avoided in formal contexts"
+    survives as the prohibition while the clause naming the permitted euphemisms
+    is what gets cut, leaving a rule with no way to obey it. Raising the number
+    only postponed it — the next edit to the profile re-broke it immediately.
+
+    So nothing is ever cut mid-bullet. If the profile does not fit, the least
+    load-bearing parts go first and go whole. Taboos outrank sayings because a
+    taboo is a canon-safety rule (Skarn's forbids naming the pre-Collapse
+    architects, which is why nobody can identify them) while a saying is
+    flavour.
+    """
+    if len(section) <= budget:
+        return section
+
+    # Split on labelled bullets, keeping any preamble attached to what follows.
+    parts = re.split(r"(?m)^(?=\*\s+\*\*[^*]+:\*\*|\*\*[^*]+:\*\*)", section)
+    parts = [p for p in parts if p.strip()]
+
+    def rank(part: str) -> int:
+        head = part[:60].lower()
+        if "taboo" in head:
+            return 0
+        if "sayings" in head or "idiom" in head:
+            return 2
+        return 1  # naming rules and their preamble
+
+    kept, used = [], 0
+    for part in sorted(range(len(parts)), key=lambda i: (rank(parts[i]), i)):
+        if used + len(parts[part]) <= budget:
+            kept.append(part)
+            used += len(parts[part])
+    return "".join(parts[i] for i in sorted(kept)).strip()
 
 
 def resolve_locale(registry: DNARegistry, entity_id: Optional[str]) -> Optional[str]:
@@ -315,8 +354,7 @@ class ContextAssembler:
             r"Other|###)|\Z)",
             body, re.M | re.S | re.I)
         section = match.group(0).strip() if match else body
-        if len(section) > _NAMING_CHARS:
-            section = section[:_NAMING_CHARS].rsplit("\n", 1)[0]
+        section = _fit_language_block(section, _NAMING_CHARS)
         name = record.get("name") or "the world's language"
         header = _NAMING_HEADER_CANON if is_canon else _NAMING_HEADER_DRAFT
         return f"{header}\n({name})\n{section}", is_canon

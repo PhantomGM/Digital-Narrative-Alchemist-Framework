@@ -212,9 +212,33 @@ def test_a_taboo_is_never_delivered_half_finished():
                          name="Throat-Speak Resonance", tags=["canonized"])
     naming = package(reg).naming
 
-    # Truncation, when it happens, drops the whole trailing line rather than
-    # stopping mid-clause.
-    assert not naming.endswith("Filler line to push the section past the old")
     for line in naming.splitlines():
         assert line == "" or line in long_profile or line.startswith("[LANGUAGE") \
             or line.startswith("("), f"partial line delivered: {line[-40:]!r}"
+
+
+def test_over_budget_drops_sayings_before_taboos():
+    """
+    A taboo is a canon-safety rule; a saying is flavour. When the profile will
+    not fit, the flavour goes and the rule stays -- and both go whole.
+    """
+    from layer5_dna_substrate.context_assembler import _fit_language_block
+
+    section = ("**Naming Conventions:**\n"
+               "*   **NPC Names:** " + "n" * 300 + "\n"
+               "*   **Sayings:** " + "s" * 300 + "\n"
+               "*   **Linguistic Taboos:** " + "t" * 300 + "\n")
+    fitted = _fit_language_block(section, 700)
+
+    assert "Linguistic Taboos" in fitted, "the canon-safety rule must survive"
+    assert "NPC Names" in fitted
+    assert "Sayings" not in fitted, "flavour is dropped first"
+    assert "s" * 300 not in fitted
+
+
+def test_a_profile_that_fits_is_untouched():
+    from layer5_dna_substrate.context_assembler import _fit_language_block
+
+    section = "**Naming Conventions:**\n*   **NPC Names:** short\n"
+
+    assert _fit_language_block(section, 4000) == section
