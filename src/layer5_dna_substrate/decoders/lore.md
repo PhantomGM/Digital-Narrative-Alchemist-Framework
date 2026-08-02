@@ -45,6 +45,10 @@ Lore is **not chronicle**. A chronicle records what happened. Lore records what 
   * **contested** — evidence exists on both sides; reasonable people disagree.
   * **unknowable** — it cannot be settled. Say so outright, and do not supply an answer anyway. This is the honest state of the oldest questions.
   * Rule 7 outranks this field: if canon marks the matter open, treat it as **unknowable** whatever the DNA says.
+  * **`PROOF:none-remaining` read against RESOLVE.** These two fields are rolled independently and can arrive in tension. Do not smooth it away and do not invent evidence to fix it:
+    * with **resolvable** — the evidence *existed* and is gone, destroyed, or sitting somewhere nobody has thought to look. This is not a contradiction, it is the strongest hook the block produces: the matter is settleable in principle, and whoever finds the proof settles it. Say who destroyed it, or where it might still be.
+    * with **contested** — both sides argue from absence, which is exactly why neither can win. Belief is doing the work evidence would otherwise do.
+    * with **unknowable** — nothing survives and nothing could. The honest state of the oldest questions; say so and stop.
 
 **4. `KEEP{}` — the belief's institutional life.** KEEPER (who maintains it), RIVAL (who contests it), GRANTS (**what the belief authorizes** — a hierarchy's power, control of technology, a taboo, a tithe, a purge, restraint), ZEAL (1–9, how fiercely it is defended). GRANTS is the political engine: ask what becomes permissible once this is believed, and who benefits.
 
@@ -55,6 +59,15 @@ Lore is **not chronicle**. A chronicle records what happened. Lore records what 
 **7. `TITLE{}` — the naming convention** for this piece of lore, used **only when the context gives you no name**. Where a name is supplied, Rule 6 applies and this field is ignored. Otherwise decode it and title the entry accordingly (a numbered truth, a litany, a testament, a catechism, a plain saying).
 
 **8. `TENSION{}` — the pressure on it now.** What could break, split, or transform this belief in the present day (surfacing evidence, a failed prediction, a brewing schism, a keeper's private doubt). Make it a story engine.
+
+**9. ABSENCES — when a field says there is nothing there.**
+
+Several fields can come back empty. An absence is a design decision, not a gap to fill, and **never invent the thing the DNA says is missing**. For a belief these are the most interesting values in the block, because a belief without a keeper or without an enemy is doing something unusual.
+
+* **`KEEPER:no-one-now`** — nobody maintains it. The belief is orphaned: it survives in a text nobody reads aloud, a rite performed by people who no longer know why, or a phrase that outlived its faith. Write who *used* to keep it and what happened to them. An orphaned belief cannot enforce anything, so `SANCTION` and `ZEAL` describe what it *once* did.
+* **`RIVAL:none-openly`** — nothing contests it in public. That is either total victory or total irrelevance, and which one matters enormously. If it won, say what happened to the losers. If nobody bothers to argue, say why it stopped being worth arguing about — and note that unopposed beliefs are the ones that drift furthest without anyone noticing.
+* **`SANCTION:none`** — doubt costs nothing. No shunning, no penance, no purge. Either the belief is held so lightly that disbelief is unremarkable, or it is so total that no one has needed a punishment in living memory. Both are worth stating; they look identical from outside and are opposite from within.
+* **`PROOF:none-remaining`** — see the RESOLVE reading above. Never manufacture surviving evidence to give the entry something concrete.
 
 **CONTRADICTIONS:** Resolve odd combinations through **transmission and interest** — how the claim changed as it passed through hands, and who gained by the change. A belief that makes no sense as doctrine may make perfect sense as a mistranslation, or as a compromise between two older factions.
 
