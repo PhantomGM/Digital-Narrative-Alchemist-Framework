@@ -25,8 +25,8 @@ The Litany of the Unbroken Thread        # text
 The Collapse                             # chronicle
 Dust-Wraiths                             # creature
 The Soot-Walker Clans                    # culture
+The Sibilant Directive                   # linguistic
 
 # --- stubs, so the unmade-stub backlog has something to show ---
-The Breath-Chants                        # linguistic (stub)
 The Second Litany                        # text (stub)
 Vow of the Blank Page                    # lore (stub, harvested from canon prose)

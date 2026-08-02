@@ -172,6 +172,10 @@
         {
           "id": "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
           "label": "mentions_Skarn"
+        },
+        {
+          "id": "c964e0e5-d266-456e-8cd9-261cf11f83f6",
+          "label": "mentions_The Sibilant Directive"
         }
       ]
     },
@@ -211,8 +215,15 @@
         }
       ]
     },
+    "c964e0e5-d266-456e-8cd9-261cf11f83f6": {
+      "peer": [
+        {
+          "id": "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
+          "label": "mentions_The Sibilant Directive"
+        }
+      ]
+    },
     "cfb68222-661e-44b7-984a-41c0cc58cbbd": {},
-    "e0b6ee1b-6820-4782-843c-94fd14407cf3": {},
     "e935b9dd-ebd1-4f09-addb-facb2104e986": {
       "peer": [
         {
@@ -512,6 +523,26 @@
       ],
       "type": "region"
     },
+    "c964e0e5-d266-456e-8cd9-261cf11f83f6": {
+      "audit": {
+        "notes": [],
+        "reviewed": "2026-08-01",
+        "rounds": 1,
+        "status": "consistent"
+      },
+      "dna": "LING{P:31; V:26; S:63; T:23}",
+      "gist": "The Sibilant Directive is the common tongue of Skarn, a language characterized by its hushed, dense, and precise nature.",
+      "id": "c964e0e5-d266-456e-8cd9-261cf11f83f6",
+      "name": "The Sibilant Directive",
+      "phenotype": "### The Sibilant Directive\n\n**Phonetic Patterns:**\n*   **Consonant Tone:** Soft, sibilant, and liquid. Sounds often hiss or whisper, with frequent 's', 'sh', 'v', 'l', 'r' sounds. The lack of hard stops gives it a slithering or muffled quality, even when conveying command or technical detail.\n*   **Vowel Dominance:** Consonant-choked and clipped. Vowels are short, often reduced, and rarely open or sustained. This creates a dense, airless quality, making words feel compact and precise rather than expansive.\n*   **Complexity:** Words frequently feature two to three syllables with significant internal compounding. Longer words are common, built from precise, stacked root words, maintaining a utilitarian rather than ceremonial feel. This allows for detailed, specific terminology without becoming overly ornate.\n\n**Naming Conventions:**\n*   **NPC Names:** Names often consist of two parts: a given name and either a single-syllable surname or a descriptive title. Given names are typically two or three syllables, featuring soft consonants, 'v', 'l', 'r', and clipped vowels. Surnames are often monosyllabic and carry a subtle, practical sound. Titles are compound and descriptive of profession, status, or a significant role, reflecting the individual's function within the structured society. This accounts for the more formal titles seen in canon, indicating status and specific duties.\n    *   *Examples:* Scribe Veris Thal, Lore-keeper Lyren, Proctor Solvas, Master Kael, Thread-Keeper Vorin\n*   **Location Names:** Location names are descriptive and frequently compound, reflecting their function, geographical features, or historical significance. They often utilize articles like \"The\" and prepositions \"of the.\" Names balance industrial or anatomical terms with evocative, sometimes ominous, descriptions, frequently incorporating sibilant or liquid sounds. This accounts for both the blunt industrial names and the more formal, descriptive names.\n    *   *Examples:* The Rust-Canyons, The Siphon-Wells, Bastion of the Silent Coil, The Whisper-Chambers, The Veridian Crags\n*   **Faction Names:** Faction names are typically compound phrases or descriptive titles, often beginning with \"The\" or \"Council of.\" They reflect the faction's purpose, ideology, or primary resource, blending industrial, technical, and slightly mythic elements. Many incorporate 's', 'l', 'v' sounds, reinforcing the language's sibilant nature.\n    *   *Examples:* The Veil-Wardens, The Lumina Collective, Council of the Quiet Spark, The Sunder-Vault Alliance, The Vesperine Cartel\n\n**Common Idioms & Taboos:**\n*   **Sayings:**\n    1.  \"The Siphon-Key turns the world.\" (Refers to a critical, often hidden, mechanism or truth upon which everything depends. Implies reliance on unseen or barely understood forces.)\n    2.  \"Dust settles, secrets rise.\" (A warning that hidden truths or past failures will eventually surface, reflecting the world's grim history and the decay of ancient knowledge.)\n    3.  \"Hold the thread.\" (A command to maintain focus, purpose, or connection, referencing the fragile nature of interconnected systems and the importance of vigilance.)\n*   **Linguistic Taboos:**\n    1.  The true names of the pre-Collapse architects or divine entities (if any) are never spoken aloud, only referred to by reverent titles such as \"The First Spark\" or \"The Architects.\" Speaking them is believed to invite their residual, possibly malevolent, influence or to break sacred seals.\n    2.  Words that directly translate to \"failure\" or \"collapse\" are avoided in formal contexts, particularly when discussing critical infrastructure or Aetherium supplies. Euphemisms like \"system divergence,\" \"resource attenuation,\" or \"structural recalibration\" are used instead, reflecting the grim survivalist tone and the pervasive fear of a return to the \"Collapse.\"\n\n**Influence on Other DNA:**\nThe language feels precise and dense, characterized by a hushed intensity. Military orders are clipped and information-rich, focusing on specific actions and locations rather than loud commands, delivered with a quiet insistence. Religious texts, while complex in their syllabic structure and rich with compounding, are delivered in a hushed, almost conspiratorial tone, with long, winding sentences that feel more like whispered revelations or intricate technical specifications than soaring hymns. Bureaucratic communication is characterized by long, compound words packed with specific, often technical, meaning, designed for clarity and control over emotional expression, prioritizing detail over brevity.\n\n### 🔗 Unmade Connections (DNA Stubs)\n\n_None. The example names above are demonstrations of the naming rules, not entities this world contains._\n",
+      "summary": "The Sibilant Directive serves as the primary language across Skarn, reflecting the world's grim, survivalist tone. Phonetically, it is soft, sibilant, and consonant-choked, creating a dense, clipped soundscape. Words are often complex, built from precise, utilitarian compounds rather than ceremonial agglutinations. This linguistic style is pervasive, from the technical jargon of the Aether-Forged to the hushed commands of the Hegemony Guard, emphasizing clarity and control over emotional expression. Its naming conventions for people, places, and factions reflect a blend of industrial function and evocative, sometimes ominous, description, grounding it in the decaying high-fantasy setting.",
+      "tags": [
+        "expanded",
+        "the_sibilant_directive",
+        "canonized"
+      ],
+      "type": "linguistic"
+    },
     "cfb68222-661e-44b7-984a-41c0cc58cbbd": {
       "dna": "STUB",
       "gist": "A rumored ancient text or machine manual that directly contradicts the Orthodoxy's interpretation of the Divine Breath, revealing its true nature.",
@@ -529,24 +560,6 @@
         "the_second_litany"
       ],
       "type": "text"
-    },
-    "e0b6ee1b-6820-4782-843c-94fd14407cf3": {
-      "dna": "STUB",
-      "gist": "The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
-      "id": "e0b6ee1b-6820-4782-843c-94fd14407cf3",
-      "name": "The Breath-Chants",
-      "phenotype": "[STUB] The Breath-Chants: The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
-      "stub_metadata": {
-        "description": "The sacred oral genealogies recited by the Orthodoxy, used to justify their authority over the Divine Breath and its mechanisms.",
-        "name": "The Breath-Chants",
-        "source_id": null
-      },
-      "summary": null,
-      "tags": [
-        "stub",
-        "the_breath-chants"
-      ],
-      "type": "linguistic"
     },
     "e935b9dd-ebd1-4f09-addb-facb2104e986": {
       "audit": {
@@ -612,6 +625,7 @@
       "ad7dc0b6-e7dc-4e88-b3c0-dc7178b60b5e",
       "b3d5596e-cc9d-4385-ba0b-0e935ce618cd",
       "b852d934-a642-438f-965b-42e5a5e3a755",
+      "c964e0e5-d266-456e-8cd9-261cf11f83f6",
       "e935b9dd-ebd1-4f09-addb-facb2104e986",
       "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
     ],
@@ -626,6 +640,7 @@
       "5a035452-83d4-428d-b66c-ae0f6d8f8c24",
       "a4238893-6a54-46ce-9251-7029431228b0",
       "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c",
+      "c964e0e5-d266-456e-8cd9-261cf11f83f6",
       "e935b9dd-ebd1-4f09-addb-facb2104e986",
       "f0fa79a0-7702-4e0d-a3e4-50d143e52c0e"
     ],
@@ -650,11 +665,7 @@
     ],
     "stub": [
       "3ac8b96a-d5a7-4b71-a0be-f1aacfeff0aa",
-      "cfb68222-661e-44b7-984a-41c0cc58cbbd",
-      "e0b6ee1b-6820-4782-843c-94fd14407cf3"
-    ],
-    "the_breath-chants": [
-      "e0b6ee1b-6820-4782-843c-94fd14407cf3"
+      "cfb68222-661e-44b7-984a-41c0cc58cbbd"
     ],
     "the_collapse": [
       "ac9552ce-9ecd-4d3e-91f4-eb4525cff66c"
@@ -673,6 +684,9 @@
     ],
     "the_second_litany": [
       "cfb68222-661e-44b7-984a-41c0cc58cbbd"
+    ],
+    "the_sibilant_directive": [
+      "c964e0e5-d266-456e-8cd9-261cf11f83f6"
     ],
     "the_soot-walker_clans": [
       "431fb7e0-74bb-4e87-8ede-9c4130135b6b"
