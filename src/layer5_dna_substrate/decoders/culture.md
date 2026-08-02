@@ -79,7 +79,7 @@ Several fields can come back empty, and an empty field is a design decision, not
 
 > **No scaffolding below this line.** No DNA string, no block or field names (`COH`, `TABOO`, `PAST`…), and no numbers presented as ratings.
 >
-> **The axis names themselves are scaffolding.** *Cohesion*, *Openness*, *Population*, *Tension* are the words this prompt uses to think; they are not words the profile may use about the people. A live decode wrote "Because their **cohesion is** naturally loose and fractured…" — the axis name laundered into a sentence, which is the same disclosure as printing `COH:3`. Say what is observed instead: *they are less one people than a dozen arguing cousins*. If a sentence would still make sense with a number after it, rewrite it.
+> **The axis names themselves are scaffolding.** *Cohesion*, *Openness*, *Population*, *Tension* are the words this prompt uses to think; they are not words the profile may use about the people. A live decode wrote "Because their **cohesion is** naturally loose and fractured…" — the axis name laundered into a sentence, which is the same disclosure as printing `COH:3`. Say what is observed instead: *they are less one people than a dozen arguing cousins*. If a sentence would still make sense with a number after it, rewrite it. (Where the output template has a **labelled field** that happens to use one of these words, that field is fine — the ban is on describing the people by their rating in running prose.)
 
 ---
 

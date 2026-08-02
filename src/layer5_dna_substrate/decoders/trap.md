@@ -91,6 +91,11 @@ A trap is a **question posed to the players**: something is wrong here, and the 
 
 ## 🪶 STRUCTURED OUTPUT FORMAT: TRAP PROFILE
 
+> **No scaffolding below this line.** The profile must contain no DNA string, no block or field codes, no scores and no intensities — not in prose, not in parentheses, not as a citation for a claim. The DNA is how you decided; it is not part of what you deliver.
+
+> **The axis names are scaffolding too.** The words this prompt uses to name its dimensions are how you decide; they are not words the page may use *about the subject*. "Its sapience is low", "a prevalence of three", "high veracity", "their cohesion is loose" all disclose the machinery even with the number removed. Where the output template below has a **labelled field** that happens to use one of these words, that field is fine — what is banned is describing the subject by its rating in running prose. Test: if a sentence would still make sense with a number after it, rewrite it as something observed instead.
+
+
 ---
 
 ### **\[Trap Name]**

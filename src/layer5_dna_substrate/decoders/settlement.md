@@ -78,6 +78,11 @@ Contradictions are **narrative features**, not bugs. Examples:
 
 ## 🧬 STRUCTURED OUTPUT FORMAT: SETTLEMENT PROFILE
 
+> **No scaffolding below this line.** The profile must contain no DNA string, no block or field codes, no scores and no intensities — not in prose, not in parentheses, not as a citation for a claim. The DNA is how you decided; it is not part of what you deliver.
+
+> **The axis names are scaffolding too.** The words this prompt uses to name its dimensions are how you decide; they are not words the page may use *about the subject*. "Its sapience is low", "a prevalence of three", "high veracity", "their cohesion is loose" all disclose the machinery even with the number removed. Where the output template below has a **labelled field** that happens to use one of these words, that field is fine — what is banned is describing the subject by its rating in running prose. Test: if a sentence would still make sense with a number after it, rewrite it as something observed instead.
+
+
 1. **Settlement Name:** Create an evocative name fitting the settlement's character.
 2. **Overview:** Key features, core identity, and major contradictions. Note any discrepancy between official classification and current reality.
 3. **Physical Description:** Architecture, state of defenses, public spaces. Highlight striking contrasts (e.g., formidable walls protecting a decaying interior).

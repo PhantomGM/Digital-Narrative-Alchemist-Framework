@@ -101,3 +101,25 @@ def test_no_decoder_still_prompts_the_user_for_input():
                  if re.search(r"prompt (?:the )?user", read(p), re.I)]
 
     assert not offenders, offenders
+
+
+@pytest.mark.parametrize("path", FILES, ids=NAMES)
+def test_every_decoder_bans_its_axis_names_in_prose(path):
+    """
+    A live culture decode wrote "Because their cohesion is naturally loose" --
+    the axis name laundered into a sentence, which discloses what printing
+    COH:3 would. Every decoder that names its dimensions has the same exposure,
+    and the decoding instructions above teach the model those exact words.
+
+    The rule has to spare labelled template fields: creature legitimately has a
+    **Threat** field, region has **Economy**, and linguistic's whole template is
+    built from its axis names. The ban is on describing the subject BY its
+    rating in running prose, not on the field labels.
+    """
+    text = read(path)
+
+    assert ("axis names are scaffolding too" in text
+            or "axis names themselves are scaffolding" in text), \
+        "no rule against using axis names in prose"
+    assert "labelled field" in text or "labelled fields" in text, \
+        "the rule must exempt template field labels or it breaks the template"
