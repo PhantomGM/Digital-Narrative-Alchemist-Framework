@@ -16,6 +16,7 @@ A culture is **not a faction**. It has no single leader, no unified goal, no hea
 3. **No moral alignment, no leader, no agenda.** Never assign the culture a good/evil or lawful/chaotic alignment. Do not give it a single ruler or a collective "goal" as if it were a guild. Where authority exists, describe *how* it works (elders, merit, ritual), not a named boss. A people is a way of life, not a chain of command.
 4. **Established canon overrides the DNA.** When the provided context states a fact about *this specific people* — a custom, a taboo, how they organise, what they eat — that fact **wins** over any conflicting DNA trait. The DNA fills in what the context leaves open; it never overrules what canon has established.
 5. **A culture is internally various.** Read the Cohesion score (below) and honour it: a people is rarely a monolith. Show disagreement, sub-groups, and the ones who break the rules.
+6. **Never resolve a question the setting leaves open.** If the context marks something unknown, disputed, or unresolved — where a people came from, whether a migration happened, who they were before — it **stays** unresolved. A culture's own origin story may be reported as *what they say about themselves* without the page settling whether it is true. Where accounts disagree, give the disagreement, not a verdict.
 
 ---
 
@@ -43,8 +44,22 @@ A culture is **not a faction**. It has no single leader, no unified goal, no hea
 **6. `WORLD{}` — relations.** OUT (how outsiders are treated), TER (territoriality 1–9), TONGUE (their relation to language — an own-cant, a secret argot, a dying tongue), FEUD (a traditional source of friction).
 
 **7. `NAME{}` — naming convention.** Decode the convention and then **give three or four example names** built from it. Names are what make a culture playable — do not skip the examples.
+  * If the context supplies the **world's language and naming conventions**, this culture's convention is a *variation inside* that language, not a replacement for it. Build the names from the world's sounds and shapes, then apply this culture's pattern on top.
+  * Where the two genuinely disagree, that disagreement is the interesting fact and should be stated: a people who name themselves against the grain of the common tongue are marked by it every time they introduce themselves, and someone has an opinion about that.
+  * Never reuse a name the context lists as already belonging to someone.
 
 **8. `TENSION{}` — the internal fault line.** The disagreement pulling the culture apart from within (generational, purity-vs-adaptation, faith-vs-survival…). Every living culture has one; make it a story engine.
+
+**9. ABSENCES — when a field says there is nothing there.**
+
+Several fields can come back empty, and an empty field is a design decision, not a gap for you to fill. **Never invent the thing the DNA says they do not have.** An absence is usually the most characterful fact available, because every other culture has one.
+
+* **`AGE:none`** — no coming-of-age rite at all. Nobody marks the change; you are a child until circumstance stops treating you as one, and the moment differs for everybody. Write who decides, and what it costs to have no fixed answer.
+* **`UNI:none`** — pairing is not a ceremony and may not be an institution. Say what does bind households together instead, since something must.
+* **`POWER:none`** — genuinely leaderless. No chief, council, elder or hidden hand. Decisions still get made: describe *how*, and what happens when that fails to produce one.
+* **`FEUD:none`** — no traditional enemy. Rare enough to be worth remarking on: they are isolated, or they outlived everyone who hated them, or a feud was actually settled, which almost never happens.
+* **`CRAFT:none-notable`** — they make nothing anyone else wants. That is an economic position with consequences: what do they trade, and what does it do to a people to have nothing to sell?
+* **`PAST:forgotten`** — they do not remember the Golden Age. Not revere it, not curse it: the memory is gone. They live among its ruins without a story for them, and someone else's account is all they have.
 
 **CONTRADICTIONS:** Resolve odd combinations through **history and circumstance** (a custom born of a past hardship, a value that survives past its usefulness), never by flattening the people into a single motive.
 
@@ -61,6 +76,8 @@ A culture is **not a faction**. It has no single leader, no unified goal, no hea
 ---
 
 ## 🪶 STRUCTURED OUTPUT FORMAT: CULTURE PROFILE
+
+> **No scaffolding below this line.** No DNA string, no block or field names (`COH`, `TABOO`, `PAST`…), and no numbers presented as ratings. Paraphrase counts as a leak: "their cohesion is high", "an openness of two", "their tension score" are the same disclosure in prose. Write what an ethnographer records — *they close ranks against strangers* — never the value behind it.
 
 ---
 
