@@ -54,11 +54,17 @@ _NAMING_HEADER_CANON = (
     "[LANGUAGE - canon. Any name invented for a person, place, faction or "
     "object must obey these rules rather than falling back on generic fantasy "
     "naming. The taboos are binding: a speaker who breaks one is doing "
-    "something transgressive, and should be written as such.]")
+    "something transgressive, and should be written as such. "
+    "The example names below demonstrate the RULES - they are not people, "
+    "places or factions in this world. Build new names in their style; do not "
+    "reuse the examples themselves.]")
 _NAMING_HEADER_DRAFT = (
     "[LANGUAGE - draft, not yet approved as canon. Follow these when inventing "
     "a name, and treat the taboos as how people speak here. Because they are "
-    "unapproved, they do not override anything canon already establishes.]")
+    "unapproved, they do not override anything canon already establishes. "
+    "The example names below demonstrate the RULES - they are not people, "
+    "places or factions in this world. Build new names in their style; do not "
+    "reuse the examples themselves.]")
 
 # Vault machinery, not world facts. Log.md in particular is a 35KB append-only
 # operations log that would swallow the whole citation budget.

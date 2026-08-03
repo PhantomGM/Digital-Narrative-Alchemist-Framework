@@ -50,6 +50,24 @@ A text is **not lore**. Lore is a claim; a text is the **physical thing that car
 
 **8. `TENSION{}` — the pressure on it now.** What is about to change: a second copy surfacing, someone who can finally read it, decay reaching a crucial passage, a holder who wants to sell. Make it a story engine.
 
+**9. FIELDS THAT ARGUE WITH EACH OTHER.**
+
+These blocks are rolled independently, so they arrive in combinations that look impossible. About one text in five carries at least one. **Do not smooth these away, and never quietly drop the field that is inconvenient** — each has a reading that is better than either half alone.
+
+* **`FUNC:never-opened` beside a RITE** (9.1%) — the commonest. Some rites are impossible on a sealed text and some are *improved* by it. `a-pilgrimage-to-see-it`, `washing-before-touching`, `a-recitation-from-memory` and `burning-a-copy-yearly` all work perfectly on something nobody opens, and are stronger for it. Where the rite requires opening — `a-daily-reading`, `an-annual-unsealing`, `a-question-put-to-it` — the resolution is that the ceremony has outlived the act: the reading is from memory or from a copy, the unsealing was performed once and is now described rather than done, the question is put and the answer supplied by whoever holds it. Say who noticed, and who keeps quiet.
+* **High LEG beside `GAP:no-one-can-read-it`** (4.4%) — legible is not the same as comprehensible. The marks are perfectly clear and the language, notation or jargon is gone; or people *may not* read it and legibility is irrelevant. Check ACCESS before deciding which, and note who can read it, because that person is the one the gap benefits.
+* **`FUNC:never-opened` with high LEG** (3.4%) — it is perfectly readable and nobody has looked. This is the most useful hook the block produces: the answer is right there, has been for generations, and opening it costs something. Say what.
+* **`COND:actively-crumbling` with `DECAY:stable-for-now`** (1.3%) — it was falling apart and has stopped, or been stopped. Someone intervened, conditions changed, or the damage reached something that resists. Name what halted it, and whether it holds.
+
+**10. ABSENCES — when a field says there is nothing there.**
+
+Never invent the thing the DNA says is missing.
+
+* **`HOLDER:no-one-knows`** — nobody knows who has it. It is not lost, it is *unaccounted for*, which is worse: someone has it. Write who is looking, and who is pretending not to.
+* **`FUNC:never-opened`** — see above. Give its function as a *possessed object* rather than a read one: what does holding it do for the holder?
+* **`GAP:no-one-can-read-it`** — the mismatch survives on illiteracy alone. Nothing conspiratorial is needed; it endures because checking is impossible.
+* **`HAZARD:none`, `SANCTION:none`, `RITE:none`** — say so plainly. A text that is safe, unpunished and unceremonious is unusual on this world, and the plainness is the characterisation.
+
 **CONTRADICTIONS:** Resolve odd combinations through **the history of the object** — how it was copied, mistranslated, salvaged, or repurposed. A hymnal that is actually an inventory makes sense once you know a clerk's list was found in a ruin and sung because it was the only writing anyone had.
 
 ---

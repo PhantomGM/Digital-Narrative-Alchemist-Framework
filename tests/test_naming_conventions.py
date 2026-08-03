@@ -242,3 +242,18 @@ def test_a_profile_that_fits_is_untouched():
     section = "**Naming Conventions:**\n*   **NPC Names:** short\n"
 
     assert _fit_language_block(section, 4000) == section
+
+
+def test_the_example_names_are_marked_as_illustrative():
+    """
+    A text decode adopted "Scribe Veris Thal" -- one of the profile's worked
+    example names -- as an actual forger in Skarn's history. The examples are
+    stylistically perfect, which is exactly why they get taken as a name pool;
+    left unlabelled they would recur across every generation and become their
+    own convergence.
+    """
+    reg, _ = build()
+    naming = package(reg).naming
+
+    assert "demonstrate the RULES" in naming
+    assert "do not reuse the examples themselves" in naming
