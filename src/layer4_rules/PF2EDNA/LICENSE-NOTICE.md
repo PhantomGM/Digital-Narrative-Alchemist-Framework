@@ -1,7 +1,9 @@
 # Third-party rules content — licence notices
 
-**Status: INCOMPLETE. One section below needs information only the author has.**
-Read "What is unresolved" before relying on this.
+**Status: resolved by untracking.** `data/` is no longer in this repository —
+it is gitignored, so nothing here redistributes Paizo's content. The notices
+below are kept for anyone who supplies their own copy of the data, and for the
+record of why it was removed.
 
 `src/layer4_rules/PF2EDNA/data/` contains rules content from Pathfinder Second
 Edition, owned by Paizo Inc. Neither the framework's PolyForm Noncommercial
@@ -87,18 +89,26 @@ came from:
 4. If the ORC path is chosen, the **full ORC License text** must accompany the
    work, not just the notice. It is available at paizo.com/orclicense.
 
-### 3. The cheapest resolution may be not to redistribute
+### 3. What was done
 
-This cartridge is a **test fixture**, not a product dependency. It exists to prove
-that the rules layer can be hot-swapped between a trivial system (`coin_flip`), a
-rules-light one (`one_page_5e`) and a detailed one. Nothing in the framework
-requires that the detailed one be Pathfinder, and nothing requires the data to be
-in a public repository.
+`data/` is **gitignored and untracked** as of `4fd7183`. Ten files left the
+repository; none were deleted locally.
 
-Gitignoring `data/` — as was done for the live world registry, for the same
-reason — would remove the redistribution question entirely while leaving the
-cartridge architecture and its tests fully intact. The resolvers in
-`resolvers/` are original code and are not affected either way.
+This cartridge is a test fixture, not a product dependency — it exists to prove
+the rules layer hot-swaps between a trivial system (`coin_flip`), a rules-light
+one (`one_page_5e`) and a detailed one. Nothing requires the detailed one to be
+Pathfinder, and nothing requires the data to be published. Untracking removes the
+redistribution question without touching the architecture: `resolvers/` is
+original code, and **the full suite passes with `data/` absent** — verified by
+moving it aside and running all 1026 tests, which is why this was preferable to
+guessing at a notice.
+
+**Untracking does not unpublish.** The files remain in the history of earlier
+commits. This stops the accrual; it does not undo it.
+
+**To use the data-backed paths**, place your own copy in `data/`. The resolvers
+expect the filenames listed in `manifest.json`. If you then redistribute, the
+notices above become your responsibility and §1 is still unanswered.
 
 ---
 

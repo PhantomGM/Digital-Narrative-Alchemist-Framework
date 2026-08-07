@@ -87,6 +87,27 @@ graph.json
 # Untracking does not unpublish — earlier commits still hold it.
 data/world_builder_registry.json
 
+# Pathfinder 2E rules content. Paizo's, not ours, and carried verbatim —
+# conditions.json holds their prose word for word, extracted from a third-party
+# Obsidian compendium that was itself redistributing it.
+#
+# Which licence covers it is genuinely unsettled: the corpus mixes pre-Remaster
+# terminology (Flat-Footed, an alignment reference) with Remaster terminology
+# (ancestry, Holy, Unholy, Void), and those fall under OGL 1.0a and the ORC
+# License respectively, which require different notices. Nothing in the files
+# records which Paizo works they came from, so a correct attribution notice
+# cannot be written from what is here.
+#
+# The cartridge is a test fixture proving the rules layer hot-swaps between a
+# trivial system, a rules-light one and a detailed one. Nothing requires the
+# detailed one to be Pathfinder, and nothing requires the data to be published.
+# Untracking it removes the redistribution question without touching the
+# architecture: resolvers/ is original code, and the full suite passes with
+# data/ absent (verified, 1026 tests).
+#
+# Keep a local copy to exercise the data-backed paths; see LICENSE-NOTICE.md.
+src/layer4_rules/PF2EDNA/data/
+
 # Event Ledger databases — runtime state, recreated on demand. Deliberately
 # not *.db: the PF2E rules data under src/layer4_rules/PF2EDNA/data/ is
 # legitimately tracked and must stay so.

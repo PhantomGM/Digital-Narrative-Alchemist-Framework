@@ -1,9 +1,0 @@
-[
-  {
-    "id": "medic",
-    "name": "Medic",
-    "prerequisites": ["Trained in Medicine"],
-    "dedication_level": 2,
-    "skill_training": ["Medicine"]
-  }
-]
