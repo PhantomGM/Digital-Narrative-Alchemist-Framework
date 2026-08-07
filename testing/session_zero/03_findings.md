@@ -147,11 +147,28 @@ answers shape the *world* (Sarah's asymmetry, Marcus's veil). Others shape
 - Chloe: silence is not a distress signal from her.
 These belong in a session-time directive the GM agent reads, not in the world.
 
-**5. The `quest` decoder leaks its own template.** The page begins
-`### **1. Quest Title**` followed by the actual title, then `### **2. The Hook**`.
-Numbered template field labels are being printed as output headers — the same
-class of defect PROJECT_STATE §7 records for palette labels. `quest` is one of the
-fourteen decoders that has never had a refinement pass.
+**5. Three decoders leak their own template labels as headers.** Found while
+indexing the pages, not while reading them — which is why it was nearly missed.
+The first heading of a page should be the entity's name. Three are not:
+
+| File | First heading | Should be |
+| :--- | :--- | :--- |
+| `01_world.md` | `World Overview` | the world's name |
+| `02_region.md` | `Region Name: The Saltspire Marches` | `The Saltspire Marches` |
+| `15_quest.md` | `1. Quest Title` | `The Scholar's Descent` |
+
+`world`, `region` and `quest` are all among the fourteen decoders that have never
+had a refinement pass, and each prints a template field label into its output —
+the same class of defect PROJECT_STATE §7 records for palette labels printed as
+headers. **It is a pattern in the unrefined set, not one bad decoder**, which
+means the remaining eleven should be assumed to do it until checked.
+
+It also breaks extraction downstream. `ExpansionManager._extract_name` walks
+heading patterns in order, so it would name the world "World Overview" and the
+quest "1. Quest Title". The structured YAML tail saves this in practice — every
+one of the 15 pages emitted a valid tail, and `parse_phenotype_tail` is the
+primary path — but the regex fallback exists precisely for when a decoder omits
+the tail, and on these three it would return a template label.
 
 **6. `community` still routes to `npc`.** One decoder labelled a stub
 `community`; `_resolve_stub_type` has no key for it, so it fell through the npc
