@@ -1,9 +1,14 @@
 # Project state and handoff
 
-Written 2026-08-06 at the end of a long working session. Read this before your
-first task. It exists so you do not spend an hour rediscovering things that took
-this session a day to establish — especially the recurring bug class in §4,
-which is the single most reusable finding here.
+Written 2026-08-06 at the end of a long working session, and kept current since
+by whoever is working here. Read it before your first task. It exists so you do
+not spend an hour rediscovering things that took a day to establish — especially
+the two recurring bug classes in §4, which are the most reusable findings here,
+and the measured branching factor in §8, which is what the whole termination
+design rests on.
+
+**Correct it as you go.** CLAUDE.md makes this standing permission: change the
+numbers rather than annotating them. Git holds the history.
 
 ---
 
@@ -41,7 +46,7 @@ commits. The author knows and has accepted this.
 
 ---
 
-## 2. Where it was when this session started
+## 2. Where it was before the 2026-08-06 session
 
 - 635 tests passing.
 - Decoders were uneven and unaudited. Several were **corrupt** and nobody knew.
@@ -51,7 +56,9 @@ commits. The author knows and has accepted this.
 
 ## 3. Where it is now
 
-**1011 tests passing. 27 commits this session (`fd08582`..`9b00e62`).**
+**1157 tests passing.** The 2026-08-06 session took it from 635 to 1011 across 27
+commits (`fd08582`..`9b00e62`). The session after it fixed the stub-routing hole
+(§4b, `72ccdde`) and settled the generation-budget model (§8).
 
 Seven decoders have had a full refinement pass — `npc`, `faction`, `creature`,
 `culture`, `lore`, `text`, `item` — each with its own test file. Fourteen have not.
@@ -84,7 +91,9 @@ True Neutral regardless of what their pages say. Re-rolling would break canon.
 
 ---
 
-## 4. The recurring bug class — read this one
+## 4. Two recurring bug classes — read this section
+
+### 4a. Null values nothing anticipates
 
 **Every generator emits values meaning "there is no answer", and no decoder
 anticipated them.** This was found independently in four decoders and is almost
@@ -115,6 +124,45 @@ scripts pattern used all session (see git history for full versions):
   4. grep the decoder for whether each is addressed
   5. check cross-field pairs that can contradict
 ```
+
+### 4b. Types the registration path cannot name
+
+**`_resolve_stub_type` falls back to `"npc"` for any label it does not
+recognise.** A type missing from `VALID_STUB_TYPES` or `FUZZY_TYPE_MAP` is not
+merely unroutable: every stub naming it is silently registered as a person and
+filed under Characters. Nothing raises, nothing warns, and the page looks fine.
+
+Found three times. Creatures became NPCs. Then traps became NPCs. Then, in
+`72ccdde`, six types at once — `agency`, `establishment`, `realm`,
+`regional_poi`, `travel` and `wonder`, each with a generator, a decoder and a
+folder in `TYPE_FOLDER_MAP`, none of them nameable. Measured cost: **the live
+world holds 112 records and not one entity of any of the six.** A type nobody can
+name does not error, it just never exists.
+
+The cause was upstream of the map both times. `TAIL_INSTRUCTION` offered decoders
+ten legal types while `VALID_STUB_TYPES` had grown to fifteen, so decoders were
+never told `creature`, `culture`, `lore`, `text` or `trap` existed and reached for
+an unlisted word instead. **That list is now derived from the set**, sorted for
+stability across processes, so the drift is no longer expressible.
+
+Two properties of `FUZZY_TYPE_MAP` worth knowing before you touch it:
+
+- **Matching is substring-in-insertion-order.** New keys appended at the end can
+  only capture labels that previously fell through to the `npc` default, so
+  appending is safe and interleaving is not. Three collisions were closed when the
+  keys were written: `shop` is inside *bishop*, `port` inside *portal*, `nation`
+  inside *abomination*. `cult` must stay below the culture block, or the substring
+  test routes every people in the world to `faction`.
+- **An earlier key silently kills a later one.** `logbook` sat in the map for
+  months and could never fire, because `book` appears earlier and claims it for
+  `item`. `test_fuzzy_keys_do_not_shadow_a_later_key_of_another_type` walks the map
+  in its real order and found it on the first run.
+
+`tests/test_stub_type_coverage.py` derives its expectations from
+`ProceduralForge.generators` rather than listing types, so **a twenty-second type
+fails it until it is wired into all four places** — generator, decoder,
+`VALID_STUB_TYPES`, `TYPE_FOLDER_MAP`. That file exists to stop the fourth
+instance, not to record the third.
 
 ---
 
@@ -161,6 +209,24 @@ and points at decoder files that were never brought into this repo.
 `regional_poi`, `settlement`, `trap`, `travel`, `wonder`, `world`.
 
 **Thirteen generators lack `seed`/`**pins`.**
+
+**Eight types have never produced an entity.** `agency`, `establishment`,
+`realm`, `regional_poi`, `travel`, `wonder`, `trap` and `quest` all have a
+generator, a decoder and a folder, and the live world contains none of them. Six
+of the eight were unreachable until `72ccdde` (§4b); they are reachable now but
+still unexercised, so their decoders have never been run against real canon.
+Expect the §4a null-value bugs to be sitting in all of them.
+
+**`establishment` has no vocabularies at all** — twenty genes, integer ranges
+only, most of its decoder table marked `INFERRED`. The author's "Generative
+Capabilities" list maps closely onto those genes (atmospheres, tiered menus,
+services, legality, shopkeeper profiles, backroom stock) and is a candidate
+source, but it is a **proposal awaiting ratification**, not a defined vocabulary.
+Do not read it as one.
+
+**Lines and Veils have no home in `ContextPackage`.** See §8 — this is the piece
+where getting the shape wrong later means regenerating content rather than adding
+to it.
 
 **Only 4 of 21 decoders carry the canon-safety rule** (*never resolve a question
 the setting leaves open*) — `lore`, `regional_poi`, `text`, `wonder`, plus the
@@ -276,3 +342,125 @@ The vault has a `.graphifyignore` excluding `.obsidian/`, `.claude/`,
 that vault independently concluded the machinery has to come out first; without
 it, ~15% of the graph is Obsidian plugin manifests and three of them outrank most
 of the world by degree.
+
+---
+
+## 8. When generation stops
+
+The question this answers: with an AI agent doing canonization instead of the
+author, what stops a new world generating forever? Every decoder asks for 2–4
+Unmade Connections, and `expand_stub` recursively parses the entity it just made,
+so on paper this is an unbounded tree.
+
+### What the live world actually does
+
+Measured over all 112 records:
+
+| | |
+| :--- | :--- |
+| Made entities / pending stubs | 70 / 42 |
+| Of the 70 made, once a stub | 26 |
+| Mentions per made entity | **3.81** (matches the "2–4" instruction) |
+| New stubs per made entity | **0.97** ← the branching factor |
+| Mentions that deduped onto an existing entity | **75%** |
+| Near-duplicate names dedupe missed | **0** |
+| Pending stubs needing no generation at all | **17 of 42 (40%)** |
+
+**Mean offspring below 1 is a sub-critical branching process — it terminates with
+probability 1.** The brake is `_register_stub`'s `find_by_name` dedupe: three
+quarters of everything a page mentions turns out to already exist. But 0.97 is an
+accident of a small dense world, not a designed limit, and it sits 3% below
+criticality. Do not hand that margin to an unattended agent.
+
+Two facts that make laziness safe and cheap:
+
+- **Registration is free; only expansion costs.** `parse_and_register_stubs`
+  makes a registry row and no model call. The 42 pending stubs are the frontier
+  working as designed.
+- **Stubs cannot leak into a prompt.** `context_assembler.py:314` excludes them
+  from the retrieval pool, so an unexpanded stub can never be described into
+  existence by a decoder.
+- **`CanonComposer` answers 40% of the frontier for nothing.** `triage_all()`
+  runs with zero model calls and found 17 stubs that canon already describes
+  richly enough to compose a page from. **Triage before spending an expansion
+  budget.**
+
+### The decided model: generate against a deliverable, not against a world
+
+World completeness is unreachable and therefore useless as a stop condition. Each
+phase instead terminates when its *consumer* is satisfied:
+
+| Phase | Bounded by | Done when |
+| :--- | :--- | :--- |
+| Session 0 | the contract | the player profile has answers |
+| Core entities | the pitch | no empty slots |
+| Pitch | the players | accepted |
+| Character backstories | the players | accepted |
+| World fill | the backstories | every referent resolves |
+| First session outline | session one | it has openings, not a script |
+
+**Session 0 sets the quota, it does not merely tint the tone.** Genre changes
+which types matter at all: political intrigue wants factions, NPCs, agencies and
+texts and roughly zero creatures; a hexcrawl inverts that. A fixed count is the
+worst case for every specific game. A rough generic contract is ~11 entities
+(1 each world/region/settlement/culture/linguistic/lore/quest, 2 factions,
+3 NPCs) — the live world holds 70 made, six times a pitch's worth, and 10 `item`
+records where a pitch needs none.
+
+**World fill is the one phase with no natural edge**, since a backstory can imply
+arbitrarily much. Bound it structurally: expand depth 1 from each backstory
+referent and register everything below as stubs.
+
+### Prep, and what happens to the parts play never touches
+
+Session outlines are contingency plans, not scripts; players will not follow
+them. The distinction that matters is **fact versus forecast**, not used versus
+unused:
+
+- **Entities are facts.** A generated NPC, monster or location was true the
+  moment it was made. Players not showing up does not unmake it. These canonize
+  on the normal `draft` path — no special status.
+- **Forecasts are predictions.** "The party confronts her in the crypt" did not
+  happen. But something else did: **an unwitnessed forecast resolves rather than
+  being deleted.** At session end each one is *witnessed*, *unwitnessed and due*
+  (resolves off-screen, becomes new canon), or *still pending* (clock advances,
+  carries into the next outline).
+
+This is what stops the quantum ogre. **Prep is entities with a location and a
+clock, not scenes waiting for a trigger.** The troll is in the eastern pass; take
+the north road and the troll is still in the eastern pass, and next week a caravan
+does not arrive. A scene held in reserve floats and lands wherever the players go,
+which makes choice decoration.
+
+**The fallback outcome must be written when the forecast is**, not improvised at
+session end — generated after the fact it will rationalise whatever the players
+did, which is the same failure in a different hat.
+
+Off-screen resolution is bounded by writing **a dated line, not a page**.
+`TimelineComposer` already consumes an `events` list (`date_label`, `event`,
+`era`, `sources`) off any registry record, is a deriver, and calls no model. So
+"the Rite completed unopposed" is one event on that entity's record: canon, in the
+chronology, constraining everything generated afterwards, free. It becomes a page
+only when play demands the detail.
+
+### Lines and Veils are not preferences
+
+Genre *steers* generation; a Line *prohibits* content, and `ContextAssembler`
+treats steering as droppable — `_LAYER_BUDGET` caps `world_frame` at 25%, and
+that is precisely how the naming rules were truncated out of every prompt that
+ever ran (§5). **A Line that gets truncated is a safety failure, not a quality
+regression.**
+
+Worse, `canon_slice()` calls `_sections(include_directives=False)`, so the
+auditor never sees `directives`. A Line placed there would steer generation and
+never be verified, and a prompt instruction is not a guarantee.
+
+So Lines and Veils need **their own `ContextPackage` field**, exactly as `naming`
+got: present in both `for_decoder()` and `canon_slice()`, emitted first, never
+budget-dropped, and given the `_fit_language_block` treatment if it must ever
+shrink — whole items dropped by priority, never one severed mid-sentence. Two
+further constraints from how the tool is used at real tables: veils are often
+**private**, which argues for enforcement at audit time rather than a prompt that
+recites the constraint back where the table can read it; and they are **added
+mid-campaign**, so the profile must be amendable at any session rather than frozen
+at Session 0.

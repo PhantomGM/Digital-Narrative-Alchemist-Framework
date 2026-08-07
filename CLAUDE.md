@@ -4,10 +4,11 @@
 
 **Before your first task, read [`docs/PROJECT_STATE.md`](docs/PROJECT_STATE.md).**
 
-It is a handoff document: what this project is, where it stands, the recurring
-bug class that has been found in four separate decoders and is probably in the
-rest, and the working practices that produced the current state. It will save you
-an hour of rediscovery and stop you repeating fixes that are already in.
+It is a handoff document: what this project is, where it stands, the two
+recurring bug classes — one found in four separate decoders and probably in the
+rest, one found three times in the type-registration path — and the working
+practices that produced the current state. It will save you an hour of
+rediscovery and stop you repeating fixes that are already in.
 
 Do that before proposing work, not after.
 
@@ -45,3 +46,11 @@ reading. This has repeatedly overturned confident readings in both directions.
 documents. Read them as shape; leave the meaning to the author. A plausible guess
 is indistinguishable from the real thing in the output and poisons everything
 generated afterwards.
+
+**Keep `docs/PROJECT_STATE.md` current — you do not need to ask.** When a
+decision is made, a milestone lands, a measurement overturns something the
+document asserts, or you learn something the next agent would otherwise spend an
+hour rediscovering, write it in as part of the work rather than mentioning it
+afterwards. Correct the numbers it states rather than appending a note beside
+them: it is a state document, not a changelog, and it is only worth reading first
+if it is true. Git already holds the history.
