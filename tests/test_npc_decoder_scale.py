@@ -33,55 +33,92 @@ def decoder():
         return handle.read()
 
 
-def test_every_score_from_1_to_9_is_given_a_reading(decoder):
-    """A band boundary is not a reading. All nine values need one."""
-    table = decoder.split("magnitude, not just a label")[1].split("**3.")[0]
+def alignment_section(decoder):
+    return decoder.split("HEADLINE ALIGNMENT")[1].split("**2. PAIRED TRAITS")[0]
+
+
+def test_every_distance_from_centre_has_a_reading(decoder):
+    """
+    A band boundary is not a reading: the original decoder gave only
+    9-7/6-4/3-1, so L7 and L9 were the same character to it. Every distance
+    from the centre must say something different, which covers all nine values
+    since each distance names its pair.
+    """
+    section = alignment_section(decoder)
+    for distance in range(0, 5):
+        assert re.search(rf"Dist {distance}\b", section), \
+            f"distance {distance} has no reading"
     for score in range(1, 10):
-        assert re.search(rf"\*\*{score}\*\*", table), \
-            f"score {score} has no row in the alignment gradient"
+        assert re.search(rf"\b{score}\b", section), f"score {score} unreachable"
 
 
-def test_the_poles_are_named_as_the_extremes(decoder):
-    assert re.search(r"1 and 9 are the extremes", decoder)
-    assert "intensity falls as the score moves toward 5" in decoder
+def test_commitment_is_measured_as_distance_from_the_centre(decoder):
+    """The organising idea: 5 is the null point, and 1 and 9 are the poles."""
+    section = alignment_section(decoder)
+
+    assert "distance" in section.lower()
+    assert re.search(r"Dist 4 \(9 or 1\)", section), "the poles must be the extreme"
+    assert re.search(r"Dist 0 \(5\)", section), "5 must be the null point"
 
 
-def test_five_is_identified_as_the_true_centre(decoder):
-    assert "True Neutral" in decoder
-    assert re.search(r"\*\*5\*\*.*(?:centre|center)", decoder)
+def test_the_bands_are_ordered_from_absolute_to_detached(decoder):
+    """
+    Apex -> Anchor -> Fringe -> Lean -> Void is a gradient. If two adjacent
+    bands read the same the scale has collapsed back to three flat bands.
+    """
+    section = alignment_section(decoder)
+    order = [section.index(name) for name in
+             ("The Apex", "The Anchor", "The Fringe", "The Lean", "The Void")]
+
+    assert order == sorted(order), "bands are out of order"
+    assert "Cannot yield" in section          # Apex
+    assert "Easily discarded" in section      # Lean
+    assert "detachment" in section            # Void
 
 
-def test_six_and_four_lean_without_crossing(decoder):
-    """The distinction the old three-band text could not express."""
-    assert re.search(r"\*\*6\*\*.*leaning Lawful.*leaning Good", decoder)
-    assert re.search(r"\*\*4\*\*.*leaning Chaotic.*leaning Evil", decoder)
-    assert "A 6 is **not** Good and a 4 is **not** Evil" in decoder
+def test_a_lean_does_not_cross_the_line(decoder):
+    """
+    6 is not Good and 4 is not Evil. Rendering a lean as the alignment itself
+    silently converts a third of the Neutral band into its neighbour.
+    """
+    section = alignment_section(decoder)
+
+    assert re.search(r"Dist 1 \(6 or 4\)", section)
+    assert "Preference-based" in section
 
 
-def test_the_axis_conflict_rule_is_stated(decoder):
+def test_the_conflict_rule_says_which_axis_yields(decoder):
     """
     Two characters can share an alignment and be opposites depending on which
-    axis is the harder commitment. The per-score table cannot say that, because
-    it reads each axis on its own.
+    commitment is harder. Reading each axis alone cannot express that.
     """
-    assert "AXIS CONFLICT" in decoder
-    assert "the axis closer to 5 is the one that yields" in decoder.lower() \
-        or "axis closer to 5 is the one that yields" in decoder
+    section = alignment_section(decoder)
+
+    assert "Yielding Axiom" in section
+    assert "lower Distance to 5 yields" in section
 
 
-def test_equal_extremes_break_rather_than_bend(decoder):
-    """L9/G9 is the lawful-stupid paladin as a mechanic, not a reputation."""
-    section = decoder.split("AXIS CONFLICT")[1].split("**2.")[0]
+def test_equal_commitments_have_named_outcomes(decoder):
+    """
+    Equal distances are the interesting case: at the poles nothing gives and
+    the character breaks; at the fringe both give and they adapt.
+    """
+    section = alignment_section(decoder)
 
-    assert "L9/G9" in section
-    assert "break" in section
+    assert "Systemic Paralysis" in section and "Freeze" in section
+    assert "Fluid Triage" in section and "Pivot" in section
+    assert "break rather than bend" in section
 
 
-def test_both_asymmetric_paladins_are_distinguished(decoder):
-    section = decoder.split("AXIS CONFLICT")[1].split("**2.")[0]
+def test_each_quadrant_subdivides(decoder):
+    """
+    The 81-point grid has to mean something below the nine alignments, or the
+    extra resolution is decorative.
+    """
+    section = alignment_section(decoder)
 
-    assert "L8/G7" in section and "L7/G8" in section
-    assert section.index("L8/G7") != section.index("L7/G8")
+    assert "Fractal Sub-Grid" in section
+    assert re.search(r"`\d/\d`", section), "no sub-archetype coordinates given"
 
 
 def test_the_headline_is_not_described_as_an_average(decoder):
@@ -89,7 +126,7 @@ def test_the_headline_is_not_described_as_an_average(decoder):
     head = decoder.split("**2. PAIRED TRAITS")[0]
 
     assert "ALIGNMENT AVERAGES" not in head
-    assert "not averaged" in head
+    assert "not average them from the traits" in head or "not averaged" in head
 
 
 def test_unpaired_traits_run_to_the_opposite_not_to_absence(decoder):
@@ -207,35 +244,52 @@ def test_no_scaffolding_rule_sits_with_the_output_template(decoder):
     assert "No scaffolding below this line" in tail
 
 
-def test_expression_modality_is_chosen_from_context_not_habit(decoder):
+def test_the_tell_is_derived_from_magnitude_not_chosen(decoder):
     """
     Five decodes of one DNA string produced a handled fidget object in four --
     puzzle cube, glass marble, aetherium shard, salvage lens. Nothing in the
-    genome asks for that; it is the model's favourite answer. The one that broke
-    the pattern (unnatural stillness) came from the most constrained context,
-    so the cure is to make the modality a context question.
+    genome asked for that; it was the model's favourite answer to an open
+    question.
+
+    The earlier fix offered a menu of seven modalities and forbade the trope by
+    name, which worked but left the choice free. This is stronger: the DNA fixes
+    the SEVERITY of the reaction and context supplies only its form, so the
+    genome decides the part a model would otherwise default on.
     """
     section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
 
-    for modality in ("stillness", "Breath", "Gaze", "Posture",
-                     "Environmental", "Ritualised", "handled object"):
-        assert modality in section, f"modality missing: {modality}"
-    assert "Do not default to the handled object" in section
-    assert "must come from their trade, environment and role" in section
+    assert "Magnitude" in section
+    assert "distance from 5" in section
+    for state in ("Freeze", "Leak", "Pivot", "Drift", "Flatline"):
+        assert state in section, f"no tell for the {state} band"
 
 
-def test_the_trope_modality_is_not_listed_first(decoder):
-    """A menu's first item becomes the new default; the trope must not hold it."""
+def test_every_magnitude_band_has_its_own_tell(decoder):
+    """If two bands share a tell the severity scale is decorative."""
     section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
 
-    assert section.index("Conspicuous stillness") < section.index("A handled object")
+    for band in ("Apex", "Anchor", "Fringe", "Lean", "Void"):
+        assert band in section, f"band {band} has no row"
+    assert "9/1" in section and "6/4" in section
 
 
-def test_only_one_modality_is_requested(decoder):
-    """Hedging across several tells reads as a list, not a person."""
+def test_the_form_still_comes_from_the_world(decoder):
+    """
+    Severity is the genome's; the costume is the setting's. Without this the
+    same DNA would render identically in five different worlds, which is the
+    convergence the whole fix exists to break.
+    """
     section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
 
-    assert "One modality" in section
+    assert "trade" in section and "environment" in section
+    assert "dress it in the setting" in section
+
+
+def test_the_severity_may_not_be_overridden_by_flavour(decoder):
+    """A 9/1 fanatic does not fidget; a 6/4 does not boom dogma."""
+    section = decoder.split("HOW THE TENSION SHOWS")[1].split("**Backstory**")[0]
+
+    assert "Commit to the Magnitude" in section
 
 
 def test_backstory_arcs_are_offered_as_peers(decoder):
