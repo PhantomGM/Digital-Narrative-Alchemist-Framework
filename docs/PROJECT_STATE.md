@@ -368,9 +368,26 @@ Measured over all 112 records:
 
 **Mean offspring below 1 is a sub-critical branching process — it terminates with
 probability 1.** The brake is `_register_stub`'s `find_by_name` dedupe: three
-quarters of everything a page mentions turns out to already exist. But 0.97 is an
-accident of a small dense world, not a designed limit, and it sits 3% below
-criticality. Do not hand that margin to an unattended agent.
+quarters of everything a page mentions turns out to already exist.
+
+### That result holds only for a MATURE world
+
+Measured 2026-08-06 on a new world generated from a Session 0 contract
+(`testing/session_zero/`, 15 entities decoded for real):
+
+| World | Stubs implied per made entity |
+| :--- | :--- |
+| Skarn — 112 records, mature | **0.97** — sub-critical, terminates |
+| The Hollow Assay — 15 entities, new | **3.67** — super-critical |
+
+The brake needs a populated registry to bite. **A new world has nothing to dedupe
+against**, so it branches at very nearly the rate the decoders are asked for (2–4
+Unmade Connections each). Fifteen entities implied fifty-five stubs.
+
+So the reassuring reading of the 0.97 is wrong where it matters most. **The
+runaway case is precisely the new-world case an AI canonizer is meant to handle**,
+and on a fresh world the contract is not a refinement — it is the only thing
+between Session 0 and unbounded generation.
 
 Two facts that make laziness safe and cheap:
 
@@ -406,6 +423,28 @@ worst case for every specific game. A rough generic contract is ~11 entities
 (1 each world/region/settlement/culture/linguistic/lore/quest, 2 factions,
 3 NPCs) — the live world holds 70 made, six times a pitch's worth, and 10 `item`
 records where a pitch needs none.
+
+**Confirmed in trial, with three corrections.** `testing/session_zero/` ran this
+end to end — four player-agents, a real interview, 15 entities decoded, a pitch
+accepted by all four. Full write-up in `03_findings.md`. What it changed:
+
+- **A type-and-count quota is not a contract.** Per-slot briefs must reach the
+  prompt. The one `regional_poi` briefed only as "the mine" generated a
+  dimensional arch on a plateau; adding the brief fixed it with the same genome.
+- **The contract is a graph, not a list.** `linguistic` was generated after the
+  settlement, so **the town was named before the naming rules existed**, and the
+  POI was generated before the factions so it invented its own rival groups.
+- **A quota cannot express tone.** Warmth was requested in Session 0 and present
+  in the agreements block; every entity still came out grim, and the player who
+  asked for it said so. Faction, NPC, creature and lore genomes all trend to
+  conflict, and no type-and-count contract can ask for a place to have a meal.
+
+Two further findings worth carrying: the interview raised factions from the
+generic 2 to 3 **and specified their kinds**, which is the quota-shaping
+hypothesis confirmed; and some Session 0 output shapes *runtime GM behaviour*
+rather than the world (give faction X equal stage time; recognise this player
+socially rather than mechanically; this player's silence is not a distress
+signal). The contract holds none of that and needs a sibling that does.
 
 **World fill is the one phase with no natural edge**, since a backstory can imply
 arbitrarily much. Bound it structurally: expand depth 1 from each backstory
@@ -464,3 +503,19 @@ further constraints from how the tool is used at real tables: veils are often
 recites the constraint back where the table can read it; and they are **added
 mid-campaign**, so the profile must be amendable at any session rather than frozen
 at Session 0.
+
+**The trial proved this twice, in both directions.** A player's bigotry Line
+turned out to bind the *setting* — "even if no one's PC ever encounters it
+directly" — which `SafetyGovernor` structurally cannot enforce, because a culture
+page carrying it reads fine in isolation. Carried into the prompt instead, it
+held. And a claustrophobia Veil **collided with the premise itself**: a mine
+campaign cannot be filtered into compliance, it has to be generated differently.
+Both were invisible to an output filter and both were cheap at generation time.
+
+**`PlayerProfileManager` cannot currently represent any of this.** It stores one
+flat `lines_and_veils` list of strings, so `aggregate_safety_boundaries` hands the
+governor a Line and a Veil as indistinguishable text. It cannot express that a
+Line forbids and a Veil defers, that one player's animal Line is about on-screen
+death rather than the content existing, that another's binds worldbuilding rather
+than scenes, or that a third needs a private channel. Every one of those came out
+of a single interview. Fixing the structure is a precondition, not a follow-up.

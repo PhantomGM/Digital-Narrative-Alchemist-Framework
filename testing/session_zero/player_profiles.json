@@ -1,0 +1,98 @@
+{
+  "_note": "Structured from 'TTRPG Player Profiles.md'. Lines and Veils are held APART, unlike PlayerProfileManager.lines_and_veils which flattens both into one list — a Line is a prohibition, a Veil is 'handle off-screen', and SafetyGovernor cannot tell them apart once merged.",
+  "players": [
+    {
+      "id": "elias",
+      "name": "Elias",
+      "experience": "moderate",
+      "experience_years": 4,
+      "play_style": "Actor / Storyteller",
+      "style_notes": [
+        "prefers acting in-character, deep NPC relationships",
+        "will make suboptimal mechanical choices for narrative reasons",
+        "actively seeks inter-party roleplay in travel and downtime"
+      ],
+      "genres": ["High Fantasy", "Gothic Horror", "Cozy Mystery"],
+      "lines": ["sexual violence of any kind", "harm or abuse involving children"],
+      "veils": ["graphic torture (fade to black or off-screen)", "detailed descriptions of gore"]
+    },
+    {
+      "id": "sarah",
+      "name": "Sarah",
+      "experience": "veteran",
+      "experience_years": 10,
+      "play_style": "Tactician / Problem-Solver",
+      "style_notes": [
+        "complex grid combat, resource management, terrain use",
+        "political intrigue and untangling complex factions",
+        "challenging encounters requiring strategy to survive",
+        "optimizes to uplift the team, not to overshadow"
+      ],
+      "genres": ["High Fantasy", "Cyberpunk", "Hard Sci-Fi"],
+      "lines": [
+        "sexual violence",
+        "real-world bigotry (homophobia, transphobia, racism) directed at PCs or used as casual worldbuilding flavour"
+      ],
+      "veils": ["graphic torture", "visceral eye trauma"]
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus",
+      "experience": "beginner-intermediate",
+      "experience_years": 1.5,
+      "play_style": "Explorer / Instigator",
+      "style_notes": [
+        "motivated by uncovering lore, finding secrets, exploring the map",
+        "takes decisive action during party analysis paralysis",
+        "enjoys high stakes; accepts character death if epic or meaningful"
+      ],
+      "genres": ["Cyberpunk", "Sci-Fi Horror", "Weird West"],
+      "lines": ["animal cruelty or on-screen death of pets/familiars", "forced institutionalization"],
+      "veils": ["romance and sexual encounters (strict fade to black)", "prolonged claustrophobia or being buried alive"]
+    },
+    {
+      "id": "chloe",
+      "name": "Chloe",
+      "experience": "beginner",
+      "experience_years": 0.5,
+      "play_style": "Audience / Support",
+      "style_notes": [
+        "mechanical support roles (healers, buffers)",
+        "enjoys listening and watching the story unfold",
+        "happy to take a backseat in intense roleplay",
+        "responds very well to direct prompts from GM or players"
+      ],
+      "genres": ["Cozy Mystery", "Space Opera", "High Fantasy"],
+      "lines": ["animal cruelty", "sexual violence"],
+      "veils": ["romance involving player characters", "gaslighting or severe psychological manipulation"]
+    }
+  ],
+  "_derived": {
+    "genre_tally": {
+      "High Fantasy": ["elias", "sarah", "chloe"],
+      "Cozy Mystery": ["elias", "chloe"],
+      "Cyberpunk": ["sarah", "marcus"],
+      "Gothic Horror": ["elias"],
+      "Hard Sci-Fi": ["sarah"],
+      "Sci-Fi Horror": ["marcus"],
+      "Weird West": ["marcus"],
+      "Space Opera": ["chloe"]
+    },
+    "genre_problem": "High Fantasy is the only genre three players share, and Marcus — the one most likely to drive the plot forward — does not list it. No genre is shared by all four.",
+    "union_lines": [
+      "sexual violence",
+      "harm or abuse involving children",
+      "real-world bigotry directed at PCs or as casual worldbuilding flavour",
+      "animal cruelty or on-screen death of pets/familiars",
+      "forced institutionalization"
+    ],
+    "union_veils": [
+      "graphic torture",
+      "detailed gore",
+      "visceral eye trauma",
+      "romance and sexual encounters involving PCs",
+      "prolonged claustrophobia / being buried alive",
+      "gaslighting or severe psychological manipulation"
+    ]
+  }
+}

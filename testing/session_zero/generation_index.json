@@ -1,0 +1,122 @@
+[
+  {
+    "n": 1,
+    "type": "world",
+    "file": "01_world.md",
+    "id": "88b1099d-6427-4aff-94d7-36b05e2b86ba",
+    "chars": 10220,
+    "seconds": 30.8
+  },
+  {
+    "n": 2,
+    "type": "region",
+    "file": "02_region.md",
+    "id": "09614230-0729-4bd1-848c-d97c9018d4ed",
+    "chars": 12614,
+    "seconds": 44.7
+  },
+  {
+    "n": 3,
+    "type": "settlement",
+    "file": "03_settlement.md",
+    "id": "9026a7b0-ddba-46bc-bb0a-5b94b28de04d",
+    "chars": 13134,
+    "seconds": 57.4
+  },
+  {
+    "n": 4,
+    "type": "regional_poi",
+    "file": "04_regional_poi.md",
+    "id": "39cbe853-afba-4bb8-858c-70db971d9f86",
+    "chars": 7220,
+    "seconds": 24.3
+  },
+  {
+    "n": 5,
+    "type": "culture",
+    "file": "05_culture.md",
+    "id": "d35e7950-1658-48de-adc3-7344f736fe80",
+    "chars": 11264,
+    "seconds": 24.2
+  },
+  {
+    "n": 6,
+    "type": "linguistic",
+    "file": "06_linguistic.md",
+    "id": "0ca4e977-1063-4113-803f-6f72089ca62a",
+    "chars": 5123,
+    "seconds": 17.0
+  },
+  {
+    "n": 7,
+    "type": "faction",
+    "file": "07_faction_1.md",
+    "id": "42c9282d-a987-441a-962e-e7e8b51b72c0",
+    "chars": 7805,
+    "seconds": 22.2
+  },
+  {
+    "n": 8,
+    "type": "faction",
+    "file": "08_faction_2.md",
+    "id": "064f6df6-b10b-4ffa-938a-850b955acf14",
+    "chars": 8906,
+    "seconds": 21.3
+  },
+  {
+    "n": 9,
+    "type": "faction",
+    "file": "09_faction_3.md",
+    "id": "892e8cdb-5aee-4038-8ea4-abf44a4527b6",
+    "chars": 10020,
+    "seconds": 27.5
+  },
+  {
+    "n": 10,
+    "type": "npc",
+    "file": "10_npc_1.md",
+    "id": "93c3d5d2-0bd8-4b04-8de9-fc60cc6e2f35",
+    "chars": 10677,
+    "seconds": 29.7
+  },
+  {
+    "n": 11,
+    "type": "npc",
+    "file": "11_npc_2.md",
+    "id": "8cb2242d-ba30-4dad-ba28-1438fd2b3fad",
+    "chars": 10724,
+    "seconds": 35.7
+  },
+  {
+    "n": 12,
+    "type": "npc",
+    "file": "12_npc_3.md",
+    "id": "1c132f9f-d915-4d4a-93c2-cdc2949431fe",
+    "chars": 10913,
+    "seconds": 38.0
+  },
+  {
+    "n": 13,
+    "type": "creature",
+    "file": "13_creature.md",
+    "id": "61b7ad28-815a-44e9-9fd3-15831ea1f6b3",
+    "chars": 8347,
+    "seconds": 23.6
+  },
+  {
+    "n": 14,
+    "type": "lore",
+    "file": "14_lore.md",
+    "id": "58cce191-d79d-476a-a5a8-314ae3839d8b",
+    "chars": 6863,
+    "seconds": 21.1
+  },
+  {
+    "n": 15,
+    "type": "quest",
+    "file": "15_quest.md",
+    "id": "40dafb38-1615-469d-87fa-83d44a30f673",
+    "chars": 12169,
+    "seconds": 37.1
+  }
+]
