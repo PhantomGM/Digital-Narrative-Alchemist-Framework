@@ -10,6 +10,7 @@ if you only read one; [README.md](README.md) explains what the trial was.
 | File | What it holds |
 | :--- | :--- |
 | [README.md](README.md) | What this folder is, why it is committed with its flaws, and how to re-run it. |
+| [00_TTRPG Player Profiles.md](00_TTRPG%20Player%20Profiles.md) | **The input.** The four simulated players as originally written — experience, play style, genres, Lines and Veils. Everything downstream derives from this file. `player_profiles.json` is a structured reading of it, not a replacement. |
 | [01_round1_transcript.md](01_round1_transcript.md) | The four players' unedited answers to the Session 0 questionnaire, given privately before any of them saw another's. |
 | [02_campaign_pitch.md](02_campaign_pitch.md) | The campaign pitch, assembled from the generated entities. Every proper noun in it came out of the pipeline. All four players accepted it. |
 | [03_findings.md](03_findings.md) | **The write-up.** Eight things the trial validated, seven defects it found, and the branching-factor measurement that corrected `docs/PROJECT_STATE.md` §8. |
