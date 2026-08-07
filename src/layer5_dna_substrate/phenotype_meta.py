@@ -17,7 +17,34 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
-TAIL_INSTRUCTION = """
+VALID_STUB_TYPES = {
+    "npc", "faction", "location", "settlement", "region",
+    "item", "quest", "chronicle", "linguistic", "world",
+    # Peoples, the things they believe, the documents carrying those beliefs, and
+    # the beasts. Each files to its own part of the bible and each has its own
+    # decoder (see ObsidianSync.TYPE_FOLDER_MAP).
+    "culture", "lore", "text", "creature",
+    # Play content rather than world content. Omitting trap was not harmless: an
+    # unrecognised label falls through _resolve_stub_type's default, so every
+    # "[Trap]" stub was silently registered as an npc and filed under Characters.
+    "trap",
+    # The same omission, found again in six more types. Each already had a
+    # generator, a decoder and a folder of its own; none of them was reachable
+    # from a stub, so a decoder writing "[Tavern] The Broken Wheel" produced a
+    # person in Characters. The live world holds 112 records and not one of
+    # these six types, which is what a type nobody can name looks like from
+    # the outside.
+    "agency", "establishment", "realm", "regional_poi", "travel", "wonder",
+}
+
+# The prompt's list of legal types is DERIVED from the set above rather than
+# written out beside it. The two were maintained by hand and drifted: the set
+# had grown to fifteen types while the prompt still offered ten, so decoders
+# were never told that `creature`, `culture`, `lore`, `text` or `trap` existed
+# and reached for an unlisted word instead. Deriving it makes that drift
+# impossible. Sorted because set iteration order is not stable across
+# processes, and an unstable prompt defeats caching.
+TAIL_INSTRUCTION = f"""
 ### 🔩 MACHINE-READABLE TAIL (MANDATORY)
 
 After the complete profile, end your response with ONE fenced YAML code block.
@@ -37,7 +64,10 @@ stubs:
 
 Rules for the tail:
 - The stubs list must mirror the entities in the Unmade Connections section, one entry each.
-- Allowed stub types: npc, faction, location, settlement, region, item, quest, chronicle, linguistic, world.
+- Allowed stub types: {", ".join(sorted(VALID_STUB_TYPES))}.
+- Use the closest type on that list. Do not invent a type: an unlisted word is
+  read as a person, so a tavern labelled "establishment" becomes a place and the
+  same tavern labelled "tavern" becomes an innkeeper.
 - If there are no unmade connections, write "stubs: []".
 - Plain YAML only: no wikilinks, no markdown formatting inside values.
 """
@@ -55,20 +85,6 @@ _TAIL_HEADING_RE = re.compile(
 # A parsed tail must carry at least one of these to be considered valid,
 # so stray YAML blocks inside the prose don't get mistaken for the tail.
 _REQUIRED_ANY = ("name", "gist", "summary")
-
-VALID_STUB_TYPES = {
-    "npc", "faction", "location", "settlement", "region",
-    "item", "quest", "chronicle", "linguistic", "world",
-    # Peoples, the things they believe, the documents carrying those beliefs, and
-    # the beasts. Each files to its own part of the bible and each has its own
-    # decoder (see ObsidianSync.TYPE_FOLDER_MAP).
-    "culture", "lore", "text", "creature",
-    # Play content rather than world content. Omitting trap was not harmless: an
-    # unrecognised label falls through _resolve_stub_type's default, so every
-    # "[Trap]" stub was silently registered as an npc and filed under Characters.
-    "trap",
-}
-
 
 def _candidate_blocks(phenotype: str) -> List[re.Match]:
     return list(_YAML_FENCE_RE.finditer(phenotype or ""))

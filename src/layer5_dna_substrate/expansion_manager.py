@@ -9,7 +9,16 @@ from layer5_dna_substrate.phenotype_meta import parse_phenotype_tail, VALID_STUB
 FUZZY_TYPE_MAP = {
     "npc": "npc", "person": "npc", "character": "npc", "individual": "npc", "librarian": "npc",
     "archivist": "npc", "confidante": "npc", "scribe": "npc", "guardian": "npc", "noble": "npc",
-    "location": "location", "place": "location", "structure": "location", "realm": "location",
+    # A bishop is a person. Named here, early, because "bishop" contains "shop"
+    # and the establishment block below would otherwise make one into a store.
+    "bishop": "npc", "priest": "npc",
+    # "realm" used to resolve here. A realm has its own generator, decoder and
+    # Atlas subfolder, so routing it to location gave it the wrong prompt as
+    # well as the wrong shelf — the one mis-route in this map rather than a
+    # plain omission. "temple" stays a location deliberately: an establishment
+    # is a room with a proprietor, and re-routing a key that already resolves
+    # would split the corpus. Retype deliberately instead (retype_element).
+    "location": "location", "place": "location", "structure": "location",
     "area": "location", "void": "location", "pass": "location", "peaks": "location", "temple": "location",
     "faction": "faction", "organization": "faction", "group": "faction", "guild": "faction",
     "order": "faction", "family": "faction", "civilization": "faction", "lineage": "faction", "council": "faction",
@@ -31,14 +40,66 @@ FUZZY_TYPE_MAP = {
     "quest": "quest", "adventure": "quest", "mission": "quest", "job": "quest",
     "contract": "quest", "errand": "quest",
     # In-world documents: the object carrying a claim, as opposed to the claim
-    # (lore) or a mere possession (item). Deliberately last, because matching is
-    # by substring in insertion order: "scroll" and "book" already resolve to
-    # item and "scripture" to lore, and re-routing those would move existing
-    # entities. Retype deliberately instead (DNARegistry.retype_element).
+    # (lore) or a mere possession (item). Deliberately placed after item and
+    # lore, because matching is by substring in insertion order: "scroll" and
+    # "book" already resolve to item and "scripture" to lore, and re-routing
+    # those would split existing entities from new ones. Retype deliberately
+    # instead (DNARegistry.retype_element).
+    # "logbook" was listed here and could never fire: "book" is an earlier key,
+    # so every label containing it resolved to item first. Removing the dead
+    # key changes no behaviour and stops the map claiming a route it lacks.
+    # A logbook is therefore an item, which is the same accepted tradeoff as
+    # "book" and "scroll" — retype deliberately if that ever needs to change.
     "text": "text", "document": "text", "codex": "text", "tome": "text",
     "manual": "text", "ledger": "text", "letter": "text", "treatise": "text",
-    "journal": "text", "diary": "text", "logbook": "text", "hymnal": "text",
+    "journal": "text", "diary": "text", "hymnal": "text",
     "inscription": "text",
+
+    # ── Six types that had a generator, a decoder and a folder but no way in ──
+    #
+    # Everything below is appended rather than interleaved, and that placement
+    # is the safety argument: matching is by substring in insertion order, so a
+    # key added at the end can only capture labels that previously fell through
+    # to the "npc" default. No label that already resolved can be hijacked.
+    #
+    # Somewhere you can walk into, with a door and someone behind the counter.
+    # "shop" is a substring of "bishop", who is a person; the npc block above
+    # names bishops explicitly so the earlier match wins. "forge" and "stall"
+    # were considered and dropped — they are substrings of "forgery" and
+    # "install" and buy nothing that "smithy" and "market" do not.
+    "establishment": "establishment", "tavern": "establishment",
+    "inn": "establishment", "alehouse": "establishment", "shop": "establishment",
+    "store": "establishment", "smithy": "establishment",
+    "apothecary": "establishment", "market": "establishment",
+    "shrine": "establishment", "parlour": "establishment",
+    # A site you travel to and go inside: the adventure locale, larger than a
+    # room and smaller than a settlement.
+    "regional_poi": "regional_poi", "point of interest": "regional_poi",
+    "dungeon": "regional_poi", "ruin": "regional_poi", "tower": "regional_poi",
+    "lair": "regional_poi", "landmark": "regional_poi", "monument": "regional_poi",
+    "anomaly": "regional_poi", "crypt": "regional_poi", "barrow": "regional_poi",
+    # Settlement had only its own name; the words a decoder actually writes for
+    # one did not resolve, so a village became a villager.
+    # Bare "port" is a substring of "portal", which is not a town.
+    "city": "settlement", "town": "settlement", "village": "settlement",
+    "hamlet": "settlement", "outpost": "settlement", "metropolis": "settlement",
+    "port-city": "settlement", "harbour": "settlement", "harbor": "settlement",
+    # Polities above the settlement, restored from the location mis-route.
+    # Bare "nation" is a substring of "abomination", which is a creature.
+    "realm": "realm", "kingdom": "realm", "empire": "realm",
+    "principality": "realm", "dominion": "realm",
+    # An institution of state, as distinct from a faction with its own agenda.
+    "agency": "agency", "bureau": "agency", "ministry": "agency",
+    "constabulary": "agency", "authority": "agency", "department": "agency",
+    # A route rather than a place: what the journey along it costs.
+    "travel": "travel", "route": "travel", "journey": "travel",
+    "voyage": "travel", "expedition": "travel",
+    # World-scale singular features.
+    "wonder": "wonder", "marvel": "wonder",
+    # "cult" MUST stay below the culture block. Placed above it, the substring
+    # test would read "culture" as containing "cult" and route every people in
+    # the world to faction.
+    "cult": "faction", "syndicate": "faction", "cabal": "faction",
 }
 
 
