@@ -355,9 +355,14 @@ they came from, which is not published here.
 
 `src/layer4_rules/PF2EDNA/` encodes rules content from Pathfinder Second
 Edition, which is the property of Paizo Inc. Neither of the licences above
-applies to it, and I cannot grant you rights to it. If you intend to
-redistribute or build on that cartridge, check Paizo's current licensing terms
-yourself.
+applies to it, and I cannot grant you rights to it.
+
+See [`src/layer4_rules/PF2EDNA/LICENSE-NOTICE.md`](src/layer4_rules/PF2EDNA/LICENSE-NOTICE.md)
+for the ORC License and trademark notices, and for what is still unresolved —
+the data mixes pre-Remaster and Remaster terminology, which are covered by
+*different* licences (OGL 1.0a and ORC respectively), and nothing in this
+repository records which Paizo works it was drawn from. Do not treat that
+cartridge as cleanly licensed until that is settled.
 
 ---
 
