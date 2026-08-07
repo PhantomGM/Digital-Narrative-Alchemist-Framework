@@ -167,10 +167,54 @@ the setting leaves open*) — `lore`, `regional_poi`, `text`, `wonder`, plus the
 ones added this session. This is the rule protecting the standing ruling that the
 First Architects' identity is unresolved. Worth propagating.
 
-**Third-party licensing is unresolved.** `src/layer4_rules/PF2EDNA/` ships Paizo
-rules content with **no ORC or OGL notice anywhere**. The README disclaims
-ownership, which is not the same as complying. A planned Mythic GME integration
-raises the same question.
+### Layer IV: what the three rules cartridges are actually for
+
+They are a **test matrix for the rules abstraction**, not three rulesets the
+project needs:
+
+| Cartridge | Role |
+| :--- | :--- |
+| `coin_flip` | trivial pass/fail — the floor |
+| `one_page_5e` | rules-light |
+| `PF2EDNA` | detailed — the ceiling |
+
+The requirement they exist to prove is that **the conflict-resolution system can
+be changed — between sessions or during one — without destabilising anything
+above it.** Layer IV decides outcomes; the narrative agents render them; which
+resolver sits underneath is not supposed to be their business.
+
+That requirement had no test coverage and was already broken in two ways, both
+in PF2EDNA and both fixed in `d1f0f9c`: it did not define `system_name` (which
+`Orchestrator.load_ruleset` reads on every swap, so loading it raised
+AttributeError), and its `resolve_action` required a second argument the
+orchestrator's call site does not pass (TypeError on the first action after a
+successful load). The two lightweight cartridges swapped cleanly; the one that
+most needed to demonstrate swappability was the one that broke it.
+
+**A third difference is real and deliberately left alone.** `coin_flip` and
+`one_page_5e` accept the player's raw words. PF2EDNA accepts only mapped terms
+(`attack_melee`, `save`, `skill_check`) and raises `NotImplementedError`
+otherwise, while `Orchestrator.process_player_input` passes raw input straight
+through. **Swapping to the detailed ruleset therefore resolves nothing until
+something classifies intent first.** `tests/test_cartridge_swap.py` records this
+rather than hiding it — a fallback would return a rules result no rule produced.
+Building that intent layer is real outstanding work.
+
+**Mythic GME** is a different thing again, and not a rules system. The intent is
+an extra random variable running in the background *when no mechanical result is
+needed*, forcing the agents to keep inventing rather than settling into their own
+defaults — an active "imagination" input to story and content. It is for testing
+only until the author builds an equivalent of his own. Note the symmetry worth
+preserving: this is the runtime counterpart of what DNA does at generation time.
+Both inject constraint precisely to stop the model reaching for its favourite
+answer, which is the failure mode this project keeps rediscovering.
+
+**Third-party licensing, arising from the above.** `src/layer4_rules/PF2EDNA/`
+ships Paizo rules content with **no ORC or OGL notice anywhere**. The README
+disclaims ownership, which is not the same as complying. This is a
+*redistribution* question — the cartridge being a test fixture rather than a
+product dependency does not change that a public repo carries the content. Mythic
+GME (Word Mill Games) raises the same question if it ever ships.
 
 **Sixteen of twenty-one decoders have no worked example.** Deliberate — an
 example roughly doubles a decoder's size and therefore every prompt built from it.

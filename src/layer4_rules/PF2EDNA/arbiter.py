@@ -4,15 +4,22 @@ import sqlite3
 import importlib
 
 class GameSystemArbiter:
+    # Every cartridge must expose this: Orchestrator.load_ruleset reads it the
+    # moment a system is swapped in. It was missing here, so the two lightweight
+    # cartridges hot-swapped fine and the detailed one raised AttributeError on
+    # load — the exact failure the coin_flip / one_page_5e / PF2EDNA trio exists
+    # to catch, in the cartridge that most needs to prove swappability.
+    system_name = "Pathfinder 2E"
+
     def __init__(self, root_dir: str = None):
         if root_dir is None:
             self.root_dir = os.path.dirname(os.path.abspath(__file__))
         else:
             self.root_dir = root_dir
-            
+
         with open(os.path.join(self.root_dir, "manifest.json"), "r", encoding="utf-8") as f:
             self.manifest = json.load(f)
-            
+
         self._resolvers = {}
         
     def _get_resolver(self, module_key: str):
@@ -37,11 +44,20 @@ class GameSystemArbiter:
                 
         return self._resolvers[module_key]
 
-    def resolve_action(self, action_type: str, context: dict) -> dict:
+    def resolve_action(self, action_type: str, context: dict = None) -> dict:
         """
         Routes the action to the appropriate executable tier resolver.
         Example action_type: 'attack_melee', 'save', 'skill_check'
+
+        `context` is optional so this cartridge matches the signature the other
+        two use and the one Orchestrator.process_player_input actually calls —
+        `resolve_action(input_data)`, with one argument. Requiring it here meant
+        swapping to the detailed ruleset raised TypeError on the first action
+        resolved, after already raising AttributeError on load. Every branch
+        below reads through context.get() with a default, so an absent context
+        degrades to the same defaults rather than changing any outcome.
         """
+        context = context or {}
         if action_type in ["attack_melee", "attack_ranged"]:
             combat = self._get_resolver("combat")
             return combat.resolve_attack(
