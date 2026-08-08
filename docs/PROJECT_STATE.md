@@ -390,6 +390,18 @@ display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
 opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
 candidate on either axis — not the quarter an LNC-only count suggests.
 
+**The Lever reaches four fields, not one.** Deriving only *Core Vulnerability*
+from it left the BDI block and the hooks still generated from the alignment, so a
+character could have a sharp vulnerability and completely generic-for-quadrant
+intentions. It now drives the second Desire, the second Intention and the first
+Adventure Hook as well, on the rule that **the three BDI columns must not agree**:
+Beliefs are where the alignment speaks plainly, and the second Desire and Intention
+are where the Lever does. The Intentions column matters most because it is the one
+a GM plays from — a character whose every near-term plan serves their stated creed
+gives the table nothing to catch them at. The Lever hook carries its own test: *if
+it would work equally well on any other character of this alignment, it is not the
+Lever hook.*
+
 **A worked example outranks the instruction above it.** The NPC decoder gained a
 section deriving *Core Vulnerability* from the trait array rather than the
 alignment, and measured on three seeded NPCs it barely worked — one of three

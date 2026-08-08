@@ -329,7 +329,14 @@ The last one is the most familiar and the easiest to reach for. It is one of six
 
 | **Beliefs (Core Philosophies)**                                          | **Desires (Driving Wants)**                                                                    | **Intentions (Near-Term Plans)**                                                                          |
 | :----------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
-| • "\[Belief 1 in personal voice]" <br> • "\[Belief 2 showing worldview]" | • "\[Personal or narrative-driven desire]" <br> • "\[Desire linked to internal contradiction]" | • "\[Short-term action based on desires]" <br> • "\[Plan that could intersect with the party or setting]" |
+| • "\[Belief 1 in personal voice]" <br> • "\[Belief 2 showing worldview]" | • "\[A want their philosophy sanctions]" <br> • "\[**The want the Lever produces** — something their own beliefs leave no room for, which they have never reconciled and may never have noticed]" | • "\[A near-term plan serving the first desire]" <br> • "\[**A plan, standing arrangement or habit that serves the Lever instead** — it should look slightly out of character to anyone who has only read the Beliefs column, and be entirely in character for this person]" |
+
+> **The three columns must not agree.** Beliefs are where the alignment speaks
+> plainly; the second Desire and second Intention are where the Lever does. A BDI
+> whose columns all restate one philosophy has described a *quadrant*, not a person.
+> The Intentions column is where this shows first and matters most, because it is
+> the one a GM actually plays from — a character whose every near-term plan serves
+> their stated creed has nothing for the table to catch them at.
 
 ---
 
@@ -369,7 +376,7 @@ The last one is the most familiar and the easiest to reach for. It is one of six
 
 ### **Adventure Hooks**
 
-* **\[Hook Title 1]:** \[A scenario connected to their flaw, secret, or quest]
+* **\[Hook Title 1]:** \[**The Lever hook.** A situation that presses exactly where they are weakest, in which the response their alignment predicts is the wrong one. This is the hook that could not be written for anyone else in their quadrant — if it would work just as well on any other character of this alignment, it is not the Lever hook]
 * **\[Hook Title 2]:** \[A conflict with local factions, politics, or players]
 * **\[Hook Title 3]:** \[A problem that only laughter, violence, or empathy can solve]
 
@@ -427,7 +434,7 @@ Once a high priestess within the Umbral Synod, Vaelthra uncovered a hidden litur
 
 | **Beliefs (Core Philosophies)**                                          | **Desires (Driving Wants)**                                                                  | **Intentions (Near-Term Plans)**                                                                 |
 | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| • "Obedience is not submission—it is grace manifest."<br>• "Chaos is a mercy for the weak. I am no longer weak." | • "To craft a society where every breath is measured, every pain is purposeful."<br>• "To bury the unclean freedom that once tempted me." | • "Expand the Hollow Accord through strategic pacts with surface nobility."<br>• "Seal the last known access tunnels to prevent spiritual contamination." |
+| • "Obedience is not submission—it is grace manifest."<br>• "Chaos is a mercy for the weak. I am no longer weak." | • "To craft a society where every breath is measured, every pain is purposeful."<br>• "To be, once, the reason someone was spared—and never to be asked why." | • "Expand the Hollow Accord through strategic pacts with surface nobility."<br>• "Settle a stranger's debt through three intermediaries, so that it cannot be traced back to her." |
 
 ---
 
@@ -472,7 +479,7 @@ Her voice carries no shout, only solemnity. The scepter taps the stone floor twi
 
 ### **Adventure Hooks**
 
-* **The Sister’s Refrain:** Rumors of Vaelra’s survival spark potential schism—can the party reach her first or use the truth as leverage?  
+* **The Ledger of Small Mercies:** Someone has been keeping a record of who leaves Vaelthra’s audience with more than they came for. The list is short, specific, and worth more to her enemies than the shard—because it is the only evidence that the Thornbound can be reached.  
 * **The Hollow Accord:** Vaelthra’s treaty with a surface barony could bring structured tyranny above ground.  
 * **Rite of the Thorn Moon:** A rare celestial alignment allows Vaelthra to invoke the shard’s full power—unless disrupted by those with chaos in their blood.
 
