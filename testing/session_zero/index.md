@@ -21,6 +21,7 @@ if you only read one; [README.md](README.md) explains what the trial was.
 | [08_trial5_findings.md](08_trial5_findings.md) | **Trial 5, the run.** The first to exercise every piece end to end — contract, safety field, expansion policy, ghosts. Found a `culture` decode that returned nothing while the pipeline reported success, which is the kind of defect only a full run finds. |
 | [09_trial5_pitch.md](09_trial5_pitch.md) | **The Gilded Shiver** — trial 5's pitch, assembled from its 17 entities. Every proper noun came out of the pipeline. |
 | [10_trial5_pitch_reactions.md](10_trial5_pitch_reactions.md) | **What four readers found that probes could not.** All four accepted, and then produced three defects no automated check in this repo would have caught — including an NPC that reads as pre-assigned, which has no token to grep for. |
+| [11_trial6_naming.md](11_trial6_naming.md) | **Trial 6.** The same machinery with `naming` and `roster` finally wired, after five trials generated a language and discarded it. The first world whose names obey its own language — Brak-Tally, Vex-Seam, Drift-Lock Four — and zero model-default names in seventeen pages. |
 
 ## The generated world
 

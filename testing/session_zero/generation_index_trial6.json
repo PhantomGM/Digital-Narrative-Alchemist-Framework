@@ -1,0 +1,155 @@
+[
+  {
+    "n": 1,
+    "slot": "world",
+    "type": "world",
+    "file": "trial6_01_world.md",
+    "id": "4ee3cdd1-9034-468a-8fe3-92d4775a19ba",
+    "chars": 6417,
+    "seconds": 116.2
+  },
+  {
+    "n": 2,
+    "slot": "crews",
+    "type": "culture",
+    "file": "trial6_02_crews.md",
+    "id": "db8c51a6-a8a2-458e-9849-f97b5a918538",
+    "chars": 8663,
+    "seconds": 135.8
+  },
+  {
+    "n": 3,
+    "slot": "linguistic",
+    "type": "linguistic",
+    "file": "trial6_03_linguistic.md",
+    "id": "361c776c-034d-4b20-aeac-b9752a73d974",
+    "chars": 2990,
+    "seconds": 114.5
+  },
+  {
+    "n": 4,
+    "slot": "corridor",
+    "type": "region",
+    "file": "trial6_04_corridor.md",
+    "id": "f15a5c56-d6ec-4bbf-97ed-23433036542c",
+    "chars": 7915,
+    "seconds": 131.9
+  },
+  {
+    "n": 5,
+    "slot": "station",
+    "type": "settlement",
+    "file": "trial6_05_station.md",
+    "id": "cddfffab-115a-43d4-a939-ea76d470627f",
+    "chars": 7540,
+    "seconds": 125.1
+  },
+  {
+    "n": 6,
+    "slot": "run",
+    "type": "travel",
+    "file": "trial6_06_run.md",
+    "id": "679e3e22-f64c-4da2-8a4a-d6561130c6a0",
+    "chars": 9015,
+    "seconds": 126.6
+  },
+  {
+    "n": 7,
+    "slot": "hulk",
+    "type": "regional_poi",
+    "file": "trial6_07_hulk.md",
+    "id": "a26c315e-b901-4aa0-a1af-f92eb23c09c5",
+    "chars": 5808,
+    "seconds": 126.7
+  },
+  {
+    "n": 8,
+    "slot": "galley",
+    "type": "establishment",
+    "file": "trial6_08_galley.md",
+    "id": "e7743814-1c8f-4e71-b787-d2009fee9b32",
+    "chars": 5169,
+    "seconds": 129.5
+  },
+  {
+    "n": 9,
+    "slot": "powers",
+    "type": "faction",
+    "file": "trial6_09_powers_1.md",
+    "id": "92281a96-3df0-4bd0-92ec-3569df8c72de",
+    "chars": 6310,
+    "seconds": 126.1
+  },
+  {
+    "n": 10,
+    "slot": "powers",
+    "type": "faction",
+    "file": "trial6_10_powers_2.md",
+    "id": "00d4acef-f92d-47fd-9792-70cd0c37e184",
+    "chars": 6668,
+    "seconds": 126.8
+  },
+  {
+    "n": 11,
+    "slot": "powers",
+    "type": "faction",
+    "file": "trial6_11_powers_3.md",
+    "id": "c3de4cf6-1192-4da9-9228-82cf2c744aff",
+    "chars": 6460,
+    "seconds": 121.0
+  },
+  {
+    "n": 12,
+    "slot": "crew",
+    "type": "npc",
+    "file": "trial6_12_crew_1.md",
+    "id": "79ec5551-9533-4ffe-9db1-2616553c8dbc",
+    "chars": 10220,
+    "seconds": 139.2
+  },
+  {
+    "n": 13,
+    "slot": "crew",
+    "type": "npc",
+    "file": "trial6_13_crew_2.md",
+    "id": "d025814b-260b-4560-bba4-35419b700caf",
+    "chars": 10985,
+    "seconds": 143.1
+  },
+  {
+    "n": 14,
+    "slot": "crew",
+    "type": "npc",
+    "file": "trial6_14_crew_3.md",
+    "id": "6dba8b7e-e3c7-4350-8201-0f0d90001176",
+    "chars": 9422,
+    "seconds": 156.9
+  },
+  {
+    "n": 15,
+    "slot": "the-wrong",
+    "type": "creature",
+    "file": "trial6_15_the-wrong.md",
+    "id": "38964987-181c-4376-82a5-70da00c9aa62",
+    "chars": 6542,
+    "seconds": 146.5
+  },
+  {
+    "n": 16,
+    "slot": "open-question",
+    "type": "lore",
+    "file": "trial6_16_open-question.md",
+    "id": "ca7fe7d3-56db-4921-998e-798ec52597cc",
+    "chars": 6022,
+    "seconds": 145.7
+  },
+  {
+    "n": 17,
+    "slot": "hook",
+    "type": "quest",
+    "file": "trial6_17_hook.md",
+    "id": "3a37d02e-aeaf-4858-8384-54a774aa25ea",
+    "chars": 5946,
+    "seconds": 120.5
+  }
+]

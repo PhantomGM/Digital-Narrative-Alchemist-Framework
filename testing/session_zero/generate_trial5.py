@@ -46,7 +46,7 @@ from layer5_dna_substrate.ghost_registry import GhostRegistry  # noqa: E402
 from layer5_dna_substrate.registry import DNARegistry  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PAGES = os.path.join(HERE, "pages_trial5")
+PAGES = os.path.join(HERE, "pages_trial5")   # default; --out overrides
 
 SAFETY = SafetyRegister([
     SafetyConstraint("sexual violence", kind=LINE,
@@ -240,6 +240,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--seed", type=int, default=20260807)
+    ap.add_argument("--out", default=PAGES,
+                    help="pages directory; registry and index follow it")
     ap.add_argument("--free-depth", type=int, default=0,
                     help="0 = pitch phase: generate the contract, expand no "
                          "stubs, and let ghosts and canon carry the frontier.")
@@ -247,7 +249,11 @@ def main():
 
     forge = ProceduralForge()
     CONTRACT.validate(known_types=list(forge.generators))
-    os.makedirs(PAGES, exist_ok=True)
+    out_dir = os.path.abspath(args.out)
+    suffix = os.path.basename(out_dir).replace("pages_", "")
+    registry_out = os.path.join(HERE, f"registry_{suffix}.json")
+    index_out = os.path.join(HERE, f"generation_index_{suffix}.json")
+    os.makedirs(out_dir, exist_ok=True)
 
     registry = DNARegistry()
     assembler = ContextAssembler(registry)
@@ -310,9 +316,9 @@ def main():
                 element_type=slot.type, raw_dna=dna["dna"], decoded_profile=page,
                 tags=["trial5", f"slot_{slot.name}"])
             registry.get_element(rid)["depth"] = 0
-            fname = f"trial5_{made:02d}_{slot.name}" \
+            fname = f"{suffix}_{made:02d}_{slot.name}" \
                     f"{'_' + str(i+1) if slot.count > 1 else ''}.md"
-            with open(os.path.join(PAGES, fname), "w",
+            with open(os.path.join(out_dir, fname), "w",
                       encoding="utf-8", newline="\n") as fh:
                 fh.write(page)
             prior.append(f"### [{slot.type}] {fname}\n"
@@ -346,9 +352,8 @@ def main():
     results = manager.advance_frontier(stubs)
     print(f"    done: " + ", ".join(f"{k} {len(v)}" for k, v in results.items()))
 
-    registry.save_to_json(os.path.join(HERE, "registry_trial5.json"))
-    with open(os.path.join(HERE, "generation_index_trial5.json"), "w",
-              encoding="utf-8") as fh:
+    registry.save_to_json(registry_out)
+    with open(index_out, "w", encoding="utf-8") as fh:
         json.dump(index, fh, indent=2)
     print(f"\ncontract satisfied: {CONTRACT.is_satisfied(counts)}")
 
