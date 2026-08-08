@@ -554,6 +554,44 @@ reports to the author and a prompt never sees**. The prompt already has the safe
 answer; a human should still know a boundary was described two different ways and
 settle it.
 
+**What Session 0 elicits is STRUCTURE; genre is the skin over it.** Trial 1 built
+a mining town, trial 5 built a salvage station from a different interview, and
+both came out as *a warm room, a dark place below, and three powers that want
+incompatible things*. The player who had asked for high fantasy and got science
+fiction put it best on reading trial 5's pitch: *"I didn't lose the vibe, I lost
+the word 'kingdom'."*
+
+**Three contract findings from trial 5's pitch reactions**
+(`testing/session_zero/10_trial5_pitch_reactions.md`), all four of whom accepted:
+
+- **A slot brief can pull against a table agreement and win.** The opening hook
+  obeyed its brief — put the crew aboard in the first hour — and two of four
+  players objected to the pace, which the shared agreements block had explicitly
+  asked for. The brief is local and specific; the agreements are global and
+  general, and specific wins. **Pacing constraints have to reach the slots that
+  can violate them.**
+- **`Slot.tone` fixes absence, not proportion.** One warm room among seventeen
+  entities is present and outnumbered: *"the warmth is one room and everything
+  outside it is debt ledgers."* Tone may need to be a property of the contract as
+  a whole, not only of individual slots.
+- **"No pre-assigned arcs" failed, and only a reader caught it.** An NPC came out
+  with *"three erased names and stained fingers — a lot of neon for a first
+  mention, feels like the GM's already picked who I'm supposed to suspect."*
+  There is no token to grep for; the page is well written and the defect is that
+  it is *too legible*. The clearest case in five trials for keeping a human in
+  the loop rather than trusting the checks.
+
+**A third kind of Veil, which the register cannot yet express.** The
+claustrophobia constraint turns out to be about **duration and emphasis** rather
+than existence (`scope`) or visibility (`narrows`): *"I'm not asking you to cut
+that, I want that… just don't marinate in it."* The safety block over-corrected
+into forbidding enclosure entirely, and the generation obeyed — zero enclosure
+passages in seventeen pages, when the player wanted the tight dark as a place and
+only asked not to linger. It currently survives as prose in `note`, which worked
+by luck rather than by structure. It is also a **runtime** constraint as much as
+a generation one: "check in with me at that moment" is something a GM does, not
+something a world contains.
+
 **Session 0 sets the quota, it does not merely tint the tone.** Genre changes
 which types matter at all: political intrigue wants factions, NPCs, agencies and
 texts and roughly zero creatures; a hexcrawl inverts that. A fixed count is the

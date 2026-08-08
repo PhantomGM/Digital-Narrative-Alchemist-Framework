@@ -19,6 +19,8 @@ if you only read one; [README.md](README.md) explains what the trial was.
 | [06_trial4_hints_stripped.md](06_trial4_hints_stripped.md) | **Trial 4.** The same interview with the three leading hints deleted and one player held as an unchanged control. One finding reproduced unprompted, one **reversed**, one vanished. For safety, the hint turns out to be the instrument rather than the bias. |
 | [07_trial5_interview.md](07_trial5_interview.md) | **Trial 5, the interview.** The questionnaire now asks everyone directly what was previously hinted to individuals. **All four players say they would not raise a boundary out loud** — including the ten-year veteran who had volunteered the opposite twice. The out-loud default is endorsed by nobody. |
 | [08_trial5_findings.md](08_trial5_findings.md) | **Trial 5, the run.** The first to exercise every piece end to end — contract, safety field, expansion policy, ghosts. Found a `culture` decode that returned nothing while the pipeline reported success, which is the kind of defect only a full run finds. |
+| [09_trial5_pitch.md](09_trial5_pitch.md) | **The Gilded Shiver** — trial 5's pitch, assembled from its 17 entities. Every proper noun came out of the pipeline. |
+| [10_trial5_pitch_reactions.md](10_trial5_pitch_reactions.md) | **What four readers found that probes could not.** All four accepted, and then produced three defects no automated check in this repo would have caught — including an NPC that reads as pre-assigned, which has no token to grep for. |
 
 ## The generated world
 
