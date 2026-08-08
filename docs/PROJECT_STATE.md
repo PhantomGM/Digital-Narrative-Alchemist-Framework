@@ -511,9 +511,38 @@ contract will build the wrong world for the right table.** Trial 3 also produced
 a requirement trial 1 missed: the private channel may need to be *asynchronous*
 (after the session, over Discord), so the safety path has to reach outside play.
 
-Caveat recorded in the trial write-up: three of the reproduced safety findings
-were **hinted at by the questionnaire**, which was reused verbatim to keep the
-comparison fair. A trial 4 with those hints stripped is the real test.
+**Trial 4 stripped the hints, and the answer is not what trial 3 expected**
+(`06_trial4_hints_stripped.md`). Three of the questionnaire's sentences pointed
+directly at the findings they produced; removing them gave three different
+outcomes, with Elias as an unchanged control:
+
+- **Sarah reproduced unprompted.** "Grafted on as flavour" — the setting-scope
+  Line stands on its own, so the argument for `ContextPackage.safety` reaching
+  generation does not depend on a leading question.
+- **Marcus reversed.** Hinted, he *narrowed* his animal Line to on-screen death.
+  Unhinted, he *broadened* it: "even off screen is rough for me, I'd rather not
+  know it happened at all." **A system caching the narrow reading would generate
+  content this same player does not want.**
+- **Chloe did not reproduce.** Without the hint the private-channel need vanished
+  entirely. Either it was an artifact, or it is real and surfaces only when asked
+  — which is what one would expect of someone who struggles to raise boundaries,
+  and cannot be distinguished with simulated players.
+- **Elias, the control**, held steady on safety and flipped his question-7 answer
+  *back* to trial 1's. So creative variance is noise independent of hints, and
+  the other three changes can be read as hint effects rather than randomness.
+
+**So for safety, the hint is the instrument rather than the bias.** A
+questionnaire that waits for boundaries to be volunteered collects less than one
+that asks directly, and collects least from the players who most need asking.
+Trial 3's headline survives with its reasoning corrected: safety answers are
+reproducible *when asked well*, and the asking is part of the instrument.
+
+**Outstanding, found by trial 4.** `SafetyRegister.merged()` keeps the stricter
+`kind` and `scope`, but **notes merely accumulate**. Marcus's two readings —
+"on-screen only" and "even off screen" — would both land in one note and
+contradict each other in the prompt with nothing to resolve them. Strictness
+needs to reach the notes, or a narrowing note needs to be droppable when a
+broader reading exists.
 
 **Session 0 sets the quota, it does not merely tint the tone.** Genre changes
 which types matter at all: political intrigue wants factions, NPCs, agencies and
