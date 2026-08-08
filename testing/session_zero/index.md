@@ -17,6 +17,8 @@ if you only read one; [README.md](README.md) explains what the trial was.
 | [04_trial2_findings.md](04_trial2_findings.md) | **Trial 2.** The same players and the same transcripts, through the *built* machinery instead of scaffolding. Five of five retested defects fixed, no regressions, and one new negative result: the contract bounds what is generated, not what is implied. |
 | [05_trial3_interview.md](05_trial3_interview.md) | **Trial 3.** A fresh interview from the same four profiles, inverting trial 2. Safety findings reproduce; creative findings do not — so a safety register can be cached per group and a contract cannot. Includes the methodological caveat about hinted prompts. |
 | [06_trial4_hints_stripped.md](06_trial4_hints_stripped.md) | **Trial 4.** The same interview with the three leading hints deleted and one player held as an unchanged control. One finding reproduced unprompted, one **reversed**, one vanished. For safety, the hint turns out to be the instrument rather than the bias. |
+| [07_trial5_interview.md](07_trial5_interview.md) | **Trial 5, the interview.** The questionnaire now asks everyone directly what was previously hinted to individuals. **All four players say they would not raise a boundary out loud** — including the ten-year veteran who had volunteered the opposite twice. The out-loud default is endorsed by nobody. |
+| [08_trial5_findings.md](08_trial5_findings.md) | **Trial 5, the run.** The first to exercise every piece end to end — contract, safety field, expansion policy, ghosts. Found a `culture` decode that returned nothing while the pipeline reported success, which is the kind of defect only a full run finds. |
 
 ## The generated world
 
@@ -81,6 +83,22 @@ names, not template labels** — the table above is trial 1 only.
 The clearest single difference is `pages_trial2/trial2_07_haven.md`, **The Cog &
 Kettle**. Trial 1's contract had no way to ask for a warm room at all.
 
+## Trial 5's world
+
+`pages_trial5/` holds 17 entities across 13 slots — the first run to use every
+piece of the machinery at once, and the first to advance its frontier as well as
+generate it. A salvage tender working a dead corridor: **Tether-End** the
+station, **The Iron Ribbon** the supply run, **The Clay-Shorn Pilgrim** the hulk
+they are boarding, and **The Butter-Burner** the galley where nothing is wrong.
+
+Two things to look at:
+
+- `trial5_06_run.md` is the first `travel` entity any trial has produced. The
+  slot exists because a player asked for supply lines that genuinely bite.
+- `trial5_02_crews.md` was **zero bytes on the first run** and the pipeline
+  reported success anyway. It has been regenerated; the defect and its guard are
+  in `08_trial5_findings.md`.
+
 ## Not markdown, but part of the trial
 
 - `player_profiles.json` — the four players, structured. Lines and Veils held
@@ -90,7 +108,14 @@ Kettle**. Trial 1's contract had no way to ask for a warm room at all.
   connected to the live world.
 - `generation_index.json` / `generation_index_trial2.json` — per-entity timings
   and record IDs.
-- `generate_world.py` — the harness, rewired after trial 1 to use the real
-  contract and safety machinery. `--dry-run` makes no model calls; `--out`
+- `registry_trial5.json` / `generation_index_trial5.json` — trial 5's world and
+  its per-entity timings.
+- `generate_world.py` — the trials 1–2 harness, rewired after trial 1 to use the
+  real contract and safety machinery. `--dry-run` makes no model calls; `--out`
   chooses the pages directory and the registry follows it.
+- `generate_trial5.py` — trial 5's harness. Its own contract, and the first to
+  advance the frontier through `ExpansionPolicy` and `GhostRegistry`. It
+  registers one Line **twice**, with the two incompatible readings a player gave
+  across trials 4 and 5, so a run demonstrates the contested-note rule rather
+  than describing it.
 - `compare_trials.py` — the trial 1 vs trial 2 comparison. Reads only.

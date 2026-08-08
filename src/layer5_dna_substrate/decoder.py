@@ -72,10 +72,26 @@ class DNADecoder:
             context_str = format_context(context)
             constraints_str = element_data.get('constraints', '')
             
-            return chain.invoke({
+            phenotype = chain.invoke({
                 "context": context_str,
                 "dna_string": element_data['dna'],
                 "constraints": constraints_str
             })
+
+            # An empty response is never a valid decode, and silence is the
+            # worst way for it to fail. In the trial 5 run a `culture` decode
+            # came back blank after 39 seconds; the harness registered it,
+            # wrote a zero-byte page, used it as context for everything
+            # generated afterwards, and still reported the contract satisfied.
+            # A world was short one of its contracted entities and nothing
+            # anywhere said so. Raising is strictly better than returning "":
+            # the caller can retry, and a caller that does not is at least
+            # loud about it.
+            if not (phenotype or "").strip():
+                raise ValueError(
+                    f"Decoding {element_type} returned an empty phenotype. "
+                    f"The model produced nothing -- refused, filtered, or cut "
+                    f"off. Retry or inspect the prompt; do not register this.")
+            return phenotype
         else:
             raise NotImplementedError(f"Decoding for {element_type} is not yet implemented or mapped. Check decoders directory.")
