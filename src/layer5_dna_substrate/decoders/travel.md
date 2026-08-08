@@ -99,8 +99,18 @@ In addition to encounters and discoveries, **include 1–2 travel beats**:
 Use these beats to bring tension, character growth, or mood — not just info.
 
 ## Special Conditions
-Describe how the SF affects the journey:
+Describe how the special factor affects the journey:
 - e.g., “Enemy scouts cause constant detours,” or “Arcane storms alter perception.”
+
+**When the special factor is None, there is nothing here to describe, and you
+must not invent one.** Roughly one journey in six has no special factor, and an
+ordinary road is a real answer. Do not promote weather, terrain or bandits into
+a special condition to fill the space — those already belong to the route and
+the encounters. Instead, say what the *absence* means for the party: this is a
+route with no complication beyond distance, so the question becomes what they
+choose to do with the uneventful days. Name one thing the quiet makes possible —
+a conversation that has been waiting, a repair, a watch nobody dreads — and
+leave the section at that. A short honest section beats an invented hazard.
 
 ## Mechanical Guidelines
 Summarize:

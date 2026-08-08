@@ -161,6 +161,7 @@ followed.
 | `export_showcase.py` | Carve the curated example registry out of a working one |
 | `sync_to_obsidian.py` | Write the registry into the vault, canon untouched |
 | `list_models.py` | Probe which models the configured keys can actually reach |
+| `audit_null_values.py` | Find values meaning "there is no answer", and whether the decoder anticipates them |
 
 ### Which registry?
 

@@ -114,6 +114,46 @@ never "don't write it" alone — each absence needs a question that replaces it
 **When you touch a decoder, audit its generator's vocabularies for null values
 first.** It takes one script and finds real bugs every time.
 
+**That script now exists: `scripts/audit_null_values.py`.** It was run across all
+twenty-one genomes at 3000 rolls each, and the result was not what the §4a table
+predicts.
+
+**The fourteen unrefined decoders are largely clean, and for a structural
+reason.** The four original findings were all in genomes with *string
+vocabularies* — `culture`, `text`, `creature`, `lore` — where the generator grew
+values the decoder never heard of. The unrefined genomes emit **bare integers**,
+so their value meanings live in the decoder's own decoding key. A null there is
+written by the same hand that writes the instruction around it, and it is mostly
+handled: `wonder` documents `GDN 0 none` *and* pairs it with "world-changing
+impact + no guardian — explain why it is unguarded"; `regional_poi` says `IC`
+only applies where `INH` can hold politics and gives the empty-site case a
+replacement question; `trap` turns `DAM 13 no direct damage` into "the most
+interesting effect in the table". **The bug class travels with the vocabulary,
+not with the refinement status.**
+
+**One real instance found and fixed: `travel`.** `SF` is `randint(0, 5)` and 0
+means None — **16.7% of journeys** — while *Special Conditions* said "describe
+how the SF affects the journey" with no exception. The instruction demanded
+exactly the content the value denied. Fixed with §4a's own remedy: the absence
+now gets a replacement question (what the uneventful days make possible) and an
+explicit ban on promoting weather or bandits into a special condition.
+
+**One defect the audit surfaced that is not a null at all.** `establishment`
+writes genes as name-then-value with no separator, and `CH1`/`CH2`/`CH3` already
+end in a digit — so `CH1` valued `0` renders as `CH10`. The decoder documents the
+workaround (parse from the right); **the fix belongs at the generator**, and it is
+the only genome with digit-suffixed keys.
+
+*A caution about the script itself.* Before it was trustworthy it produced
+fifteen false positives (decimal modifiers like `AP:0.8` read as `AP:0`), two
+more (`region`/`regional_poi` "ambiguous keys" that were simply values of 10),
+two false negatives (`wonder`'s documented `GDN 0`, `regional_poi`'s handled
+`INH` none), and read "lost knowledge" as an absence when it is treasure. It now
+prints **`confirm by reading`** rather than a verdict on whether a decoder
+handles an absence, because that is a judgement about prose and §7 records that
+keyword probes are unreliable for exactly that. Probes find candidates; a reader
+decides.
+
 ### How to find these
 
 ```
