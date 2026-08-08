@@ -390,6 +390,30 @@ display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
 opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
 candidate on either axis — not the quarter an LNC-only count suggests.
 
+**Fixing WHAT is derived does not fix HOW it is expressed.** The Lever made
+vulnerabilities trait-derived, which was the point — but a seven-alignment run
+showed **four of seven** reaching for the same dramatisation: *secret* mercy,
+*anonymous* benefactor, *hidden* compassion, *secret* charity, each followed by
+"whoever discovers it has leverage." Varied inputs, one output shape, and all four
+were the same structural case — a Good absolute inside an Evil headline, which has
+one obvious staging.
+
+The cure was already in the file and the new section was not using it. §4 lists six
+ways to carry a contradiction and the secret-virtue reading is only *facade versus
+private self*. Pointing the Lever at that list, and naming the options that need no
+secrecy at all — done openly with a threadbare justification, already known and
+tacitly unmentioned, hidden **from themselves**, or surfacing only under a
+condition they have arranged their life to avoid — took the convergence from **4/4
+to 1/4**, and the survivor uses *unacknowledged* (hidden from self) rather than
+concealed from others. A Lawful Evil's `Integrity=9` went from "secret mercy" to an
+open constraint opponents can exploit procedurally; a `Compassionate=9` went from
+"agonising compassion" to a visceral horror of bodily trauma that overrides his
+financial priorities.
+
+**So audit a new mechanism twice: once for whether it derives from the right
+input, and once for whether it says the same thing every time.** The first is easy
+to measure and the second is easy to miss.
+
 **Use the decoder's own bands, not a new one.** The Lever section originally
 called `2` and `8` the reliable opposites. Section 3 of the same file, two hundred
 lines above, already defines **`3`–`2` as "reliably the opposite"** and `8`–`7` as

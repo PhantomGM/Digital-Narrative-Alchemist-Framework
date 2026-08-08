@@ -231,6 +231,27 @@ profile:
   *visible* — loudness is what intensity means — so somebody at the table has
   noticed it and has a theory about it. That theory should be wrong.
 
+**Carry the Lever a different way each time.** There is one obvious dramatisation
+of a virtue inside a cruel person — *they hide it, and whoever finds out has
+leverage* — and it is so obvious that it will be your answer every time unless you
+refuse it. It is a fine answer occasionally and a tell that you stopped thinking
+when it is the answer always. **Use section 4's list**, which is right above and
+exists for this: internal conflict, facade versus private self, domain separation,
+sequence, dilemma between values, default versus under pressure. The secret-virtue
+reading is only *facade versus private self*; five others are sitting there unused.
+
+Consider especially the ones that need no secrecy at all:
+
+* They do it **openly** and justify it in terms their philosophy accepts, and the
+  justification is threadbare, and nobody says so.
+* Everyone **already knows** and has quietly agreed not to mention it. What is
+  interesting is the agreement, not the fact.
+* They hide it **from themselves**. Section 4 is explicit that most people have
+  never noticed their own contradiction — a Lever the character would sincerely
+  deny is stronger than one they are guarding.
+* It surfaces only under a **specific condition**, and they have arranged their
+  life so that condition rarely arrives. The arrangement is the character.
+
 **A headline axis at 5 supplies no Lever, because nothing can be opposite it.**
 Five is the Void — no commitment on that axis, so no trait can contradict a
 position the character does not hold. This is common: **about one character in
