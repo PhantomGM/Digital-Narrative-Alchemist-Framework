@@ -402,19 +402,33 @@ gives the table nothing to catch them at. The Lever hook carries its own test: *
 it would work equally well on any other character of this alignment, it is not the
 Lever hook.*
 
-**A worked example outranks the instruction above it.** The NPC decoder gained a
-section deriving *Core Vulnerability* from the trait array rather than the
-alignment, and measured on three seeded NPCs it barely worked — one of three
-improved. The cause was 250 lines below: the worked example's own vulnerability
-read *"Loss of order — ritual disruption, emotional entreaties"*, which for a
-Lawful Evil character is a restatement of Lawful and exactly the failure the new
-section forbade. Rewriting the example to obey its own rule took the result from
-1/3 to **3/3**. The instruction said what to do; the example showed what the
-answer looks like, and the shape of the example is what propagated. §5 already
-records an example *name* becoming a real character; this is the same class one
-level up. **When a decoder has a worked example, changing an instruction without
-changing the example changes very little** — and `npc`, `faction` and `item` are
-the three that have one.
+**A worked example outranks an instruction it CONTRADICTS, and not one it is
+merely silent about.** Both halves are measured.
+
+*Contradiction.* The NPC decoder gained a section deriving *Core Vulnerability*
+from the trait array rather than the alignment, and on three seeded NPCs it barely
+worked — one of three. The cause sat 250 lines below: the worked example's own
+vulnerability read *"Loss of order — ritual disruption, emotional entreaties"*,
+which for a Lawful Evil character restates Lawful and is exactly the failure the
+new section forbade. The model had two specifications for one field and followed
+the example. Rewriting it took the result to **3/3**. The same thing then happened
+again with the BDI block and hooks, so it is a procedure rather than an anecdote:
+**when you change an instruction in a decoder that has a worked example, the
+example is part of the change, not a follow-up.**
+
+*Silence.* `faction` and `item` were audited against their own templates and both
+examples are **abridged**. The Iron Synod omits Resources & Influence, Secrets &
+Shadows, Internal Contradictions and the whole Trajectory block — which are the
+four most heavily specified sections in that decoder — and one of its two hooks.
+The Weeping Blade omits both hooks. Both examples predate their decoders'
+refinement passes.
+
+**It does not matter.** A live decode of each produced every template section,
+including all four the faction example skips and every Trajectory sub-field. An
+omission does not contradict an instruction, so the template simply wins. **Do not
+extend these examples**: §6 records that an example roughly doubles a decoder's
+size and therefore every prompt built from it, and this would buy nothing. The
+audit is recorded here so nobody re-does it and pays the tokens.
 
 **Keyword probes are unreliable for judging prose.** They are good for finding
 leaks (exact tokens) and bad for deciding whether an instruction was followed. At
