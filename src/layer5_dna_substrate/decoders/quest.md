@@ -44,25 +44,31 @@ Use the following internal logic to interpret the DNA. This logic must not appea
 
 > **No scaffolding below this line.** No DNA string, no block names, no letters, no numeric scores anywhere in the output.
 
-### **1. Quest Title**
-An evocative name a GM would actually write on a session prep page.
+> **The headings below are the page's own.** Reproduce them as written, except
+> the first: replace the bracketed placeholder with the quest's actual title. Do
+> not number the headings, and never print the bracket text itself — a page whose
+> first line reads "Quest Title" has named the field instead of the quest.
 
-### **2. The Hook**
+### **\[Quest Title]**
+An evocative name a GM would actually write on a session prep page. The title *is*
+this heading — it does not go on a line underneath it.
+
+### **The Hook**
 How the quest reaches the party, in the voice of whoever brings it. Prefer a scene or a spoken offer over a summary.
 
-### **3. Background & Context**
+### **Background & Context**
 What is really going on, including what the quest-giver has not said. Note where their stated motive and actual motive diverge.
 
-### **4. Core Objectives**
+### **Core Objectives**
 The stated objective, plus any hidden objective the party is likely to uncover. Say which is which.
 
-### **5. Obstacles & Challenges**
+### **Obstacles & Challenges**
 What stands in the way, and — per decoding step 3 — **how the quest expects them to be handled**. Be explicit when a route is a trap: if open combat is suicide here, say so.
 
-### **6. Adventure Structure & Flow**
+### **Adventure Structure & Flow**
 The shape of the run, beat by beat, following the `EVO` arcs. Where does it tighten, where does it open up, where does the difficulty or payoff shift.
 
-### **7. Rewards & Spoils**
+### **Rewards & Spoils**
 The tangible payoffs, and the quest's overall significance where the two differ (decoding step 2). Include at least one reward that is not treasure.
 
 ### 🔗 Unmade Connections (DNA Stubs)

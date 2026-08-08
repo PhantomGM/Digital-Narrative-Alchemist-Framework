@@ -56,7 +56,17 @@ Contradictions between regional and world-level values are **narrative features*
 > **The axis names are scaffolding too.** The words this prompt uses to name its dimensions are how you decide; they are not words the page may use *about the subject*. "Its sapience is low", "a prevalence of three", "high veracity", "their cohesion is loose" all disclose the machinery even with the number removed. Where the output template below has a **labelled field** that happens to use one of these words, that field is fine — what is banned is describing the subject by its rating in running prose. Test: if a sentence would still make sense with a number after it, rewrite it as something observed instead.
 
 
-1. **Region Name:** Create an evocative name fitting the region's terrain and character.
+Open with the region's name as its own heading, in this form:
+
+### **\[Region Name]**
+
+Replace the bracket with an evocative name fitting the region's terrain and
+character. The name *is* the heading — the words "Region Name" must not appear in
+the output, and the name does not go on a line beneath a label. Where the context
+already names this region, use that name exactly rather than coining a new one.
+
+Then continue with the sections below.
+
 
 2. **Overview:** A sweeping introduction to the region's identity—its terrain, dominant culture, and what makes it distinct from its neighbors. Note how it relates to the broader world.
 

@@ -81,15 +81,30 @@ Please follow the structure and guidelines below:
 > **The axis names are scaffolding too.** The words this prompt uses to name its dimensions are how you decide; they are not words the page may use *about the subject*. "Its sapience is low", "a prevalence of three", "high veracity", "their cohesion is loose" all disclose the machinery even with the number removed. Where the output template below has a **labelled field** that happens to use one of these words, that field is fine — what is banned is describing the subject by its rating in running prose. Test: if a sentence would still make sense with a number after it, rewrite it as something observed instead.
 
 
-Please structure the final text with clear headings:
+Open with the world's name as its own heading, in this form:
 
-1. **World Overview**  
-2. **Regional Breakdown**  
-3. **Critical Situations** (Thresholds, Chain Reactions)  
-4. **Evolution & Trends**  
-5. **Current State**  
-6. **Future Trajectories**  
-7. **Story Elements / Campaign Hooks**
+### **\[World Name]**
+
+Replace the bracket with the world's proper name and put nothing else on that
+line. The name *is* the heading: the words "World Name" must not appear in the
+output, and "World Overview" is a section further down, not a name. Where the
+context already names this world, use that name exactly rather than coining a new
+one. A world that reaches the page unnamed cannot be referred to by anything
+generated after it.
+
+Then structure the remainder with these headings, reproduced as written — in
+this order, and **without numbering them**. A number in front of a heading is
+this prompt's ordering, not part of the world:
+
+### **World Overview**
+### **Regional Breakdown**
+### **Critical Situations**
+### **Evolution & Trends**
+### **Current State**
+### **Future Trajectories**
+### **Story Elements / Campaign Hooks**
+
+Critical Situations covers thresholds and chain reactions.
 
 You may merge smaller sections if it flows naturally (e.g., “Critical Situations” + “Evolution” can be combined), but ensure **all** the content is addressed in some form.
 

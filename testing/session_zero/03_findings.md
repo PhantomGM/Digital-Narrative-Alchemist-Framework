@@ -160,8 +160,46 @@ The first heading of a page should be the entity's name. Three are not:
 `world`, `region` and `quest` are all among the fourteen decoders that have never
 had a refinement pass, and each prints a template field label into its output —
 the same class of defect PROJECT_STATE §7 records for palette labels printed as
-headers. **It is a pattern in the unrefined set, not one bad decoder**, which
-means the remaining eleven should be assumed to do it until checked.
+headers. **It is a pattern in the unrefined set, not one bad decoder.**
+
+**Fixed and live-verified.** The seven refined decoders already shared a
+convention the three lacked: open the output template with a bracketed
+placeholder heading (`### **\[Faction Name]**`), so the bracket signals
+substitution rather than reading like a heading to reproduce. The three now do
+the same, and `quest` and `world` had their output headings de-numbered — a
+number in front of a heading is the prompt's ordering, not part of the world.
+Re-decoded against the same context:
+
+| | Before | After |
+| :--- | :--- | :--- |
+| `world` | `World Overview` | `The Deepscar Frontier` |
+| `region` | `Region Name: The Saltspire Marches` | `Dustfall Reach` |
+| `quest` | `1. Quest Title` | `The Whispering Vein` |
+
+The world fix needed two passes. Adding the name heading alone made the model
+render its seven sections as a numbered list instead of headings, so the page
+still carried `1. **World Overview**` — the label moved rather than left. Only
+converting the template's numbered list into explicit unnumbered headings
+cleared it. **The pages in `pages/` are left as originally generated**, since
+they are the evidence.
+
+**Checking the fix found the defect in two more decoders, since fixed.**
+`settlement.md` carried the region bug character for character — `1. **Settlement
+Name:** Create an evocative name...` — and produced a correct heading in this
+trial by luck rather than design. `travel.md` had numbered headings like quest
+and no name slot at all, like world; a route files to `Atlas/Routes` and needs a
+name. Both now decode cleanly — `Cinderholme` and `The Silvervein Passage`.
+
+All twenty-one decoders now ask for the name as a heading.
+`tests/test_decoder_titles.py::KNOWN_MISSING` is empty and kept rather than
+deleted: it is asserted to be exactly the set lacking a placeholder, so a decoder
+added or rewritten without one fails the suite rather than passing silently.
+
+**Five decoders, one defect, and only three were visible.** The trial surfaced
+`world`, `region` and `quest` because those three happened to be in the contract.
+`settlement` was in the contract too and hid the bug by rendering correctly once;
+`travel` was not in the contract at all. A single generated world is a sample,
+not an audit — the defect was in a fifth of all decoders and the run showed three.
 
 It also breaks extraction downstream. `ExpansionManager._extract_name` walks
 heading patterns in order, so it would name the world "World Overview" and the

@@ -208,6 +208,32 @@ and points at decoder files that were never brought into this repo.
 `establishment`, `linguistic`, `location`, `quest`, `realm`, `region`,
 `regional_poi`, `settlement`, `trap`, `travel`, `wonder`, `world`.
 
+**A defect shared across the unrefined set: the first heading is a field label,
+not the entity's name.** `world` opened its page "World Overview", `region`
+"Region Name: The Saltspire Marches", `quest` "1. Quest Title". Checking the fix
+found `settlement` carrying region's bug character for character — it produced a
+correct heading in the Session 0 trial by luck — and `travel` with numbered
+headings and no name slot at all.
+
+**All five are fixed and live-verified.** All twenty-one decoders now ask for the
+entity's name as a heading. `tests/test_decoder_titles.py::KNOWN_MISSING` is now
+empty and is *kept* rather than deleted: it is asserted to be exactly the set of
+decoders lacking a name placeholder, so a new or rewritten decoder without one
+fails the suite instead of passing silently.
+
+The cure is a convention the seven refined decoders already shared and the rest
+never adopted: **open the output template with a bracketed placeholder heading**
+(`### **\[Faction Name]**`). The bracket reads as substitute-me; a numbered label
+reads as a heading to reproduce. Worth checking the remaining unrefined decoders
+for the same shape before trusting their output — and note the fix took two
+passes on `world`, because adding the name heading alone pushed its sections into
+a numbered list, moving the label rather than removing it.
+
+This also breaks `ExpansionManager._extract_name`, which walks heading patterns
+in order and would name a world "World Overview". The structured YAML tail is the
+primary path and masks it, but the regex fallback exists for decoders that omit
+the tail.
+
 **Thirteen generators lack `seed`/`**pins`.**
 
 **Eight types have never produced an entity.** `agency`, `establishment`,

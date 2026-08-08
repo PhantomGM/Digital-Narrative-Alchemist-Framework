@@ -83,16 +83,27 @@ Contradictions are **narrative features**, not bugs. Examples:
 > **The axis names are scaffolding too.** The words this prompt uses to name its dimensions are how you decide; they are not words the page may use *about the subject*. "Its sapience is low", "a prevalence of three", "high veracity", "their cohesion is loose" all disclose the machinery even with the number removed. Where the output template below has a **labelled field** that happens to use one of these words, that field is fine — what is banned is describing the subject by its rating in running prose. Test: if a sentence would still make sense with a number after it, rewrite it as something observed instead.
 
 
-1. **Settlement Name:** Create an evocative name fitting the settlement's character.
-2. **Overview:** Key features, core identity, and major contradictions. Note any discrepancy between official classification and current reality.
-3. **Physical Description:** Architecture, state of defenses, public spaces. Highlight striking contrasts (e.g., formidable walls protecting a decaying interior).
-4. **Population:** People, attitude, culture, daily life, health, crime, morale. Describe CHAIN{POP} cause-and-effect in story terms.
-5. **Economy:** Primary trades, resources, market quality, services, industries, guild power. Describe CHAIN{ECON} through real-world effects.
-6. **Politics & Law:** Governance system, corruption, freedom, stability. Illustrate CHAIN{POL} with narrative examples.
-7. **Notable Locations:** Key establishments and points of interest. Describe each with atmospheric detail.
-8. **Surroundings:** Immediate vicinity and relationships implied by PROXI values.
-9. **Trajectory:** Is the settlement growing, shrinking, or transforming? Describe EVO trends through tangible effects, not labels.
-10. **Hooks & Opportunities:** Adventure hooks stemming directly from the settlement's unique characteristics and contradictions.
+Open with the settlement's name as its own heading, in this form:
+
+### **\[Settlement Name]**
+
+Replace the bracket with an evocative name fitting the settlement's character.
+The name *is* the heading — the words "Settlement Name" must not appear in the
+output, and the name does not go on a line beneath a label. Where the context
+already names this settlement, use that name exactly rather than coining a new
+one.
+
+Then continue with the sections below.
+
+1. **Overview:** Key features, core identity, and major contradictions. Note any discrepancy between official classification and current reality.
+2. **Physical Description:** Architecture, state of defenses, public spaces. Highlight striking contrasts (e.g., formidable walls protecting a decaying interior).
+3. **Population:** People, attitude, culture, daily life, health, crime, morale. Describe CHAIN{POP} cause-and-effect in story terms.
+4. **Economy:** Primary trades, resources, market quality, services, industries, guild power. Describe CHAIN{ECON} through real-world effects.
+5. **Politics & Law:** Governance system, corruption, freedom, stability. Illustrate CHAIN{POL} with narrative examples.
+6. **Notable Locations:** Key establishments and points of interest. Describe each with atmospheric detail.
+7. **Surroundings:** Immediate vicinity and relationships implied by PROXI values.
+8. **Trajectory:** Is the settlement growing, shrinking, or transforming? Describe EVO trends through tangible effects, not labels.
+9. **Hooks & Opportunities:** Adventure hooks stemming directly from the settlement's unique characteristics and contradictions.
 
 
 ### 🔗 Unmade Connections (DNA Stubs)
