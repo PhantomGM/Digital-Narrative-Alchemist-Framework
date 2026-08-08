@@ -390,6 +390,32 @@ display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
 opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
 candidate on either axis — not the quarter an LNC-only count suggests.
 
+**Use the decoder's own bands, not a new one.** The Lever section originally
+called `2` and `8` the reliable opposites. Section 3 of the same file, two hundred
+lines above, already defines **`3`–`2` as "reliably the opposite"** and `8`–`7` as
+"strongly, reliably" — so the new rule was narrower than the document it lived in,
+and a `3` was being read as texture when the decoder's own scale calls it reliable.
+A 9/7 character investigated as a "coherent" case turned out to have four GNE
+traits at 3, and the decoder had been quietly right all along: `Accountable=3`
+produced *"her administrative unaccountability."* Only `4` and `6` are mild enough
+to be texture.
+
+That correction collapses the coherent case almost to nothing. Measured with the
+right bands, **1 in 5,000** characters has a real position on both axes and nothing
+pulling against it — not the 1 in 35 an over-narrow band suggested. The practical
+instruction is therefore not "describe a consistent person" but **"you have missed
+one; go back to the 3s and the 7s"**, because they sit close enough to the middle
+to look unremarkable.
+
+**Improving a worked example creates a new leak surface.** A hook title written
+into the NPC example — *"The Ledger of Small Mercies"* — began appearing verbatim
+on unrelated characters within one commit. `npc.md` had no illustrative-names
+marker at all, while §5 records that exact guard being what stopped `Scribe Veris
+Thal` becoming a real historical figure in the language block. The marker is now
+on `EXAMPLE START`, and it names the leaked title specifically. **Every good detail
+added to an example is also a candidate for propagation** — the better the detail,
+the more likely it is to be reused.
+
 **A headline axis at 5 supplies no Lever, and that is common.** Nothing can be
 opposite a 5 — it is the Void, no commitment on that axis — so no trait can
 contradict a position the character does not hold. **22% of characters have an

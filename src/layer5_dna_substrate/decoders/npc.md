@@ -204,8 +204,11 @@ encode different things:
 > witnesses levers nothing.
 
 So rank an absolute GNE opposite above a loud LNC one, and take the one or two at
-the top. Where a GNE trait sits at 2 or 8 it is reliable rather than absolute, and
-competes on level terms with a loud LNC trait.
+the top. **Use the bands section 3 already gave you**: `1` and `9` are absolute,
+and **`2`–`3` and `7`–`8` are all "reliably the opposite"** — a 3 against a Good
+headline is reliably unaccountable, not mildly so, and competes on level terms
+with a loud LNC trait. Only `4` and `6` are mild enough to be texture rather than
+a Lever.
 
 That trait is **the Lever**. Three things follow from it, and all three belong in the
 profile:
@@ -243,14 +246,19 @@ five** has an axis at 5.
   works out that the way to shift them is to make it *procedurally* correct rather
   than *right* has found the handle. This is roughly one character in ninety.
 
-**When nothing pulls hard and neither axis is 5.** Rarer still — **about one in
-thirty-five** has a real position on both axes, no absolute vice, no absolute
-virtue and no loud extreme trait working against it. Not a bland roll, and not a
-licence to invent. This person's temperament and their philosophy agree all the way
-down, which almost nobody manages, and it is its own characterisation: someone with
-**no give**, nothing to press, frighteningly consistent. Ask what that consistency
-has cost them and who has already learned there is no point arguing. Say what they
-are, not what they lack.
+**Where the character holds a real position on both axes, there is always a
+Lever.** Measured across six thousand characters, one in five thousand has a
+non-Void headline and nothing at all pulling against it. So if you have looked and
+found nothing, **you have missed one** — go back to the `3`s and the `7`s, which
+are reliable opposites and are easy to read as unremarkable because they sit close
+to the middle. A `3` for accountability in a Lawful Good warden is not a rounding
+error; it is a man who will not be asked to explain himself.
+
+In the one-in-five-thousand case where there is genuinely nothing, do not invent a
+Lever. That person's temperament and their philosophy agree all the way down:
+someone with **no give**, nothing to press, frighteningly consistent. Ask what that
+has cost them and who has already stopped arguing. Say what they are, not what they
+lack.
 
 **None of this may reach the page as machinery.** No scores, no intensities, no
 talk of traits pulling against alignments. The Lever appears as a thing a person
@@ -390,7 +398,7 @@ The last one is the most familiar and the easiest to reach for. It is one of six
 
 ### **Adventure Hooks**
 
-* **\[Hook Title 1]:** \[**The Lever hook.** A situation that presses exactly where they are weakest, in which the response their alignment predicts is the wrong one. This is the hook that could not be written for anyone else in their quadrant — if it would work just as well on any other character of this alignment, it is not the Lever hook]
+* **\[Hook Title 1]:** \[A situation that presses exactly where they are weakest, in which the response their alignment predicts is the wrong one. This is the hook that could not be written for anyone else in their quadrant — if it would work just as well on any other character of this alignment, it is the wrong hook. **"Lever" is how you choose it, never what you write: do not label the hook, tag it, or annotate it. The title is the hook's own name and nothing else.**]
 * **\[Hook Title 2]:** \[A conflict with local factions, politics, or players]
 * **\[Hook Title 3]:** \[A problem that only laughter, violence, or empathy can solve]
 
@@ -408,6 +416,12 @@ The last one is the most familiar and the easiest to reach for. It is one of six
 Let me know if you’d like this exported as a downloadable .txt or .md file, or if you’d like a lighter version for Quick NPC generation.
 
 ### EXAMPLE START
+
+> **Everything below demonstrates the SHAPE of a good answer and nothing else.**
+> The names, titles, places and hook titles in it are illustrative — they are not
+> people, organisations or events in your world, and none of them may be reused.
+> "The Ledger of Small Mercies" is how a Lever hook is *built*; it is not a hook
+> you may hand to a different character. Take the method, invent the nouns.
 
 **DNA (Internal Reference Only):**  
 `(8/2) 4C5,2O1,1T4,8F4,5X5,1P1,3U3,2G5,8W1,6E2,8V3,4K3,4B4,7P5,9C5,1L4,6S4,2A3,2H4,5I5 - H8,C1,K6,G1,L2,J5,M2,F4,E1,B8,U7,S7,I8,R6,T7,A4,D1,V3,Y6,X2`
