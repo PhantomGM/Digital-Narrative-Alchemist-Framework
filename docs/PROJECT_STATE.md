@@ -496,6 +496,25 @@ phase instead terminates when its *consumer* is satisfied:
 | World fill | the backstories | every referent resolves |
 | First session outline | session one | it has openings, not a script |
 
+**A safety register can be cached per group; a contract cannot.** Trial 3 ran a
+fresh interview from the same four profiles with the identical questionnaire
+(`testing/session_zero/05_trial3_interview.md`). The Lines and Veils came back
+the same — which is what makes a persistent player profile worth storing. Three
+of four *creative* answers changed completely, and those are exactly the answers
+that shaped trial 1's slot counts: the three-sided faction requirement that
+raised the count from 2 to 3 simply was not present the second time.
+
+So the safety half of Session 0 is elicitation of something stable that already
+exists in the player, and the creative half is closer to improvisation — it will
+answer differently on a different evening. **A system that reuses a stored
+contract will build the wrong world for the right table.** Trial 3 also produced
+a requirement trial 1 missed: the private channel may need to be *asynchronous*
+(after the session, over Discord), so the safety path has to reach outside play.
+
+Caveat recorded in the trial write-up: three of the reproduced safety findings
+were **hinted at by the questionnaire**, which was reused verbatim to keep the
+comparison fair. A trial 4 with those hints stripped is the real test.
+
 **Session 0 sets the quota, it does not merely tint the tone.** Genre changes
 which types matter at all: political intrigue wants factions, NPCs, agencies and
 texts and roughly zero creatures; a hexcrawl inverts that. A fixed count is the

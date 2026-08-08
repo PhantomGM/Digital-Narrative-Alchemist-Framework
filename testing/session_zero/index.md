@@ -15,6 +15,7 @@ if you only read one; [README.md](README.md) explains what the trial was.
 | [02_campaign_pitch.md](02_campaign_pitch.md) | The campaign pitch, assembled from the generated entities. Every proper noun in it came out of the pipeline. All four players accepted it. |
 | [03_findings.md](03_findings.md) | **The write-up.** Eight things trial 1 validated, seven defects it found, and the branching-factor measurement that corrected `docs/PROJECT_STATE.md` §8. |
 | [04_trial2_findings.md](04_trial2_findings.md) | **Trial 2.** The same players and the same transcripts, through the *built* machinery instead of scaffolding. Five of five retested defects fixed, no regressions, and one new negative result: the contract bounds what is generated, not what is implied. |
+| [05_trial3_interview.md](05_trial3_interview.md) | **Trial 3.** A fresh interview from the same four profiles, inverting trial 2. Safety findings reproduce; creative findings do not — so a safety register can be cached per group and a contract cannot. Includes the methodological caveat about hinted prompts. |
 
 ## The generated world
 
