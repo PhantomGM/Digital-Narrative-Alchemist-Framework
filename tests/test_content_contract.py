@@ -133,6 +133,48 @@ def test_tone_is_optional():
     assert "Tonal requirement" not in ContentContract("p", [s]).brief_for(s)
 
 
+# --- invariants: constraints a slot brief must not out-argue ----------------
+
+def test_an_invariant_rides_inside_every_brief():
+    """
+    Trial 5's defect. The table asked for room to breathe, which sat in the
+    shared context block; the hook's brief asked for danger within the hour.
+    The brief won and two of four players objected to the pace on reading the
+    pitch. A brief is local and specific, a shared block global and general,
+    and specific wins -- so a constraint that must not be overridden has to
+    compete at the same level.
+    """
+    contract = ContentContract("pitch", [slot("quest"), slot("npc")],
+                               invariants=["Never open on a countdown."])
+    for s in contract.slots:
+        text = contract.brief_for(s)
+        assert "Never open on a countdown." in text
+
+
+def test_an_invariant_says_it_outranks_the_brief():
+    contract = ContentContract("pitch", [slot("quest")],
+                               invariants=["Never open on a countdown."])
+    text = contract.brief_for(contract.slots[0])
+    assert "outrank the brief" in text
+    assert text.index("the quest") < text.index("Never open on a countdown.")
+
+
+def test_a_contract_without_invariants_adds_no_section():
+    contract = ContentContract("pitch", [slot("quest")])
+    assert "STANDING RULES" not in contract.brief_for(contract.slots[0])
+
+
+def test_invariants_survive_alongside_tone_and_multi_count():
+    """The three brief modifiers must not shadow one another."""
+    s = slot("establishment", count=2, tone="Warm.", brief="A galley.")
+    contract = ContentContract("pitch", [s], invariants=["No countdowns."])
+    text = contract.brief_for(s, index=1)
+    assert "A galley." in text
+    assert "Warm." in text
+    assert "number 2 of 2" in text
+    assert "No countdowns." in text
+
+
 # --- the stop condition -----------------------------------------------------
 
 def test_unfilled_reports_what_is_still_owed():

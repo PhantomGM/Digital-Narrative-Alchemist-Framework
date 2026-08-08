@@ -136,9 +136,34 @@ DIRECTIVES = RuntimeDirectives(
              "Silence is not consent and not a signal. Ask."],
 )
 
+INVARIANTS = [
+    # Trial 5's pitch drew objections from two of four players on pacing. The
+    # agreements block had asked for room to breathe; the hook's brief asked
+    # for danger within the hour, and the brief won because it was the more
+    # specific instruction. So the pacing rule now rides inside every brief.
+    "This table asked for room to breathe and for relationships before stakes. "
+    "Nothing you write may open on a countdown, and no entity may make itself "
+    "urgent before the party has had a reason to care about anyone. Where "
+    "something needs urgency, make it DISCOVERABLE rather than imposed: a "
+    "situation that becomes urgent once they understand it, not a clock "
+    "already running when they walk in.",
+    # "No pre-assigned arcs" was in the NPC brief for trial 5 and still failed
+    # -- an NPC arrived with three erased names and stained fingers, and a
+    # player said it "feels like the GM's already picked who I'm supposed to
+    # suspect". It failed because it was a prohibition with nothing to do
+    # instead, which is the §4a lesson: an absence needs a replacement.
+    "Write people with reasons, not destinies. Do NOT load a character's first "
+    "description with the evidence of what they are hiding -- that tells the "
+    "reader who to suspect before the table has met them. Instead give every "
+    "person a want they will state, a competence they are known for, and one "
+    "ordinary detail that has nothing to do with any plot. What they conceal "
+    "should be reachable by asking, never visible on sight.",
+]
+
 CONTRACT = ContentContract(
     deliverable="campaign pitch",
     directives=DIRECTIVES,
+    invariants=INVARIANTS,
     slots=[
         Slot("world", key="world",
              brief="The collapse that emptied this corridor of space and left "

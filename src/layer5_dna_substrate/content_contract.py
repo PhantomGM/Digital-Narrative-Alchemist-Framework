@@ -101,6 +101,19 @@ class ContentContract:
     deliverable: str
     slots: List[Slot] = field(default_factory=list)
     directives: RuntimeDirectives = field(default_factory=RuntimeDirectives)
+    # Constraints that ride inside EVERY slot's brief.
+    #
+    # Trial 5 found why a shared context block is not enough. The table had
+    # asked for room to breathe and relationships before stakes; that sat in
+    # the global agreements block. The quest slot's brief asked for a hook that
+    # puts the party in danger within the hour. The brief won, and two of four
+    # players objected to the pace on reading the pitch.
+    #
+    # A brief is local and specific; a shared block is global and general, and
+    # specific wins. So a constraint that must not be overridden has to compete
+    # at the same level of specificity -- inside the brief, and stated as
+    # outranking it.
+    invariants: List[str] = field(default_factory=list)
 
     # ── shape ───────────────────────────────────────────────
 
@@ -195,4 +208,12 @@ class ContentContract:
             "\nThe DNA supplies texture, variety and detail. Where the DNA and "
             "this brief disagree about WHAT THE THING IS, the brief wins and "
             "the DNA is read as flavour for it.")
+        if self.invariants:
+            parts.append(
+                "\n### STANDING RULES — these outrank the brief above\n"
+                "The brief says what this entity is. These say what it may not "
+                "cost the table, and they win wherever the two pull apart. If "
+                "satisfying the brief would break one of these, satisfy the "
+                "rule and find another way to satisfy the brief.\n")
+            parts += [f"- {rule.strip()}" for rule in self.invariants]
         return "\n".join(parts)
