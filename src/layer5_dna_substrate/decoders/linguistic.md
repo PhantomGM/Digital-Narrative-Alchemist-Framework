@@ -41,9 +41,42 @@ Format: `LING{P:x; V:x; S:x; T:x}` — four axes, each **1–99**. This logic mu
 * **Complexity:** (e.g., Simple monosyllabic words vs. complex compound structures).
 
 **Naming Conventions:**
-* **NPC Names:** Provide 5 example names and explain the "rules" (e.g., "All names end in -thra," "Names are based on natural elements").
-* **Location Names:** Provide 5 example names and explain the naming logic (e.g., "Compound words like Sky-Hold," "Archaic roots").
-* **Faction Names:** Provide 5 example names (e.g., "The [Noun] [Noun]," "Single-word abstract titles").
+
+> **The three classes must be built DIFFERENTLY, not merely from different
+> words.** This is the one instruction in this section that matters most. A run
+> of this decoder gave all three classes a compound-pairing rule, and the world
+> generated from it produced seventeen entities whose names were seventeen
+> hyphenated compounds — people, ships, factions and a galley all built the same
+> way. Consistent, and unusable: nothing could be told apart by its name.
+>
+> Real languages mark class by **construction**. English gives people two
+> independent words, places a single morpheme or a worn-down suffix, and
+> institutions a phrase with a function word in it — *Sarah Whitlock*, *Bristol*,
+> *The Society of Antiquaries*. Nobody confuses one for another, and the
+> vocabulary is barely doing any of that work.
+>
+> Pick a **different construction for each class** from these, or invent others:
+> a single undivided morpheme · two independent words · a compound, hyphenated or
+> fused · an affix on a root · a possessive or genitive · a descriptive phrase
+> using a function word · a title bound to a root · a root plus a number or code ·
+> reduplication · an archaic or borrowed register reserved for that class alone.
+>
+> **The test:** take one of your example names and move it to another class. If it
+> would still look correct there, the two classes are not distinct and you must
+> rebuild one of them. *Krell-Vak* and *Iron-Vent* and *Spark-Weld* fail this
+> instantly.
+>
+> **Phonetics unify what construction divides.** All three classes must still
+> sound like one language — the same consonants, the same vowel habits, the same
+> weight. It is the *shape* that differs, never the sound. A world where people
+> sound Norse and places sound Latinate has two languages and a problem.
+
+* **NPC Names:** Five examples, and the rule behind them. Name the construction
+  explicitly (e.g. "a root and a lineage suffix", "two independent words").
+* **Location Names:** Five examples, and the rule. **Its construction must differ
+  from the one above.**
+* **Faction Names:** Five examples, and the rule. **Its construction must differ
+  from both.**
 
 **Common Idioms & Taboos:**
 * **Sayings:** List 3 common idioms used by the common folk.

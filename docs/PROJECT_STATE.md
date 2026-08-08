@@ -390,6 +390,33 @@ display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
 opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
 candidate on either axis — not the quarter an LNC-only count suggests.
 
+**Name classes must differ in CONSTRUCTION, not just vocabulary.** Trial 6's
+language gave people, places and factions three compound-pairing rules, so a world
+obeying it faithfully produced seventeen entities with seventeen hyphenated names —
+consistent, and unusable, because nothing could be told apart by its name. The
+decoder was pushing that itself: its own worked suggestions were "Compound words
+like Sky-Hold" for locations and "The [Noun] [Noun]" for factions.
+
+`decoders/linguistic.md` now requires a **different construction per class**, with
+a menu to choose from (single morpheme · two independent words · compound · affix ·
+possessive · phrase with a function word · title-plus-root · root-plus-code ·
+reduplication · an archaic register reserved for one class) and a test in the same
+shape as the Lever hook's: **move an example name to another class; if it still
+looks correct there, the classes are not distinct.** English is the worked
+argument — *Sarah Whitlock*, *Bristol*, *The Society of Antiquaries* — where
+vocabulary does almost none of the distinguishing.
+
+One qualifier is load-bearing: **phonetics unify what construction divides.** All
+three classes keep the same sounds; only the shape differs, or the world has two
+languages instead of one.
+
+Verified over three runs. The clearest gave people a fused prefix-plus-root
+(*Othe-Vael*, *Ule-Kess*), places a spatial phrase (*Rust Over Deck*, *Silt Under
+Valve*) and factions an archaic possessive (*The Debt's Margin*), all from the same
+clipped industrial vocabulary. Another reached for reduplication unprompted. This
+is a partial pass on the naming section only — `linguistic` remains one of the
+fourteen decoders without a full refinement.
+
 **§5 happened again, in the trial harnesses, and nobody noticed for five
 trials.** Every Session 0 trial generated a language and then ignored it. The
 `linguistic` slot produced ~3,000 characters of naming conventions with worked

@@ -91,8 +91,11 @@ touches `data/world_builder_registry.json`.
 
 - **One verbatim example-name reuse in sixteen** (trial 6's station is named after
   an illustrative example). Reduced from 1-in-1, not eliminated.
-- **All of trial 6's names are hyphenated compounds.** That monotony comes from the
-  language, not its application — `linguistic` specified one construction for all
-  three name classes, and it is among the fourteen decoders never refined.
+- **Trial 6's names are all hyphenated compounds.** That monotony came from the
+  language rather than its application — `linguistic` gave one construction to all
+  three name classes. **Since fixed**: the decoder now requires a different
+  construction per class and carries a test for it, so a re-run should give people,
+  places and institutions three distinguishable shapes. Trial 6's pages predate
+  that and are left as they are.
 - **Trial 1's pages are left exactly as generated**, template-label leaks and all.
   They are the evidence.
