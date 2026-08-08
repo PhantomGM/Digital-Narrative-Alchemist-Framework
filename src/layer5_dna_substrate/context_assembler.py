@@ -155,6 +155,11 @@ class AssemblyRequest:
     locale_id: Optional[str] = None      # where the entity is being placed
     imprint: str = ""                    # stub name + description from Unmade Connections
     directives: str = ""                 # caller's specialist guidance
+    # The table's Lines and Veils, pre-rendered. A STRING, not a structure,
+    # so Layer V never imports Layer III: SafetyRegister lives beside the
+    # player profiles and hands the finished block down, exactly as the naming
+    # rules do.
+    safety: str = ""
     budget_tokens: int = 3000
     # The text to be verified. Supplied by the auditor path only; when present,
     # the canon pages it names are carried in full (see _build_citations).
@@ -163,6 +168,21 @@ class AssemblyRequest:
 
 @dataclass
 class ContextPackage:
+    # The table's Lines and Veils. Held in its own field for the same reason
+    # `naming` is, and the reason is not symmetry: _LAYER_BUDGET caps
+    # world_frame at 25%, the World Overview alone overflows that, and the
+    # naming rules were silently truncated out of every prompt that ever ran
+    # until they were moved. A truncated naming rule is a quality regression.
+    # A truncated Line is a safety failure.
+    #
+    # It is also the one layer present in BOTH surfaces. `directives` is
+    # excluded from canon_slice(), so a constraint placed there would steer
+    # generation and never be verified -- and a prompt instruction is not a
+    # guarantee, it is a strong suggestion to a sampler. The Session 0 trial
+    # proved both halves matter: one player's bigotry Line bound the SETTING
+    # rather than any scene, which no output filter can catch because the
+    # offending page reads fine alone.
+    safety: str = ""
     world_frame: str = ""
     locale: str = ""
     lineage: str = ""
@@ -181,6 +201,11 @@ class ContextPackage:
 
     def _sections(self, include_directives: bool) -> List[str]:
         parts = []
+        # First, always, in both surfaces. A constraint the model reads after
+        # three thousand tokens of world frame is a constraint it may weigh
+        # against them; one it reads first is the frame everything else sits in.
+        if self.safety:
+            parts.append(self.safety)
         if self.world_frame:
             parts.append("## WORLD FRAME (applies to everything)\n" + self.world_frame)
         if self.naming:
@@ -214,6 +239,11 @@ class ContextPackage:
         the roster is only a directory.
         """
         parts = []
+        # Present here as well as in for_decoder(), and unconditionally. The
+        # auditor's job is to catch what generation let through, and a
+        # constraint it cannot see is one it cannot check.
+        if self.safety:
+            parts.append(self.safety)
         if self.world_frame:
             parts.append(self.world_frame)
         # Only canonized naming rules are evidence. A draft profile is a
@@ -581,6 +611,10 @@ class ContextAssembler:
         directives = "\n\n".join(p for p in [req.imprint.strip(), req.directives.strip()] if p)
 
         return ContextPackage(
+            # Passed straight through, uncapped. Every other layer takes a
+            # share of budget_tokens; this one does not participate, because
+            # there is no budget under which dropping a Line is correct.
+            safety=req.safety,
             world_frame=self._with_rulings(
                 self._cap(self._build_world_frame(chain_ids),
                           req.budget_tokens, _LAYER_BUDGET["world_frame"])),

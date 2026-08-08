@@ -29,8 +29,10 @@ FUZZY_TYPE_MAP = {
     "lore": "lore", "doctrine": "lore", "myth": "lore", "legend": "lore", "scripture": "lore",
     "prophecy": "lore", "creed": "lore", "tenet": "lore", "gospel": "lore",
     # Peoples and societies, as opposed to institutions with goals.
+    # "community" was written by a decoder during the Session 0 trial and fell
+    # through to the npc default, because nothing claimed it.
     "culture": "culture", "people": "culture", "peoples": "culture", "tribe": "culture",
-    "society": "culture",
+    "society": "culture", "community": "culture", "commune": "culture",
     # Living (or unliving) things that are not people.
     "creature": "creature", "beast": "creature", "monster": "creature", "fauna": "creature",
     "swarm": "creature", "predator": "creature", "vermin": "creature",

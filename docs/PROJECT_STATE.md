@@ -504,6 +504,14 @@ worst case for every specific game. A rough generic contract is ~11 entities
 3 NPCs) — the live world holds 70 made, six times a pitch's worth, and 10 `item`
 records where a pitch needs none.
 
+**Now implemented: `src/layer5_dna_substrate/content_contract.py`.** `Slot`
+carries a `brief` that cannot be omitted, a `depends_on` tuple resolved by
+`ContentContract.ordered()` into a stable topological order, and an optional
+`tone`. `unfilled()`/`is_satisfied()` are the stop condition — the question an
+AI canonizer must be asked instead of "is this good?". `RuntimeDirectives` holds
+the other half of Session 0's output, the part that shapes GM behaviour and
+cannot be generated into anything.
+
 **Confirmed in trial, with three corrections.** `testing/session_zero/` ran this
 end to end — four player-agents, a real interview, 15 entities decoded, a pitch
 accepted by all four. Full write-up in `03_findings.md`. What it changed:
@@ -592,10 +600,25 @@ held. And a claustrophobia Veil **collided with the premise itself**: a mine
 campaign cannot be filtered into compliance, it has to be generated differently.
 Both were invisible to an output filter and both were cheap at generation time.
 
-**`PlayerProfileManager` cannot currently represent any of this.** It stores one
-flat `lines_and_veils` list of strings, so `aggregate_safety_boundaries` hands the
-governor a Line and a Veil as indistinguishable text. It cannot express that a
-Line forbids and a Veil defers, that one player's animal Line is about on-screen
-death rather than the content existing, that another's binds worldbuilding rather
-than scenes, or that a third needs a private channel. Every one of those came out
-of a single interview. Fixing the structure is a precondition, not a follow-up.
+**Both halves are now built.** `ContextPackage.safety` is a field of its own,
+emitted **first** in `for_decoder()` *and* `canon_slice()`, and taking no share of
+`budget_tokens` — there is no budget under which dropping a Line is correct.
+`src/layer3_operations/safety_register.py` holds `SafetyConstraint(kind, scope,
+note, holders)`, which is the shape the trial proved necessary: `kind`
+distinguishes forbid from defer, `scope=SETTING` marks the constraint an output
+filter structurally cannot catch, `note` keeps the player's own qualification,
+and `holders` is recorded but **never rendered**, because a prompt naming who
+asked for what puts a private veil back in the room. Merging keeps the stricter
+reading of every disagreement, so a boundary two players share can never come out
+weaker than either stated it.
+
+`PlayerProfileManager` builds the register and keeps its old flat-list entry
+point, which now reads every unlabelled boundary as a **Line** — the strictest
+available reading, because guessing softer is the wrong error to make.
+
+One design note worth keeping. `SafetyRegister.fit()` drops whole constraints by
+priority, but the header and intros are a fixed ~600 characters, so a small enough
+budget fits nothing and an earlier version returned an **empty block** — silently
+removing every Line, which is the one outcome worse than the overflow it was
+avoiding. The Lines are now a floor: they go in whether they fit or not.
+Overspending a budget is recoverable; a prompt with no Lines in it is not.
