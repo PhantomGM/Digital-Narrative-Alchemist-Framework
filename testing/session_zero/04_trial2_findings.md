@@ -87,6 +87,21 @@ is still entirely outstanding.
 Worth stating plainly because it would be easy to read `contract satisfied` as
 "the runaway problem is solved". It is not. It is bounded at one end only.
 
+**Since addressed** — `src/layer5_dna_substrate/expansion_policy.py` puts the
+bound on the expansion side, where it belongs. Measured against this trial's own
+frontier: trial 2's 16 entities implied **58 stubs** (61 mentions, 3 deduped onto
+entities that already existed), and at `free_depth=0` every one of them defers
+rather than generating.
+
+The measurement also exposed something the design had not accounted for. With
+trial 2's seeds left as **draft**, the compose tier answers **nothing** — 0
+compose, 58 defer. Promote the same 16 seeds to canon and it answers **30 of 58**.
+`CanonComposer` reads only records tagged `canonized`, so on a brand-new world
+Tier 2 is inert until the author promotes something. That is correct rather than
+broken — composing from drafts would propagate unapproved content as established
+fact — but it means the 40%-free figure measured on the live world does not
+transfer to a fresh one, and a new world's bound is *defer*, not *compose*.
+
 ---
 
 ## Verdict

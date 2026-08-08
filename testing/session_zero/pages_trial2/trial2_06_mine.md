@@ -2,8 +2,8 @@
 
 **Wood-shored mine of natural stone, actively worked yet decaying** — **A known landmark, whispered about** — **Accessed by visible shafts, yet hinting at deeper, stranger paths**
 
-| **Essence** | **Archetype** |
-| :--- | :--- |
+| **Essence**                                                                  | **Archetype**   |
+| :--------------------------------------------------------------------------- | :-------------- |
 | "A wound in the earth that bleeds possibility and draws things from beyond." | The Living Mine |
 
 ---

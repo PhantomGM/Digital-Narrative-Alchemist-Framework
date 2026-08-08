@@ -538,6 +538,53 @@ signal). The contract holds none of that and needs a sibling that does.
 arbitrarily much. Bound it structurally: expand depth 1 from each backstory
 referent and register everything below as stubs.
 
+### The brake: `expansion_policy.py`
+
+Trial 2 measured **3.81** with a contract in force, which settles what a contract
+is for. **A contract bounds what is GENERATED; it has no opinion about what is
+IMPLIED.** So the bound lives on the expansion side, and three outcomes exist for
+any stub:
+
+| | |
+| :--- | :--- |
+| **EXPAND** | Tier 1. Roll DNA, call the model, write a page. Costs money. |
+| **COMPOSE** | Tier 2. Canon already says enough — `CanonComposer` assembles a page with no DNA and no model call. |
+| **DEFER** | Tier 2, canon cannot answer. The stub stays a stub — a success, not a failure. |
+
+Deferring is genuinely free: one registry row, and `context_assembler.py:314`
+excludes stubs from retrieval, so a deferred stub can never leak into a prompt
+and be described into existence.
+
+`ExpansionManager.advance_stub` / `advance_frontier` apply it; `expand_stub` is
+unchanged and unbounded, so **the brake is opt-in and never applied behind a
+caller's back** — a policy that silently refused would look like a generation
+failure rather than a budget decision. `advance_frontier` composes before it
+expands, so the free work informs the paid work and an exhausted budget skips the
+expensive half.
+
+### Measured on real worlds, and it exposes a lifecycle
+
+| World | Branching | Mature? | At `free_depth=0` |
+| :--- | :--- | :--- | :--- |
+| Trial 2, seeds as **draft** | 3.62 | no | **0 compose, 58 defer** |
+| Trial 2, seeds promoted to **canon** | 3.62 | no | **30 compose, 28 defer** |
+| Live world (Skarn) | 0.97 | **yes** | brake off — all 42 expand |
+
+**On a brand-new world the compose tier is inert.** `CanonComposer._canon_records`
+reads only records tagged `canonized`, and a fresh world has none — so Tier 2
+defers everything until the author promotes something. That is correct rather
+than broken: composing from drafts would propagate unapproved content as
+established fact. But it means **the 40%-free figure measured on Skarn does not
+transfer to a new world until promotion happens**, and the bound on a fresh world
+is *defer*, not *compose*. This is the strongest argument yet for the
+architecture report's Ghost Registry, which is the only proposal that gives a
+seed world somewhere to put an implied stub.
+
+The maturity check is measured, never a hardcoded entity count: below a branching
+factor of 1.0 a world dedupes faster than it grows, so the brake comes off by
+itself. `min_sample` guards the obvious trap — a world with three entities reads
+0.0 and is empty, not mature.
+
 ### Prep, and what happens to the parts play never touches
 
 Session outlines are contingency plans, not scripts; players will not follow

@@ -76,7 +76,7 @@ to see what the fixes changed, or run `compare_trials.py`, which checks each
 defect rather than leaving it to the eye. **Trial 2's pages open with entity
 names, not template labels** — the table above is trial 1 only.
 
-The clearest single difference is `pages_trial2/07_haven.md`, **The Cog &
+The clearest single difference is `pages_trial2/trial2_07_haven.md`, **The Cog &
 Kettle**. Trial 1's contract had no way to ask for a warm room at all.
 
 ## Not markdown, but part of the trial

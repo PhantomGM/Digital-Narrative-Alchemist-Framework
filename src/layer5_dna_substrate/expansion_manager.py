@@ -3,6 +3,8 @@ from typing import List, Dict, Any
 from layer5_dna_substrate.registry import DNARegistry
 from layer5_dna_substrate.forge import ProceduralForge
 from layer5_dna_substrate.inheritance import InheritanceEngine
+from layer5_dna_substrate.expansion_policy import (
+    COMPOSE, DEFER, EXPAND, ExpansionPolicy, stub_depth)
 from layer5_dna_substrate.phenotype_meta import parse_phenotype_tail, VALID_STUB_TYPES
 
 # Comprehensive type map for fuzzy matching of loosely-typed stub mentions
@@ -123,7 +125,7 @@ class ExpansionManager:
     manages their expansion into full DNA-backed entities.
     """
     def __init__(self, registry: DNARegistry, forge: ProceduralForge, inheritance: InheritanceEngine, decoder,
-                 assembler=None):
+                 assembler=None, policy=None, composer=None):
         self.registry = registry
         self.forge = forge
         self.inheritance = inheritance
@@ -131,6 +133,20 @@ class ExpansionManager:
         # Optional ContextAssembler; when present, it replaces the legacy
         # inheritance-constraints + notes-dict context path in expand_stub.
         self.assembler = assembler
+        # Optional depth policy and canon composer. Both default to None so
+        # every existing caller keeps unbounded expand_stub behaviour: the
+        # brake is opt-in via advance_stub, never applied behind a caller's
+        # back. A policy that silently refused to expand would look like a
+        # generation failure rather than a budget decision.
+        self.policy = policy
+        self.composer = composer
+
+    def _composer(self):
+        """Lazily build a CanonComposer if one was not supplied."""
+        if self.composer is None:
+            from layer5_dna_substrate.canon_composer import CanonComposer
+            self.composer = CanonComposer(self.registry)
+        return self.composer
 
     def _locale_for(self, entity_id: str):
         """The spatial entity an expansion should be grounded in, if any."""
@@ -199,6 +215,12 @@ class ExpansionManager:
             tags=["stub", f"from_{source_id}", e_name.replace(" ", "_").lower()]
         )
         self.registry._records[stub_id]["stub_metadata"] = {"name": e_name, "description": e_desc, "source_id": source_id}
+        # Hops from a seed, recorded at registration rather than derived later.
+        # ExpansionPolicy needs it to decide invent-versus-compose, and walking
+        # the source chain on every decision is both slower and fragile once a
+        # parent has been retyped or merged.
+        self.registry._records[stub_id]["depth"] = stub_depth(
+            self.registry, source_id) + 1 if source_id else 1
         self.registry.link_elements(source_id, stub_id, "peer", f"mentions_{e_name}")
         return stub_id
 
@@ -266,6 +288,73 @@ class ExpansionManager:
                     stub_ids.append(stub_id)
 
         return stub_ids
+
+    def advance_stub(self, stub_id: str, extra_context: str = "",
+                     **gen_kwargs) -> dict:
+        """
+        Advance a stub as far as the policy allows, and no further.
+
+        The bounded counterpart to expand_stub. Returns
+        {"decision", "stub_id", "phenotype"} where phenotype is None for a
+        DEFER -- which is an outcome, not an error. A deferred stub costs one
+        registry row, cannot leak into a prompt, and is still there when
+        something actually needs it.
+
+        With no policy set this is just expand_stub, so wiring it in changes
+        nothing until a budget is chosen.
+        """
+        record = self.registry.get_element(stub_id)
+        if not record or "stub" not in (record.get("tags") or []):
+            raise ValueError(f"ID {stub_id} is not a valid expansion stub.")
+
+        if self.policy is None:
+            return {"decision": EXPAND, "stub_id": stub_id,
+                    "phenotype": self.expand_stub(stub_id, extra_context,
+                                                  **gen_kwargs)}
+
+        composer = self._composer()
+        decision = self.policy.plan(self.registry, composer, [stub_id])[stub_id]
+
+        if decision == EXPAND:
+            return {"decision": EXPAND, "stub_id": stub_id,
+                    "phenotype": self.expand_stub(stub_id, extra_context,
+                                                  **gen_kwargs)}
+        if decision == COMPOSE:
+            # No DNA and no model call: the page is assembled from canon that
+            # already describes this entity. Falls through to DEFER if canon
+            # turns out to be thinner than assess() judged, so a compose can
+            # never quietly become an invention.
+            if composer.compose_into_record(stub_id):
+                return {"decision": COMPOSE, "stub_id": stub_id,
+                        "phenotype": self.registry.get_element(stub_id)["phenotype"]}
+            decision = DEFER
+
+        return {"decision": DEFER, "stub_id": stub_id, "phenotype": None}
+
+    def advance_frontier(self, stub_ids=None, extra_context: str = "") -> dict:
+        """
+        Advance every pending stub under the policy, cheapest first.
+
+        Composes before it expands, deliberately. Every composed page is canon
+        the next expansion can see, so doing the free work first makes the paid
+        work better informed -- and if a budget runs out mid-run, what was
+        skipped is the expensive half.
+        """
+        if stub_ids is None:
+            stub_ids = [i for i, r in self.registry._records.items()
+                        if "stub" in (r.get("tags") or [])]
+        plan = (self.policy.plan(self.registry, self._composer(), stub_ids)
+                if self.policy else {i: EXPAND for i in stub_ids})
+
+        order = ([i for i, d in plan.items() if d == COMPOSE]
+                 + [i for i, d in plan.items() if d == EXPAND]
+                 + [i for i, d in plan.items() if d == DEFER])
+
+        results = {EXPAND: [], COMPOSE: [], DEFER: []}
+        for stub_id in order:
+            outcome = self.advance_stub(stub_id, extra_context)
+            results[outcome["decision"]].append(stub_id)
+        return results
 
     def expand_stub(self, stub_id: str, extra_context: str = "", **gen_kwargs) -> str:
         """
