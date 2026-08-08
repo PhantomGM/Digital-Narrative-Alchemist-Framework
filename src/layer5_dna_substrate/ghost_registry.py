@@ -176,6 +176,38 @@ SHAPES: Dict[str, GhostShape] = {
          "Someone it happened to."],
         ["What it changed.",
          "Who disagrees about it."]),
+    "realm": GhostShape(
+        "A polity above the settlement: territory somebody claims to rule.",
+        ["A border, and somewhere that border is argued about.",
+         "Someone who claims to speak for the whole of it.",
+         "Settlements inside it that have their own opinion about that.",
+         "Something it takes from its territories, and something it owes them."],
+        ["Who actually rules, where that differs from who claims to.",
+         "How far its writ genuinely runs before it stops mattering.",
+         "What it is doing about the border it is arguing over.",
+         "What would break it apart."]),
+    "region": GhostShape(
+        "A stretch of land large enough to have its own weather and its own "
+        "reputation.",
+        ["Terrain, and a season that makes it harder.",
+         "A way through it, and a reason not to take that way.",
+         "Somewhere people gather inside it.",
+         "Something it produces or something it lacks."],
+        ["What lives there that travellers warn each other about.",
+         "Who claims it, and whether the claim is honoured.",
+         "What the land was before, if it was anything else.",
+         "Which of its reputations are deserved."]),
+    "wonder": GhostShape(
+        "The one thing in the setting everybody has heard of, whether or not "
+        "they have seen it.",
+        ["Something about it a person could measure and repeat.",
+         "A local name and a scholarly name, which disagree.",
+         "A reason people travel to see it.",
+         "Something it is blamed for."],
+        ["What made it, and whether anything meant to.",
+         "What it does, if it does anything.",
+         "Who is trying to control, study or reach it.",
+         "What it would cost to change it."]),
 }
 
 # Types deliberately left without a shape, so the omission reads as a decision
@@ -187,9 +219,12 @@ SHAPES: Dict[str, GhostShape] = {
 #               and PROJECT_STATE §5 records that the naming pipe is the single
 #               easiest thing here to break silently. Defer instead.
 #   world       Nothing above it can imply one, and a placeholder world is not a
-#               thing a table can use.
-#   realm, region, wonder, linguistic and the rest simply have no shape yet; add
-#               one when a real frontier turns up wanting it, not before.
+#               thing a table can use. A world is the root, not a frontier.
+#
+# Every other generatable type has a shape. tests/test_ghost_coverage.py asserts
+# that correspondence against ProceduralForge.generators, so a twenty-second
+# type fails the suite until it is either given a shape or excluded here on
+# purpose.
 NO_GHOST_BY_DESIGN = {"linguistic", "world"}
 
 
