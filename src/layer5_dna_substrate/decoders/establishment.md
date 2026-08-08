@@ -77,13 +77,15 @@ An establishment is a **room you can walk into** — the smallest unit of place 
 | `EVO` | 1–6 | Where it is going. From the older key: 1 will grow in power, 2 will be destroyed, 3 secretly alive, 4 anchored in time, 5 hub of rebellion, 6 shift in purpose. |
 | `INT` | 1–4 | **INFERRED: integration** — how bound up it is with the surrounding settlement, from incidental to load-bearing. |
 
-**`CHAIN{}` — dependencies.** Three links named `CH1`, `CH2`, `CH3`, each valued 0–4, where **0 means no link**. The older key's dependency list is the best available reading: 1 relies on a noble patron, 2 paid protection, 3 regional trade, 4 a religious order. Where a link is present, show the dependency doing work — and what happens to this place if it is cut.
+**`CHAIN{}` — dependencies.** Three links named `CH1`, `CH2`, `CH3`, each valued 0–4, where **0 means no link**. The older key's dependency list is the best available reading: 1 relies on a noble patron, 2 paid protection, 3 regional trade, 4 a religious order. Where a link is present, show the dependency doing work — and what happens to this place if it is cut. Each link is zero about one time in five, so an establishment with one or two dependencies is the common case; simply leave the absent ones out. **Where all three are zero, that is a fact about the place, not a blank to fill.** It owes nobody: no patron, no protection paid, no order behind it. Say who resents that independence and what it costs to keep — a place that answers to no one in a town where everyone else does has either something to trade or someone to fear.
 
-> **Parsing note.** The generator writes each gene as name-then-value with no
-> separator, and these three names already end in a digit, so `CH1` with value `0`
-> renders as `CH10`. Read the **last** character as the value: `CH10` is link one
-> valued zero, `CH23` is link two valued three. Worth fixing at the generator with
-> a separator; until then, parse from the right.
+> **Parsing note.** These three gene names end in a digit, so this block — and
+> only this block — is written with a colon between name and value: `CH1:0` is
+> link one valued zero, `CH2:3` is link two valued three. Every other gene in
+> this genome is a three-letter name run straight against its value (`ATM5`,
+> `SND3`), which needs no separator. Older DNA written before this change has no
+> colon and renders `CH1` valued `0` as `CH10`; if you meet that shape, read the
+> last character as the value.
 
 ---
 

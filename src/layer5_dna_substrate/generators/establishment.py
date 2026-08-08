@@ -12,13 +12,23 @@ def generate_establishment_dna(seed=None, compact=False):
     evolution = {"HIS": r(1, 4), "EVO": r(1, 6), "INT": r(1, 4)}
     chain = {"CH1": r(0, 4), "CH2": r(0, 4), "CH3": r(0, 4)}
 
+    # CHAIN is the one block written with a separator, because it is the one
+    # block whose gene names end in a digit. Every other gene here is a
+    # three-letter name run straight against its value -- ATM5, SND3 -- which is
+    # unambiguous. CH1 valued 0 written the same way is the string "CH10", and
+    # nothing in it says whether that is link one at zero or a gene called CH10.
+    # decoders/establishment.md carried a parsing note telling the model to read
+    # the last character as the value; a colon means it no longer has to guess.
+    #
+    # Safe to change: this genome had produced no entity in any registry, so
+    # there is no stored DNA in the old shape to migrate.
     blocks = [
         f"ATMOS{{{','.join(k+str(v) for k,v in atmosphere.items())}}}",
         f"OFFERINGS{{{','.join(k+str(v) for k,v in offerings.items())}}}",
         f"PERSONNEL{{{','.join(k+str(v) for k,v in personnel.items())}}}",
         f"SECRETS{{{','.join(k+str(v) for k,v in secrets.items())}}}",
         f"EVO{{{','.join(k+str(v) for k,v in evolution.items())}}}",
-        f"CHAIN{{{','.join(k+str(v) for k,v in chain.items())}}}"
+        f"CHAIN{{{','.join(f'{k}:{v}' for k, v in chain.items())}}}"
     ]
     dna = "\n".join(blocks)
     return dna.replace("\n", ";") if compact else dna

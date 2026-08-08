@@ -138,11 +138,25 @@ exactly the content the value denied. Fixed with §4a's own remedy: the absence
 now gets a replacement question (what the uneventful days make possible) and an
 explicit ban on promoting weather or bandits into a special condition.
 
-**One defect the audit surfaced that is not a null at all.** `establishment`
-writes genes as name-then-value with no separator, and `CH1`/`CH2`/`CH3` already
-end in a digit — so `CH1` valued `0` renders as `CH10`. The decoder documents the
-workaround (parse from the right); **the fix belongs at the generator**, and it is
-the only genome with digit-suffixed keys.
+**One defect the audit surfaced that is not a null at all — since fixed.**
+`establishment` wrote genes as name-then-value with no separator, and
+`CH1`/`CH2`/`CH3` end in a digit, so `CH1` valued `0` rendered as `CH10`. The
+decoder carried a parsing note telling the model to read the last character as
+the value — a workaround at the reading end for a defect at the writing end. The
+CHAIN block now uses a colon (`CHAIN{CH1:0,CH2:3,CH3:1}`); every other gene keeps
+the bare form, because a three-letter name cannot collide with its value and
+changing them would alter DNA for no gain. Safe because no establishment entity
+existed in any registry.
+
+**The interesting part is what the fix revealed.** Once the separator made the
+block parseable, the audit could see that `CH1`, `CH2` and `CH3` each emit 0 in
+**about 20% of rolls** — three null axes it had been structurally blind to,
+because its own regex could not separate key from value either. *A format a
+script cannot parse is a format a model has to guess at.* All three read as
+documented, and the surrounding instruction is conditional ("where a link is
+present"), so there was no §4a bug — but nothing said what an establishment with
+**all three** links absent means. It now does: a place that owes nobody is a fact
+about the place, not a blank to fill.
 
 *A caution about the script itself.* Before it was trustworthy it produced
 fifteen false positives (decimal modifiers like `AP:0.8` read as `AP:0`), two
