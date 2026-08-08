@@ -390,6 +390,41 @@ display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
 opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
 candidate on either axis — not the quarter an LNC-only count suggests.
 
+**§5 happened again, in the trial harnesses, and nobody noticed for five
+trials.** Every Session 0 trial generated a language and then ignored it. The
+`linguistic` slot produced ~3,000 characters of naming conventions with worked
+examples for people, places and factions — and all fourteen entities generated
+after it received none of them, because both harnesses hand-build a
+`ContextPackage` and never set `naming`. The language page went into `world_frame`
+as one prior among sixteen, truncated to its first paragraph, **which is
+phonetics** — and phonetics name nothing.
+
+That is §5 verbatim: *"It used to live in the frame and was truncated out of every
+prompt that ever ran."* The architecture had already been fixed; the harnesses
+bypassed the fixed path and reintroduced the bug one layer up. Worth knowing:
+`_linguistic_anchor` reads the anchor from the **registry**, not the vault, so the
+real pipeline finds a language generated moments earlier in the same run. The
+capability was present and simply unused.
+
+Measured on identical NPC DNA with the naming block wired in: **"Kaelen Vance"
+became "Rian"** — short, single, open-vowelled, exactly as the rules specify. The
+fix works and its effect is large.
+
+**But "Rian" is one of the block's own worked example names, reused verbatim**,
+three lines below a disclaimer telling it not to. §5 records that same guard
+*succeeding* when the block was the primary naming input; here it competes with
+sixteen prior pages, and the model reached for the nearest rule-conformant thing,
+which was an example. The likely cause is that the harnesses also omit
+`roster` — the "reference, don't recreate" layer that lists names already spent.
+Both harnesses now populate `naming` **and** `roster`. **The roster half is
+unverified**: it is wired and dry-runs clean, but no full run has been done since.
+
+A caution for whoever re-runs it: testing a name against a context that already
+contains that name proves nothing. The faction half of this test was confounded
+exactly so — "The Sovereign Reclamation Trust" was in the prior pages as an
+established entity the prompt forbids renaming, so reproducing it was arguably
+correct rather than a failure of the rules.
+
 **Fixing WHAT is derived does not fix HOW it is expressed.** The Lever made
 vulnerabilities trait-derived, which was the point — but a seven-alignment run
 showed **four of seven** reaching for the same dramatisation: *secret* mercy,

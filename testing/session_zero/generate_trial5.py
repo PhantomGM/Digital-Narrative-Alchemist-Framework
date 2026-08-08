@@ -35,7 +35,8 @@ from layer3_operations.safety_register import (  # noqa: E402
 from layer5_dna_substrate.canon_composer import CanonComposer  # noqa: E402
 from layer5_dna_substrate.content_contract import (  # noqa: E402
     ContentContract, RuntimeDirectives, Slot)
-from layer5_dna_substrate.context_assembler import ContextPackage  # noqa: E402
+from layer5_dna_substrate.context_assembler import (
+    AssemblyRequest, ContextAssembler, ContextPackage)  # noqa: E402
 from layer5_dna_substrate.decoder import DNADecoder  # noqa: E402
 from layer5_dna_substrate.expansion_manager import ExpansionManager  # noqa: E402
 from layer5_dna_substrate.expansion_policy import (  # noqa: E402
@@ -249,6 +250,7 @@ def main():
     os.makedirs(PAGES, exist_ok=True)
 
     registry = DNARegistry()
+    assembler = ContextAssembler(registry)
     decoder = None if args.dry_run else DNADecoder()
     safety_block = SAFETY.render()
     conflicts = SAFETY.conflicts()
@@ -276,7 +278,28 @@ def main():
             if args.dry_run:
                 continue
 
+            # The naming rules, from whatever linguistic entity this run has
+            # already generated. Omitting this was the trial 5 defect: the
+            # linguistic slot produced 3,000 characters of naming conventions
+            # with worked examples, and every one of the fourteen entities
+            # generated after it got none of them -- the page went into `prior`
+            # truncated to its first paragraph, which is phonetics, and phonetics
+            # name nothing. PROJECT_STATE §5 records this exact failure once
+            # already: the rules must ride their own uncapped field, not the
+            # world frame. ContextAssembler reads the anchor from the REGISTRY,
+            # so it finds an entity made moments ago in this same run.
+            naming, naming_is_canon = assembler._naming_conventions([])
+            # The roster is the other half of naming: "reference, don't
+            # recreate". Without it the model has no list of names already
+            # spent, so it reaches for whatever is nearest -- which in the
+            # first test after wiring `naming` was one of the block's own
+            # worked example names, reused verbatim despite the disclaimer.
+            req = AssemblyRequest(element_type=slot.type, safety=safety_block)
+            roster = assembler._build_roster(req, [])
             package = ContextPackage(safety=safety_block,
+                                     naming=naming,
+                                     naming_is_canon=naming_is_canon,
+                                     roster=roster,
                                      world_frame=build_context(prior),
                                      directives=CONTRACT.brief_for(slot, i))
             t0 = time.time()

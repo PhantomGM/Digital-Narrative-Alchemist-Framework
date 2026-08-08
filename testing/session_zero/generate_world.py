@@ -275,9 +275,24 @@ def main():
             # (both surfaces, uncapped), the world in `world_frame`, and this
             # slot's brief in `directives`, which is where per-generation
             # guidance belongs.
-            from layer5_dna_substrate.context_assembler import ContextPackage
+            # naming and roster are populated from the live registry, so a
+            # language generated earlier in THIS run reaches everything after
+            # it. Omitting them was the trials 1-2 and 5 defect: the linguistic
+            # slot produced three thousand characters of naming conventions
+            # and every later entity got none of them, because the page went
+            # into world_frame truncated to its first paragraph -- which is
+            # phonetics, and phonetics name nothing. PROJECT_STATE §5 records
+            # this exact failure once already.
+            from layer5_dna_substrate.context_assembler import (
+                AssemblyRequest, ContextAssembler, ContextPackage)
+            asm = ContextAssembler(registry)
+            naming, naming_is_canon = asm._naming_conventions([])
             package = ContextPackage(
                 safety=safety_block,
+                naming=naming,
+                naming_is_canon=naming_is_canon,
+                roster=asm._build_roster(
+                    AssemblyRequest(element_type=slot.type), []),
                 world_frame=build_context(prior),
                 directives=CONTRACT.brief_for(slot, i))
 
