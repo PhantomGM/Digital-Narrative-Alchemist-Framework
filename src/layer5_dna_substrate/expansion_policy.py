@@ -32,7 +32,14 @@ from typing import Dict, Optional
 
 EXPAND = "expand"
 COMPOSE = "compose"
+GHOST = "ghost"
 DEFER = "defer"
+
+# Cheapest-first, and that is also strictest-first in what each is allowed to
+# assert. COMPOSE states only what canon already says. GHOST states only what
+# the type guarantees. DEFER states nothing. EXPAND is the one that invents,
+# and it is the one that costs.
+_ORDER = (COMPOSE, GHOST, EXPAND, DEFER)
 
 
 def stub_depth(registry, entity_id: str) -> int:
@@ -105,11 +112,19 @@ class ExpansionPolicy:
     min_sample       Do not trust a branching measurement taken on almost
                      nothing. A world with three entities can read 0.0 and is
                      not mature; it is empty.
+
+    use_ghosts       Whether a stub beyond the frontier that canon cannot
+                     answer should get a type-shaped placeholder rather than
+                     nothing. On a NEW world this is the difference between a
+                     usable frontier and an empty one: measured on trial 2,
+                     canon composed 0 of 58 stubs, because CanonComposer reads
+                     only `canonized` records and a fresh world has none.
     """
 
     free_depth: int = 1
     mature_branching: float = 1.0
     min_sample: int = 40
+    use_ghosts: bool = True
 
     def is_mature(self, registry) -> bool:
         made = sum(1 for r in registry._records.values()
@@ -118,22 +133,31 @@ class ExpansionPolicy:
             return False
         return measure_branching(registry) < self.mature_branching
 
-    def decide(self, depth: int, canon_ready: bool,
-               mature: bool = False) -> str:
+    def decide(self, depth: int, canon_ready: bool, mature: bool = False,
+               ghostable: bool = False) -> str:
         """
-        EXPAND inside the free frontier or once the world is self-limiting;
-        otherwise COMPOSE when canon can answer, and DEFER when it cannot.
+        EXPAND inside the free frontier or once the world is self-limiting.
+        Beyond it: COMPOSE where canon can answer, GHOST where the type can,
+        and DEFER where neither can.
+
+        Canon outranks the type because canon is about *this* entity while a
+        ghost is only about its kind. A ghost is the floor, not a substitute.
         """
         if mature or depth <= self.free_depth:
             return EXPAND
-        return COMPOSE if canon_ready else DEFER
+        if canon_ready:
+            return COMPOSE
+        if ghostable and self.use_ghosts:
+            return GHOST
+        return DEFER
 
-    def plan(self, registry, composer, stub_ids) -> Dict[str, str]:
+    def plan(self, registry, composer, stub_ids, ghosts=None) -> Dict[str, str]:
         """
         Decide for many stubs at once, without generating anything.
 
-        Cheap by construction: `CanonComposer.assess` makes no model call, so a
-        whole frontier can be planned and costed before a penny is spent.
+        Cheap by construction: `CanonComposer.assess` makes no model call and
+        neither does a ghost, so a whole frontier can be planned and costed
+        before a penny is spent.
         """
         mature = self.is_mature(registry)
         out: Dict[str, str] = {}
@@ -142,15 +166,23 @@ class ExpansionPolicy:
             if not record:
                 continue
             depth = stub_depth(registry, stub_id)
-            ready = False
-            if not mature and depth > self.free_depth and composer is not None:
-                ready = composer.assess(record)["strategy"] == "compose"
-            out[stub_id] = self.decide(depth, ready, mature)
+            ready = ghostable = False
+            if not mature and depth > self.free_depth:
+                if composer is not None:
+                    ready = composer.assess(record)["strategy"] == "compose"
+                if not ready and ghosts is not None:
+                    ghostable = ghosts.can_ghost(record.get("type") or "")
+            out[stub_id] = self.decide(depth, ready, mature, ghostable)
         return out
 
 
 def summarise(plan: Dict[str, str]) -> Dict[str, int]:
-    counts = {EXPAND: 0, COMPOSE: 0, DEFER: 0}
+    counts = {EXPAND: 0, COMPOSE: 0, GHOST: 0, DEFER: 0}
     for decision in plan.values():
         counts[decision] = counts.get(decision, 0) + 1
     return counts
+
+
+def order_cheapest_first(plan: Dict[str, str]):
+    """Stub ids grouped so the free work happens before the paid work."""
+    return [i for step in _ORDER for i, d in plan.items() if d == step]

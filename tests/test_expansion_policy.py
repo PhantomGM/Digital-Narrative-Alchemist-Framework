@@ -20,8 +20,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from layer5_dna_substrate.expansion_manager import ExpansionManager  # noqa: E402
 from layer5_dna_substrate.expansion_policy import (  # noqa: E402
-    COMPOSE, DEFER, EXPAND, ExpansionPolicy, measure_branching, stub_depth,
-    summarise)
+    COMPOSE, DEFER, EXPAND, GHOST, ExpansionPolicy, measure_branching,
+    stub_depth, summarise)
+from layer5_dna_substrate.ghost_registry import GhostRegistry  # noqa: E402
 from layer5_dna_substrate.registry import DNARegistry  # noqa: E402
 
 
@@ -159,8 +160,36 @@ def test_plan_costs_nothing_and_covers_everything(seeded):
     plan = ExpansionPolicy(free_depth=1).plan(registry, composer,
                                               [one, two, three])
     assert plan == {one: EXPAND, two: COMPOSE, three: DEFER}
-    assert summarise(plan) == {EXPAND: 1, COMPOSE: 1, DEFER: 1}
+    assert summarise(plan) == {EXPAND: 1, COMPOSE: 1, GHOST: 0, DEFER: 1}
     assert composer.composed == []   # planning composed nothing
+
+
+def test_a_ghost_fills_the_gap_canon_cannot(seeded):
+    """
+    Canon outranks the type, because canon is about THIS entity and a ghost is
+    only about its kind. So a ghost never displaces a compose -- it catches
+    what would otherwise have been nothing.
+    """
+    registry, _, _, one, two, three = seeded
+    plan = ExpansionPolicy(free_depth=1).plan(
+        registry, FakeComposer(ready=[two]), [one, two, three], GhostRegistry())
+    assert plan == {one: EXPAND, two: COMPOSE, three: GHOST}
+
+
+def test_a_type_with_no_shape_still_defers(seeded):
+    registry, manager, seed, *_ = seeded
+    odd = manager._register_stub(seed, "world", "A World", "mentioned once")
+    registry.get_element(odd)["depth"] = 5
+    plan = ExpansionPolicy(free_depth=1).plan(
+        registry, FakeComposer(), [odd], GhostRegistry())
+    assert plan[odd] == DEFER
+
+
+def test_ghosts_can_be_switched_off(seeded):
+    registry, _, _, _, _, three = seeded
+    plan = ExpansionPolicy(free_depth=1, use_ghosts=False).plan(
+        registry, FakeComposer(), [three], GhostRegistry())
+    assert plan[three] == DEFER
 
 
 def test_plan_skips_records_that_vanished(seeded):
@@ -173,7 +202,7 @@ def test_plan_skips_records_that_vanished(seeded):
 
 def test_a_deferred_stub_is_left_completely_alone(seeded):
     registry, manager, _, _, _, three = seeded
-    manager.policy = ExpansionPolicy(free_depth=1)
+    manager.policy = ExpansionPolicy(free_depth=1, use_ghosts=False)
     manager.composer = FakeComposer()
     before = dict(registry.get_element(three))
 
@@ -183,6 +212,37 @@ def test_a_deferred_stub_is_left_completely_alone(seeded):
     assert result["phenotype"] is None
     assert registry.get_element(three)["dna"] == before["dna"]
     assert "stub" in registry.get_element(three)["tags"]
+
+
+def test_a_ghosted_stub_is_still_a_stub(seeded):
+    """
+    The property that keeps a ghost safe. It must stay excluded from retrieval
+    (context_assembler.py:314 filters on this tag), must stay uncomposable
+    from, and must stay on the list of things owed a real page.
+    """
+    registry, manager, _, _, _, three = seeded
+    manager.policy = ExpansionPolicy(free_depth=1)
+    manager.composer = FakeComposer()
+
+    result = manager.advance_stub(three)
+    record = registry.get_element(three)
+
+    assert result["decision"] == GHOST
+    assert "stub" in record["tags"] and "ghost" in record["tags"]
+    assert record["dna"] == "GHOST"
+    assert "canonized" not in record["tags"]
+
+
+def test_a_ghost_says_outright_that_it_invented_nothing(seeded):
+    registry, manager, _, _, _, three = seeded
+    manager.policy = ExpansionPolicy(free_depth=1)
+    manager.composer = FakeComposer()
+    body = manager.advance_stub(three)["phenotype"]
+
+    assert "not authored, not canon" in body
+    assert "Open — nothing below has been decided" in body
+    assert "Three Hops" in body          # the name it was given
+    assert "named by Two Hops" in body   # and what the world said
 
 
 def test_composing_uses_no_model(seeded):
@@ -213,9 +273,16 @@ def test_a_compose_that_turns_out_thin_defers_rather_than_inventing():
         def compose_into_record(self, sid):
             return False
 
-    manager.policy = ExpansionPolicy(free_depth=1)
+    manager.policy = ExpansionPolicy(free_depth=1, use_ghosts=False)
     manager.composer = Liar()
     assert manager.advance_stub(stub)["decision"] == DEFER
+
+    # With ghosts on it falls to GHOST instead -- still not an invention about
+    # this entity, only what its type guarantees. What it must never do is
+    # escalate to EXPAND.
+    manager.policy = ExpansionPolicy(free_depth=1)
+    manager.composer = Liar()
+    assert manager.advance_stub(stub)["decision"] == GHOST
 
 
 def test_without_a_policy_nothing_changes(seeded):
@@ -243,11 +310,56 @@ def test_advance_frontier_composes_before_it_expands(seeded):
         return original(sid)
 
     manager.composer.compose_into_record = spy
+    ghosts = manager._ghosts()
+    original_ghost = ghosts.ghost_into_record
+
+    def ghost_spy(reg, sid):
+        order.append(("ghost", sid))
+        return original_ghost(reg, sid)
+
+    ghosts.ghost_into_record = ghost_spy
 
     results = manager.advance_frontier([one, two, three])
 
-    assert [kind for kind, _ in order] == ["compose", "expand"]
-    assert results[DEFER] == [three]
+    # Cheapest first, which is also strictest-first in what each may assert:
+    # compose states only what canon says, ghost only what the type says, and
+    # expand -- the one that invents and the one that costs -- goes last.
+    assert [kind for kind, _ in order] == ["compose", "ghost", "expand"]
+    assert results[GHOST] == [three]
+    assert results[DEFER] == []
+
+
+def test_linguistic_is_never_ghosted():
+    """
+    Deliberate, not an oversight. A language's value is entirely its specifics,
+    so a generic placeholder would feed the naming pipe nothing while looking
+    like an answer -- and §5 records that pipe as the easiest thing here to
+    break silently.
+    """
+    from layer5_dna_substrate.ghost_registry import NO_GHOST_BY_DESIGN
+    ghosts = GhostRegistry()
+    for etype in NO_GHOST_BY_DESIGN:
+        assert not ghosts.can_ghost(etype), etype
+
+
+def test_a_ghost_never_claims_a_specific_the_world_has_not_stated(seeded):
+    """
+    The whole safety argument. A ghost may state what the TYPE guarantees and
+    repeat what the world already said; it may not answer anything about this
+    entity. Its open questions must be questions, not filled in.
+    """
+    registry, manager, seed, *_ = seeded
+    stub = manager._register_stub(seed, "establishment", "The Broken Wheel",
+                                  "a tavern the archivist mentioned")
+    body = GhostRegistry().ghost(registry.get_element(stub))
+
+    assert "The Broken Wheel" in body
+    assert "a tavern the archivist mentioned" in body
+    # the type's guarantee, phrased as a guarantee
+    assert "someone behind the counter" in body.lower()
+    # and the specifics left open rather than invented
+    assert "Who the proprietor is" in body
+    assert "not authored, not canon" in body
 
 
 def test_advance_stub_refuses_a_non_stub(seeded):

@@ -4,7 +4,8 @@ from layer5_dna_substrate.registry import DNARegistry
 from layer5_dna_substrate.forge import ProceduralForge
 from layer5_dna_substrate.inheritance import InheritanceEngine
 from layer5_dna_substrate.expansion_policy import (
-    COMPOSE, DEFER, EXPAND, ExpansionPolicy, stub_depth)
+    COMPOSE, DEFER, EXPAND, GHOST, ExpansionPolicy, order_cheapest_first,
+    stub_depth)
 from layer5_dna_substrate.phenotype_meta import parse_phenotype_tail, VALID_STUB_TYPES
 
 # Comprehensive type map for fuzzy matching of loosely-typed stub mentions
@@ -125,7 +126,7 @@ class ExpansionManager:
     manages their expansion into full DNA-backed entities.
     """
     def __init__(self, registry: DNARegistry, forge: ProceduralForge, inheritance: InheritanceEngine, decoder,
-                 assembler=None, policy=None, composer=None):
+                 assembler=None, policy=None, composer=None, ghosts=None):
         self.registry = registry
         self.forge = forge
         self.inheritance = inheritance
@@ -140,6 +141,7 @@ class ExpansionManager:
         # generation failure rather than a budget decision.
         self.policy = policy
         self.composer = composer
+        self.ghosts = ghosts
 
     def _composer(self):
         """Lazily build a CanonComposer if one was not supplied."""
@@ -147,6 +149,13 @@ class ExpansionManager:
             from layer5_dna_substrate.canon_composer import CanonComposer
             self.composer = CanonComposer(self.registry)
         return self.composer
+
+    def _ghosts(self):
+        """Lazily build a GhostRegistry if one was not supplied."""
+        if self.ghosts is None:
+            from layer5_dna_substrate.ghost_registry import GhostRegistry
+            self.ghosts = GhostRegistry()
+        return self.ghosts
 
     def _locale_for(self, entity_id: str):
         """The spatial entity an expansion should be grounded in, if any."""
@@ -312,8 +321,9 @@ class ExpansionManager:
                     "phenotype": self.expand_stub(stub_id, extra_context,
                                                   **gen_kwargs)}
 
-        composer = self._composer()
-        decision = self.policy.plan(self.registry, composer, [stub_id])[stub_id]
+        composer, ghosts = self._composer(), self._ghosts()
+        decision = self.policy.plan(
+            self.registry, composer, [stub_id], ghosts)[stub_id]
 
         if decision == EXPAND:
             return {"decision": EXPAND, "stub_id": stub_id,
@@ -321,13 +331,22 @@ class ExpansionManager:
                                                   **gen_kwargs)}
         if decision == COMPOSE:
             # No DNA and no model call: the page is assembled from canon that
-            # already describes this entity. Falls through to DEFER if canon
-            # turns out to be thinner than assess() judged, so a compose can
-            # never quietly become an invention.
+            # already describes this entity. Falls through if canon turns out
+            # thinner than assess() judged, so a compose can never quietly
+            # become an invention.
             if composer.compose_into_record(stub_id):
                 return {"decision": COMPOSE, "stub_id": stub_id,
                         "phenotype": self.registry.get_element(stub_id)["phenotype"]}
-            decision = DEFER
+            decision = (GHOST if self.policy.use_ghosts and ghosts.can_ghost(
+                record.get("type") or "") else DEFER)
+
+        if decision == GHOST:
+            # Nothing about this entity; only what its type guarantees. Stays
+            # tagged `stub`, so it is still owed a page, still excluded from
+            # retrieval, and still cannot be composed from.
+            if ghosts.ghost_into_record(self.registry, stub_id):
+                return {"decision": GHOST, "stub_id": stub_id,
+                        "phenotype": self.registry.get_element(stub_id)["phenotype"]}
 
         return {"decision": DEFER, "stub_id": stub_id, "phenotype": None}
 
@@ -343,15 +362,12 @@ class ExpansionManager:
         if stub_ids is None:
             stub_ids = [i for i, r in self.registry._records.items()
                         if "stub" in (r.get("tags") or [])]
-        plan = (self.policy.plan(self.registry, self._composer(), stub_ids)
+        plan = (self.policy.plan(self.registry, self._composer(), stub_ids,
+                                 self._ghosts())
                 if self.policy else {i: EXPAND for i in stub_ids})
 
-        order = ([i for i, d in plan.items() if d == COMPOSE]
-                 + [i for i, d in plan.items() if d == EXPAND]
-                 + [i for i, d in plan.items() if d == DEFER])
-
-        results = {EXPAND: [], COMPOSE: [], DEFER: []}
-        for stub_id in order:
+        results = {EXPAND: [], COMPOSE: [], GHOST: [], DEFER: []}
+        for stub_id in order_cheapest_first(plan):
             outcome = self.advance_stub(stub_id, extra_context)
             results[outcome["decision"]].append(stub_id)
         return results

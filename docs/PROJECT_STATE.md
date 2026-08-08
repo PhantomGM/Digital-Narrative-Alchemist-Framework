@@ -549,7 +549,12 @@ any stub:
 | :--- | :--- |
 | **EXPAND** | Tier 1. Roll DNA, call the model, write a page. Costs money. |
 | **COMPOSE** | Tier 2. Canon already says enough — `CanonComposer` assembles a page with no DNA and no model call. |
-| **DEFER** | Tier 2, canon cannot answer. The stub stays a stub — a success, not a failure. |
+| **GHOST** | Tier 2. Canon cannot answer, but the *type* can — `ghost_registry.py` writes what being a `faction` or an `establishment` guarantees, and lists everything specific as open. No model call. |
+| **DEFER** | Neither canon nor type can answer. The stub stays a stub — a success, not a failure. |
+
+Cheapest-first is also strictest-first in what each may assert: COMPOSE states
+only what canon says, GHOST only what the type says, DEFER nothing. EXPAND is
+the one that invents, and the one that costs.
 
 Deferring is genuinely free: one registry row, and `context_assembler.py:314`
 excludes stubs from retrieval, so a deferred stub can never leak into a prompt
@@ -575,10 +580,40 @@ reads only records tagged `canonized`, and a fresh world has none — so Tier 2
 defers everything until the author promotes something. That is correct rather
 than broken: composing from drafts would propagate unapproved content as
 established fact. But it means **the 40%-free figure measured on Skarn does not
-transfer to a new world until promotion happens**, and the bound on a fresh world
-is *defer*, not *compose*. This is the strongest argument yet for the
-architecture report's Ghost Registry, which is the only proposal that gives a
-seed world somewhere to put an implied stub.
+transfer to a new world until promotion happens**, and without ghosts the bound
+on a fresh world is *defer*, not *compose*.
+
+### The Ghost Registry, restated as type-routing
+
+That gap is what `ghost_registry.py` fills, and trial 2's own frontier shows its
+size:
+
+| | compose | ghost | defer |
+| :--- | ---: | ---: | ---: |
+| Ghosts off | 0 | 0 | **58** |
+| Ghosts on | 0 | **56** | 2 |
+
+The architecture report gave the mechanism as anchoring "the vector embedding
+deduplication registry". **There isn't one** — `find_by_name` is normalised
+string matching, and `ContinuityArchivist.retrieve_context` returns a hardcoded
+string above the comment *"Placeholder for Semantic Search"*. A ghost called
+*local tavern* would never match a stub called *The Broken Wheel*, so the routing
+is **by type**. That also clarifies what a ghost is worth, since it is not
+deduplication — a stub already dedupes by name. It is worth having because it is
+*usable at the table without a model call*: a stub is a name and one line, a
+ghost adds the affordances its type guarantees.
+
+**A ghost keeps its `stub` tag**, deliberately. It therefore stays excluded from
+retrieval (`context_assembler.py:314`), stays uncomposable-from (`CanonComposer`
+reads only `canonized`, so a ghost can never become the evidence for an
+invention), and stays on `StubIndex`'s list of pages still owed. It gains a body
+and a `ghost` tag, nothing more.
+
+Every shape states what the *type* guarantees and lists everything specific as
+**open** — the CLAUDE.md rule about undefined vocabularies applied to a new
+surface. `linguistic` and `world` are in `NO_GHOST_BY_DESIGN`: a generic
+placeholder language would feed the naming pipe nothing while looking like an
+answer, and §5 records that pipe as the easiest thing here to break silently.
 
 The maturity check is measured, never a hardcoded entity count: below a branching
 factor of 1.0 a world dedupes faster than it grows, so the brake comes off by
