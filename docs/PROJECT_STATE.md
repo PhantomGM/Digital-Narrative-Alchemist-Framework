@@ -373,6 +373,23 @@ example roughly doubles a decoder's size and therefore every prompt built from i
 running a script, not from reading. Several confident readings turned out wrong
 under measurement, in both directions.
 
+**The two NPC trait arrays encode different things, and it is not an asymmetry to
+fix.** A paired LNC trait needs three dimensions because the letter fixes the
+trait's identity, the score says how it is *expressed* (rigid ↔ wild) and the
+intensity says how often anyone sees it — three independent facts. An unpaired GNE
+trait needs one, because position on the virtue↔vice axis *is* the whole fact: `H9`
+never lies, `H1` is a liar to the core. **Magnitude and salience are the same
+quantity there**, so an added "intensity" would be a fiction.
+
+That reorders the Lever, and the measurement over 6000 NPCs shows it clearly. LNC
+loud-and-extreme candidates average 1.58 per character; **absolute GNE opposites —
+a score of 1 or 9 against the headline — average 1.86, and 79% of characters have
+one.** A GNE `1` is by the decoder's own scale "the opposite absolutely, a defining
+vice", which is a stronger claim than any intensity can make: intensity 5 means *on
+display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
+opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
+candidate on either axis — not the quarter an LNC-only count suggests.
+
 **A worked example outranks the instruction above it.** The NPC decoder gained a
 section deriving *Core Vulnerability* from the trait array rather than the
 alignment, and measured on three seeded NPCs it barely worked — one of three

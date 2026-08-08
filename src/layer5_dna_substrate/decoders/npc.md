@@ -187,12 +187,25 @@ traits can, and this is how.
 **Do not count or compute.** Roughly half the traits sit on the far side of centre
 from the headline in every character; that is the genome working as intended and it
 carries no signal on its own. What you are looking for is a **ranking**, and you need
-the top of it only:
+the top of it only.
 
-> Among the traits pulling *against* the headline, find the **one or two that are
-> both furthest from the middle and loudest** — extreme in score, high in intensity.
-> Where the GNE traits are concerned there is no intensity, so rank those by distance
-> from the middle alone.
+The two arrays reach the top of that ranking by different routes, because they
+encode different things:
+
+> **An unpaired GNE trait at 1 or 9 against the headline is the strongest Lever
+> available.** These scores are magnitude, not volume — a `9` is the virtue
+> absolutely and a `1` is the vice absolutely, which is a claim about *who the
+> person is*. Nothing needs to be loud about it. A devout `1` for honesty in a
+> Good character is not a quirk; it is the fault line.
+>
+> **A paired LNC trait needs to be both extreme and loud** — far from the middle
+> in score *and* high in intensity — because there the score is only how the trait
+> is *expressed* and the intensity is how often anyone sees it. A wild trait nobody
+> witnesses levers nothing.
+
+So rank an absolute GNE opposite above a loud LNC one, and take the one or two at
+the top. Where a GNE trait sits at 2 or 8 it is reliable rather than absolute, and
+competes on level terms with a loud LNC trait.
 
 That trait is **the Lever**. Three things follow from it, and all three belong in the
 profile:
@@ -215,13 +228,15 @@ profile:
   *visible* — loudness is what intensity means — so somebody at the table has
   noticed it and has a theory about it. That theory should be wrong.
 
-**When nothing pulls hard.** In about a quarter of characters no trait is both
-extreme and loud against the headline. That is not a bland roll and it is not a
-licence to invent a Lever. It means this person's temperament and their philosophy
-agree, which is rarer than the alternative and is its own characterisation: someone
-with **no give**, nothing to press, frighteningly consistent. Ask what that has cost
-them and who has learned there is no point arguing. Say what they are, not what they
-lack.
+**When nothing pulls hard.** Across both arrays this is **rare — roughly one
+character in thirty-five** has no absolute vice, no absolute virtue and no loud
+extreme trait working against their headline. It is not a bland roll and it is not
+a licence to invent a Lever. It means this person's temperament and their philosophy
+agree all the way down, which almost nobody manages, and it is its own
+characterisation: someone with **no give**, nothing to press, frighteningly
+consistent. Treat it as the notable thing it is. Ask what that consistency has cost
+them and who has already learned there is no point arguing. Say what they are, not
+what they lack.
 
 **None of this may reach the page as machinery.** No scores, no intensities, no
 talk of traits pulling against alignments. The Lever appears as a thing a person
