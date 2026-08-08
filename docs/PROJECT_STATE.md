@@ -537,12 +537,22 @@ that asks directly, and collects least from the players who most need asking.
 Trial 3's headline survives with its reasoning corrected: safety answers are
 reproducible *when asked well*, and the asking is part of the instrument.
 
-**Outstanding, found by trial 4.** `SafetyRegister.merged()` keeps the stricter
-`kind` and `scope`, but **notes merely accumulate**. Marcus's two readings —
-"on-screen only" and "even off screen" — would both land in one note and
-contradict each other in the prompt with nothing to resolve them. Strictness
-needs to reach the notes, or a narrowing note needs to be droppable when a
-broader reading exists.
+**Found by trial 4, since fixed.** `SafetyRegister.merged()` kept the stricter
+`kind` and `scope` but merely accumulated notes, so Marcus's two readings —
+"on-screen only" and "even off screen" — would have landed in one note and
+contradicted each other in the prompt. Strictness now reaches the notes:
+
+**A narrowing note survives only if every reading of that constraint carries the
+same narrowing.** Any disagreement drops it and the constraint reverts to its
+unqualified, strictest form. Widening notes still accumulate, because more of
+those is never less safe. `SafetyConstraint.narrows` is set by whoever captures
+the answer rather than guessed from the words — after three keyword-heuristic
+failures in one day, a boolean beats a regex.
+
+A dropped narrowing sets `contested`, which **`SafetyRegister.conflicts()`
+reports to the author and a prompt never sees**. The prompt already has the safe
+answer; a human should still know a boundary was described two different ways and
+settle it.
 
 **Session 0 sets the quota, it does not merely tint the tone.** Genre changes
 which types matter at all: political intrigue wants factions, NPCs, agencies and

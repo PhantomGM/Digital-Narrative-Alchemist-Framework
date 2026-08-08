@@ -99,13 +99,87 @@ def test_shared_boundaries_collapse_to_one_entry():
     assert set(merged.constraints[0].holders) == {"elias", "sarah", "chloe"}
 
 
-def test_notes_accumulate_rather_than_overwrite():
+def test_widening_notes_accumulate_rather_than_overwrite():
+    """More of a widening reading is never less safe, so they all survive."""
     merged = register(
-        SafetyConstraint("animal cruelty", note="Not on screen"),
+        SafetyConstraint("animal cruelty", note="Injury counts too"),
         SafetyConstraint("animal cruelty", note="No familiars either"),
     ).merged()
-    assert "Not on screen" in merged.constraints[0].note
+    assert "Injury counts too" in merged.constraints[0].note
     assert "No familiars either" in merged.constraints[0].note
+
+
+# --- narrowing notes: the trial 4 gap ---------------------------------------
+
+def test_a_narrowing_note_is_dropped_when_another_reading_is_broader():
+    """
+    The exact case trial 4 produced. The same player narrowed his animal Line
+    to on-screen death when the questionnaire invited him to explain it, and
+    broadened it -- "even off screen is rough for me" -- when it did not.
+    Accumulating both would put a narrowing and a widening in one note,
+    contradicting each other in the prompt with nothing to resolve them.
+    """
+    merged = register(
+        SafetyConstraint("animal cruelty", kind=LINE, narrows=True,
+                         note="No pet dies on screen"),
+        SafetyConstraint("animal cruelty", kind=LINE,
+                         note="Even off screen is too much"),
+    ).merged().constraints[0]
+
+    assert "on screen" not in merged.note or "Even off screen" in merged.note
+    assert "No pet dies on screen" not in merged.note
+    assert "Even off screen is too much" in merged.note
+    assert merged.contested
+
+
+def test_a_narrowing_survives_only_when_every_reading_agrees():
+    merged = register(
+        SafetyConstraint("torture", narrows=True, note="Only if off screen"),
+        SafetyConstraint("Torture", narrows=True, note="only if off screen."),
+    ).merged().constraints[0]
+    assert "Only if off screen" in merged.note
+    assert merged.narrows
+    assert not merged.contested
+
+
+def test_two_different_narrowings_cancel_each_other():
+    """
+    Neither reading can be trusted, so the constraint reverts to unqualified --
+    which is its strictest form.
+    """
+    merged = register(
+        SafetyConstraint("torture", narrows=True, note="Only if off screen"),
+        SafetyConstraint("torture", narrows=True, note="Only against enemies"),
+    ).merged().constraints[0]
+    assert merged.note == ""
+    assert merged.contested
+
+
+def test_a_single_reading_keeps_its_narrowing():
+    """One reading cannot contradict itself; there is nothing to distrust."""
+    merged = register(SafetyConstraint("animal cruelty", narrows=True,
+                                       note="No pet dies on screen")).merged()
+    assert "No pet dies on screen" in merged.constraints[0].note
+    assert not merged.constraints[0].contested
+
+
+def test_a_contested_boundary_reaches_the_author_and_not_the_prompt():
+    """
+    The prompt already has the safe answer. A human should still know a
+    boundary was described two different ways and settle it.
+    """
+    reg = register(
+        SafetyConstraint("animal cruelty", narrows=True, note="On screen only"),
+        SafetyConstraint("animal cruelty", note="Even off screen"),
+    )
+    assert [c.text for c in reg.conflicts()] == ["animal cruelty"]
+    rendered = reg.render().lower()
+    assert "contested" not in rendered and "disagree" not in rendered
+
+
+def test_no_conflicts_when_nobody_disagreed():
+    assert register(SafetyConstraint("sexual violence"),
+                    SafetyConstraint("sexual violence")).conflicts() == []
 
 
 # --- privacy ----------------------------------------------------------------

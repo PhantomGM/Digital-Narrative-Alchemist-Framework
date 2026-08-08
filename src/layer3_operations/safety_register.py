@@ -24,7 +24,7 @@ string, the same way the naming rules do. Layer V never imports Layer III.
 """
 
 from dataclasses import dataclass, field
-from typing import List, Sequence
+from typing import Dict, List, Sequence
 
 LINE, VEIL = "line", "veil"
 SCENE, SETTING = "scene", "setting"
@@ -57,6 +57,15 @@ class SafetyConstraint:
     scope: str = SCENE               # SCENE (depiction) or SETTING (worldbuilding too)
     note: str = ""                   # the player's own qualification
     holders: Sequence[str] = ()      # recorded, NEVER rendered into a prompt
+    # Does `note` LIMIT when this constraint applies, rather than add detail?
+    # "no pet dies on screen" narrows an animal-cruelty Line; "no familiars
+    # either" widens it. The distinction decides what survives a merge, and it
+    # is set by whoever captures the answer rather than guessed from the words.
+    narrows: bool = False
+    # Set by merged() when readings of the same constraint disagreed about how
+    # far it reaches. Never rendered into a prompt -- it is a signal to the
+    # author that a boundary needs settling, not something a decoder should see.
+    contested: bool = False
 
     def __post_init__(self):
         if self.kind not in (LINE, VEIL):
@@ -96,27 +105,69 @@ class SafetyRegister:
     def merged(self) -> "SafetyRegister":
         """
         One entry per distinct text, keeping the STRICTER reading of every
-        difference: a Line beats a Veil, SETTING scope beats SCENE, and notes
-        accumulate. Two players sharing a boundary must never weaken it --
-        three of the four trial players listed sexual violence, and one of
-        them qualified it further.
+        difference: a Line beats a Veil, SETTING scope beats SCENE.
+
+        Notes need more care than accumulation, and trial 4 is why. The same
+        player narrowed his animal-cruelty Line to on-screen death when the
+        questionnaire invited him to explain it, and broadened it -- "even off
+        screen is rough for me, I'd rather not know it happened at all" -- when
+        it did not. Accumulating both puts a narrowing and a widening in one
+        note, contradicting each other in the prompt with nothing to resolve
+        them.
+
+        So: **a narrowing note survives only if every reading of that
+        constraint carries the same narrowing.** Any disagreement drops it and
+        the constraint reverts to its unqualified, strictest form. Widening
+        notes accumulate as before, because more of those is never less safe.
+
+        A dropped narrowing sets `contested`, which the author sees through
+        conflicts() and a prompt never does.
         """
-        by_text = {}
+        groups: Dict[str, List[SafetyConstraint]] = {}
         for c in self.constraints:
             key = " ".join(c.text.lower().split()).rstrip(".")
-            prior = by_text.get(key)
-            if prior is None:
-                by_text[key] = c
+            groups.setdefault(key, []).append(c)
+
+        out = []
+        for readings in groups.values():
+            first = readings[0]
+            if len(readings) == 1:
+                out.append(first)
                 continue
-            notes = [n for n in (prior.note, c.note) if n]
-            by_text[key] = SafetyConstraint(
-                text=prior.text,
-                kind=LINE if LINE in (prior.kind, c.kind) else VEIL,
-                scope=SETTING if SETTING in (prior.scope, c.scope) else SCENE,
-                note=" ".join(dict.fromkeys(notes)),
-                holders=tuple(dict.fromkeys(tuple(prior.holders) + tuple(c.holders))),
-            )
-        return SafetyRegister(list(by_text.values()))
+
+            widening = [c.note.strip() for c in readings
+                        if c.note and not c.narrows]
+            narrowing = {" ".join(c.note.lower().split()).rstrip(".")
+                         for c in readings if c.note and c.narrows}
+            # A narrowing holds only under unanimity: every reading must carry
+            # it, and they must agree on what it says.
+            unanimous = (len(narrowing) == 1
+                         and all(c.narrows and c.note for c in readings))
+            kept_narrow = [readings[0].note.strip()] if unanimous else []
+            contested = bool(narrowing) and not unanimous
+
+            notes = list(dict.fromkeys(widening + kept_narrow))
+            out.append(SafetyConstraint(
+                text=first.text,
+                kind=LINE if any(c.kind == LINE for c in readings) else VEIL,
+                scope=SETTING if any(c.scope == SETTING for c in readings) else SCENE,
+                note=" ".join(notes),
+                holders=tuple(dict.fromkeys(
+                    h for c in readings for h in c.holders)),
+                narrows=bool(kept_narrow),
+                contested=contested,
+            ))
+        return SafetyRegister(out)
+
+    def conflicts(self) -> List[SafetyConstraint]:
+        """
+        Constraints whose readings disagreed about how far they reach.
+
+        For the author, never for a prompt. The prompt already has the safe
+        answer -- the unqualified form -- but a human should know a boundary
+        was described two different ways and settle it.
+        """
+        return [c for c in self.merged().constraints if c.contested]
 
     def render(self) -> str:
         """

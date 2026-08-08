@@ -101,12 +101,20 @@ stricter reading of any disagreement — Line beats Veil, SETTING beats SCENE �
 this is the empirical case for that choice. It was a design instinct; it is now a
 measured one.
 
-**3. A gap that follows directly.** `merged()` keeps the stricter *kind* and
-*scope*, but **notes merely accumulate**. Marcus's two readings — "on-screen
-only" and "even off screen" — would both land in the same note, contradicting
-each other in the prompt with nothing to resolve them. Strictness needs to apply
-to notes too, or a note that narrows needs to be droppable when a broader reading
-exists. Recorded as outstanding rather than fixed here.
+**3. A gap that follows directly — since fixed.** `merged()` kept the stricter
+*kind* and *scope* but merely accumulated notes, so Marcus's two readings would
+both have landed in one note and contradicted each other in the prompt.
+
+The rule now: **a narrowing note survives only if every reading carries the same
+narrowing.** Any disagreement drops it and the constraint reverts to its
+unqualified, strictest form. Widening notes still accumulate, since more of those
+is never less safe. Whether a note narrows is a flag set at capture rather than
+inferred from its wording — after three keyword-heuristic failures in a single
+day, a boolean beats a regex.
+
+A dropped narrowing sets `contested`, surfaced by `SafetyRegister.conflicts()`
+**to the author and never to a prompt**. The prompt already has the safe answer;
+a human should still know a boundary was described two ways and settle it.
 
 **4. Trial 3's headline survives, with its reasoning corrected.** A safety
 register is still the cacheable half and a contract still is not — but not
