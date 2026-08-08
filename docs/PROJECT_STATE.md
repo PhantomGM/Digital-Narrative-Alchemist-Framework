@@ -373,6 +373,20 @@ example roughly doubles a decoder's size and therefore every prompt built from i
 running a script, not from reading. Several confident readings turned out wrong
 under measurement, in both directions.
 
+**A worked example outranks the instruction above it.** The NPC decoder gained a
+section deriving *Core Vulnerability* from the trait array rather than the
+alignment, and measured on three seeded NPCs it barely worked — one of three
+improved. The cause was 250 lines below: the worked example's own vulnerability
+read *"Loss of order — ritual disruption, emotional entreaties"*, which for a
+Lawful Evil character is a restatement of Lawful and exactly the failure the new
+section forbade. Rewriting the example to obey its own rule took the result from
+1/3 to **3/3**. The instruction said what to do; the example showed what the
+answer looks like, and the shape of the example is what propagated. §5 already
+records an example *name* becoming a real character; this is the same class one
+level up. **When a decoder has a worked example, changing an instruction without
+changing the example changes very little** — and `npc`, `faction` and `item` are
+the three that have one.
+
 **Keyword probes are unreliable for judging prose.** They are good for finding
 leaks (exact tokens) and bad for deciding whether an instruction was followed. At
 least three times this session a probe reported a failure that turned out to be

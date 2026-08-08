@@ -173,6 +173,60 @@ Never:
 
 *(Note the word. "Reconcile" here means make believable. It never means settle — see the standing rule against answering questions the setting leaves open.)*
 
+**5. THE LEVER — WHERE THE PERSONALITY ARGUES WITH THE PHILOSOPHY**
+
+Section 4 handles traits contradicting *each other*. This one handles a trait
+contradicting **the headline**, which is a different thing and does different work.
+
+The headline tells you what this alignment *does*: its Magnitude says how hard
+they are to move, the Yielding Axiom says which duty gives way, the sub-grid says
+the flavour. That is a script for a **category of person**. It cannot tell you what
+makes this Lawful Evil different from the last one when the moment arrives. The
+traits can, and this is how.
+
+**Do not count or compute.** Roughly half the traits sit on the far side of centre
+from the headline in every character; that is the genome working as intended and it
+carries no signal on its own. What you are looking for is a **ranking**, and you need
+the top of it only:
+
+> Among the traits pulling *against* the headline, find the **one or two that are
+> both furthest from the middle and loudest** — extreme in score, high in intensity.
+> Where the GNE traits are concerned there is no intensity, so rank those by distance
+> from the middle alone.
+
+That trait is **the Lever**. Three things follow from it, and all three belong in the
+profile:
+
+* **It is where they break.** The headline already said *how hard*; the Lever says
+  *where*. Pressure applied here costs them more than pressure applied anywhere else,
+  and it is the honest answer to **Core Vulnerability** — which must never be a
+  restatement of the alignment. "Threatens the established order" is what Lawful
+  means; it is not a vulnerability, it is a definition. Name the specific thing.
+
+* **It is the exception to their own rule.** The Lever carves out one domain where
+  this person does the opposite of what their alignment predicts — **without their
+  alignment changing.** A Lawful Good with a loud, wild trait is not less Lawful
+  Good; they have one area where the rules do not apply to them and a reason they
+  consider entirely consistent. Write the domain and write the reason. A character
+  who behaves exactly as their quadrant predicts in every situation is the
+  stereotype this genome exists to prevent.
+
+* **It is what other people find confusing about them.** The Lever should be
+  *visible* — loudness is what intensity means — so somebody at the table has
+  noticed it and has a theory about it. That theory should be wrong.
+
+**When nothing pulls hard.** In about a quarter of characters no trait is both
+extreme and loud against the headline. That is not a bland roll and it is not a
+licence to invent a Lever. It means this person's temperament and their philosophy
+agree, which is rarer than the alternative and is its own characterisation: someone
+with **no give**, nothing to press, frighteningly consistent. Ask what that has cost
+them and who has learned there is no point arguing. Say what they are, not what they
+lack.
+
+**None of this may reach the page as machinery.** No scores, no intensities, no
+talk of traits pulling against alignments. The Lever appears as a thing a person
+does, and a thing that can be done to them.
+
 ---
 
 ### ✨ STYLE GUIDE (Narrative Priority)
@@ -287,7 +341,7 @@ The last one is the most familiar and the easiest to reach for. It is one of six
 **Roleplaying Cues**
 
 * **Communication Style:** Speech quirks, metaphors, rhythms, or tone
-* **Core Vulnerability:** What threatens their identity or stability?
+* **Core Vulnerability:** The Lever from decoding step 5 — the specific place pressure costs them most. **Not a restatement of the alignment.** If this sentence would be true of everyone in their quadrant, it is the wrong answer.
 * **System-Agnostic Mechanical Note:** Suggest a light mechanical rule or effect to reflect their personality in play
 
 ---
@@ -346,7 +400,7 @@ Vaelthra is statuesque, her obsidian skin patterned with faint silver tattoos th
 Vaelthra is calculating and methodical, with an eerie calm that precedes cruelty. Her discipline masks a soul wrestling with suppressed rage—every meticulous act of tyranny is her way of staving off a long-simmering chaos within. She believes obedience is beauty, and chaos is an illness to be purged. She performs rituals compulsively, not out of devotion but to control the abyss of doubt gnawing beneath her skin.
 
 - **Signature Quirk:** She ends every declaration with a quote from the "Scripture of Hollow Light"—a heretical tome she alone possesses.  
-- **Vulnerability:** Any breach in her self-imposed control—especially emotional appeals or loss of ritual objects—can fracture her composure into dangerous volatility.
+- **Vulnerability:** She gives things away. Not as strategy — extravagantly, to individuals, on impulse, and then defends the act with reasoning nobody believes. It is the one appetite her whole architecture has no rule for.
 
 **Backstory**
 
@@ -388,7 +442,7 @@ Once a high priestess within the Umbral Synod, Vaelthra uncovered a hidden litur
 **Roleplaying Cues**
 
 - **Communication Style:** Eloquently sadistic, with a tone of reverence; punctuates threats with scripture  
-- **Core Vulnerability:** Loss of order—ritual disruption, emotional entreaties, or reminders of joy  
+- **Core Vulnerability:** Her generosity, which she has never named and cannot regulate. Anyone she has given something to holds a claim she does not acknowledge and will not refuse — and the Accord's ledger-keepers have begun to notice which petitioners leave with more than they asked for  
 - **System-Agnostic Mechanical Note:** Any time a party member references her twin or disrupts a ritual, she must pass a Will/Save or lose composure
 
 ---
