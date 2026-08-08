@@ -1,0 +1,146 @@
+[
+  {
+    "n": 1,
+    "slot": "world",
+    "type": "world",
+    "file": "01_world.md",
+    "id": "ff44208a-7be0-4fa1-89f3-c2cfbe216692",
+    "chars": 8484,
+    "seconds": 65.4
+  },
+  {
+    "n": 2,
+    "slot": "culture",
+    "type": "culture",
+    "file": "02_culture.md",
+    "id": "78ac8878-2b6e-4e95-b6f3-d92dbc9e0618",
+    "chars": 11731,
+    "seconds": 27.5
+  },
+  {
+    "n": 3,
+    "slot": "linguistic",
+    "type": "linguistic",
+    "file": "03_linguistic.md",
+    "id": "02faedaf-1f43-4ef3-8a90-d847892b87ba",
+    "chars": 5686,
+    "seconds": 13.0
+  },
+  {
+    "n": 4,
+    "slot": "region",
+    "type": "region",
+    "file": "04_region.md",
+    "id": "b2c92e55-7062-49d6-9650-2089a2f6e216",
+    "chars": 10148,
+    "seconds": 25.4
+  },
+  {
+    "n": 5,
+    "slot": "town",
+    "type": "settlement",
+    "file": "05_town.md",
+    "id": "e72da650-4f32-4409-a994-9befabadc3b5",
+    "chars": 11639,
+    "seconds": 38.4
+  },
+  {
+    "n": 6,
+    "slot": "mine",
+    "type": "regional_poi",
+    "file": "06_mine.md",
+    "id": "0f670323-9759-4b05-be20-21fbfbd1e614",
+    "chars": 10136,
+    "seconds": 28.6
+  },
+  {
+    "n": 7,
+    "slot": "haven",
+    "type": "establishment",
+    "file": "07_haven.md",
+    "id": "0cda0e0b-99c1-4c4e-90e7-9af94d2a3bc0",
+    "chars": 8194,
+    "seconds": 37.5
+  },
+  {
+    "n": 8,
+    "slot": "factions",
+    "type": "faction",
+    "file": "08_factions_1.md",
+    "id": "e8b06d8e-59f8-4678-8a81-2f8f8f0b730b",
+    "chars": 8020,
+    "seconds": 22.0
+  },
+  {
+    "n": 9,
+    "slot": "factions",
+    "type": "faction",
+    "file": "09_factions_2.md",
+    "id": "bb122c5c-f812-4878-8095-d1fecda2ad50",
+    "chars": 8611,
+    "seconds": 21.3
+  },
+  {
+    "n": 10,
+    "slot": "factions",
+    "type": "faction",
+    "file": "10_factions_3.md",
+    "id": "8d52659b-97df-40db-83b3-918fed95ef7c",
+    "chars": 7956,
+    "seconds": 27.5
+  },
+  {
+    "n": 11,
+    "slot": "cast",
+    "type": "npc",
+    "file": "11_cast_1.md",
+    "id": "192a969f-45e9-430a-9e53-f9072aa280a4",
+    "chars": 10311,
+    "seconds": 31.1
+  },
+  {
+    "n": 12,
+    "slot": "cast",
+    "type": "npc",
+    "file": "12_cast_2.md",
+    "id": "df026949-1dd4-4d23-bffd-58596c0692bd",
+    "chars": 11188,
+    "seconds": 69.5
+  },
+  {
+    "n": 13,
+    "slot": "cast",
+    "type": "npc",
+    "file": "13_cast_3.md",
+    "id": "6b6cf0cd-ae19-47c3-86b7-b3437146a7b6",
+    "chars": 10560,
+    "seconds": 37.8
+  },
+  {
+    "n": 14,
+    "slot": "the-changed",
+    "type": "creature",
+    "file": "14_the-changed.md",
+    "id": "7c6b0dc5-90ee-420f-ab0d-8a86d1157cf0",
+    "chars": 8753,
+    "seconds": 24.9
+  },
+  {
+    "n": 15,
+    "slot": "open-question",
+    "type": "lore",
+    "file": "15_open-question.md",
+    "id": "9f9657a2-526a-4ece-bb64-22be863796c2",
+    "chars": 7166,
+    "seconds": 54.4
+  },
+  {
+    "n": 16,
+    "slot": "hook",
+    "type": "quest",
+    "file": "16_hook.md",
+    "id": "31325a32-f27a-4b7a-9712-6162f820be69",
+    "chars": 7487,
+    "seconds": 92.2
+  }
+]

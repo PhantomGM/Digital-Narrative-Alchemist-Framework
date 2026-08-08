@@ -227,8 +227,19 @@ def main():
     ap.add_argument("--dry-run", action="store_true",
                     help="Generate DNA and print the plan; make no model calls.")
     ap.add_argument("--seed", type=int, default=20260807)
-    ap.add_argument("--out", default=PAGES_OUT)
+    ap.add_argument("--out", default=PAGES_OUT,
+                    help="pages directory; the registry and index follow it, "
+                         "so a second trial cannot overwrite the first")
     args = ap.parse_args()
+
+    # Trial 1's artifacts are the committed evidence of the defects this run
+    # is meant to have fixed. Deriving these from --out rather than writing to
+    # a fixed path is what keeps the two comparable.
+    out_dir = os.path.abspath(args.out)
+    suffix = os.path.basename(out_dir)
+    suffix = "" if suffix == "pages" else "_" + suffix.replace("pages_", "")
+    registry_out = os.path.join(HERE, f"registry{suffix}.json")
+    index_out = os.path.join(HERE, f"generation_index{suffix}.json")
 
     forge = ProceduralForge()
     CONTRACT.validate(known_types=list(forge.generators))
@@ -295,13 +306,12 @@ def main():
         print("\nDry run complete. No model calls made.")
         return
 
-    registry.save_to_json(REGISTRY_OUT)
-    with open(os.path.join(HERE, "generation_index.json"), "w",
-              encoding="utf-8") as fh:
+    registry.save_to_json(registry_out)
+    with open(index_out, "w", encoding="utf-8") as fh:
         json.dump(index, fh, indent=2)
 
     outstanding = CONTRACT.unfilled(counts)
-    print(f"\n=== {made} entities -> {REGISTRY_OUT} ===")
+    print(f"\n=== {made} entities -> {registry_out} ===")
     print("contract satisfied" if not outstanding
           else f"STILL OWED: {outstanding}")
 

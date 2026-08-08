@@ -13,7 +13,8 @@ if you only read one; [README.md](README.md) explains what the trial was.
 | [00_TTRPG Player Profiles.md](00_TTRPG%20Player%20Profiles.md) | **The input.** The four simulated players as originally written — experience, play style, genres, Lines and Veils. Everything downstream derives from this file. `player_profiles.json` is a structured reading of it, not a replacement. |
 | [01_round1_transcript.md](01_round1_transcript.md) | The four players' unedited answers to the Session 0 questionnaire, given privately before any of them saw another's. |
 | [02_campaign_pitch.md](02_campaign_pitch.md) | The campaign pitch, assembled from the generated entities. Every proper noun in it came out of the pipeline. All four players accepted it. |
-| [03_findings.md](03_findings.md) | **The write-up.** Eight things the trial validated, seven defects it found, and the branching-factor measurement that corrected `docs/PROJECT_STATE.md` §8. |
+| [03_findings.md](03_findings.md) | **The write-up.** Eight things trial 1 validated, seven defects it found, and the branching-factor measurement that corrected `docs/PROJECT_STATE.md` §8. |
+| [04_trial2_findings.md](04_trial2_findings.md) | **Trial 2.** The same players and the same transcripts, through the *built* machinery instead of scaffolding. Five of five retested defects fixed, no regressions, and one new negative result: the contract bounds what is generated, not what is implied. |
 
 ## The generated world
 
@@ -56,17 +57,38 @@ heading of a page should be the entity's name. Three are not:
 | `15_quest.md` | `1. Quest Title` | `The Scholar's Descent` |
 
 `world`, `region` and `quest` are all among the fourteen decoders that have never
-had a refinement pass, and all three print a template field label as an output
+had a refinement pass, and all three printed a template field label as an output
 header — the same class of defect `docs/PROJECT_STATE.md` §7 records for palette
-labels. It is not one bad decoder; it is a pattern in the unrefined set.
+labels. It was not one bad decoder; it was a pattern in the unrefined set, and
+checking the fix found it in `settlement` and `travel` as well.
 
-This also breaks name extraction downstream: `ExpansionManager._extract_name`
-would take "World Overview" as the world's name.
+It also broke name extraction downstream: `ExpansionManager._extract_name` would
+have taken "World Overview" as the world's name.
+
+**Fixed in `e1b9b57`**, and confirmed in a real run: none of trial 2's sixteen
+pages opens with a template label.
+
+## Trial 2's world
+
+`pages_trial2/` holds the 16 entities generated from the same transcripts
+through `ContentContract` and `ContextPackage.safety`. Read it beside `pages/`
+to see what the fixes changed, or run `compare_trials.py`, which checks each
+defect rather than leaving it to the eye. **Trial 2's pages open with entity
+names, not template labels** — the table above is trial 1 only.
+
+The clearest single difference is `pages_trial2/07_haven.md`, **The Cog &
+Kettle**. Trial 1's contract had no way to ask for a warm room at all.
 
 ## Not markdown, but part of the trial
 
 - `player_profiles.json` — the four players, structured. Lines and Veils held
-  apart, which `PlayerProfileManager` does not do.
-- `registry.json` — the trial world's registry. Unconnected to the live world.
-- `generation_index.json` — per-entity generation timings and record IDs.
-- `generate_world.py` — the harness. `--dry-run` makes no model calls.
+  apart, which the old `PlayerProfileManager` could not do; it now can, via
+  `layer3_operations/safety_register.py`.
+- `registry.json` / `registry_trial2.json` — each trial's registry. Neither is
+  connected to the live world.
+- `generation_index.json` / `generation_index_trial2.json` — per-entity timings
+  and record IDs.
+- `generate_world.py` — the harness, rewired after trial 1 to use the real
+  contract and safety machinery. `--dry-run` makes no model calls; `--out`
+  chooses the pages directory and the registry follows it.
+- `compare_trials.py` — the trial 1 vs trial 2 comparison. Reads only.
