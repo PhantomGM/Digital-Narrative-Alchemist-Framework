@@ -79,3 +79,42 @@ def test_whitespace_around_real_content_is_not_stripped(decoder):
     """The guard tests for emptiness; it must not reformat a real page."""
     page = "\n### **A People**\n\nBody.\n"
     assert _decode_returning(decoder, page) == page
+
+
+# --- degenerate repetition --------------------------------------------------
+#
+# A 9/9 NPC decode produced a profile truncated after the BDI block followed by
+# ~1.8 MB of trailing spaces. It passed the emptiness check, because 3 KB of
+# content plus a megabyte of whitespace is not empty, and the missing half of
+# the profile was never mentioned by anything.
+
+def test_a_wall_of_trailing_whitespace_raises(decoder):
+    page = "### **Someone**\n\nA real profile.\n" + " " * 50_000
+    with pytest.raises(ValueError, match="trailing whitespace"):
+        _decode_returning(decoder, page)
+
+
+def test_the_padding_error_reports_how_much(decoder):
+    with pytest.raises(ValueError) as exc:
+        _decode_returning(decoder, "### **X**\n\nBody." + " " * 9_000)
+    assert "9,000" in str(exc.value)
+
+
+def test_a_runaway_length_raises_even_without_padding(decoder):
+    """The subtler shape: repetition of real text rather than whitespace."""
+    page = ("### **Someone**\n\nThe same paragraph again and again.\n" * 4000)
+    with pytest.raises(ValueError, match="runaway repetition"):
+        _decode_returning(decoder, page)
+
+
+@pytest.mark.parametrize("trailing", [0, 1, 200, 1_500])
+def test_ordinary_trailing_newlines_are_fine(decoder, trailing):
+    """Real pages end with a newline or two; the guard must not be twitchy."""
+    page = "### **Someone**\n\nA real profile.\n" + " " * trailing
+    assert _decode_returning(decoder, page) == page
+
+
+def test_a_large_but_legitimate_page_passes(decoder):
+    """The biggest real trial page was ~14 KB. 40 KB must still be allowed."""
+    page = "### **Someone**\n\n" + ("Real prose about a person. " * 1500)
+    assert _decode_returning(decoder, page) == page

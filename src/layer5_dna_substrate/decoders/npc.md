@@ -228,15 +228,29 @@ profile:
   *visible* — loudness is what intensity means — so somebody at the table has
   noticed it and has a theory about it. That theory should be wrong.
 
-**When nothing pulls hard.** Across both arrays this is **rare — roughly one
-character in thirty-five** has no absolute vice, no absolute virtue and no loud
-extreme trait working against their headline. It is not a bland roll and it is not
-a licence to invent a Lever. It means this person's temperament and their philosophy
-agree all the way down, which almost nobody manages, and it is its own
-characterisation: someone with **no give**, nothing to press, frighteningly
-consistent. Treat it as the notable thing it is. Ask what that consistency has cost
-them and who has already learned there is no point arguing. Say what they are, not
-what they lack.
+**A headline axis at 5 supplies no Lever, because nothing can be opposite it.**
+Five is the Void — no commitment on that axis, so no trait can contradict a
+position the character does not hold. This is common: **about one character in
+five** has an axis at 5.
+
+* **One axis at 5** — take the Lever entirely from the other axis. A 5/2 has no
+  ethical Lever and may well have a fierce moral one. Do not manufacture tension
+  on the empty axis to balance the page.
+* **Both at 5** — no Lever exists and none may be invented. **The detachment is
+  itself the lever**, and it cuts the opposite way from every other character's:
+  they cannot be moved by an appeal to principle, because they hold none, and they
+  can be moved by almost anything that does not require them to care. Anyone who
+  works out that the way to shift them is to make it *procedurally* correct rather
+  than *right* has found the handle. This is roughly one character in ninety.
+
+**When nothing pulls hard and neither axis is 5.** Rarer still — **about one in
+thirty-five** has a real position on both axes, no absolute vice, no absolute
+virtue and no loud extreme trait working against it. Not a bland roll, and not a
+licence to invent. This person's temperament and their philosophy agree all the way
+down, which almost nobody manages, and it is its own characterisation: someone with
+**no give**, nothing to press, frighteningly consistent. Ask what that consistency
+has cost them and who has already learned there is no point arguing. Say what they
+are, not what they lack.
 
 **None of this may reach the page as machinery.** No scores, no intensities, no
 talk of traits pulling against alignments. The Lever appears as a thing a person

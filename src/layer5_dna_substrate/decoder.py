@@ -5,6 +5,12 @@ from langchain_core.output_parsers import StrOutputParser
 
 from layer5_dna_substrate.phenotype_meta import TAIL_INSTRUCTION
 
+# Sanity bounds on a decoded page. The largest legitimate phenotype observed
+# across five Session 0 trials is about 14 KB, so these are loose by design --
+# they exist to catch degeneration, not to police length.
+MAX_PHENOTYPE_CHARS = 100_000
+MAX_TRAILING_PAD = 2_000
+
 
 def format_context(context) -> str:
     """
@@ -92,6 +98,28 @@ class DNADecoder:
                     f"Decoding {element_type} returned an empty phenotype. "
                     f"The model produced nothing -- refused, filtered, or cut "
                     f"off. Retry or inspect the prompt; do not register this.")
+
+            # Degenerate repetition. A 9/9 NPC decode produced a profile
+            # truncated after the BDI block followed by roughly 1.8 MB of
+            # trailing spaces -- the Gamemaster's Toolkit, the hooks and the
+            # machine-readable tail all lost to padding. It passed the emptiness
+            # check above, because 3 KB of real content plus a megabyte of
+            # whitespace is not empty. The registry would have stored it, the
+            # vault sync written it, and the missing half never mentioned.
+            #
+            # Two shapes, because the length cap alone misses the subtler one:
+            # a profile of ordinary size wearing 50 KB of padding.
+            padding = len(phenotype) - len(phenotype.rstrip())
+            if padding > MAX_TRAILING_PAD:
+                raise ValueError(
+                    f"Decoding {element_type} returned {padding:,} characters of "
+                    f"trailing whitespace -- the model degenerated into padding "
+                    f"and the profile is almost certainly truncated. Retry.")
+            if len(phenotype) > MAX_PHENOTYPE_CHARS:
+                raise ValueError(
+                    f"Decoding {element_type} returned {len(phenotype):,} "
+                    f"characters. No profile is that long; this is runaway "
+                    f"repetition. Retry or inspect the prompt.")
             return phenotype
         else:
             raise NotImplementedError(f"Decoding for {element_type} is not yet implemented or mapped. Check decoders directory.")

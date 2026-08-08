@@ -390,6 +390,28 @@ display constantly*, a GNE 1 means *this is who they are*. So an absolute GNE
 opposite outranks a loud LNC one, and only **2.8%** of characters have no strong
 candidate on either axis — not the quarter an LNC-only count suggests.
 
+**A headline axis at 5 supplies no Lever, and that is common.** Nothing can be
+opposite a 5 — it is the Void, no commitment on that axis — so no trait can
+contradict a position the character does not hold. **22% of characters have an
+axis at 5** and take their Lever entirely from the other one; **1.1% have both**,
+where no Lever exists and the *detachment itself* is the handle: they cannot be
+moved by an appeal to principle and can be moved by almost anything that does not
+require them to care. Tested, and the decoder now produces exactly that — "an
+appeal made entirely on logical, procedural or resource-management grounds is
+almost impossible for them to refuse." Distinct from the genuinely coherent
+character (2.8%, a real position on both axes and nothing pulling against it), who
+is *frighteningly consistent* rather than detached.
+
+**Degenerate decodes are a live failure mode, not a hypothetical.** A 9/9 NPC
+decode returned a profile truncated after the BDI block followed by **~1.8 MB of
+trailing whitespace** — Gamemaster's Toolkit, hooks and the machine-readable tail
+all lost to padding. It passed the emptiness guard, because 3 KB of content plus a
+megabyte of spaces is not empty. `decode_element` now raises on excessive trailing
+padding *and* on absurd total length, because the length cap alone misses the
+subtler shape: an ordinary-sized profile wearing 50 KB of it. **The failure was
+transient** — the identical DNA retried clean at 10 KB — which is precisely why it
+needs a guard rather than a prompt change.
+
 **The Lever reaches four fields, not one.** Deriving only *Core Vulnerability*
 from it left the BDI block and the hooks still generated from the alignment, so a
 character could have a sharp vulnerability and completely generic-for-quadrant
